@@ -65,5 +65,6 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
 - Telegra.ph tool discovery page: https://telegra.ph/AI-工作流模板生成器-06-14
 - Telegra.ph discovery page: https://telegra.ph/AI-Agent-工作台实战包-06-14
 - GitHub Gist: https://gist.github.com/Ronnie2025/8614abac33767768ada58339cbb7d2e7
+- Chinese Independent Developer listing: https://github.com/1c7/chinese-independent-developer#ronnie---github
 
 Paid ZIP files are intentionally not included in this public repository.
