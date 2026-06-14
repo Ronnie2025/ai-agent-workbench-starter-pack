@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>购买 AI Agent 工作台实战包 | AI 工作台订单页</title>
+  <meta name="description" content="AI Agent 工作台实战包订单页。选择 19 元自测表、99 元实战包、299 元文字诊断或 999 元小班实战，生成订单邮件。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html">
+  <meta property="og:title" content="购买 AI Agent 工作台实战包">
+  <meta property="og:description" content="选择购买档位，填写第一个 AI 工作流场景，生成订单邮件。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #667085;
+      --line: #d9e2ef;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #c67a00;
+      --deep: #0d1b2a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 54px 0 42px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.9) 54%, rgba(246,248,251,.22) 100%),
+        url("cover.png") right center / min(34vw, 390px) auto no-repeat;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(15,143,111,.09);
+      border: 1px solid rgba(15,143,111,.22);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 720px;
+      margin: 18px 0 14px;
+      font-size: clamp(40px, 5.6vw, 68px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 18px;
+      font-size: 28px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 20px;
+    }
+    main {
+      padding: 44px 0 60px;
+    }
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 22px;
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .plan {
+      position: relative;
+      display: block;
+      min-height: 170px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+    }
+    .plan input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .plan strong {
+      display: block;
+      color: var(--blue);
+      font-size: 34px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .plan span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    .plan:has(input:checked) {
+      border-color: rgba(21,94,239,.7);
+      box-shadow: 0 0 0 3px rgba(21,94,239,.12);
+    }
+    .field {
+      display: grid;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    label {
+      font-weight: 850;
+    }
+    textarea,
+    input,
+    select {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px 12px;
+      color: var(--ink);
+      background: #fff;
+      font: inherit;
+    }
+    textarea {
+      min-height: 126px;
+      resize: vertical;
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+      cursor: pointer;
+      font: inherit;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .summary {
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+    }
+    .summary strong {
+      color: var(--ink);
+    }
+    .notice {
+      margin-top: 18px;
+      padding: 15px 16px;
+      border: 1px solid rgba(198,122,0,.26);
+      border-radius: 8px;
+      background: rgba(198,122,0,.08);
+      color: #4c3a1a;
+      font-size: 14px;
+    }
+    .links {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+      color: var(--blue);
+      font-weight: 750;
+    }
+    .links a { text-decoration: none; }
+    @media (max-width: 880px) {
+      .hero {
+        background: linear-gradient(180deg, #f6f8fb 0%, #eaf2ff 100%);
+      }
+      .order-layout,
+      .plans {
+        grid-template-columns: 1fr;
+      }
+      .nav { display: none; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Agent 工作台实战包</a>
+      <div class="nav">
+        <a href="self-test.html">免费自测</a>
+        <a href="guide.html">判断指南</a>
+        <a href="./">资料包</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">订单页</span>
+      <h1>选择一个档位，生成购买邮件</h1>
+      <p class="lead">当前先用邮件订单承接陌生流量。选择档位、写一句你的第一个 AI 工作流场景，系统会自动生成订单邮件。</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap order-layout">
+      <section class="panel">
+        <h2>购买档位</h2>
+        <div class="plans" id="plans">
+          <label class="plan">
+            <input type="radio" name="plan" value="19" data-product="AI 工作台自测表">
+            <strong>19 元</strong>
+            <h3>AI 工作台自测表</h3>
+            <p>适合还不确定从哪个流程开始的人。</p>
+            <span>交付：自测题、评分说明、首个流程选择表。</span>
+          </label>
+          <label class="plan">
+            <input type="radio" name="plan" value="99" data-product="AI Agent 工作台实战包" checked>
+            <strong>99 元</strong>
+            <h3>AI Agent 工作台实战包</h3>
+            <p>适合已经确定要搭一个可复用工作流的人。</p>
+            <span>交付：7 日路线、模板库、检查清单、发布文案。</span>
+          </label>
+          <label class="plan">
+            <input type="radio" name="plan" value="299" data-product="AI Agent 工作台文字诊断">
+            <strong>299 元</strong>
+            <h3>资料包 + 文字诊断</h3>
+            <p>适合想把自己的场景改成第一版流程的人。</p>
+            <span>交付：资料包 + 一份文字诊断建议。</span>
+          </label>
+          <label class="plan">
+            <input type="radio" name="plan" value="999" data-product="AI 工作台 2 小时小班实战">
+            <strong>999 元</strong>
+            <h3>2 小时小班实战</h3>
+            <p>适合要现场搭出一个可运行工作台的人。</p>
+            <span>交付：小班实战 + 现场工作流搭建。</span>
+          </label>
+        </div>
+
+        <div class="field">
+          <label for="scenario">你的第一个 AI 工作流场景</label>
+          <textarea id="scenario" placeholder="例如：把长文整理成小红书图文；把会议记录转成待办；把客户资料整理成方案初稿。"></textarea>
+        </div>
+        <div class="field">
+          <label for="payment">希望付款方式</label>
+          <select id="payment">
+            <option>微信 / 支付宝</option>
+            <option>PayPal</option>
+            <option>Wise</option>
+            <option>其他方式</option>
+          </select>
+        </div>
+
+        <div class="btn-row">
+          <a class="btn btn-primary" id="gmailLink" href="#">用 Gmail 发订单</a>
+          <a class="btn btn-line" id="mailtoLink" href="#">用系统邮箱发订单</a>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <h2>订单摘要</h2>
+        <div class="summary">
+          <p>购买产品：<strong id="summaryProduct">AI Agent 工作台实战包</strong></p>
+          <p>订单金额：<strong id="summaryPrice">99 元</strong></p>
+          <p>收件邮箱：<strong>zhongruanjie@gmail.com</strong></p>
+          <p>付款和交付：收到邮件后返回付款方式；付款完成后交付对应资料包或诊断。</p>
+        </div>
+        <div class="notice">付费 zip 不放在公开网页目录。自动收款链接接入前，订单页只负责承接购买意向和生成邮件订单。</div>
+        <div class="links">
+          <a href="self-test.html">先做免费自测</a>
+          <a href="guide.html">先看判断指南</a>
+          <a href="./">返回资料包主站</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const to = "zhongruanjie@gmail.com";
+    const scenarioEl = document.getElementById("scenario");
+    const paymentEl = document.getElementById("payment");
+    const productEl = document.getElementById("summaryProduct");
+    const priceEl = document.getElementById("summaryPrice");
+    const gmailLink = document.getElementById("gmailLink");
+    const mailtoLink = document.getElementById("mailtoLink");
+
+    function selectedPlan() {
+      return document.querySelector("input[name='plan']:checked");
+    }
+
+    function applyQueryPlan() {
+      const params = new URLSearchParams(window.location.search);
+      const plan = params.get("plan");
+      if (!plan) return;
+      const radio = document.querySelector(`input[name='plan'][value='${CSS.escape(plan)}']`);
+      if (radio) radio.checked = true;
+    }
+
+    function updateLinks() {
+      const plan = selectedPlan();
+      const price = plan.value;
+      const product = plan.dataset.product;
+      const scenario = scenarioEl.value.trim() || "我还没写清楚，先咨询适合从哪个流程开始。";
+      const payment = paymentEl.value;
+      const subject = `购买 ${product} ${price}元`;
+      const body = [
+        `我想购买 ${price} 元 ${product}。`,
+        "",
+        `我的第一个 AI 工作流场景：${scenario}`,
+        `希望付款方式：${payment}`,
+        "",
+        "请回复付款方式和交付说明。"
+      ].join("\n");
+
+      productEl.textContent = product;
+      priceEl.textContent = `${price} 元`;
+      gmailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      mailtoLink.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    document.querySelectorAll("input[name='plan']").forEach((radio) => {
+      radio.addEventListener("change", updateLinks);
+    });
+    scenarioEl.addEventListener("input", updateLinks);
+    paymentEl.addEventListener("change", updateLinks);
+    applyQueryPlan();
+    updateLinks();
+  </script>
+</body>
+</html>
