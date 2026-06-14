@@ -6,6 +6,7 @@ consultants, and small-team operators.
 ## Free Tools
 
 - AI 工作流模板生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/template-generator.html
+- AI 工作流提示词库预览: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/prompt-library.html
 - AI 工作台免费自测: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html
 - 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
 - 付款和交付说明: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
@@ -17,6 +18,13 @@ consultants, and small-team operators.
 - 会议纪要转待办 AI 工作流: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-meeting-notes.html
 - 客户资料转方案 AI 工作流: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-client-proposal.html
 - PPT 大纲 AI 工作流: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-ppt-outline.html
+
+## Prompt Preview Pages
+
+- 长文转小红书图文提示词: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/prompt-xiaohongshu.html
+- 会议记录转行动清单提示词: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/prompt-meeting-notes.html
+- 客户资料转方案初稿提示词: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/prompt-client-proposal.html
+- PPT 大纲生成提示词: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/prompt-ppt-outline.html
 
 ## Paid Products
 

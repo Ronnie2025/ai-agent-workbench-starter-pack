@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>免费会议记录转行动清单提示词 | AI Agent 工作台实战包</title>
+  <meta name="description" content="免费复制一条会议记录转行动清单提示词，把会议纪要整理成决议、待办、负责人、截止时间和风险提醒。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/prompt-meeting-notes.html">
+  <meta property="og:title" content="免费会议记录转行动清单提示词">
+  <meta property="og:description" content="把会议记录整理成可执行行动清单，减少会后遗漏和反复确认。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/prompt-meeting-notes.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "免费会议记录转行动清单提示词",
+    "description": "一条公开可复制的会议整理提示词，适合把会议记录转成决议、待办、负责人、截止时间和风险提醒。",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/prompt-meeting-notes.html",
+    "isAccessibleForFree": true,
+    "keywords": ["会议纪要提示词", "行动清单", "AI 会议整理"]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #667085;
+      --line: #d9e2ef;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #c67a00;
+      --deep: #0d1b2a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.68;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(980px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(980px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 62px 0 48px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.91) 55%, rgba(246,248,251,.25) 100%),
+        url("cover.png") right center / min(34vw, 390px) auto no-repeat;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,143,111,.22);
+      background: rgba(15,143,111,.09);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 760px;
+      margin: 18px 0 14px;
+      font-size: clamp(38px, 5.6vw, 66px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 18px;
+      font-size: 28px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      line-height: 1.26;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    main { padding: 44px 0 60px; }
+    section {
+      margin-bottom: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .mini-card {
+      min-height: 126px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .mini-card p,
+    .list li,
+    .steps li {
+      color: #303846;
+    }
+    .prompt-box {
+      overflow-x: auto;
+      margin: 0;
+      padding: 18px;
+      border-radius: 8px;
+      background: var(--deep);
+      color: #e2e8f0;
+      white-space: pre-wrap;
+      font: 14px/1.7 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    .steps {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding-left: 22px;
+    }
+    .steps li {
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .notice {
+      border-color: rgba(198,122,0,.28);
+      background: rgba(198,122,0,.08);
+    }
+    .cta {
+      background: var(--deep);
+      color: #fff;
+      border-color: var(--deep);
+    }
+    .cta p { color: #cbd5e1; max-width: 700px; margin-bottom: 20px; }
+    .cta .btn-line {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.22);
+      color: #fff;
+    }
+    @media (max-width: 760px) {
+      .hero {
+        background: linear-gradient(180deg, #f6f8fb 0%, #eaf2ff 100%);
+      }
+      .nav { display: none; }
+      .grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      section { padding: 20px; }
+      .prompt-box { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Agent 工作台实战包</a>
+      <div class="nav">
+        <a href="prompt-library.html">提示词库</a>
+        <a href="sample.html">样品</a>
+        <a href="order.html?plan=99">购买</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">免费提示词：会议记录转行动清单</span>
+      <h1>免费会议记录提示词：把纪要整理成可执行行动清单</h1>
+      <p class="lead">适合项目会、客户会、复盘会和内部对齐会。重点是把杂乱记录整理成决议、待办、负责人、截止时间和风险提醒。</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#prompt">复制这条提示词</a>
+        <a class="btn btn-line" href="sample.html">先看公开样品</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>适用场景</h2>
+      <div class="grid">
+        <div class="mini-card">
+          <h3>会后整理</h3>
+          <p>会议记录已经有了，但里面混着讨论、结论、待办和临时想法。</p>
+        </div>
+        <div class="mini-card">
+          <h3>项目推进</h3>
+          <p>需要快速确认下一步动作、负责人和截止时间，减少会后反复问。</p>
+        </div>
+        <div class="mini-card">
+          <h3>客户沟通</h3>
+          <p>客户会议后要同步内部团队，避免遗漏承诺、风险和待补资料。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="prompt">
+      <h2>完整公开提示词</h2>
+      <pre class="prompt-box">你是我的会议纪要整理助理。
+
+我会粘贴一段会议记录，可能包含逐字稿、手写纪要或零散要点。
+
+请你把它整理成“可执行行动清单”，不要只做摘要。请严格输出以下结构：
+
+1. 会议一句话结论
+   - 用 1 句话说明这次会议最终推进了什么。
+
+2. 已确认决议
+   - 只列已经明确达成一致的事项。
+   - 如果只是讨论过但没有定下来，请不要放进决议。
+
+3. 行动清单
+   - 用表格列出：事项、负责人、截止时间、依赖条件、完成标准。
+   - 如果负责人或截止时间没有出现，请标注“待确认”。
+
+4. 风险与阻塞
+   - 列出可能影响推进的风险、缺失信息和外部依赖。
+
+5. 会后追问清单
+   - 生成 3 到 6 个需要补问的问题，方便我发给相关人确认。
+
+处理规则：
+- 不要编造会议里没有出现的信息。
+- 不确定的信息统一写“待确认”。
+- 待办要写成具体动作，不要写成宽泛方向。
+- 保留重要原话或数字，但不要输出冗长逐字稿。
+
+会议记录如下：
+【粘贴会议记录】</pre>
+    </section>
+
+    <section>
+      <h2>使用步骤</h2>
+      <ol class="steps">
+        <li><strong>先合并记录：</strong>把逐字稿、手写要点、聊天补充放在同一段输入里，减少上下文缺口。</li>
+        <li><strong>检查决议：</strong>重点看 AI 有没有把“讨论过”误判成“已确认”。</li>
+        <li><strong>补齐待确认项：</strong>负责人、截止时间、完成标准缺失时，先向相关人确认再同步。</li>
+        <li><strong>转成任务：</strong>把行动清单复制到你的任务系统，按负责人和截止时间跟进。</li>
+      </ol>
+    </section>
+
+    <section class="notice">
+      <h2>常见错误</h2>
+      <ul class="list">
+        <li>只让 AI 总结会议，最后得到一段好看的摘要，但没有可执行动作。</li>
+        <li>没有区分“已决议”和“待讨论”，导致会后同步出现误解。</li>
+        <li>待办没有完成标准，负责人不知道做到什么程度才算完成。</li>
+        <li>把所有逐字稿都发给同事，反而增加阅读成本。</li>
+      </ul>
+    </section>
+
+    <section class="cta">
+      <h2>继续搭建你的会议工作流</h2>
+      <p>这页只公开一条会议整理提示词。完整资料包会继续补上会议前准备、会后同步、任务追踪和复盘检查模板。</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="prompt-library.html">查看提示词模板库</a>
+        <a class="btn btn-line" href="sample.html">查看公开样品</a>
+        <a class="btn btn-line" href="order.html?plan=99">购买 99 元实战包</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
