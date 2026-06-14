@@ -13,6 +13,7 @@ consultants, and small-team operators.
 - 付款和交付说明: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
 - 判断指南: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/guide.html
 - AI 工作流急诊: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency.html
+- AI 工作流急诊自助判断: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency-intake.html
 
 ## Scenario Pages
 
@@ -37,6 +38,10 @@ consultants, and small-team operators.
 - 699 RMB: AI 工作流急诊诊断版
 - 1999 RMB: AI 工作流急诊代搭版
 - 4999 RMB: AI 工作流急诊深度版
+
+Emergency intake:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency-intake.html
 
 Order page:
 
