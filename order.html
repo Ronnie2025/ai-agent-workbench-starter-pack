@@ -260,6 +260,19 @@
       font-weight: 750;
     }
     .links a { text-decoration: none; }
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .footer a { color: var(--muted); }
     @media (max-width: 880px) {
       .hero {
         background: linear-gradient(180deg, #f6f8fb 0%, #eaf2ff 100%);
@@ -366,6 +379,8 @@
           <a href="prompt-library.html">先复制免费提示词</a>
           <a href="sample.html">先看资料包样品</a>
           <a href="after-order.html">查看付款和交付说明</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
           <a href="self-test.html">先做免费自测</a>
           <a href="guide.html">先看判断指南</a>
           <a href="./">返回资料包主站</a>
@@ -373,6 +388,14 @@
       </aside>
     </div>
   </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
 
   <script>
     const to = "zhongruanjie@gmail.com";

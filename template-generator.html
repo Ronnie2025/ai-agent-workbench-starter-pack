@@ -240,6 +240,15 @@
       width: auto;
       border-radius: 10px;
     }
+    .legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .legal-links a { color: var(--muted); }
     @media (max-width: 900px) {
       .hero {
         min-height: auto;
@@ -370,11 +379,18 @@
   </section>
 
   <section>
-    <div class="wrap directory-badge">
-      <span>Listed for AI tool discovery:</span>
-      <a href="https://submitaitools.org/" target="_blank" rel="noopener">
-        <img src="https://submitaitools.org/static_submitaitools/images/submitaitools.png" alt="Submit AI Tools">
-      </a>
+    <div class="wrap">
+      <div class="directory-badge">
+        <span>Listed for AI tool discovery:</span>
+        <a href="https://submitaitools.org/" target="_blank" rel="noopener">
+          <img src="https://submitaitools.org/static_submitaitools/images/submitaitools.png" alt="Submit AI Tools">
+        </a>
+      </div>
+      <div class="legal-links">
+        <span>Contact: zhongruanjie@gmail.com</span>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
     </div>
   </section>
 

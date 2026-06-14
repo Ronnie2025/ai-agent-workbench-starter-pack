@@ -79,6 +79,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/privacy.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/terms.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-xiaohongshu.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
