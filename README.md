@@ -7,6 +7,7 @@ consultants, and small-team operators.
 
 - AI 工作流模板生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/template-generator.html
 - AI 工作台免费自测: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html
+- 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
 - 判断指南: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/guide.html
 
 ## Scenario Pages
@@ -25,6 +26,10 @@ consultants, and small-team operators.
 Order page:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=99
+
+Sample:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
 
 ## Discovery Pages
 
