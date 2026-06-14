@@ -252,6 +252,24 @@
       color: #4c3a1a;
       font-size: 14px;
     }
+    .preflight {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 18px;
+      padding: 0;
+      list-style: none;
+    }
+    .preflight li {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fbff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .preflight strong {
+      color: var(--ink);
+    }
     .links {
       display: grid;
       gap: 10px;
@@ -367,6 +385,13 @@
 
       <aside class="panel">
         <h2>订单摘要</h2>
+        <ul class="preflight">
+          <li><strong>回复时效：</strong>订单邮件发出后，通常 24 小时内回复付款方式。</li>
+          <li><strong>支持方式：</strong>可选微信 / 支付宝、PayPal、Wise；最终以邮件回复为准。</li>
+          <li><strong>交付时效：</strong>付款确认后，19/99 元数字资料通常 24 小时内发送下载文件或附件。</li>
+          <li><strong>诊断交付：</strong>299 元文字诊断会先确认场景材料，通常 48 小时内交付第一版建议。</li>
+          <li><strong>退款边界：</strong>未交付前可退款；数字资料已交付后不支持无理由退款，文件损坏或未收到会补发或退款。</li>
+        </ul>
         <div class="summary">
           <p>购买产品：<strong id="summaryProduct">AI Agent 工作台实战包</strong></p>
           <p>订单金额：<strong id="summaryPrice">99 元</strong></p>

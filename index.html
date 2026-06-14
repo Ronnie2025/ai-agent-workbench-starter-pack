@@ -195,6 +195,53 @@
       border-radius: 8px;
       background: #fff;
     }
+    .case-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .case-panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .case-panel h3 { color: var(--deep); }
+    .case-panel p,
+    .case-panel li {
+      color: var(--muted);
+    }
+    .case-panel ul {
+      display: grid;
+      gap: 10px;
+      padding-left: 20px;
+      margin: 12px 0 0;
+    }
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fbff;
+    }
+    .metric strong {
+      display: block;
+      color: var(--blue);
+      font-size: 22px;
+      line-height: 1.1;
+    }
+    .metric span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
     .offers {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -305,7 +352,7 @@
           url("cover.png") bottom center / min(86vw, 430px) auto no-repeat;
       }
       .hero-copy { padding: 38px 0 360px; }
-      .grid, .two-col, .offers, .scenario-grid, .order-box { grid-template-columns: 1fr; }
+      .grid, .two-col, .case-layout, .metric-row, .offers, .scenario-grid, .order-box { grid-template-columns: 1fr; }
       .sub { font-size: 18px; }
       h1 { font-size: 44px; }
       h2 { font-size: 28px; }
@@ -363,6 +410,37 @@
         </ul>
       </div>
       <img class="cover-shot" src="self-test-cover.png" alt="AI 工作台自测表封面">
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>公开演示案例</h2>
+      <div class="case-layout">
+        <div class="case-panel">
+          <h3>场景：把一篇长文整理成小红书图文草稿</h3>
+          <p>原始做法是每次把文章丢给 AI，让它直接改写。结果经常出现标题空泛、卡片顺序混乱、事实待确认点被跳过，下一篇还要重新解释一遍。</p>
+          <div class="metric-row">
+            <div class="metric"><strong>1 套</strong><span>固定输入字段</span></div>
+            <div class="metric"><strong>6 步</strong><span>处理流程</span></div>
+            <div class="metric"><strong>5 项</strong><span>发布前质检</span></div>
+          </div>
+        </div>
+        <div class="case-panel">
+          <h3>套用资料包后的工作流</h3>
+          <ul>
+            <li>先填写输入字段：原文、目标读者、账号定位、禁用表达、参考样例。</li>
+            <li>AI 先拆 3 个选题，再选择最适合发布的一个，不直接冲最终稿。</li>
+            <li>输出固定为标题、正文结构、每页卡片文案、事实待补点和发布前检查清单。</li>
+            <li>下一篇文章只替换原文和目标读者，流程、提示词和质检标准继续复用。</li>
+          </ul>
+          <div class="link-row">
+            <a href="sample.html">查看公开样品</a>
+            <a href="workflow-xiaohongshu.html">看小红书场景页</a>
+            <a href="template-generator.html">生成自己的流程</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
