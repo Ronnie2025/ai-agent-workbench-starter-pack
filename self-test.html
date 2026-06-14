@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 工作台自测工具 | 找到第一个可复用 AI 工作流</title>
+  <meta name="description" content="免费 AI 工作台自测工具。15 道题判断你的 AI 工作流混乱度，并推荐第一个适合搭建的 AI 工作台。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html">
+  <meta property="og:title" content="AI 工作台自测工具">
+  <meta property="og:description" content="15 道题找到你最该先搭的 AI 工作台。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #667085;
+      --line: #d9e2ef;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #c67a00;
+      --deep: #0d1b2a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.58;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(246,248,251,.92);
+      backdrop-filter: blur(12px);
+    }
+    .topbar-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      font-weight: 900;
+      color: var(--deep);
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      min-height: 72vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.98) 0%, rgba(246,248,251,.9) 50%, rgba(246,248,251,.22) 100%),
+        url("self-test-cover.png") right center / min(38vw, 440px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 670px;
+      padding: 56px 0 64px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(15,143,111,.09);
+      border: 1px solid rgba(15,143,111,.22);
+      color: var(--green);
+      font-weight: 850;
+      font-size: 14px;
+    }
+    h1 {
+      margin: 20px 0 16px;
+      font-size: clamp(40px, 6vw, 70px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 22px;
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 12px;
+      font-size: 21px;
+      line-height: 1.25;
+    }
+    p { margin: 0; }
+    .sub {
+      max-width: 610px;
+      color: var(--muted);
+      font-size: 20px;
+      margin-bottom: 28px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+      cursor: pointer;
+      font: inherit;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: var(--deep); color: #fff; }
+    section {
+      padding: 54px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 24px;
+      align-items: start;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+    }
+    .category {
+      margin-bottom: 18px;
+    }
+    .question {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+    .question:first-of-type { border-top: 0; }
+    .question p { color: var(--ink); }
+    .choice-group {
+      display: grid;
+      grid-template-columns: repeat(3, 42px);
+      gap: 6px;
+    }
+    .choice {
+      position: relative;
+    }
+    .choice input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .choice span {
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-weight: 850;
+      color: var(--muted);
+    }
+    .choice input:checked + span {
+      color: #fff;
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .legend span {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .flow-grid {
+      display: grid;
+      gap: 10px;
+    }
+    .flow-row {
+      display: grid;
+      grid-template-columns: minmax(130px, 1.2fr) repeat(4, 82px) 66px;
+      gap: 8px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .flow-row.header {
+      background: transparent;
+      border: 0;
+      padding: 0 10px 4px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .flow-row input {
+      width: 100%;
+      height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 8px;
+      font: inherit;
+      text-align: center;
+    }
+    .flow-total {
+      font-weight: 900;
+      color: var(--blue);
+      text-align: center;
+    }
+    .result {
+      position: sticky;
+      top: 78px;
+    }
+    .score {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-weight: 900;
+    }
+    .score strong {
+      color: var(--blue);
+      font-size: 48px;
+      line-height: 1;
+    }
+    .muted { color: var(--muted); }
+    .recommend {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .recommend-card {
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .recommend-card strong {
+      display: block;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+    .copy-box {
+      width: 100%;
+      min-height: 132px;
+      resize: vertical;
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font: inherit;
+      color: var(--ink);
+    }
+    .status {
+      margin-top: 8px;
+      min-height: 22px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 750;
+    }
+    .order-panel {
+      background: var(--deep);
+      color: #fff;
+      border-bottom: 0;
+    }
+    .order-panel p { color: #cbd5e1; }
+    .order-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .order-card {
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+    }
+    .order-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+      font-size: 28px;
+    }
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(246,248,251,.98) 0%, rgba(246,248,251,.96) 58%, rgba(246,248,251,.72) 100%),
+          url("self-test-cover.png") bottom center / min(84vw, 390px) auto no-repeat;
+      }
+      .hero-copy { padding: 38px 0 330px; }
+      .layout, .order-grid { grid-template-columns: 1fr; }
+      .result { position: static; }
+      .question { grid-template-columns: 1fr; }
+      .choice-group { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .flow-row, .flow-row.header {
+        grid-template-columns: 1fr 1fr;
+      }
+      .flow-row.header { display: none; }
+      .flow-row input { text-align: left; }
+      .btn { width: 100%; }
+      .nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Agent 工作台实战包</a>
+      <div class="nav">
+        <a href="#test">自测</a>
+        <a href="#flows">选流程</a>
+        <a href="#order">购买</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">免费在线自测</div>
+        <h1>找到你第一个 AI 工作台</h1>
+        <p class="sub">15 道题判断你现在的问题是场景不清、模板不足，还是已经需要系统化搭建。做完后直接得到适合的购买档位和第一个流程建议。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#test">开始自测</a>
+          <a class="btn btn-line" href="./">查看资料包</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="test">
+    <div class="wrap layout">
+      <main class="panel">
+        <h2>AI 工作台自测表</h2>
+        <div class="legend">
+          <span>0 分：没有这个情况</span>
+          <span>1 分：偶尔有</span>
+          <span>2 分：经常有</span>
+        </div>
+        <form id="quiz"></form>
+      </main>
+
+      <aside class="panel result" aria-live="polite">
+        <h2>结果</h2>
+        <div class="score"><strong id="totalScore">0</strong><span>分</span></div>
+        <p id="scoreText" class="muted">先完成自测，结果会自动更新。</p>
+        <div class="recommend" id="recommend"></div>
+        <textarea id="summary" class="copy-box" readonly></textarea>
+        <button class="btn btn-line" id="copySummary" type="button">复制自测结果</button>
+        <div class="status" id="copyStatus"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="flows">
+    <div class="wrap">
+      <div class="panel">
+        <h2>选择第一个工作流</h2>
+        <p class="muted">每项 1-5 分。优先选择每周至少发生 1 次、单次至少 1 小时、做好后能节省时间或提升交付质量的流程。</p>
+        <div class="flow-grid" id="flowGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order" class="order-panel">
+    <div class="wrap">
+      <h2>根据结果购买</h2>
+      <p>购买邮件会自动带上你的分数和候选流程，方便直接判断该买资料包，还是做文字诊断。</p>
+      <div class="order-grid">
+        <div class="order-card">
+          <strong>19 元</strong>
+          <p>自测表离线版。适合先留一份表格慢慢填。</p>
+          <a class="btn btn-primary" id="buy19" href="#">发起 19 元订单</a>
+        </div>
+        <div class="order-card">
+          <strong>99 元</strong>
+          <p>AI Agent 工作台实战包。适合已有重复流程的人。</p>
+          <a class="btn btn-primary" id="buy99" href="#">发起 99 元订单</a>
+        </div>
+        <div class="order-card">
+          <strong>299 元</strong>
+          <p>资料包 + 文字诊断。适合不知道先搭哪个流程的人。</p>
+          <a class="btn btn-primary" id="buy299" href="#">发起 299 元订单</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const email = "zhongruanjie@gmail.com";
+    const groups = [
+      {
+        title: "1. 工作流程混乱度",
+        questions: [
+          "我经常用 AI，但每次都要重新组织问题。",
+          "我收藏了很多提示词，但真正反复用的不多。",
+          "同类任务来了，我没有固定入口。",
+          "我不知道哪些环节该交给 AI，哪些必须自己判断。",
+          "我经常觉得 AI 输出能看，但还不能直接用。"
+        ]
+      },
+      {
+        title: "2. 资料管理混乱度",
+        questions: [
+          "我的资料散在聊天记录、文档、截图、网页和脑子里。",
+          "我经常找不到上次做过的好案例。",
+          "我没有固定的素材命名规则。",
+          "我没有把判断标准写成文档。",
+          "新素材进来后，我不知道应该放哪里。"
+        ]
+      },
+      {
+        title: "3. 输出复用能力",
+        questions: [
+          "我做 PPT、文章、方案时经常从零开始。",
+          "我的输出模板不稳定。",
+          "我没有固定的质量检查清单。",
+          "我不知道怎么复盘一次 AI 输出。",
+          "我很少把成功流程沉淀成 SOP。"
+        ]
+      }
+    ];
+    const flows = [
+      "长文转小红书图文",
+      "会议记录转行动清单",
+      "客户资料转方案初稿",
+      "选题池转发布计划",
+      "资料库转课程大纲",
+      "PPT 大纲稳定产出"
+    ];
+    const quiz = document.getElementById("quiz");
+    const flowGrid = document.getElementById("flowGrid");
+    const totalScoreEl = document.getElementById("totalScore");
+    const scoreTextEl = document.getElementById("scoreText");
+    const recommendEl = document.getElementById("recommend");
+    const summaryEl = document.getElementById("summary");
+    const copyStatusEl = document.getElementById("copyStatus");
+
+    function renderQuiz() {
+      let index = 0;
+      quiz.innerHTML = groups.map(group => {
+        const inner = group.questions.map(question => {
+          const name = `q${index++}`;
+          return `
+            <div class="question">
+              <p>${question}</p>
+              <div class="choice-group">
+                ${[0, 1, 2].map(value => `
+                  <label class="choice">
+                    <input type="radio" name="${name}" value="${value}">
+                    <span>${value}</span>
+                  </label>
+                `).join("")}
+              </div>
+            </div>
+          `;
+        }).join("");
+        return `<div class="category"><h3>${group.title}</h3>${inner}</div>`;
+      }).join("");
+    }
+
+    function renderFlows() {
+      flowGrid.innerHTML = `
+        <div class="flow-row header">
+          <span>流程</span><span>频率</span><span>耗时</span><span>AI 可辅助</span><span>收入/交付影响</span><span>总分</span>
+        </div>
+        ${flows.map((flow, index) => `
+          <div class="flow-row" data-flow-row="${index}">
+            <strong>${flow}</strong>
+            ${["freq", "time", "ai", "impact"].map(field => `
+              <input type="number" min="1" max="5" inputmode="numeric" aria-label="${flow} ${field}" data-flow="${index}" data-field="${field}">
+            `).join("")}
+            <span class="flow-total" data-flow-total="${index}">0</span>
+          </div>
+        `).join("")}
+      `;
+    }
+
+    function getScore() {
+      return Array.from(quiz.querySelectorAll("input[type='radio']:checked"))
+        .reduce((sum, input) => sum + Number(input.value), 0);
+    }
+
+    function getBestFlow() {
+      const scored = flows.map((flow, index) => {
+        const inputs = Array.from(flowGrid.querySelectorAll(`input[data-flow="${index}"]`));
+        const total = inputs.reduce((sum, input) => {
+          const value = Math.max(0, Math.min(5, Number(input.value || 0)));
+          return sum + value;
+        }, 0);
+        const totalEl = flowGrid.querySelector(`[data-flow-total="${index}"]`);
+        if (totalEl) totalEl.textContent = String(total);
+        return { flow, total };
+      });
+      scored.sort((a, b) => b.total - a.total);
+      return scored[0]?.total > 0 ? scored[0] : null;
+    }
+
+    function tierForScore(score) {
+      if (score <= 10) {
+        return {
+          title: "先明确场景",
+          text: "你现在的问题不是工作台，而是场景还不够明确。先选一个最常出现的任务。",
+          product: "19 元自测表"
+        };
+      }
+      if (score <= 20) {
+        return {
+          title: "可以开始搭最小工作台",
+          text: "你已经有一些重复流程，但还没有固定模板。适合用 7 天路线搭第一版。",
+          product: "99 元资料包"
+        };
+      }
+      if (score <= 30) {
+        return {
+          title: "需要系统化搭建",
+          text: "你缺的不是单次 AI 问答，而是可复用系统。建议完整搭一遍流程。",
+          product: "99 元资料包或 299 元文字诊断"
+        };
+      }
+      return {
+        title: "适合直接做服务版",
+        text: "你已经有明确流程、真实需求和较高重复频率，继续自己摸索会浪费时间。",
+        product: "299 元诊断或 999 元小班实战"
+      };
+    }
+
+    function buildMailLink(product, price) {
+      const score = getScore();
+      const best = getBestFlow();
+      const flowText = best ? `${best.flow}（流程评分 ${best.total}）` : "还没填写流程评分";
+      const subject = `购买 ${product} ${price}元`;
+      const body = [
+        `我想购买 ${price} 元 ${product}。`,
+        `我的 AI 工作台自测分数是：${score}`,
+        `我最想先解决的流程是：${flowText}`,
+        "希望付款方式：微信/支付宝/PayPal/其他。"
+      ].join("\n");
+      return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    function updateResult() {
+      const score = getScore();
+      const tier = tierForScore(score);
+      const best = getBestFlow();
+      totalScoreEl.textContent = String(score);
+      scoreTextEl.textContent = tier.text;
+      recommendEl.innerHTML = `
+        <div class="recommend-card">
+          <strong>${tier.title}</strong>
+          <span>${tier.product}</span>
+        </div>
+        <div class="recommend-card">
+          <strong>第一个流程</strong>
+          <span>${best ? `${best.flow}，流程评分 ${best.total}` : "填写下方流程评分后自动推荐"}</span>
+        </div>
+      `;
+      summaryEl.value = [
+        `AI 工作台自测分数：${score}`,
+        `推荐档位：${tier.product}`,
+        `第一个工作流：${best ? `${best.flow}（${best.total} 分）` : "未填写"}`,
+        "我想解决的具体场景："
+      ].join("\n");
+      document.getElementById("buy19").href = buildMailLink("AI 工作台自测表", 19);
+      document.getElementById("buy99").href = buildMailLink("AI Agent 工作台实战包", 99);
+      document.getElementById("buy299").href = buildMailLink("AI Agent 工作台文字诊断", 299);
+    }
+
+    renderQuiz();
+    renderFlows();
+    quiz.addEventListener("change", updateResult);
+    flowGrid.addEventListener("input", event => {
+      if (event.target.matches("input[type='number']")) {
+        const input = event.target;
+        if (Number(input.value) > 5) input.value = 5;
+        if (Number(input.value) < 1 && input.value !== "") input.value = 1;
+        updateResult();
+      }
+    });
+    document.getElementById("copySummary").addEventListener("click", async () => {
+      await navigator.clipboard.writeText(summaryEl.value);
+      copyStatusEl.textContent = "已复制";
+      setTimeout(() => copyStatusEl.textContent = "", 1800);
+    });
+    updateResult();
+  </script>
+</body>
+</html>

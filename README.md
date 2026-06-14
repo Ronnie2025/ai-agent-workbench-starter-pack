@@ -9,6 +9,10 @@ Live page target:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/
 
+Free self-test funnel:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html
+
 Primary order page backup:
 
 https://rentry.co/ai-agent-workbench-99-20260614
