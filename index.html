@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Agent 工作台实战包 | 7 天搭出可复用 AI 工作流</title>
+  <meta name="description" content="面向内容创作者、课程老师、咨询顾问和小团队负责人的 AI Agent 工作台实战包。包含 7 日搭建路线、提示词模板、交付检查清单和升级诊断服务。">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6977;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #d99013;
+      --deep: #0d1b2a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.98) 0%, rgba(246,248,251,.93) 44%, rgba(246,248,251,.28) 76%),
+        url("cover.png") right center / min(42vw, 520px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 620px;
+      padding: 58px 0 72px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid rgba(15,143,111,.24);
+      background: rgba(15,143,111,.09);
+      color: var(--green);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      font-size: clamp(42px, 6.4vw, 76px);
+      line-height: 1.03;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 24px;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      line-height: 1.25;
+    }
+    p { margin: 0; }
+    .sub {
+      max-width: 590px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 21px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .price-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: baseline;
+      margin-top: 26px;
+      font-weight: 900;
+    }
+    .price-line strong {
+      color: var(--blue);
+      font-size: 52px;
+      line-height: 1;
+    }
+    .price-line span { color: var(--muted); font-weight: 700; }
+    section {
+      padding: 58px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .card {
+      min-height: 160px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .card p { color: var(--muted); }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: center;
+    }
+    .cover-shot {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .offers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .offer {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .offer strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 31px;
+      line-height: 1;
+    }
+    .offer span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .order {
+      background: var(--deep);
+      color: #fff;
+      border-bottom: 0;
+    }
+    .order h2 { color: #fff; }
+    .order p { color: #cbd5e1; max-width: 740px; }
+    .order-box {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: start;
+      margin-top: 24px;
+    }
+    .order-panel {
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+    }
+    .order-panel h3 { color: #fff; }
+    .order-panel p { margin-bottom: 16px; }
+    .micro {
+      color: #7b8493;
+      font-size: 14px;
+    }
+    @media (max-width: 880px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(246,248,251,.98) 0%, rgba(246,248,251,.96) 55%, rgba(246,248,251,.72) 100%),
+          url("cover.png") bottom center / min(86vw, 430px) auto no-repeat;
+      }
+      .hero-copy { padding: 38px 0 360px; }
+      .grid, .two-col, .offers, .order-box { grid-template-columns: 1fr; }
+      .sub { font-size: 18px; }
+      h1 { font-size: 44px; }
+      h2 { font-size: 28px; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">首发数字资料包</div>
+        <h1>AI Agent 工作台实战包</h1>
+        <p class="sub">7 天搭出一个可复用的 AI 工作流。适合把写作、课程、咨询、资料整理和日常交付固定成自己的工作台。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#order">立即购买 99 元</a>
+          <a class="btn btn-line" href="#contents">看交付内容</a>
+        </div>
+        <div class="price-line"><span>首发价</span><strong>99</strong><span>元，含资料包完整交付</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="contents">
+    <div class="wrap">
+      <h2>购买后拿到什么</h2>
+      <div class="grid">
+        <div class="card"><h3>7 日搭建路线</h3><p>从确定主流程，到资料入口、提示词、输出模板、真实样本、SOP 和复盘。</p></div>
+        <div class="card"><h3>提示词模板库</h3><p>覆盖资料整理、长文转图文、会议待办、客户方案、PPT 大纲和质量自检。</p></div>
+        <div class="card"><h3>交付检查清单</h3><p>判断你的工作台是否真的可复用，避免只停留在一次性 AI 问答。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div>
+        <h2>适合这些人</h2>
+        <ul class="list">
+          <li>内容创作者：把选题、写稿、图文和复盘固定成流程。</li>
+          <li>课程老师：把资料、讲义、PPT、作业和社群交付串起来。</li>
+          <li>咨询顾问：把客户资料整理、诊断、方案和报告变成工作台。</li>
+          <li>小团队负责人：把重复办公流程交给 AI 辅助，同时保留关键人工判断。</li>
+        </ul>
+      </div>
+      <img class="cover-shot" src="self-test-cover.png" alt="AI 工作台自测表封面">
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>价格阶梯</h2>
+      <div class="offers">
+        <div class="offer"><strong>19</strong>AI 工作台自测表<span>先判断自己适合搭哪类工作流</span></div>
+        <div class="offer"><strong>99</strong>AI Agent 工作台实战包<span>完整资料包，首发主推</span></div>
+        <div class="offer"><strong>299</strong>资料包 + 文字诊断<span>把你的场景改成第一版流程</span></div>
+        <div class="offer"><strong>999</strong>2 小时小班实战<span>现场搭出一个可运行工作台</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order" class="order">
+    <div class="wrap">
+      <h2>购买入口</h2>
+      <p>当前先走邮件订单：写清购买档位和你的第一个工作流场景。收到订单后返回付款方式，付款完成后交付对应资料包。</p>
+      <div class="order-box">
+        <div class="order-panel">
+          <h3>主推：99 元实战包</h3>
+          <p>适合已经确定要搭 AI 工作台的人。交付包含 7 日路线、模板库、检查清单、销售页和发布文案。</p>
+          <a class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=zhongruanjie%40gmail.com&su=%E8%B4%AD%E4%B9%B0%20AI%20Agent%20%E5%B7%A5%E4%BD%9C%E5%8F%B0%E5%AE%9E%E6%88%98%E5%8C%85%2099%E5%85%83&body=%E6%88%91%E6%83%B3%E8%B4%AD%E4%B9%B0%2099%20%E5%85%83%20AI%20Agent%20%E5%B7%A5%E4%BD%9C%E5%8F%B0%E5%AE%9E%E6%88%98%E5%8C%85%E3%80%82%0A%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%9C%BA%E6%99%AF%E6%98%AF%EF%BC%9A%0A%E5%B8%8C%E6%9C%9B%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%BE%AE%E4%BF%A1/%E6%94%AF%E4%BB%98%E5%AE%9D/PayPal/%E5%85%B6%E4%BB%96%E3%80%82">发起 99 元订单</a>
+        </div>
+        <div class="order-panel">
+          <h3>低门槛：19 元自测表</h3>
+          <p>适合还没确定从哪个流程开始的人。先做自测，再决定是否升级到 99 元资料包。</p>
+          <a class="btn btn-dark" href="https://mail.google.com/mail/?view=cm&fs=1&to=zhongruanjie%40gmail.com&su=%E8%B4%AD%E4%B9%B0%20AI%20%E5%B7%A5%E4%BD%9C%E5%8F%B0%E8%87%AA%E6%B5%8B%E8%A1%A8%2019%E5%85%83&body=%E6%88%91%E6%83%B3%E8%B4%AD%E4%B9%B0%2019%20%E5%85%83%20AI%20%E5%B7%A5%E4%BD%9C%E5%8F%B0%E8%87%AA%E6%B5%8B%E8%A1%A8%E3%80%82%0A%E6%88%91%E7%9A%84%E4%B8%BB%E8%A6%81%E5%9C%BA%E6%99%AF%E6%98%AF%EF%BC%9A%0A%E5%B8%8C%E6%9C%9B%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F%EF%BC%9A%E5%BE%AE%E4%BF%A1/%E6%94%AF%E4%BB%98%E5%AE%9D/PayPal/%E5%85%B6%E4%BB%96%E3%80%82">发起 19 元订单</a>
+        </div>
+      </div>
+      <p class="micro">自动支付链接接入后，这里的邮件订单按钮会替换为平台收款按钮；付费资料包不放在公开目录里。</p>
+    </div>
+  </section>
+</body>
+</html>
