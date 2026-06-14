@@ -7,6 +7,7 @@ consultants, and small-team operators.
 
 - AI 工作流模板生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/template-generator.html
 - AI 工作流提示词库预览: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/prompt-library.html
+- 16 条免费中文 AI 工作流提示词库: https://ronnie2025.github.io/ai-workflow-prompts-zh/
 - AI 工作台免费自测: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html
 - 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
 - 付款和交付说明: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
@@ -47,6 +48,8 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
 ## Discovery Pages
 
 - GitHub Pages main site: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/
+- Free prompt library repo: https://github.com/Ronnie2025/ai-workflow-prompts-zh
+- Free prompt library site: https://ronnie2025.github.io/ai-workflow-prompts-zh/
 - Rentry backup: https://rentry.co/ai-agent-workbench-99-20260614
 - Telegra.ph prompt discovery page: https://telegra.ph/AI-工作流提示词库-06-14
 - Telegra.ph tool discovery page: https://telegra.ph/AI-工作流模板生成器-06-14
