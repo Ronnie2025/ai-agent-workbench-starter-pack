@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>下单后怎么交付 | AI Agent 工作台实战包</title>
+  <meta name="description" content="AI Agent 工作台实战包下单后交付说明：订单邮件、付款确认、资料包交付和文字诊断流程。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html">
+  <meta property="og:title" content="AI Agent 工作台实战包下单后怎么交付">
+  <meta property="og:description" content="先发订单邮件，收到付款方式，付款完成后交付资料包或诊断。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #667085;
+      --line: #d9e2ef;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #c67a00;
+      --deep: #0d1b2a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1060px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1060px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 62px 0 48px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.91) 52%, rgba(246,248,251,.22) 100%),
+        url("cover.png") right center / min(34vw, 400px) auto no-repeat;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,143,111,.22);
+      background: rgba(15,143,111,.09);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 720px;
+      margin: 18px 0 14px;
+      font-size: clamp(40px, 5.6vw, 66px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 18px;
+      font-size: 28px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    main {
+      padding: 44px 0 60px;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr .86fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 24px;
+    }
+    .steps {
+      display: grid;
+      gap: 14px;
+      counter-reset: step;
+    }
+    .step {
+      position: relative;
+      padding: 18px 18px 18px 58px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 900;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .card {
+      min-height: 140px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .card p,
+    .step p,
+    li {
+      color: #303846;
+    }
+    .notice {
+      margin-top: 18px;
+      padding: 15px 16px;
+      border: 1px solid rgba(198,122,0,.26);
+      border-radius: 8px;
+      background: rgba(198,122,0,.08);
+      color: #4c3a1a;
+      font-size: 14px;
+    }
+    @media (max-width: 860px) {
+      .hero {
+        background: linear-gradient(180deg, #f6f8fb 0%, #eaf2ff 100%);
+      }
+      .layout,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .nav { display: none; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Agent 工作台实战包</a>
+      <div class="nav">
+        <a href="order.html?plan=99">订单页</a>
+        <a href="sample.html">样品</a>
+        <a href="template-generator.html">模板生成器</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">交付说明</span>
+      <h1>下单后怎么付款和交付</h1>
+      <p class="lead">当前采用邮件订单承接。你先发订单邮件，我回复付款方式；付款完成后交付资料包或诊断。付费文件不会放在公开网页目录。</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="order.html?plan=99">发起 99 元订单</a>
+        <a class="btn btn-line" href="sample.html">先看资料包样品</a>
+        <a class="btn btn-line" href="mailto:zhongruanjie@gmail.com?subject=%E5%B7%B2%E4%BB%98%E6%AC%BE%EF%BC%8C%E8%AF%B7%E4%BA%A4%E4%BB%98%20AI%20%E5%B7%A5%E4%BD%9C%E5%8F%B0%E8%B5%84%E6%96%99&body=%E6%88%91%E5%B7%B2%E5%AE%8C%E6%88%90%E4%BB%98%E6%AC%BE%EF%BC%8C%E8%AF%B7%E4%BA%A4%E4%BB%98%E5%AF%B9%E5%BA%94%E4%BA%A7%E5%93%81%E3%80%82%0A%0A%E8%B4%AD%E4%B9%B0%E6%A1%A3%E4%BD%8D%EF%BC%9A%0A%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F%EF%BC%9A%0A%E4%BB%98%E6%AC%BE%E6%88%AA%E5%9B%BE/%E4%BA%A4%E6%98%93%E5%8F%B7%EF%BC%9A%0A%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%20AI%20%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%9C%BA%E6%99%AF%EF%BC%9A">发送付款确认</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap layout">
+      <section class="panel">
+        <h2>交付流程</h2>
+        <div class="steps">
+          <div class="step">
+            <h3>发订单邮件</h3>
+            <p>在订单页选择 19/99/299/999 元档位，写下你的第一个 AI 工作流场景，并说明希望使用的付款方式。</p>
+          </div>
+          <div class="step">
+            <h3>收到付款方式</h3>
+            <p>我会按你选择的付款方式回复。当前支持微信/支付宝、PayPal、Wise 或其他可协商方式。</p>
+          </div>
+          <div class="step">
+            <h3>付款后发确认邮件</h3>
+            <p>付款完成后，回复订单邮件或点击本页“发送付款确认”，附上购买档位、付款方式和截图/交易号。</p>
+          </div>
+          <div class="step">
+            <h3>交付资料或诊断</h3>
+            <p>19/99 元资料类产品确认付款后发送文件；299 元文字诊断会先确认你的场景材料，再返回诊断建议。</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <h2>各档位交付</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>19 元</h3>
+            <p>AI 工作台自测表离线版。确认付款后交付自测表和流程选择表。</p>
+          </div>
+          <div class="card">
+            <h3>99 元</h3>
+            <p>AI Agent 工作台实战包。确认付款后交付资料包文件。</p>
+          </div>
+          <div class="card">
+            <h3>299 元</h3>
+            <p>资料包 + 文字诊断。你提供场景材料后，返回第一版流程建议。</p>
+          </div>
+          <div class="card">
+            <h3>999 元</h3>
+            <p>2 小时小班实战。先邮件确认时间、人数和要搭的工作流。</p>
+          </div>
+        </div>
+        <div class="notice">公开页面只说明交付流程，不放付费下载链接。付款和交付都通过订单邮件确认。</div>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="order.html?plan=99">去订单页</a>
+          <a class="btn btn-line" href="sample-workflow-kit.md">下载样品 Markdown</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
