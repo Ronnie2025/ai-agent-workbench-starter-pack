@@ -227,6 +227,19 @@
       color: #4c3a1a;
       font-size: 14px;
     }
+    .directory-badge {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .directory-badge img {
+      max-height: 44px;
+      width: auto;
+      border-radius: 10px;
+    }
     @media (max-width: 900px) {
       .hero {
         min-height: auto;
@@ -353,6 +366,15 @@
           <p>输出能按清单检查质量，比如结构、事实、语气、行动项、交付格式。</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap directory-badge">
+      <span>Listed for AI tool discovery:</span>
+      <a href="https://submitaitools.org/" target="_blank" rel="noopener">
+        <img src="https://submitaitools.org/static_submitaitools/images/submitaitools.png" alt="Submit AI Tools">
+      </a>
     </div>
   </section>
 
