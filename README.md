@@ -13,4 +13,8 @@ Primary order page backup:
 
 https://rentry.co/ai-agent-workbench-99-20260614
 
+Additional public discovery page:
+
+https://telegra.ph/AI-Agent-工作台实战包-06-14
+
 Paid ZIP files are intentionally not included in this public repository.
