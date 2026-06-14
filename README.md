@@ -14,6 +14,7 @@ consultants, and small-team operators.
 - 判断指南: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/guide.html
 - AI 工作流急诊: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency.html
 - AI 工作流急诊自助判断: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency-intake.html
+- AI 工作台 2 小时小班实战: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workshop.html
 
 ## Scenario Pages
 
@@ -42,6 +43,10 @@ consultants, and small-team operators.
 Emergency intake:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency-intake.html
+
+Workshop:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workshop.html
 
 Order page:
 
