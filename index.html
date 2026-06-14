@@ -36,6 +36,22 @@
         "priceCurrency": "CNY",
         "availability": "https://schema.org/InStock",
         "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=299"
+      },
+      {
+        "@type": "Offer",
+        "name": "AI 工作流急诊诊断版",
+        "price": "699",
+        "priceCurrency": "CNY",
+        "availability": "https://schema.org/InStock",
+        "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=699"
+      },
+      {
+        "@type": "Offer",
+        "name": "AI 工作流急诊代搭版",
+        "price": "1999",
+        "priceCurrency": "CNY",
+        "availability": "https://schema.org/InStock",
+        "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=1999"
       }
     ]
   }
@@ -249,7 +265,7 @@
     }
     .scenario-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
       gap: 14px;
     }
     .scenario {
@@ -284,6 +300,54 @@
       display: block;
       color: var(--muted);
       font-size: 14px;
+    }
+    .service-upgrade {
+      background: var(--deep);
+      color: #fff;
+    }
+    .service-upgrade h2,
+    .service-upgrade h3 {
+      color: #fff;
+    }
+    .service-intro {
+      max-width: 760px;
+      color: #cbd5e1;
+      margin-bottom: 22px;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .service-card {
+      min-height: 236px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px;
+      background: rgba(255,255,255,.07);
+    }
+    .service-card strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #8fb7ff;
+      font-size: 32px;
+      line-height: 1;
+    }
+    .service-card p {
+      color: #cbd5e1;
+    }
+    .service-card ul {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0 18px;
+      padding-left: 20px;
+      color: #e6edf7;
+      font-size: 14px;
+    }
+    .service-upgrade .btn-line {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.22);
+      color: #fff;
     }
     .order {
       background: var(--deep);
@@ -352,7 +416,7 @@
           url("cover.png") bottom center / min(86vw, 430px) auto no-repeat;
       }
       .hero-copy { padding: 38px 0 360px; }
-      .grid, .two-col, .case-layout, .metric-row, .offers, .scenario-grid, .order-box { grid-template-columns: 1fr; }
+      .grid, .two-col, .case-layout, .metric-row, .offers, .scenario-grid, .service-grid, .order-box { grid-template-columns: 1fr; }
       .sub { font-size: 18px; }
       h1 { font-size: 44px; }
       h2 { font-size: 28px; }
@@ -464,6 +528,10 @@
           <h3>PPT 大纲生成</h3>
           <p>先搭表达主线和页级结构，再进入页面内容。</p>
         </a>
+        <a class="scenario" href="workflow-course-teacher.html">
+          <h3>课程老师 AI 工作流</h3>
+          <p>把课程资料、讲义、作业和社群答疑整理成可复用流程。</p>
+        </a>
       </div>
     </div>
   </section>
@@ -476,6 +544,48 @@
         <div class="offer"><strong>99</strong>AI Agent 工作台实战包<span>完整资料包，首发主推</span></div>
         <div class="offer"><strong>299</strong>资料包 + 文字诊断<span>把你的场景改成第一版流程</span></div>
         <div class="offer"><strong>999</strong>2 小时小班实战<span>现场搭出一个可运行工作台</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-upgrade">
+    <div class="wrap">
+      <h2>不想自己慢慢搭，可以做 AI 工作流急诊</h2>
+      <p class="service-intro">你发来一个最耗时间的流程，我先判断值不值得改。适合再做诊断或代搭，不适合会直接说明原因。首批只接 3 个试点，每次只处理一个具体流程。</p>
+      <div class="service-grid">
+        <div class="service-card">
+          <strong>699</strong>
+          <h3>诊断版</h3>
+          <p>适合还不确定流程该怎么改的人。</p>
+          <ul>
+            <li>60-90 分钟沟通</li>
+            <li>一页流程诊断方案</li>
+            <li>优先级建议和搭建路线</li>
+          </ul>
+          <a class="btn btn-line" href="order.html?plan=699&scenario=我想诊断一个最耗时间的 AI 工作流">发起 699 元订单</a>
+        </div>
+        <div class="service-card">
+          <strong>1999</strong>
+          <h3>代搭版</h3>
+          <p>适合想这周直接跑起来的人。</p>
+          <ul>
+            <li>流程梳理</li>
+            <li>提示词和模板</li>
+            <li>可运行工作流和一次复盘</li>
+          </ul>
+          <a class="btn btn-primary" href="order.html?plan=1999&scenario=我想代搭一个可运行的 AI 工作流">发起 1999 元订单</a>
+        </div>
+        <div class="service-card">
+          <strong>4999</strong>
+          <h3>深度版</h3>
+          <p>适合高频复杂流程，需要把资料结构和操作步骤一起整理清楚。</p>
+          <ul>
+            <li>多环节流程设计</li>
+            <li>AI 工作台搭建</li>
+            <li>3 天内完成首版交付</li>
+          </ul>
+          <a class="btn btn-line" href="order.html?plan=4999&scenario=我想深度搭建一个高频 AI 工作流">发起 4999 元订单</a>
+        </div>
       </div>
     </div>
   </section>

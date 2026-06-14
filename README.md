@@ -19,6 +19,7 @@ consultants, and small-team operators.
 - 会议纪要转待办 AI 工作流: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-meeting-notes.html
 - 客户资料转方案 AI 工作流: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-client-proposal.html
 - PPT 大纲 AI 工作流: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-ppt-outline.html
+- 课程老师 AI 工作流: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-course-teacher.html
 
 ## Prompt Preview Pages
 
@@ -32,6 +33,9 @@ consultants, and small-team operators.
 - 99 RMB: AI Agent 工作台实战包
 - 299 RMB: 资料包 + 文字诊断
 - 999 RMB: 2 小时小班实战
+- 699 RMB: AI 工作流急诊诊断版
+- 1999 RMB: AI 工作流急诊代搭版
+- 4999 RMB: AI 工作流急诊深度版
 
 Order page:
 
