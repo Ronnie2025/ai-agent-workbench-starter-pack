@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>会议纪要转待办 AI 工作流 | AI Agent 工作台实战包</title>
+  <meta name="description" content="会议纪要转待办 AI 工作流：把会议记录、录音转写和群聊补充稳定整理成决议、负责人、截止时间和下一步行动。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-meeting-notes.html">
+  <meta property="og:title" content="会议纪要转待办 AI 工作流">
+  <meta property="og:description" content="从会议记录到可执行待办，减少会后遗漏和反复确认。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-meeting-notes.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #667085;
+      --line: #d9e2ef;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #c67a00;
+      --deep: #0d1b2a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.68;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(980px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(980px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 62px 0 48px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.91) 55%, rgba(246,248,251,.25) 100%),
+        url("cover.png") right center / min(34vw, 390px) auto no-repeat;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,143,111,.22);
+      background: rgba(15,143,111,.09);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 720px;
+      margin: 18px 0 14px;
+      font-size: clamp(38px, 5.6vw, 66px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 18px;
+      font-size: 28px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      line-height: 1.26;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: var(--deep); color: #fff; }
+    main {
+      padding: 44px 0 60px;
+    }
+    section {
+      margin-bottom: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .mini-card {
+      min-height: 126px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .mini-card p,
+    .list li,
+    .flow li {
+      color: #303846;
+    }
+    .flow {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding-left: 22px;
+    }
+    .flow li {
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .notice {
+      border-color: rgba(198,122,0,.28);
+      background: rgba(198,122,0,.08);
+    }
+    .cta {
+      background: var(--deep);
+      color: #fff;
+      border-color: var(--deep);
+    }
+    .cta p { color: #cbd5e1; max-width: 700px; }
+    .cta .btn-line {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.22);
+      color: #fff;
+    }
+    @media (max-width: 760px) {
+      .hero {
+        background: linear-gradient(180deg, #f6f8fb 0%, #eaf2ff 100%);
+      }
+      .nav { display: none; }
+      .grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      section { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Agent 工作台实战包</a>
+      <div class="nav">
+        <a href="guide.html">判断指南</a>
+        <a href="template-generator.html">模板生成器</a>
+        <a href="order.html?plan=99">购买</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">长尾场景：会议纪要转待办</span>
+      <h1>会议纪要转待办 AI 工作流：把会后信息变成可执行行动</h1>
+      <p class="lead">适合项目推进、团队协作和客户沟通后的整理。目标是让会议记录变成清楚的决议、待办、负责人、截止时间和风险提醒。</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="template-generator.html">生成你的工作流模板</a>
+        <a class="btn btn-line" href="order.html?plan=99">查看 99 元实战包</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>适用人群</h2>
+      <div class="grid">
+        <div class="mini-card">
+          <h3>项目负责人</h3>
+          <p>需要把多方讨论快速整理成下一步动作，减少会后遗漏。</p>
+        </div>
+        <div class="mini-card">
+          <h3>运营和产品同学</h3>
+          <p>会议多、信息碎，需要统一记录需求、结论和后续跟进。</p>
+        </div>
+        <div class="mini-card">
+          <h3>咨询或交付团队</h3>
+          <p>客户会议后要及时输出纪要、风险和双方责任边界。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>5 步流程</h2>
+      <ol class="flow">
+        <li><strong>整理输入材料：</strong>准备会议纪要、录音转写、聊天补充和已有项目背景，并标注会议日期与参与角色。</li>
+        <li><strong>抽取会议事实：</strong>先让 AI 区分讨论内容、明确结论、待确认问题和背景信息，避免直接生成含糊总结。</li>
+        <li><strong>生成待办清单：</strong>按事项、负责人、协作方、截止时间、依赖条件、验收标准输出。</li>
+        <li><strong>识别风险和缺口：</strong>单独列出没有负责人、没有时间、结论冲突、需要客户确认的内容。</li>
+        <li><strong>人工确认发送：</strong>负责人检查关键事项，再发到项目文档或群里作为后续跟进依据。</li>
+      </ol>
+    </section>
+
+    <section class="notice">
+      <h2>常见失败点</h2>
+      <ul class="list">
+        <li>把会议总结当成待办清单，结果看起来完整，但没人知道下一步怎么做。</li>
+        <li>没有让 AI 标注不确定项，导致猜测内容混进正式纪要。</li>
+        <li>缺少负责人、截止时间和验收标准，后续还是要重新沟通。</li>
+        <li>忽略会议背景，AI 会把旧问题、新决议和闲聊混在一起。</li>
+      </ul>
+    </section>
+
+    <section class="cta">
+      <h2>下一步</h2>
+      <p>先把你的会议输入、输出字段和检查规则写成模板，再用实战包把它变成每次会议后都能复用的固定流程。</p>
+      <div class="actions" style="margin-top: 20px;">
+        <a class="btn btn-primary" href="template-generator.html">打开模板生成器</a>
+        <a class="btn btn-line" href="order.html?plan=99">查看 99 元实战包</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

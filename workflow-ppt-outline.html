@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PPT 大纲 AI 工作流 | AI Agent 工作台实战包</title>
+  <meta name="description" content="PPT 大纲 AI 工作流：把汇报资料、课程内容、方案材料和会议信息整理成结构清楚、逻辑可检查的 PPT 大纲。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-ppt-outline.html">
+  <meta property="og:title" content="PPT 大纲 AI 工作流">
+  <meta property="og:description" content="从资料到 PPT 大纲，先定目标、听众、主线、页级结构和检查点。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-ppt-outline.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #667085;
+      --line: #d9e2ef;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #c67a00;
+      --deep: #0d1b2a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.68;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(980px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(980px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 62px 0 48px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.91) 55%, rgba(246,248,251,.25) 100%),
+        url("cover.png") right center / min(34vw, 390px) auto no-repeat;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,143,111,.22);
+      background: rgba(15,143,111,.09);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 720px;
+      margin: 18px 0 14px;
+      font-size: clamp(38px, 5.6vw, 66px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 18px;
+      font-size: 28px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      line-height: 1.26;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: var(--deep); color: #fff; }
+    main {
+      padding: 44px 0 60px;
+    }
+    section {
+      margin-bottom: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .mini-card {
+      min-height: 126px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .mini-card p,
+    .list li,
+    .flow li {
+      color: #303846;
+    }
+    .flow {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding-left: 22px;
+    }
+    .flow li {
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .notice {
+      border-color: rgba(198,122,0,.28);
+      background: rgba(198,122,0,.08);
+    }
+    .cta {
+      background: var(--deep);
+      color: #fff;
+      border-color: var(--deep);
+    }
+    .cta p { color: #cbd5e1; max-width: 700px; }
+    .cta .btn-line {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.22);
+      color: #fff;
+    }
+    @media (max-width: 760px) {
+      .hero {
+        background: linear-gradient(180deg, #f6f8fb 0%, #eaf2ff 100%);
+      }
+      .nav { display: none; }
+      .grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      section { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Agent 工作台实战包</a>
+      <div class="nav">
+        <a href="guide.html">判断指南</a>
+        <a href="template-generator.html">模板生成器</a>
+        <a href="order.html?plan=99">购买</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">长尾场景：PPT 大纲</span>
+      <h1>PPT 大纲 AI 工作流：先把表达主线搭稳，再做页面</h1>
+      <p class="lead">适合汇报、培训、提案和课程准备。让 AI 先帮你明确听众、目标、主线和页级结构，再进入具体页面内容。</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="template-generator.html">生成你的工作流模板</a>
+        <a class="btn btn-line" href="order.html?plan=99">查看 99 元实战包</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>适用人群</h2>
+      <div class="grid">
+        <div class="mini-card">
+          <h3>经常做汇报的人</h3>
+          <p>需要把进展、数据、问题和建议组织成清楚的汇报结构。</p>
+        </div>
+        <div class="mini-card">
+          <h3>课程和培训老师</h3>
+          <p>想把知识点、案例和练习设计成有节奏的课程大纲。</p>
+        </div>
+        <div class="mini-card">
+          <h3>销售和咨询团队</h3>
+          <p>需要把客户资料、方案逻辑和价值主张转成提案大纲。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>4 步流程</h2>
+      <ol class="flow">
+        <li><strong>确定演示目标：</strong>写清楚听众是谁、看完要做什么决定、这份 PPT 需要回答哪一个核心问题。</li>
+        <li><strong>整理材料池：</strong>把数据、案例、观点、客户信息、会议结论和参考资料先归类，不急着排页。</li>
+        <li><strong>生成主线结构：</strong>让 AI 输出开场、现状、问题、方案、证据、行动建议的逻辑顺序，并说明每一章作用。</li>
+        <li><strong>拆成页级大纲：</strong>每页固定为页面标题、核心信息、支撑材料、建议图表和需要人工补充的内容。</li>
+      </ol>
+    </section>
+
+    <section class="notice">
+      <h2>常见失败点</h2>
+      <ul class="list">
+        <li>一开始就让 AI 生成完整 PPT 文案，结果页面很多，但主线不清楚。</li>
+        <li>没有定义听众和决策目标，内容容易变成资料堆砌。</li>
+        <li>只追求标题好看，缺少每页要证明什么、推动什么的检查。</li>
+        <li>把图表建议当成最终设计，忽略数据来源和页面承载能力。</li>
+      </ul>
+    </section>
+
+    <section class="cta">
+      <h2>下一步</h2>
+      <p>先把你的 PPT 大纲输入、页级输出和检查规则做成模板，再用实战包把它扩展成稳定的汇报或提案工作台。</p>
+      <div class="actions" style="margin-top: 20px;">
+        <a class="btn btn-primary" href="template-generator.html">打开模板生成器</a>
+        <a class="btn btn-line" href="order.html?plan=99">查看 99 元实战包</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

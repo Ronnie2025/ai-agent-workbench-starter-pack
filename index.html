@@ -169,6 +169,26 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
     }
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .scenario {
+      min-height: 168px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      text-decoration: none;
+    }
+    .scenario p {
+      color: var(--muted);
+      font-size: 14px;
+    }
     .offer {
       padding: 18px;
       border: 1px solid var(--line);
@@ -231,7 +251,7 @@
           url("cover.png") bottom center / min(86vw, 430px) auto no-repeat;
       }
       .hero-copy { padding: 38px 0 360px; }
-      .grid, .two-col, .offers, .order-box { grid-template-columns: 1fr; }
+      .grid, .two-col, .offers, .scenario-grid, .order-box { grid-template-columns: 1fr; }
       .sub { font-size: 18px; }
       h1 { font-size: 44px; }
       h2 { font-size: 28px; }
@@ -249,6 +269,7 @@
         <div class="actions">
           <a class="btn btn-primary" href="order.html?plan=99">立即购买 99 元</a>
           <a class="btn btn-line" href="self-test.html">免费自测</a>
+          <a class="btn btn-line" href="template-generator.html">模板生成器</a>
           <a class="btn btn-line" href="guide.html">判断指南</a>
           <a class="btn btn-line" href="#contents">看交付内容</a>
         </div>
@@ -285,6 +306,30 @@
 
   <section>
     <div class="wrap">
+      <h2>先从一个具体场景开始</h2>
+      <div class="scenario-grid">
+        <a class="scenario" href="workflow-xiaohongshu.html">
+          <h3>小红书图文 AI 工作流</h3>
+          <p>把长文、课程笔记和客户问答稳定整理成可发布笔记。</p>
+        </a>
+        <a class="scenario" href="workflow-meeting-notes.html">
+          <h3>会议纪要转待办</h3>
+          <p>从会议记录里提取决议、负责人、截止时间和风险提醒。</p>
+        </a>
+        <a class="scenario" href="workflow-client-proposal.html">
+          <h3>客户资料转方案</h3>
+          <p>把客户背景、访谈记录和需求文档整理成方案初稿。</p>
+        </a>
+        <a class="scenario" href="workflow-ppt-outline.html">
+          <h3>PPT 大纲生成</h3>
+          <p>先搭表达主线和页级结构，再进入页面内容。</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
       <h2>价格阶梯</h2>
       <div class="offers">
         <div class="offer"><strong>19</strong>AI 工作台自测表<span>先判断自己适合搭哪类工作流</span></div>
@@ -316,6 +361,7 @@
         <a href="https://rentry.co/ai-agent-workbench-99-20260614">Rentry 备份页</a>
         <a href="https://telegra.ph/AI-Agent-工作台实战包-06-14">Telegra.ph 入口</a>
         <a href="order.html?plan=99">独立订单页</a>
+        <a href="template-generator.html">免费模板生成器</a>
       </div>
     </div>
   </section>

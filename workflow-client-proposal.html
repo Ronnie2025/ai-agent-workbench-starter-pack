@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>客户资料转方案 AI 工作流 | AI Agent 工作台实战包</title>
+  <meta name="description" content="客户资料转方案 AI 工作流：把客户背景、访谈记录、需求文档和行业信息整理成可检查的方案初稿。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-client-proposal.html">
+  <meta property="og:title" content="客户资料转方案 AI 工作流">
+  <meta property="og:description" content="从客户资料到方案初稿，先做诊断、目标、路径和交付边界。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workflow-client-proposal.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #667085;
+      --line: #d9e2ef;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #c67a00;
+      --deep: #0d1b2a;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.68;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(980px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(980px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 62px 0 48px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.91) 55%, rgba(246,248,251,.25) 100%),
+        url("cover.png") right center / min(34vw, 390px) auto no-repeat;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,143,111,.22);
+      background: rgba(15,143,111,.09);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 720px;
+      margin: 18px 0 14px;
+      font-size: clamp(38px, 5.6vw, 66px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 18px;
+      font-size: 28px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      line-height: 1.26;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: var(--deep); color: #fff; }
+    main {
+      padding: 44px 0 60px;
+    }
+    section {
+      margin-bottom: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .mini-card {
+      min-height: 126px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .mini-card p,
+    .list li,
+    .flow li {
+      color: #303846;
+    }
+    .flow {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding-left: 22px;
+    }
+    .flow li {
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .notice {
+      border-color: rgba(198,122,0,.28);
+      background: rgba(198,122,0,.08);
+    }
+    .cta {
+      background: var(--deep);
+      color: #fff;
+      border-color: var(--deep);
+    }
+    .cta p { color: #cbd5e1; max-width: 700px; }
+    .cta .btn-line {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.22);
+      color: #fff;
+    }
+    @media (max-width: 760px) {
+      .hero {
+        background: linear-gradient(180deg, #f6f8fb 0%, #eaf2ff 100%);
+      }
+      .nav { display: none; }
+      .grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      section { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Agent 工作台实战包</a>
+      <div class="nav">
+        <a href="guide.html">判断指南</a>
+        <a href="template-generator.html">模板生成器</a>
+        <a href="order.html?plan=99">购买</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">长尾场景：客户资料转方案</span>
+      <h1>客户资料转方案 AI 工作流：从零散信息到可讨论初稿</h1>
+      <p class="lead">适合销售、咨询、售前和交付团队。把客户背景、访谈记录、需求文档和行业信息整理成一份能检查、能讨论、能继续深化的方案初稿。</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="template-generator.html">生成你的工作流模板</a>
+        <a class="btn btn-line" href="order.html?plan=99">查看 99 元实战包</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>适用人群</h2>
+      <div class="grid">
+        <div class="mini-card">
+          <h3>销售和售前</h3>
+          <p>需要在客户沟通后快速整理需求、价值点和下一步方案方向。</p>
+        </div>
+        <div class="mini-card">
+          <h3>咨询顾问</h3>
+          <p>要把访谈、诊断和资料转成结构清楚的建议框架。</p>
+        </div>
+        <div class="mini-card">
+          <h3>交付负责人</h3>
+          <p>希望在项目启动前明确边界、里程碑、风险和协作方式。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>5 步流程</h2>
+      <ol class="flow">
+        <li><strong>归集客户资料：</strong>整理客户背景、业务目标、沟通记录、现有方案、竞品线索和约束条件。</li>
+        <li><strong>提取需求地图：</strong>让 AI 区分显性需求、真实问题、成功标准、决策角色和暂未确认的信息。</li>
+        <li><strong>生成方案骨架：</strong>先产出背景判断、目标、解决路径、交付范围、时间安排、风险和待确认问题。</li>
+        <li><strong>补充证据和边界：</strong>加入客户原话、数据、案例或假设来源，并把不能承诺的内容单独标出。</li>
+        <li><strong>人工改成可交付版本：</strong>检查商业逻辑、承诺边界和客户语言，再决定是否进入正式文档或 PPT。</li>
+      </ol>
+    </section>
+
+    <section class="notice">
+      <h2>常见失败点</h2>
+      <ul class="list">
+        <li>客户资料没整理干净，AI 会把背景、猜测和需求混成一团。</li>
+        <li>直接要求写完整方案，容易得到漂亮但缺少证据的通用文案。</li>
+        <li>没有列出待确认问题，后续沟通会被不明确的承诺拖住。</li>
+        <li>忽略客户行业和决策角色，方案看起来正确，但对方没有行动理由。</li>
+      </ul>
+    </section>
+
+    <section class="cta">
+      <h2>下一步</h2>
+      <p>先把客户资料输入格式和方案输出结构固化下来，再用 99 元实战包搭一个能反复复用的客户方案工作台。</p>
+      <div class="actions" style="margin-top: 20px;">
+        <a class="btn btn-primary" href="template-generator.html">打开模板生成器</a>
+        <a class="btn btn-line" href="order.html?plan=99">查看 99 元实战包</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
