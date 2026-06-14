@@ -13,6 +13,10 @@ Free self-test funnel:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html
 
+SEO guide:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/guide.html
+
 Primary order page backup:
 
 https://rentry.co/ai-agent-workbench-99-20260614

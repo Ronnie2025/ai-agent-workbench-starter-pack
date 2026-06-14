@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>怎么判断自己需不需要 AI 工作台 | AI 工作流自测指南</title>
+  <meta name="description" content="如果你经常用 AI 但每次都要重新问、重新整理、重新改格式，说明你可能需要 AI 工作台。本文给出判断标准和免费自测工具。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/guide.html">
+  <meta property="og:title" content="怎么判断自己需不需要 AI 工作台">
+  <meta property="og:description" content="用 5 个信号判断你是否该搭一个可复用 AI 工作流。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/guide.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #667085;
+      --line: #d9e2ef;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --deep: #0d1b2a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.72;
+    }
+    a { color: inherit; }
+    .nav {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .nav-inner {
+      width: min(920px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand {
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav-links a { text-decoration: none; }
+    .wrap {
+      width: min(920px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 62px 0 46px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.98) 0%, rgba(246,248,251,.88) 55%, rgba(246,248,251,.22) 100%),
+        url("cover.png") right center / min(34vw, 360px) auto no-repeat;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(21,94,239,.09);
+      border: 1px solid rgba(21,94,239,.18);
+      color: var(--blue);
+      font-weight: 850;
+      font-size: 14px;
+    }
+    h1 {
+      max-width: 690px;
+      margin: 18px 0 14px;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    .lead {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    article {
+      padding: 42px 0 58px;
+    }
+    .article-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 34px;
+    }
+    h2 {
+      margin: 32px 0 14px;
+      font-size: 28px;
+      line-height: 1.24;
+      letter-spacing: 0;
+    }
+    h2:first-child { margin-top: 0; }
+    p, li { color: #303846; }
+    ul, ol { padding-left: 22px; }
+    .callout {
+      margin: 28px 0;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(15,143,111,.24);
+      background: rgba(15,143,111,.08);
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .checklist {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      list-style: none;
+    }
+    .checklist li {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    @media (max-width: 760px) {
+      .hero {
+        background: linear-gradient(180deg, #f6f8fb 0%, #eaf2ff 100%);
+      }
+      .article-panel { padding: 22px; }
+      .nav-links { display: none; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="./">AI Agent 工作台实战包</a>
+      <div class="nav-links">
+        <a href="self-test.html">免费自测</a>
+        <a href="./#order">购买</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">AI 工作流判断指南</span>
+      <h1>怎么判断自己需不需要 AI 工作台</h1>
+      <p class="lead">如果你经常用 AI，但每次都要重新问、重新整理、重新改格式，你缺的可能不是更多提示词，而是一个可复用的 AI 工作台。</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="self-test.html">做 15 题免费自测</a>
+        <a class="btn btn-line" href="./#order">查看资料包</a>
+      </div>
+    </div>
+  </header>
+
+  <article>
+    <div class="wrap article-panel">
+      <h2>什么是 AI 工作台</h2>
+      <p>AI 工作台不是一个新软件名字，也不是提示词合集。它是一套固定下来的工作流程：输入材料从哪里来、先交给 AI 做什么、输出是什么格式、人工检查哪些点、好结果怎么沉淀为模板。</p>
+
+      <h2>你可能需要 AI 工作台的 5 个信号</h2>
+      <ul class="checklist">
+        <li>同类任务每周都会出现，但你每次都从零开始问 AI。</li>
+        <li>你收藏了很多提示词，却没有一个稳定的任务入口。</li>
+        <li>AI 输出看起来不错，但离可交付还差很多人工修补。</li>
+        <li>资料散在聊天记录、文档、截图、网页里，AI 经常拿不到完整上下文。</li>
+        <li>你做出过一次好结果，但下一次很难复现。</li>
+      </ul>
+
+      <h2>先别从大系统开始</h2>
+      <p>最容易失败的做法，是一开始就想把所有流程都自动化。更实际的做法是只选一个高频流程，把它打磨成稳定工作台。比如长文转小红书图文、会议记录转行动清单、客户资料转方案初稿、资料库转课程大纲。</p>
+
+      <h2>第一个流程怎么选</h2>
+      <p>优先选择同时满足三条的流程：每周至少发生一次，单次至少花一小时，做好后能节省时间或提升交付质量。如果两个流程分数接近，选输入材料更容易拿到、输出质量更容易检查的那个。</p>
+
+      <div class="callout">
+        <h2>免费做一次自测</h2>
+        <p>我把这个判断做成了在线自测工具。15 道题会给出你的分数，并推荐你先买 19 元自测表、99 元资料包，还是直接做 299 元文字诊断。</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="self-test.html">打开 AI 工作台自测工具</a>
+          <a class="btn btn-line" href="./#order">查看 99 元资料包</a>
+        </div>
+      </div>
+
+      <h2>适合先搭的 6 类工作台</h2>
+      <ol>
+        <li>长文转小红书图文：适合内容创作者。</li>
+        <li>会议记录转行动清单：适合项目负责人和知识工作者。</li>
+        <li>客户资料转方案初稿：适合咨询、销售、售前角色。</li>
+        <li>选题池转发布计划：适合自媒体和课程团队。</li>
+        <li>资料库转课程大纲：适合老师和知识产品创作者。</li>
+        <li>PPT 大纲稳定产出：适合需要经常汇报、培训、提案的人。</li>
+      </ol>
+    </div>
+  </article>
+</body>
+</html>
