@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 工作流急诊 | 把一个最耗时间的流程搭成可运行工作台</title>
+  <meta name="description" content="AI 工作流急诊：面向内容创作者、课程老师、咨询顾问和个人经营者，把一个最耗时间的流程拆成可运行的 AI 工作台。699 诊断版、1999 代搭版、4999 深度版。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency.html">
+  <meta property="og:title" content="AI 工作流急诊">
+  <meta property="og:description" content="你发来一个最耗时间的流程，我先判断值不值得改；适合再做诊断或代搭，不适合会直接说明原因。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI 工作流急诊",
+    "description": "面向个人创作者、课程老师、咨询顾问和个人经营者的 AI 工作流诊断与代搭服务，把一个具体高频流程拆成可运行 AI 工作台。",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency.html",
+    "provider": {
+      "@type": "Organization",
+      "name": "AI Workbench Store"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "AI 工作流急诊诊断版",
+        "price": "699",
+        "priceCurrency": "CNY",
+        "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=699"
+      },
+      {
+        "@type": "Offer",
+        "name": "AI 工作流急诊代搭版",
+        "price": "1999",
+        "priceCurrency": "CNY",
+        "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=1999"
+      },
+      {
+        "@type": "Offer",
+        "name": "AI 工作流急诊深度版",
+        "price": "4999",
+        "priceCurrency": "CNY",
+        "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=4999"
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #667085;
+      --line: #d9e2ef;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #c67a00;
+      --deep: #0d1b2a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.66;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1080px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1080px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 68px 0 54px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.92) 55%, rgba(246,248,251,.25) 100%),
+        url("cover.png") right center / min(36vw, 420px) auto no-repeat;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,143,111,.22);
+      background: rgba(15,143,111,.09);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 760px;
+      margin: 18px 0 14px;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 18px;
+      font-size: 30px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .trust-row li {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.78);
+      color: #303846;
+      font-size: 14px;
+      font-weight: 750;
+    }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    main { padding: 46px 0 66px; }
+    section {
+      margin-bottom: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .card,
+    .price-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .card p,
+    .price-card p,
+    .list li {
+      color: #303846;
+    }
+    .price-card {
+      min-height: 292px;
+      display: grid;
+      align-content: start;
+      gap: 10px;
+    }
+    .price-card strong {
+      display: block;
+      color: var(--blue);
+      font-size: 36px;
+      line-height: 1;
+    }
+    .price-card ul {
+      display: grid;
+      gap: 8px;
+      margin: 8px 0;
+      padding-left: 20px;
+      color: #303846;
+      font-size: 14px;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .notice {
+      border-color: rgba(198,122,0,.28);
+      background: rgba(198,122,0,.08);
+    }
+    .boundary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .mini-form {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .mini-form div {
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      background: rgba(255,255,255,.07);
+      color: #e6edf7;
+    }
+    .cta {
+      background: var(--deep);
+      color: #fff;
+      border-color: var(--deep);
+    }
+    .cta p { color: #cbd5e1; max-width: 760px; }
+    .cta .btn-line {
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.22);
+      color: #fff;
+    }
+    @media (max-width: 820px) {
+      .hero { background: linear-gradient(180deg, #f6f8fb 0%, #eaf2ff 100%); }
+      .nav { display: none; }
+      .grid, .two-col, .boundary { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      section { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Agent 工作台实战包</a>
+      <div class="nav">
+        <a href="sample.html">样品</a>
+        <a href="template-generator.html">模板生成器</a>
+        <a href="order.html?plan=1999">购买</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">个人流程急诊</span>
+      <h1>一个工作流程太耗时间？先做一次 AI 工作流急诊</h1>
+      <p class="lead">不教你泛泛学 AI，不承诺替你做业务外包。只处理你当下最卡、最重复、最值得改的一个个人工作流程：拆清楚、搭模板、给你能直接跑的步骤。</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="order.html?plan=1999&scenario=我现在最耗时间的流程是：">发我最耗时间的流程</a>
+        <a class="btn btn-line" href="#plans">查看三档服务</a>
+      </div>
+      <ul class="trust-row">
+        <li>适合内容创作者 / 课程老师 / 咨询顾问 / 个人经营者</li>
+        <li>一次只诊断一个流程</li>
+        <li>先判断值不值得改，不适合会直接说</li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>你不是不会用 AI，是每次都要从头解释一遍</h2>
+      <ul class="list">
+        <li>每次写稿、做课、整理资料、输出方案都要重新问 AI。</li>
+        <li>提示词攒了一堆，但没有固定输入、输出和质检标准。</li>
+        <li>结果能用一次，下一次又变形，还要重新调。</li>
+        <li>真正耗时间的不是 AI 生成，而是前后反复整理、改稿、补材料。</li>
+      </ul>
+    </section>
+
+    <section class="notice">
+      <h2>这不是 ToB 外包服务，是 ToC 个人流程急诊</h2>
+      <p>我不会承诺帮你搭一个企业系统，也不会承诺增长、成交、涨粉或自动赚钱。这个服务只解决一件事：把你已经在重复做、但很耗时间的一个个人工作流程，拆成可执行、可复用、可交给 AI 辅助的工作台。</p>
+    </section>
+
+    <section>
+      <h2>适合这些个人场景</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>内容创作者</h3>
+          <p>选题、写稿、配图、发布和复盘每天重复，但没有固定流程。</p>
+        </div>
+        <div class="card">
+          <h3>课程老师</h3>
+          <p>讲义、PPT、作业点评和社群答疑都在临时整理，开课越多越乱。</p>
+        </div>
+        <div class="card">
+          <h3>咨询顾问</h3>
+          <p>访谈整理、诊断报告和方案交付太依赖手工，每次都要重新搭框架。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>适合 / 不适合</h2>
+      <div class="two-col">
+        <div>
+          <h3>适合你，如果</h3>
+          <ul class="list">
+            <li>你已经有一个真实、重复、耗时的流程。</li>
+            <li>这个流程每周至少发生一次，单次至少耗时 1 小时。</li>
+            <li>做不好会影响内容、交付、销售材料、课程服务或个人效率。</li>
+            <li>你愿意提供必要背景资料，并接受流程被重新拆解。</li>
+          </ul>
+        </div>
+        <div>
+          <h3>不适合你，如果</h3>
+          <ul class="list">
+            <li>你只是想买一堆提示词，没有具体场景。</li>
+            <li>你希望保证涨粉、成交、收益。</li>
+            <li>你要的是企业级系统开发、长期外包执行或全托管运营。</li>
+            <li>业务流程本身还没稳定，今天一个方向明天一个方向。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>我会先判断什么</h2>
+      <ul class="list">
+        <li><strong>人工判断：</strong>哪些步骤不能交给 AI，必须保留你的经验、审美、风险判断或客户沟通。</li>
+        <li><strong>AI 辅助：</strong>哪些步骤适合让 AI 做初稿、整理、分类、生成候选方案或做检查。</li>
+        <li><strong>模板化：</strong>哪些输入字段、输出格式、命名规则和检查清单可以固定下来。</li>
+        <li><strong>最小版本：</strong>先搭哪一个能跑起来的小流程，避免一上来做成复杂系统。</li>
+      </ul>
+    </section>
+
+    <section id="plans">
+      <h2>三档服务</h2>
+      <div class="grid">
+        <div class="price-card">
+          <strong>699 元</strong>
+          <h3>诊断版</h3>
+          <p>适合还不确定流程该怎么改的人。</p>
+          <ul>
+            <li>60-90 分钟沟通</li>
+            <li>一页流程诊断方案</li>
+            <li>优先级建议</li>
+            <li>下一步搭建路线</li>
+          </ul>
+          <a class="btn btn-line" href="order.html?plan=699&scenario=我想诊断一个最耗时间的 AI 工作流">发起 699 元订单</a>
+        </div>
+        <div class="price-card">
+          <strong>1999 元</strong>
+          <h3>代搭版</h3>
+          <p>适合想这周直接用起来的人。</p>
+          <ul>
+            <li>流程梳理</li>
+            <li>提示词和模板</li>
+            <li>工具配置建议</li>
+            <li>可运行工作流和一次复盘</li>
+          </ul>
+          <a class="btn btn-primary" href="order.html?plan=1999&scenario=我想代搭一个可运行的 AI 工作流">发起 1999 元订单</a>
+        </div>
+        <div class="price-card">
+          <strong>4999 元</strong>
+          <h3>深度版</h3>
+          <p>适合高频复杂流程，需要把资料结构和操作步骤一起整理清楚。</p>
+          <ul>
+            <li>多环节流程设计</li>
+            <li>AI 工作台搭建</li>
+            <li>权限和资料结构建议</li>
+            <li>3 天内完成首版交付</li>
+          </ul>
+          <a class="btn btn-line" href="order.html?plan=4999&scenario=我想深度搭建一个高频 AI 工作流">发起 4999 元订单</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>我会交付什么，也会提前说明不交付什么</h2>
+      <div class="boundary">
+        <div>
+          <h3>会交付</h3>
+          <ul class="list">
+            <li>流程拆解图</li>
+            <li>可执行改造方案</li>
+            <li>提示词和模板</li>
+            <li>工具配置建议</li>
+            <li>操作步骤说明</li>
+            <li>代搭版 / 深度版包含可运行工作流</li>
+          </ul>
+        </div>
+        <div>
+          <h3>不交付</h3>
+          <ul class="list">
+            <li>不承诺业务结果、涨粉、成交、营收。</li>
+            <li>不替你长期运营账号、跟客户、做销售。</li>
+            <li>不开发企业级 SaaS 或复杂内部系统。</li>
+            <li>不处理无法脱敏的敏感数据。</li>
+            <li>不把一个模糊业务从 0 到 1 全部包办。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>先不用决定买哪一档，先把你的流程发来</h2>
+      <p>发来“我现在最耗时间的流程是：____”。我先判断这件事适不适合做 AI 工作流；适合再进入诊断或代搭，不适合会直接说。</p>
+      <div class="mini-form">
+        <div>我最耗时间的流程是：</div>
+        <div>多久做一次：</div>
+        <div>每次大概花多久：</div>
+        <div>现在用什么工具：</div>
+        <div>做不好会影响什么：</div>
+      </div>
+      <div class="actions" style="margin-top: 20px;">
+        <a class="btn btn-primary" href="order.html?plan=1999&scenario=我现在最耗时间的流程是：">提交我的流程，先判断值不值得改</a>
+        <a class="btn btn-line" href="order.html?plan=699&scenario=我还不确定，先做 699 元诊断">我还不确定，先做 699 元诊断</a>
+        <a class="btn btn-line" href="sample.html">先看资料包样品</a>
+        <a class="btn btn-line" href="template-generator.html">先用免费模板生成器</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
