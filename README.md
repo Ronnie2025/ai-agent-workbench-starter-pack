@@ -23,6 +23,7 @@ consultants, and small-team operators.
 - Codex 入门排障清单: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting.html
 - 小红书标题自测表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-self-test.html
 - AI 工作台自测表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-workbench-self-test-pack.html
+- 电子资料上架合规自检包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-compliance.html
 - AI-PPT 交付自检包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-check.html
 - AI 远程数据兼职申请包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-data-job-pack.html
 
@@ -46,6 +47,7 @@ consultants, and small-team operators.
 - 2.99 RMB: Codex 入门排障清单
 - 9.90 RMB: 小红书标题自测表
 - 19 RMB: AI 工作台自测表
+- 19.90 RMB: 电子资料上架合规自检包
 - 29.90 RMB: AI-PPT 交付自检包
 - 39.90 RMB: AI 远程数据兼职申请包
 - 99 RMB: AI Agent 工作台实战包
@@ -79,6 +81,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-s
 AI workbench self-test pack:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-workbench-self-test-pack.html
+
+Digital listing compliance pack:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-compliance.html
 
 AI-PPT delivery check pack:
 
