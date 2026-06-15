@@ -10,6 +10,7 @@ consultants, and small-team operators.
 - 16 条免费中文 AI 工作流提示词库: https://ronnie2025.github.io/ai-workflow-prompts-zh/
 - AI 工作台免费自测: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html
 - AI 副业选题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-idea-scorer.html
+- 小红书标题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-scorer.html
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
 - 电子资料上架自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-checker.html
 - PPT 大纲生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generator.html
@@ -78,6 +79,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooti
 Xiaohongshu title self-test:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-self-test.html
+
+Xiaohongshu title scorer:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-scorer.html
 
 AI workbench self-test pack:
 
