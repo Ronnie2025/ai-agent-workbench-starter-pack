@@ -15,6 +15,7 @@ consultants, and small-team operators.
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
 - 电子资料上架自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-checker.html
+- 虚拟资料定价计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-pricing-calculator.html
 - PPT 大纲生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generator.html
 - AI-PPT 交付自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
 - 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
@@ -97,6 +98,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-com
 Digital listing checker:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-checker.html
+
+Virtual product pricing calculator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-pricing-calculator.html
 
 AI-PPT delivery check pack:
 

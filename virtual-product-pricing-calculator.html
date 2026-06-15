@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>虚拟资料定价计算器 | 闲鱼小红书资料包定价</title>
+  <meta name="description" content="免费虚拟资料定价计算器：根据资料类型、原创度、样品证据、制作成本、售后风险和竞品价格，估算闲鱼、小红书电子资料的测试价、主推价和升级价。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-pricing-calculator.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="虚拟资料定价计算器">
+  <meta property="og:description" content="发布电子资料前，先算测试价、主推价和升级价，再决定要卖哪个资料包。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-pricing-calculator.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "虚拟资料定价计算器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "根据资料类型、原创度、样品证据、制作成本、售后风险和竞品价格，估算闲鱼、小红书电子资料的测试价、主推价和升级价。",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-pricing-calculator.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator-cover.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "虚拟资料应该定价多少？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "低价电子资料通常先用 9.90、19.90、29.90、49 或 99 元测试。价格应根据资料原创度、样品证据、交付深度、售后风险和竞品价格调整。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "闲鱼电子资料适合直接卖高价吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不建议一开始直接高价。没有样品、没有交付边界、没有真实使用场景时，先用低价测试需求，再把反馈沉淀成更完整的资料包。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "这个工具会承诺成交或收入吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不会。它只用于定价和上架前判断，不承诺审核通过、曝光、成交、涨粉或收入结果。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #13202f;
+      --muted: #667085;
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --yellow: #f3bd2f;
+      --yellow-soft: #fff6d8;
+      --deep: #101828;
+      --soft-blue: #eaf1ff;
+      --soft-green: #e9f8f3;
+      --soft-red: #fff0f0;
+      --shadow: 0 18px 48px rgba(16, 24, 40, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      min-height: 620px;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(245,247,251,.98) 0%, rgba(245,247,251,.90) 45%, rgba(245,247,251,.32) 73%),
+        url("xianyu-listing-generator-cover.png") right center / min(48vw, 720px) auto no-repeat;
+    }
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero-copy {
+      max-width: 650px;
+      padding: 74px 0 86px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(15,143,111,.26);
+      background: rgba(15,143,111,.08);
+      color: var(--green);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      margin: 20px 0 16px;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin-bottom: 16px;
+      font-size: 30px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+    .lead {
+      max-width: 610px;
+      color: #4d5a68;
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px 17px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 820;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .btn-yellow { background: var(--yellow); color: #1c1600; }
+    .btn-line { border-color: var(--line); }
+    section {
+      padding: 58px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, .86fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .form-panel { padding: 22px; }
+    .result-panel {
+      position: sticky;
+      top: 78px;
+      overflow: hidden;
+    }
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .result-body { padding: 22px; }
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .field {
+      min-height: 104px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    .hint {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      letter-spacing: 0;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+      min-height: 44px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 92px;
+      padding: 12px;
+      resize: vertical;
+    }
+    .range-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    input[type="range"] { width: 100%; }
+    .range-value {
+      min-width: 32px;
+      text-align: center;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-weight: 900;
+    }
+    .check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .check-grid label {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 760;
+    }
+    .check-grid input { width: auto; }
+    .score-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .score {
+      color: var(--green);
+      font-size: 78px;
+      line-height: 1;
+      font-weight: 950;
+    }
+    .meter {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e7edf6;
+      margin-bottom: 16px;
+    }
+    .meter span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--yellow), var(--green));
+      transition: width .2s ease;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+    .pill {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 850;
+    }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .price-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    .price-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 760;
+    }
+    .price-card strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--blue);
+      font-size: 30px;
+      line-height: 1;
+    }
+    .list {
+      display: grid;
+      gap: 9px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: #344054;
+    }
+    .result-block {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-top: 18px;
+    }
+    .copybox {
+      min-height: 112px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .cta-panel {
+      border: 1px solid rgba(21,94,239,.24);
+      border-radius: 8px;
+      background: var(--soft-blue);
+      padding: 16px;
+      margin-top: 16px;
+    }
+    .cta-panel p { color: #345070; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card {
+      min-height: 174px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .card p { color: var(--muted); }
+    .footer-band {
+      background: var(--deep);
+      color: #fff;
+      border-bottom: 0;
+    }
+    .footer-band p { color: #cbd5e1; }
+    .footer-band .btn-line {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      border-color: rgba(255,255,255,.22);
+    }
+    @media (max-width: 920px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(245,247,251,.98) 0%, rgba(245,247,251,.94) 54%, rgba(245,247,251,.72) 100%),
+          url("xianyu-listing-generator-cover.png") bottom center / min(86vw, 430px) auto no-repeat;
+      }
+      .hero-copy { padding: 42px 0 350px; }
+      .tool-layout,
+      .field-grid,
+      .price-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      .result-panel { position: static; }
+      .field.full { grid-column: auto; }
+      .check-grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="xianyu-listing-generator.html">闲鱼文案</a>
+        <a href="digital-listing-checker.html">上架自检</a>
+        <a href="side-hustle-idea-scorer.html">选题评分</a>
+        <a href="order.html?plan=99">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">闲鱼小红书资料包定价</span>
+        <h1>虚拟资料定价计算器</h1>
+        <p class="lead">输入资料类型、原创度、样品证据、制作成本、售后风险和竞品价格，先算测试价、主推价和升级价，再决定要不要上架。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#calculator">开始计算</a>
+          <a class="btn btn-line" href="xianyu-listing-generator.html">生成闲鱼文案</a>
+          <a class="btn btn-line" href="https://www.goofish.com/item?id=1060176980426" target="_blank" rel="noopener">闲鱼买 49 元选题包</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="calculator">
+    <div class="wrap tool-layout">
+      <div class="panel form-panel">
+        <h2>输入资料包条件</h2>
+        <p class="hint">默认值按“AI 副业选题资料包”填写，改完会自动重算。</p>
+        <div class="field-grid">
+          <div class="field full">
+            <label for="productName">资料包名称</label>
+            <input id="productName" type="text" value="AI 副业选题资料包">
+          </div>
+          <div class="field">
+            <label for="productType">资料类型</label>
+            <select id="productType">
+              <option value="side">副业情报 / 选题模板</option>
+              <option value="prompt">提示词包 / AI 教程</option>
+              <option value="checklist">检查清单 / 自测表</option>
+              <option value="ppt">PPT / 交付自检</option>
+              <option value="workflow">完整工作流资料包</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="platform">主要售卖平台</label>
+            <select id="platform">
+              <option value="闲鱼">闲鱼</option>
+              <option value="小红书">小红书</option>
+              <option value="公众号">公众号</option>
+              <option value="多平台">多平台</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="competitorPrice">同类商品常见价</label>
+            <input id="competitorPrice" type="number" min="0" step="1" value="49">
+          </div>
+          <div class="field">
+            <label for="makeHours">制作投入小时</label>
+            <input id="makeHours" type="number" min="1" max="120" step="1" value="6">
+          </div>
+          <div class="field">
+            <label for="originality">原创整理度</label>
+            <div class="range-row">
+              <input id="originality" type="range" min="1" max="5" value="4">
+              <span class="range-value" id="originalityValue">4</span>
+            </div>
+            <p class="hint">1 是拼贴，5 是有自己的结构和判断。</p>
+          </div>
+          <div class="field">
+            <label for="proof">样品和证据</label>
+            <select id="proof">
+              <option value="0">只有介绍，没有样品</option>
+              <option value="1">有目录或截图样品</option>
+              <option value="2">有完整公开样品</option>
+              <option value="3">有真实使用案例</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="aftersales">售后风险</label>
+            <select id="aftersales">
+              <option value="low">低：发文件即可</option>
+              <option value="mid">中：需要少量解释</option>
+              <option value="high">高：容易被要求代做</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="files">交付文件数</label>
+            <input id="files" type="number" min="1" max="30" step="1" value="6">
+          </div>
+          <div class="field full">
+            <label>已经准备好的交付证明</label>
+            <div class="check-grid">
+              <label><input type="checkbox" id="hasPreview" checked> 有预览图或目录</label>
+              <label><input type="checkbox" id="hasBoundary" checked> 写清不承诺事项</label>
+              <label><input type="checkbox" id="hasSource"> 有来源记录或引用</label>
+              <label><input type="checkbox" id="hasDelivery" checked> 有发货话术</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label for="notes">补充说明</label>
+            <textarea id="notes">面向想做 AI 副业或虚拟资料的人，交付关键词、评分表和选题记录模板。</textarea>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="recalc" type="button">重新计算</button>
+          <a class="btn btn-line" href="digital-listing-checker.html">发布前风险自检</a>
+          <a class="btn btn-line" href="xianyu-listing-generator.html">继续生成上架文案</a>
+        </div>
+      </div>
+
+      <aside class="panel result-panel">
+        <img class="cover" src="xianyu-listing-generator-cover.png" alt="虚拟资料定价计算器封面">
+        <div class="result-body">
+          <div class="score-row">
+            <div class="score" id="score">82</div>
+            <div>
+              <strong id="scoreLabel">可以上架测试</strong>
+              <p class="hint" id="scoreHint">先用低价验证需求，再根据咨询问题补资料包。</p>
+            </div>
+          </div>
+          <div class="meter"><span id="meter"></span></div>
+          <div class="pill-row" id="pillRow"></div>
+
+          <div class="price-grid">
+            <div class="price-card">
+              <span>测试价</span>
+              <strong id="testPrice">19.90</strong>
+            </div>
+            <div class="price-card">
+              <span>主推价</span>
+              <strong id="mainPrice">49</strong>
+            </div>
+            <div class="price-card">
+              <span>升级价</span>
+              <strong id="upgradePrice">99</strong>
+            </div>
+          </div>
+
+          <div class="result-block">
+            <h3>定价判断</h3>
+            <ul class="list" id="adviceList"></ul>
+          </div>
+
+          <div class="result-block">
+            <h3>可复制上架定价说明</h3>
+            <div class="copybox" id="copyText"></div>
+          </div>
+
+          <div class="cta-panel">
+            <h3>下一步直接走闲鱼</h3>
+            <p id="ctaText">如果你还没有选题来源，先买 49 元 Reddit/X 副业情报模板包；如果已经确定要做完整工作流，直接买 99 元实战包。</p>
+            <div class="actions">
+              <a class="btn btn-dark" id="primaryXianyu" href="https://www.goofish.com/item?id=1060176980426" target="_blank" rel="noopener">闲鱼买 49 元选题包</a>
+              <a class="btn btn-primary" href="https://www.goofish.com/item?id=1059263013337" target="_blank" rel="noopener">闲鱼买 99 元实战包</a>
+              <a class="btn btn-line" href="https://www.goofish.com/item?id=1060189932353" target="_blank" rel="noopener">闲鱼买自测表</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>定价前先看这三件事</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>不是越便宜越好</h3>
+          <p>2.99 和 9.90 适合解决一个小问题，49 和 99 需要有清晰结构、样品和使用路径。</p>
+        </div>
+        <div class="card">
+          <h3>不要卖承诺</h3>
+          <p>电子资料可以卖清单、模板、步骤和经验整理，不应该承诺涨粉、审核通过、收益或包成交。</p>
+        </div>
+        <div class="card">
+          <h3>先测一个入口</h3>
+          <p>先用闲鱼或小红书测试标题和咨询问题，再把高频问题补进资料包，别一开始做太大。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="footer-band">
+    <div class="wrap">
+      <h2>已经要卖资料了，就把上架链路补齐</h2>
+      <p>定价只是第一步。选题、标题、描述、发货话术和交付边界都要清楚，成交后才不会变成来回解释。</p>
+      <div class="actions">
+        <a class="btn btn-yellow" href="side-hustle-idea-scorer.html">先测选题值不值得做</a>
+        <a class="btn btn-line" href="xianyu-listing-generator.html">生成闲鱼上架文案</a>
+        <a class="btn btn-line" href="virtual-products.html">查看全部资料包</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const goofish49 = "https://www.goofish.com/item?id=1060176980426";
+    const goofish99 = "https://www.goofish.com/item?id=1059263013337";
+    const goofish19 = "https://www.goofish.com/item?id=1060189932353";
+    const levels = [2.99, 9.90, 19.90, 29.90, 39.90, 49, 69, 99, 129, 199];
+    const baseByType = {
+      side: 49,
+      prompt: 29.90,
+      checklist: 19.90,
+      ppt: 29.90,
+      workflow: 99
+    };
+    const typeText = {
+      side: "副业情报 / 选题模板",
+      prompt: "提示词包 / AI 教程",
+      checklist: "检查清单 / 自测表",
+      ppt: "PPT / 交付自检",
+      workflow: "完整工作流资料包"
+    };
+    const $ = (id) => document.getElementById(id);
+    const fields = [
+      "productName", "productType", "platform", "competitorPrice", "makeHours",
+      "originality", "proof", "aftersales", "files", "notes",
+      "hasPreview", "hasBoundary", "hasSource", "hasDelivery"
+    ];
+
+    function nearestPrice(value) {
+      return levels.reduce((best, current) => (
+        Math.abs(current - value) < Math.abs(best - value) ? current : best
+      ), levels[0]);
+    }
+
+    function money(value) {
+      return Number(value).toFixed(value % 1 === 0 ? 0 : 2);
+    }
+
+    function readState() {
+      return {
+        name: $("productName").value.trim() || "未命名资料包",
+        type: $("productType").value,
+        platform: $("platform").value,
+        competitor: Number($("competitorPrice").value || 0),
+        hours: Number($("makeHours").value || 1),
+        originality: Number($("originality").value || 1),
+        proof: Number($("proof").value || 0),
+        aftersales: $("aftersales").value,
+        files: Number($("files").value || 1),
+        notes: $("notes").value.trim(),
+        hasPreview: $("hasPreview").checked,
+        hasBoundary: $("hasBoundary").checked,
+        hasSource: $("hasSource").checked,
+        hasDelivery: $("hasDelivery").checked
+      };
+    }
+
+    function calculate(state) {
+      let score = 42;
+      score += state.originality * 8;
+      score += state.proof * 8;
+      score += state.hasPreview ? 8 : -6;
+      score += state.hasBoundary ? 8 : -10;
+      score += state.hasSource ? 6 : -3;
+      score += state.hasDelivery ? 6 : -4;
+      score += state.files >= 5 ? 5 : 0;
+      score += state.hours >= 4 ? 5 : 0;
+      if (state.aftersales === "mid") score -= 5;
+      if (state.aftersales === "high") score -= 14;
+      score = Math.max(18, Math.min(96, score));
+
+      const proofMultiplier = 0.78 + state.proof * 0.14;
+      const originalMultiplier = 0.72 + state.originality * 0.14;
+      const riskMultiplier = state.aftersales === "high" ? 0.78 : state.aftersales === "mid" ? 0.92 : 1;
+      const competitorAnchor = state.competitor > 0 ? state.competitor : baseByType[state.type];
+      const rawMain = ((baseByType[state.type] * 0.55) + (competitorAnchor * 0.45)) * proofMultiplier * originalMultiplier * riskMultiplier;
+      const main = nearestPrice(rawMain);
+      const test = nearestPrice(Math.max(2.99, main * 0.45));
+      const upgrade = nearestPrice(Math.max(main * 1.85, state.type === "workflow" ? 129 : 99));
+      return { score, test, main, upgrade };
+    }
+
+    function render() {
+      const state = readState();
+      $("originalityValue").textContent = state.originality;
+      const result = calculate(state);
+      $("score").textContent = result.score;
+      $("meter").style.width = result.score + "%";
+      $("testPrice").textContent = money(result.test);
+      $("mainPrice").textContent = money(result.main);
+      $("upgradePrice").textContent = money(result.upgrade);
+
+      let label = "可以上架测试";
+      let hint = "先用低价验证需求，再根据咨询问题补资料包。";
+      if (result.score < 58) {
+        label = "先别急着卖";
+        hint = "先补样品、来源记录和交付边界，否则容易低价也卖不动。";
+      } else if (result.score >= 82) {
+        label = "可以做主推款";
+        hint = "结构、样品和边界比较完整，可以把测试价和主推价分开卖。";
+      }
+      $("scoreLabel").textContent = label;
+      $("scoreHint").textContent = hint;
+
+      const pills = [
+        state.platform + "定价",
+        typeText[state.type],
+        state.aftersales === "high" ? "售后风险高" : "售后可控",
+        state.hasBoundary ? "边界已写" : "缺少边界"
+      ];
+      $("pillRow").innerHTML = pills.map(item => `<span class="pill">${item}</span>`).join("");
+
+      const advice = [];
+      if (result.score < 58) {
+        advice.push("先把资料包拆成一个小问题，不要直接卖大而全的承诺。");
+        advice.push("补一页公开样品、文件目录和发货话术，再考虑 9.90 或 19.90 测试价。");
+      } else {
+        advice.push(`建议先用 ${money(result.test)} 元测试标题和咨询问题，再把成交问题补进主包。`);
+        advice.push(`主推价可以放在 ${money(result.main)} 元附近，标题要说清交付物，不要写收益承诺。`);
+      }
+      if (state.aftersales === "high") {
+        advice.push("售后风险偏高，描述里要明确不代做、不包审核、不提供一对一长期陪跑。");
+      }
+      if (!state.hasSource) {
+        advice.push("建议补来源记录或原创整理说明，避免用户误以为是搬运资料。");
+      }
+      advice.push(`升级价可以放到 ${money(result.upgrade)} 元，适合加入完整流程、检查清单和案例样品。`);
+      $("adviceList").innerHTML = advice.map(item => `<li>${item}</li>`).join("");
+
+      const copy = `${state.name}
+资料类型：${typeText[state.type]}
+主要平台：${state.platform}
+建议测试价：${money(result.test)} 元
+建议主推价：${money(result.main)} 元
+建议升级价：${money(result.upgrade)} 元
+定价理由：原创整理度 ${state.originality}/5，样品证据 ${state.proof}/3，交付文件 ${state.files} 个，同类常见价约 ${state.competitor || "未填写"} 元。
+发布边界：交付资料和使用步骤，不承诺审核、流量、涨粉、成交或收入结果。
+补充说明：${state.notes || "暂无"}`;
+      $("copyText").textContent = copy;
+
+      if (state.type === "checklist") {
+        $("primaryXianyu").href = goofish19;
+        $("primaryXianyu").textContent = "闲鱼买 19.90 元自测表";
+        $("ctaText").textContent = "如果你还没确定从哪个流程开始，先买自测表，把资料方向和第一个可交付流程选出来。";
+      } else if (state.type === "side" || state.name.includes("副业") || state.name.includes("选题")) {
+        $("primaryXianyu").href = goofish49;
+        $("primaryXianyu").textContent = "闲鱼买 49 元选题包";
+        $("ctaText").textContent = "如果你还没有稳定选题来源，先用 49 元 Reddit/X 副业情报模板包，把公开信息变成可验证的资料包选题。";
+      } else {
+        $("primaryXianyu").href = goofish99;
+        $("primaryXianyu").textContent = "闲鱼买 99 元实战包";
+        $("ctaText").textContent = "如果你已经准备把一个高频流程做成完整资料包，99 元实战包更适合补路线、模板和检查清单。";
+      }
+    }
+
+    fields.forEach(id => {
+      const el = $(id);
+      if (el) el.addEventListener("input", render);
+      if (el) el.addEventListener("change", render);
+    });
+    $("recalc").addEventListener("click", render);
+    render();
+  </script>
+</body>
+</html>
