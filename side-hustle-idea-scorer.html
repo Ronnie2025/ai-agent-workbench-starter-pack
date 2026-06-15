@@ -569,8 +569,8 @@
           label: "可以做小样测试",
           copy: "这个选题已经有比较清楚的人群、需求和交付形态。下一步不是做大课，而是做一份能发货的小样，继续验证关键词和购买意向。",
           cta: [
-            ["购买 49 元情报模板包", "order.html?plan=49&scenario=我想购买 Reddit/X 副业情报检索模板包", "btn-primary"],
-            ["购买 99 元实战包", "order.html?plan=99&scenario=我想购买 AI Agent 工作台实战包", "btn-dark"]
+            ["购买 49 元情报模板包", "49", "btn-primary"],
+            ["购买 99 元实战包", "99", "btn-dark"]
           ]
         };
       }
@@ -579,8 +579,8 @@
           label: "先补证据再制作",
           copy: "这个选题有机会，但证据还不够厚。先补真实搜索、竞品、评论和痛点原话，再决定资料包目录和定价。",
           cta: [
-            ["购买 49 元情报模板包", "order.html?plan=49&scenario=我想购买 Reddit/X 副业情报检索模板包", "btn-primary"],
-            ["查看虚拟资料货架", "virtual-products.html", "btn-line"]
+            ["购买 49 元情报模板包", "49", "btn-primary"],
+            ["查看虚拟资料货架", "virtual-products.html", "btn-line", "static"]
           ]
         };
       }
@@ -588,8 +588,8 @@
         label: "暂缓包装付费资料",
         copy: "这个选题现在还不适合直接做成付费资料。优先缩小人群、找明确需求证据，或者先用自测表换一个更具体的流程。",
         cta: [
-          ["查看 19 元自测表", "ai-workbench-self-test-pack.html", "btn-primary"],
-          ["先做免费自测", "self-test.html", "btn-line"]
+          ["购买 19 元自测表", "19", "btn-primary"],
+          ["先做免费自测", "self-test.html", "btn-line", "static"]
         ]
       };
     }
@@ -617,21 +617,27 @@
       const score = Math.min(100, Math.round(raw / maxScore * 100));
       const t = tier(score);
       const idea = ideaEl.value.trim() || "未填写选题";
+      const checks = buildChecks(score, platforms);
+      const summaryText = [
+        `来源：AI 副业选题评分器`,
+        `选题：${idea}`,
+        `评分：${score}/100`,
+        `判断：${t.label}`,
+        `平台：${platforms.join("、") || "未选择"}`,
+        `下一步：${checks[0]}`
+      ].join("\n");
       scoreEl.textContent = score;
       meterFill.style.width = `${score}%`;
       statusEl.textContent = t.label;
       statusEl.style.background = score >= 75 ? "var(--soft-green)" : score >= 55 ? "var(--soft-blue)" : "var(--soft-amber)";
       statusEl.style.color = score >= 75 ? "var(--green)" : score >= 55 ? "var(--blue)" : "var(--amber)";
       resultCopy.textContent = t.copy;
-      checksEl.innerHTML = buildChecks(score, platforms).map((item) => `<li>${item}</li>`).join("");
-      actionsEl.innerHTML = t.cta.map(([text, href, cls]) => `<a class="btn ${cls}" href="${href}">${text}</a>`).join("");
-      summaryEl.value = [
-        `选题：${idea}`,
-        `评分：${score}/100`,
-        `判断：${t.label}`,
-        `平台：${platforms.join("、") || "未选择"}`,
-        `下一步：${buildChecks(score, platforms)[0]}`
-      ].join("\\n");
+      checksEl.innerHTML = checks.map((item) => `<li>${item}</li>`).join("");
+      summaryEl.value = summaryText;
+      actionsEl.innerHTML = t.cta.map(([text, target, cls, mode]) => {
+        const href = mode === "static" ? target : `order.html?plan=${encodeURIComponent(target)}&scenario=${encodeURIComponent(summaryText)}`;
+        return `<a class="btn ${cls}" href="${href}">${text}</a>`;
+      }).join("");
     }
 
     form.addEventListener("input", update);
