@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>n8n AI副业情报雷达 | Reddit GitHub HN 选题工作流模板</title>
+  <meta name="description" content="29.90 元 n8n AI副业情报雷达，包含可导入 n8n 工作流 JSON、HN/GitHub/Reddit 公开信号抓取、线索评分、样例输出和闲鱼上架文案。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="n8n AI副业情报雷达">
+  <meta property="og:description" content="可导入 n8n 的 AI 副业选题工作流模板，从公开信号里筛教程、资料包和自动化选题。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "n8n AI副业情报雷达",
+    "description": "用于从 Hacker News、GitHub 和 Reddit 公开信号里筛 AI 副业、资料包和教程选题的 n8n 工作流模板。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar-cover.png",
+    "brand": {
+      "@type": "Brand",
+      "name": "AI Workbench Store"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "29.90",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=n8n-29.90"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "这个资料包是课程还是工作流模板？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "它主要是一个可导入 n8n 的工作流模板，并配套导入说明、字段说明、样例输出和上架文案，不是视频课程。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "是否需要 API Key？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "默认不需要。工作流使用 Hacker News、GitHub 和 Reddit 的公开访问入口。GitHub 如果遇到频率限制，可以按说明自行加 Token。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "能保证我做出赚钱项目吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不能。资料包只帮助发现和整理公开信号，不承诺涨粉、成交、收入或回本。真正能否变现取决于后续选题验证、内容制作和平台成交。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6977;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --green: #0f7a55;
+      --dark-green: #073b2b;
+      --blue: #155eef;
+      --amber: #b77900;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--dark-green);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,1) 0%, rgba(246,248,251,.95) 47%, rgba(246,248,251,.26) 100%),
+        url("n8n-ai-side-hustle-radar-cover.png") right center / min(39vw, 470px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 660px;
+      padding: 58px 0 72px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,122,85,.22);
+      background: rgba(15,122,85,.09);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      font-size: clamp(38px, 5.6vw, 68px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 20px;
+      font-size: 30px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 630px;
+      color: var(--muted);
+      font-size: 20px;
+    }
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-top: 20px;
+      color: var(--green);
+      font-weight: 900;
+    }
+    .price strong {
+      font-size: 54px;
+      line-height: 1;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: var(--dark-green); color: #fff; }
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .panel,
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fbff;
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .card { min-height: 166px; }
+    .card p { color: var(--muted); }
+    .warning {
+      border-color: rgba(183,121,0,.26);
+      background: rgba(183,121,0,.08);
+    }
+    .sample {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+    th,
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th { color: var(--dark-green); background: #f3fbf7; }
+    td { color: var(--muted); }
+    .order {
+      background: var(--dark-green);
+      color: #fff;
+      border-bottom: 0;
+    }
+    .order p {
+      max-width: 760px;
+      color: #d5e5dd;
+    }
+    .footer {
+      padding: 24px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 880px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(246,248,251,1) 0%, rgba(246,248,251,.96) 48%, rgba(246,248,251,.72) 100%),
+          url("n8n-ai-side-hustle-radar-cover.png") bottom center / min(84vw, 410px) auto no-repeat;
+      }
+      .hero-copy { padding: 38px 0 500px; }
+      .nav { display: none; }
+      .two-col,
+      .grid { grid-template-columns: 1fr; }
+      h1 { font-size: 40px; }
+      h2 { font-size: 27px; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="side-hustle-idea-scorer.html">选题评分器</a>
+        <a href="xianyu-listing-generator.html">闲鱼文案</a>
+        <a href="prompt-library.html">提示词库</a>
+        <a href="order.html?plan=n8n-29.90">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">n8n AI副业情报雷达</span>
+        <h1>把公开平台信号变成 AI 副业选题雷达</h1>
+        <p class="lead">给想卖资料包、教程、提示词和工作流模板的人。导入 n8n 后，从 Hacker News、GitHub、Reddit 公开信号里抓线索，再按热度和可售资产方向整理输出。</p>
+        <div class="price"><span>¥</span><strong>29.90</strong><span>数字资料包</span></div>
+        <div class="actions">
+          <a class="btn btn-line" href="side-hustle-idea-scorer.html">先做选题评分</a>
+          <a class="btn btn-primary" href="order.html?plan=n8n-29.90&scenario=我想购买 n8n AI副业情报雷达">购买 29.90 元资料包</a>
+          <a class="btn btn-line" href="virtual-products.html">返回虚拟资料货架</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap two-col">
+      <div class="panel">
+        <h2>适合谁</h2>
+        <ul class="list">
+          <li>想从海外社区找 AI agent、自动化、工具站和资料包选题的人。</li>
+          <li>已经会打开 n8n，想直接导入一个轻量工作流再改成自己版本的人。</li>
+          <li>准备在闲鱼、小红书或公众号做虚拟资料，但缺少选题来源的人。</li>
+          <li>不想每天手动刷 GitHub、HN、Reddit，只想先看高信号线索的人。</li>
+        </ul>
+      </div>
+      <div class="panel warning">
+        <h2>不承诺什么</h2>
+        <ul class="list">
+          <li>不承诺涨粉、成交、收入或回本。</li>
+          <li>不提供账号、密钥、服务器、代部署或自动赚钱系统。</li>
+          <li>不卖搬运课程，也不鼓励直接复制原文售卖。</li>
+          <li>公开接口可能被平台限流，遇到限制需要按说明降级运行。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>资料包里有什么</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>n8n 工作流 JSON</h3>
+          <p>可导入 n8n，默认手动触发，不包含账号密钥。</p>
+        </div>
+        <div class="card">
+          <h3>三类公开来源</h3>
+          <p>读取 Hacker News、GitHub Search 和 Reddit r/SideProject。</p>
+        </div>
+        <div class="card">
+          <h3>线索评分字段</h3>
+          <p>统一输出标题、链接、信号、评分、可售资产建议。</p>
+        </div>
+        <div class="card">
+          <h3>上架和交付文案</h3>
+          <p>包含闲鱼上架文案和成交后发货话术，方便二次售卖。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div class="panel">
+        <h2>建议使用顺序</h2>
+        <ul class="list">
+          <li>先导入 `workflow-n8n-ai-side-hustle-radar.json`，保持 inactive。</li>
+          <li>手动运行一次，看 `Score and Format Signals` 节点输出。</li>
+          <li>优先看分数高、标题具体、能做成教程或模板的线索。</li>
+          <li>把线索拆成中文说明、提示词包、排障卡或工作流模板，不直接搬运原文。</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>包含文件</h2>
+        <ul class="list">
+          <li>README：资料包说明和使用边界。</li>
+          <li>n8n 工作流 JSON：可导入模板。</li>
+          <li>导入说明、字段说明、样例输出 CSV。</li>
+          <li>闲鱼上架文案、买家交付话术和封面图。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>样例输出</h2>
+      <div class="sample">
+        <table>
+          <thead>
+            <tr>
+              <th>来源</th>
+              <th>线索</th>
+              <th>信号</th>
+              <th>可售方向</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hacker News</td>
+              <td>浏览器自动化、AI agent 工作站、PDF 生成工具</td>
+              <td>points / comments</td>
+              <td>中文上手教程、排障卡、工具对比表</td>
+            </tr>
+            <tr>
+              <td>GitHub</td>
+              <td>AI agent workflow automation 仓库</td>
+              <td>stars / forks / updated</td>
+              <td>安装教程、模板清单、实践复盘</td>
+            </tr>
+            <tr>
+              <td>Reddit</td>
+              <td>SideProject 里的 AI agent 和自动化项目</td>
+              <td>upvotes / comments</td>
+              <td>副业选题拆解表、对标链接、资料包目录</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="order">
+    <div class="wrap">
+      <h2>当前购买方式</h2>
+      <p>自动支付链接接入前，先用邮件订单承接购买意向。生成订单邮件后，我会回复付款方式；付款确认后发送 `n8n-ai-side-hustle-radar-v1.zip`。</p>
+      <div class="actions">
+        <a class="btn btn-line" href="side-hustle-idea-scorer.html">先做选题评分</a>
+        <a class="btn btn-primary" href="order.html?plan=n8n-29.90&scenario=我想购买 n8n AI副业情报雷达">生成 29.90 元订单</a>
+        <a class="btn btn-line" href="after-order.html">查看交付说明</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="./">返回主站</a>
+    </div>
+  </footer>
+</body>
+</html>

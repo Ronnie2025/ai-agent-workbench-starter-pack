@@ -22,6 +22,7 @@ consultants, and small-team operators.
 - Codex 第一次任务提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html
 - PPT 大纲生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generator.html
 - AI-PPT 交付自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
+- n8n AI副业情报雷达: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar.html
 - 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
 - 付款和交付说明: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
 - 判断指南: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/guide.html
@@ -58,6 +59,7 @@ consultants, and small-team operators.
 - 19 RMB: AI 工作台自测表
 - 19.90 RMB: 电子资料上架合规自检包
 - 29.90 RMB: AI-PPT 交付自检包
+- 29.90 RMB: n8n AI副业情报雷达
 - 39.90 RMB: AI 远程数据兼职申请包
 - 99 RMB: AI Agent 工作台实战包
 - 49 RMB: Reddit/X 副业情报检索模板包
