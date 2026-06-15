@@ -34,6 +34,9 @@ consultants, and small-team operators.
 
 ## Paid Products
 
+- 2.99 RMB: Codex 入门排障清单
+- 9.90 RMB: 小红书标题自测表
+- 19 RMB: AI 工作台自测表
 - 99 RMB: AI Agent 工作台实战包
 - 49 RMB: Reddit/X 副业情报检索模板包
 - 299 RMB: 资料包 + 文字诊断
