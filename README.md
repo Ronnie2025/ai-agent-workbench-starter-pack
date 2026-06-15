@@ -23,6 +23,7 @@ consultants, and small-team operators.
 - 小红书标题自测表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-self-test.html
 - AI 工作台自测表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-workbench-self-test-pack.html
 - AI-PPT 交付自检包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-check.html
+- AI 远程数据兼职申请包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-data-job-pack.html
 
 ## Scenario Pages
 
@@ -45,6 +46,7 @@ consultants, and small-team operators.
 - 9.90 RMB: 小红书标题自测表
 - 19 RMB: AI 工作台自测表
 - 29.90 RMB: AI-PPT 交付自检包
+- 39.90 RMB: AI 远程数据兼职申请包
 - 99 RMB: AI Agent 工作台实战包
 - 49 RMB: Reddit/X 副业情报检索模板包
 - 299 RMB: 资料包 + 文字诊断
@@ -84,6 +86,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-che
 AI-PPT free delivery checker:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
+
+AI remote data job pack:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-data-job-pack.html
 
 AI side-hustle idea scorer:
 
