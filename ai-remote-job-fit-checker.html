@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 远程数据兼职适配评分器 | AI Trainer、语音评测、数据标注自测</title>
+  <meta name="description" content="免费 AI 远程数据兼职适配评分器：判断你更适合 AI Trainer、中文语音评测、数据标注、转写质检还是语言数据审核，并导向 39.90 元申请包。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="AI 远程数据兼职适配评分器">
+  <meta property="og:description" content="先判断你适合投哪类 AI 数据远程兼职，再准备 Profile、样音、测试和投递表。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-data-job-pack-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI 远程数据兼职适配评分器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "判断用户更适合 AI Trainer、中文语音评测、数据标注、转写质检还是语言数据审核，并生成申请准备建议。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-data-job-pack-cover.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "这个评分器能保证我拿到 AI 远程兼职吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不能。评分器只用于判断准备度和岗位方向，不承诺录用、收入、项目周期或平台审核结果。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "适配分高之后下一步做什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "先选 1 到 2 个岗位方向，准备英文 Profile、中文能力证明、样音或标注样例，再用投递追踪表记录反馈。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "需要避开什么风险？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "避开押金、代考、泄露题库、伪造经历、要求验证码或身份证照片的非官方入口，投递前重新核对官方页面。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6977;
+      --bg: #f7f9fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #b86b00;
+      --deep: #0d1b2a;
+      --soft-blue: #eaf1ff;
+      --soft-green: #e9f8f3;
+      --soft-amber: #fff6e6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .tool {
+      padding: 34px 0 48px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(21,94,239,.22);
+      background: rgba(21,94,239,.08);
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 900px;
+      margin: 18px 0 12px;
+      font-size: clamp(38px, 5.3vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 780px;
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(360px, .94fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .tool-panel,
+    .result-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .tool-panel { padding: 22px; }
+    .result-panel {
+      position: sticky;
+      top: 18px;
+      overflow: hidden;
+    }
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .result-body { padding: 22px; }
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .field {
+      min-height: 118px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    .hint {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    input[type="text"],
+    select {
+      min-height: 44px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 108px;
+      resize: vertical;
+      padding: 11px 12px;
+    }
+    .checks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .checks-grid label {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 750;
+    }
+    .score-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .score {
+      color: var(--blue);
+      font-size: 76px;
+      line-height: 1;
+      font-weight: 950;
+    }
+    .score-row span {
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .meter {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e8edf5;
+      margin: 14px 0 18px;
+    }
+    .meter-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--amber), var(--blue), var(--green));
+      transition: width .2s ease;
+    }
+    .status {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 14px;
+    }
+    .result-copy {
+      margin-top: 14px;
+      color: var(--muted);
+    }
+    .track {
+      margin-top: 14px;
+      padding: 12px;
+      border: 1px solid rgba(21,94,239,.18);
+      border-radius: 8px;
+      background: var(--soft-blue);
+      font-weight: 850;
+    }
+    .list {
+      display: grid;
+      gap: 8px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .summary {
+      width: 100%;
+      min-height: 128px;
+      margin-top: 16px;
+      border-color: var(--line);
+      background: #f8fbff;
+      color: var(--ink);
+      font-size: 14px;
+    }
+    .band {
+      padding: 46px 0 56px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .funnel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .step {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .step strong {
+      color: var(--blue);
+      font-size: 34px;
+      line-height: 1;
+    }
+    .step p { color: var(--muted); }
+    .footer {
+      padding: 24px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 920px) {
+      .tool-layout,
+      .field-grid,
+      .funnel-grid,
+      .checks-grid {
+        grid-template-columns: 1fr;
+      }
+      .result-panel { position: static; }
+      .nav { display: none; }
+      h1 { font-size: 42px; }
+      h2 { font-size: 26px; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="ai-remote-data-job-pack.html">39.90 申请包</a>
+        <a href="side-hustle-idea-scorer.html">副业评分器</a>
+        <a href="xianyu-listing-generator.html">闲鱼文案</a>
+        <a href="order.html?plan=39.90&scenario=%E6%9D%A5%E8%87%AAAI%E8%BF%9C%E7%A8%8B%E6%95%B0%E6%8D%AE%E5%85%BC%E8%81%8C%E9%80%82%E9%85%8D%E8%AF%84%E5%88%86%E5%99%A8%EF%BC%8C%E6%88%91%E6%83%B3%E8%B4%AD%E4%B9%B039.90%E5%85%83%E7%94%B3%E8%AF%B7%E5%8C%85">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool">
+    <div class="wrap">
+      <span class="eyebrow">免费工具：AI 数据远程兼职申请前自测</span>
+      <h1>AI 远程数据兼职适配评分器</h1>
+      <p class="lead">先判断你更适合 AI Trainer、中文语音评测、数据标注、转写质检还是语言数据审核。结果会给出准备重点，并把适配结果带入 39.90 元申请包订单。</p>
+
+      <div class="tool-layout">
+        <form class="tool-panel" id="fitForm">
+          <div class="field">
+            <label for="goalInput">你想申请的方向</label>
+            <input id="goalInput" type="text" value="AI Trainer / 中文语音评测 / 数据标注远程兼职" autocomplete="off">
+            <div class="hint">写一个你现在想尝试的岗位方向。</div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="roleInterest">主方向</label>
+              <select id="roleInterest">
+                <option value="6">还没确定，只想试试</option>
+                <option value="10" selected>数据标注 / 文本分类</option>
+                <option value="11">中文语音评测 / 转写质检</option>
+                <option value="12">AI Trainer / 回答质量评估</option>
+              </select>
+              <div class="hint">方向越清楚，Profile 和样例越容易准备。</div>
+            </div>
+
+            <div class="field">
+              <label for="chinese">中文表达能力</label>
+              <select id="chinese">
+                <option value="5">只能做简单选择题</option>
+                <option value="10" selected>能写清楚判断理由</option>
+                <option value="14">能做改写、点评和规则解释</option>
+              </select>
+              <div class="hint">中文解释能力会影响 AI Trainer 和语言审核类岗位。</div>
+            </div>
+
+            <div class="field">
+              <label for="english">英文阅读</label>
+              <select id="english">
+                <option value="3">英文说明看起来吃力</option>
+                <option value="7" selected>能看懂岗位页和规则</option>
+                <option value="10">能改英文 Profile 和 Cover note</option>
+              </select>
+              <div class="hint">多数远程平台的岗位页、合同和测试说明需要英文阅读。</div>
+            </div>
+
+            <div class="field">
+              <label for="audio">语音条件</label>
+              <select id="audio">
+                <option value="3">不方便录音或环境嘈杂</option>
+                <option value="7" selected>手机能录清楚普通话</option>
+                <option value="10">能录稳定样音并做转写备注</option>
+              </select>
+              <div class="hint">语音项目需要安静环境、清楚发音和授权意识。</div>
+            </div>
+
+            <div class="field">
+              <label for="rules">读规则耐心</label>
+              <select id="rules">
+                <option value="4">不想读长规则</option>
+                <option value="9" selected>能按规则做判断</option>
+                <option value="14">能总结边界并写一句理由</option>
+              </select>
+              <div class="hint">标注、审核、评估都看规则理解和一致性。</div>
+            </div>
+
+            <div class="field">
+              <label for="detail">细节稳定性</label>
+              <select id="detail">
+                <option value="4">容易漏字段</option>
+                <option value="8" selected>能稳定做表格记录</option>
+                <option value="12">能做 QA、复核和错误归因</option>
+              </select>
+              <div class="hint">转写质检和数据审核尤其需要稳定复核。</div>
+            </div>
+
+            <div class="field">
+              <label for="time">可投入时间</label>
+              <select id="time">
+                <option value="3">每周少于 3 小时</option>
+                <option value="7" selected>每周 3-8 小时</option>
+                <option value="10">每周 8 小时以上，能持续投递</option>
+              </select>
+              <div class="hint">兼职申请也需要持续投递、测试和追踪。</div>
+            </div>
+
+            <div class="field">
+              <label for="profile">可证明材料</label>
+              <select id="profile">
+                <option value="3">还没有任何样例</option>
+                <option value="8" selected>有简历或过往文字/客服/运营经历</option>
+                <option value="12">能提供 Profile、样音或标注样例</option>
+              </select>
+              <div class="hint">没有材料也能准备，但不要空投。</div>
+            </div>
+
+            <div class="field">
+              <label for="risk">风险识别</label>
+              <select id="risk">
+                <option value="2">只要说能赚钱就想试</option>
+                <option value="7" selected>知道避开押金和非官方链接</option>
+                <option value="10">会核对合同、隐私、付款和授权边界</option>
+              </select>
+              <div class="hint">不碰押金、代考、泄题、伪造经历和验证码索取。</div>
+            </div>
+
+            <div class="field">
+              <label>你能准备的材料</label>
+              <div class="checks-grid">
+                <label><input type="checkbox" name="asset" value="英文 Profile" checked> 英文 Profile</label>
+                <label><input type="checkbox" name="asset" value="中文能力说明" checked> 中文能力说明</label>
+                <label><input type="checkbox" name="asset" value="普通话样音"> 普通话样音</label>
+                <label><input type="checkbox" name="asset" value="标注样例"> 标注样例</label>
+                <label><input type="checkbox" name="asset" value="投递追踪表" checked> 投递追踪表</label>
+                <label><input type="checkbox" name="asset" value="官方入口核对"> 官方入口核对</label>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <aside class="result-panel">
+          <img class="cover" src="ai-remote-data-job-pack-cover.png" alt="AI 远程数据兼职申请包封面">
+          <div class="result-body">
+            <h2>适配结果</h2>
+            <div class="score-row"><strong class="score" id="score">0</strong><span>/ 100</span></div>
+            <div class="meter"><div class="meter-fill" id="meterFill"></div></div>
+            <span class="status" id="status">待评分</span>
+            <p class="result-copy" id="resultCopy"></p>
+            <div class="track" id="track"></div>
+            <ul class="list" id="checks"></ul>
+            <div class="actions" id="actions"></div>
+            <textarea class="summary" id="summary" readonly></textarea>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>申请前先分三步</h2>
+      <div class="funnel-grid">
+        <div class="step">
+          <strong>1</strong>
+          <h3>选岗位方向</h3>
+          <p>AI Trainer、语音评测、数据标注、转写质检的准备材料不同，先不要混投。</p>
+        </div>
+        <div class="step">
+          <strong>2</strong>
+          <h3>补申请材料</h3>
+          <p>把 Profile、样音、标注样例、投递表准备好，再开始找官方入口。</p>
+        </div>
+        <div class="step">
+          <strong>3</strong>
+          <h3>做风险核对</h3>
+          <p>不交押金，不买题库，不代考，不把身份和验证码交给非官方渠道。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>常见问题</h2>
+      <div class="funnel-grid">
+        <div class="step">
+          <h3>这个评分器能保证我拿到 AI 远程兼职吗？</h3>
+          <p>不能。评分器只用于判断准备度和岗位方向，不承诺录用、收入、项目周期或平台审核结果。</p>
+        </div>
+        <div class="step">
+          <h3>适配分高之后下一步做什么？</h3>
+          <p>先选 1 到 2 个岗位方向，准备英文 Profile、中文能力证明、样音或标注样例，再用投递追踪表记录反馈。</p>
+        </div>
+        <div class="step">
+          <h3>需要避开什么风险？</h3>
+          <p>避开押金、代考、泄露题库、伪造经历、要求验证码或身份证照片的非官方入口，投递前重新核对官方页面。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="ai-remote-data-job-pack.html">AI 远程数据兼职申请包</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    const fields = ["roleInterest", "chinese", "english", "audio", "rules", "detail", "time", "profile", "risk"];
+    const maxScore = 116;
+    const form = document.getElementById("fitForm");
+    const goalInput = document.getElementById("goalInput");
+    const scoreEl = document.getElementById("score");
+    const meterFill = document.getElementById("meterFill");
+    const statusEl = document.getElementById("status");
+    const resultCopy = document.getElementById("resultCopy");
+    const trackEl = document.getElementById("track");
+    const checksEl = document.getElementById("checks");
+    const actionsEl = document.getElementById("actions");
+    const summaryEl = document.getElementById("summary");
+
+    function selectedAssets() {
+      return Array.from(document.querySelectorAll("input[name='asset']:checked")).map((input) => input.value);
+    }
+
+    function assetScore(items) {
+      return Math.min(items.length * 4, 12);
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+      }[char]));
+    }
+
+    function tier(score) {
+      if (score >= 76) {
+        return {
+          label: "可以开始投递准备",
+          copy: "你的基础条件适合先选 1-2 个方向做申请材料。重点不是承诺收入，而是把 Profile、样音或标注样例做扎实。",
+          cta: [
+            ["购买 39.90 元申请包", "39.90", "btn-primary"],
+            ["查看申请包详情", "ai-remote-data-job-pack.html", "btn-line", "static"]
+          ]
+        };
+      }
+      if (score >= 56) {
+        return {
+          label: "先补材料再投递",
+          copy: "你有机会尝试，但现在缺少材料或方向。先补 Profile、样例、投递表和风险核对，再去投官方入口。",
+          cta: [
+            ["购买 39.90 元申请包", "39.90", "btn-primary"],
+            ["先做副业选题评分", "side-hustle-idea-scorer.html", "btn-line", "static"]
+          ]
+        };
+      }
+      return {
+        label: "暂缓海投",
+        copy: "现在不适合直接海投远程兼职。先补英文阅读、规则理解、可证明材料和风险识别，避免被押金、代考和伪岗位消耗。",
+        cta: [
+          ["查看 39.90 元申请包", "ai-remote-data-job-pack.html", "btn-line", "static"],
+          ["先看虚拟资料货架", "virtual-products.html", "btn-line", "static"]
+        ]
+      };
+    }
+
+    function track() {
+      const role = Number(document.getElementById("roleInterest").value);
+      const chinese = Number(document.getElementById("chinese").value);
+      const english = Number(document.getElementById("english").value);
+      const audio = Number(document.getElementById("audio").value);
+      const rules = Number(document.getElementById("rules").value);
+      const detail = Number(document.getElementById("detail").value);
+      if (role === 11 && audio >= 7 && chinese >= 10) return "优先方向：中文语音评测 / 转写质检。先准备 2 段普通话样音、转写备注和授权边界。";
+      if (role === 12 && rules >= 9 && chinese >= 10) return "优先方向：AI Trainer / 回答质量评估。先准备英文 Profile、中文点评样例和一句话判断理由。";
+      if (role === 10 && detail >= 8 && rules >= 9) return "优先方向：数据标注 / 语言数据审核。先准备标注样例、规则复述和投递追踪表。";
+      if (audio >= 7 && chinese >= 10) return "优先方向：中文语音评测 / 转写质检。先准备 2 段普通话样音、转写备注和授权边界。";
+      if (english < 7) return "优先方向：先补英文岗位页阅读和 Profile。短期不要投需要长英文规则的项目。";
+      return "优先方向：先做材料补齐。把岗位方向、Profile、样例和风险边界写清楚后再投递。";
+    }
+
+    function buildChecks(score, assets) {
+      const checks = [];
+      const english = Number(document.getElementById("english").value);
+      const audio = Number(document.getElementById("audio").value);
+      const rules = Number(document.getElementById("rules").value);
+      const profile = Number(document.getElementById("profile").value);
+      const risk = Number(document.getElementById("risk").value);
+      if (english < 7) checks.push("先补英文岗位页阅读：至少能看懂合同、测试说明、付款方式和隐私要求。");
+      if (rules < 9) checks.push("先练规则理解：不要只凭感觉判断，要能写出一句简短理由。");
+      if (profile < 8) checks.push("补 Profile 和样例：空白简历直接投递很难筛出反馈。");
+      if (audio < 7 && assets.includes("普通话样音")) checks.push("语音条件还不稳，先用安静环境录 2 段样音再考虑语音评测。");
+      if (!assets.includes("投递追踪表")) checks.push("补投递追踪表：记录平台、岗位、投递日期、测试状态和下一步。");
+      if (!assets.includes("官方入口核对")) checks.push("补官方入口核对：只从官网、官方招聘页或可信邮箱进入，不点陌生私信链接。");
+      if (risk < 7) checks.push("风险意识不足：押金、代考、题库、验证码、伪造经历都直接排除。");
+      if (score >= 76) checks.push("可以选 1-2 个岗位方向，不要同时海投所有类别。");
+      if (!checks.length) checks.push("材料结构基本可用，下一步补 1 个标注样例或 2 段样音。");
+      return checks.slice(0, 6);
+    }
+
+    function update() {
+      const assets = selectedAssets();
+      const base = fields.reduce((sum, id) => sum + Number(document.getElementById(id).value), 0);
+      const score = Math.min(100, Math.round((base + assetScore(assets)) / maxScore * 100));
+      const t = tier(score);
+      const goal = goalInput.value.trim() || "未填写方向";
+      const trackText = track();
+      const checks = buildChecks(score, assets);
+      const summary = [
+        "来源：AI 远程数据兼职适配评分器",
+        `目标方向：${goal}`,
+        `评分：${score}/100`,
+        `判断：${t.label}`,
+        `推荐方向：${trackText}`,
+        `可准备材料：${assets.length ? assets.join("、") : "未勾选"}`,
+        `下一步：${checks[0]}`
+      ].join("\n");
+      scoreEl.textContent = score;
+      meterFill.style.width = `${score}%`;
+      statusEl.textContent = t.label;
+      statusEl.style.background = score >= 76 ? "var(--soft-green)" : score >= 56 ? "var(--soft-blue)" : "var(--soft-amber)";
+      statusEl.style.color = score >= 76 ? "var(--green)" : score >= 56 ? "var(--blue)" : "var(--amber)";
+      resultCopy.textContent = t.copy;
+      trackEl.textContent = trackText;
+      checksEl.innerHTML = checks.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+      summaryEl.value = summary;
+      actionsEl.innerHTML = t.cta.map(([text, target, cls, mode]) => {
+        const href = mode === "static" ? target : `order.html?plan=${encodeURIComponent(target)}&scenario=${encodeURIComponent(summary)}`;
+        return `<a class="btn ${cls}" href="${href}">${escapeHtml(text)}</a>`;
+      }).join("");
+    }
+
+    form.addEventListener("input", update);
+    form.addEventListener("change", update);
+    update();
+  </script>
+</body>
+</html>
