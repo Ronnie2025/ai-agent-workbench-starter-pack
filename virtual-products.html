@@ -255,6 +255,14 @@
     .product .btn {
       margin-top: auto;
     }
+    .product-actions {
+      display: grid;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .product-actions .btn {
+      margin-top: 0;
+    }
     .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -370,7 +378,10 @@
             <li>常见报错排障顺序</li>
             <li>可复制提示词模板</li>
           </ul>
-          <a class="btn btn-primary" href="order.html?plan=2.99&scenario=我想购买 Codex 入门排障清单">购买 Codex 包</a>
+          <div class="product-actions">
+            <a class="btn btn-primary" href="codex-troubleshooting.html">查看 Codex 详情</a>
+            <a class="btn btn-line" href="order.html?plan=2.99&scenario=我想购买 Codex 入门排障清单">生成 2.99 元订单</a>
+          </div>
         </article>
 
         <article class="product">
@@ -384,7 +395,10 @@
             <li>多场景标题模板</li>
             <li>发布前避坑清单</li>
           </ul>
-          <a class="btn btn-line" href="order.html?plan=9.90&scenario=我想购买小红书标题自测表">购买标题包</a>
+          <div class="product-actions">
+            <a class="btn btn-primary" href="xiaohongshu-title-self-test.html">查看标题包详情</a>
+            <a class="btn btn-line" href="order.html?plan=9.90&scenario=我想购买小红书标题自测表">生成 9.90 元订单</a>
+          </div>
         </article>
 
         <article class="product">
