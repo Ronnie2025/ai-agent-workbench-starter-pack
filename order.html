@@ -38,6 +38,7 @@
         {
           "@type": "Offer",
           "name": "AI 工作台自测表",
+          "sameAs": "https://www.goofish.com/item?id=1060189932353",
           "price": "19",
           "priceCurrency": "CNY",
           "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=19"
@@ -66,6 +67,7 @@
         {
           "@type": "Offer",
           "name": "AI Agent 工作台实战包",
+          "sameAs": "https://www.goofish.com/item?id=1059263013337",
           "price": "99",
           "priceCurrency": "CNY",
           "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=99"
@@ -73,6 +75,7 @@
         {
           "@type": "Offer",
           "name": "Reddit/X 副业情报检索模板包",
+          "sameAs": "https://www.goofish.com/item?id=1060176980426",
           "price": "49",
           "priceCurrency": "CNY",
           "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=49"
@@ -307,6 +310,16 @@
     .summary strong {
       color: var(--ink);
     }
+    .xianyu-direct {
+      padding: 12px 14px;
+      border: 1px solid rgba(15,143,111,.24);
+      border-radius: 8px;
+      background: rgba(15,143,111,.08);
+    }
+    .xianyu-direct a {
+      color: var(--green);
+      font-weight: 900;
+    }
     .notice {
       margin-top: 18px;
       padding: 15px 16px;
@@ -391,7 +404,7 @@
     <div class="wrap">
       <span class="eyebrow">订单页</span>
       <h1>选择一个档位，生成购买邮件</h1>
-      <p class="lead">当前先用邮件订单承接陌生流量。选择档位、写一句你的第一个 AI 工作流场景，系统会自动生成订单邮件。付款和交付流程可以先看说明页。</p>
+      <p class="lead">选择档位、写一句你的第一个 AI 工作流场景，系统会自动生成订单邮件。部分已上架商品也支持直接打开闲鱼担保交易。</p>
     </div>
   </header>
 
@@ -518,6 +531,7 @@
         <ul class="preflight">
           <li><strong>回复时效：</strong>订单邮件发出后，通常 24 小时内回复付款方式。</li>
           <li><strong>支持方式：</strong>可选微信 / 支付宝、PayPal、Wise；最终以邮件回复为准。</li>
+          <li><strong>闲鱼入口：</strong>49 元模板包、99 元实战包和 AI 工作台自测表已上架闲鱼，可直接走平台担保交易。</li>
           <li><strong>交付时效：</strong>付款确认后，2.99/9.90/19/19.90/29.90/49/99 元数字资料通常 24 小时内发送下载文件或附件。</li>
           <li><strong>服务交付：</strong>299/699/1999/4999 元服务类订单会先确认场景材料、边界和可交付范围，再安排诊断或代搭。</li>
           <li><strong>退款边界：</strong>未交付前可退款；数字资料已交付后不支持无理由退款，文件损坏或未收到会补发或退款。</li>
@@ -527,8 +541,9 @@
           <p>订单金额：<strong id="summaryPrice">99 元</strong></p>
           <p>收件邮箱：<strong>zhongruanjie@gmail.com</strong></p>
           <p>付款和交付：收到邮件后返回付款方式；付款完成后交付对应资料包或诊断。</p>
+          <p id="xianyuDirect" class="xianyu-direct" hidden>闲鱼担保交易：<a id="xianyuLink" href="#" target="_blank" rel="noopener">打开对应商品页</a></p>
         </div>
-        <div class="notice">付费 zip 不放在公开网页目录。自动收款链接接入前，订单页只负责承接购买意向和生成邮件订单。</div>
+        <div class="notice">付费 zip 不放在公开网页目录。已上架闲鱼的商品可走平台担保交易；未上架商品继续用邮件订单承接购买意向。</div>
         <div class="links">
           <a href="emergency-intake.html">先做急诊自助判断</a>
           <a href="virtual-products.html">先看虚拟资料货架</a>
@@ -564,6 +579,23 @@
     const priceEl = document.getElementById("summaryPrice");
     const gmailLink = document.getElementById("gmailLink");
     const mailtoLink = document.getElementById("mailtoLink");
+    const xianyuDirect = document.getElementById("xianyuDirect");
+    const xianyuLink = document.getElementById("xianyuLink");
+
+    const xianyuByPlan = {
+      "19": {
+        url: "https://www.goofish.com/item?id=1060189932353",
+        label: "打开 AI 工作台自测表闲鱼页（平台价 19.90 元）"
+      },
+      "49": {
+        url: "https://www.goofish.com/item?id=1060176980426",
+        label: "打开 Reddit/X 副业情报检索模板包闲鱼页"
+      },
+      "99": {
+        url: "https://www.goofish.com/item?id=1059263013337",
+        label: "打开 AI Agent 工作台实战包闲鱼页"
+      }
+    };
 
     function selectedPlan() {
       return document.querySelector("input[name='plan']:checked");
@@ -602,6 +634,17 @@
       priceEl.textContent = `${price} 元`;
       gmailLink.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       mailtoLink.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      const xianyu = xianyuByPlan[price];
+      if (xianyu) {
+        xianyuDirect.hidden = false;
+        xianyuLink.href = xianyu.url;
+        xianyuLink.textContent = xianyu.label;
+      } else {
+        xianyuDirect.hidden = true;
+        xianyuLink.href = "#";
+        xianyuLink.textContent = "打开对应商品页";
+      }
     }
 
     document.querySelectorAll("input[name='plan']").forEach((radio) => {
