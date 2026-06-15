@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex 排障自检器 | 安装登录配置和第一次任务检查</title>
+  <meta name="description" content="免费 Codex 排障自检器：检查安装、登录、项目目录、权限、配置、第一次任务、报错和上下文问题，生成排障顺序，并导向 2.99 元 Codex 入门排障清单。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-checker.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="Codex 排障自检器">
+  <meta property="og:description" content="Codex 登录不上、安装卡住、第一次任务失败，先跑一遍排障顺序。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-checker.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Codex 排障自检器",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web",
+    "description": "检查 Codex 安装、登录、项目目录、权限、配置、第一次任务、报错和上下文问题，生成排障顺序。",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-checker.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-cover.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Codex 登录不上应该先查什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "先确认账号状态、网络访问、浏览器登录态和终端环境，再排查项目目录与权限。不要一上来反复重装。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Codex 第一次任务失败怎么办？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "先把任务缩小到一个文件或一个明确目标，确认工作目录正确、当前文件可写，再让 Codex 给出计划和 diff。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "这个自检器会代替官方文档吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不会。它用于整理排查顺序和新手检查项，账号权限、平台风控和网络问题仍要按官方状态和实际环境处理。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #667085;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #b86b00;
+      --deep: #0d1b2a;
+      --soft-blue: #eaf1ff;
+      --soft-green: #e9f8f3;
+      --soft-amber: #fff6e6;
+      --shadow: 0 18px 48px rgba(16, 24, 40, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      min-height: 620px;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.93) 48%, rgba(246,248,251,.28) 78%),
+        url("codex-troubleshooting-cover.webp") right center / min(42vw, 620px) auto no-repeat;
+    }
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero-copy {
+      max-width: 660px;
+      padding: 74px 0 86px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(21,94,239,.24);
+      background: rgba(21,94,239,.08);
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      margin: 20px 0 16px;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin-bottom: 16px;
+      font-size: 30px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+    .lead {
+      max-width: 620px;
+      color: #4d5a68;
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px 17px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 820;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .btn-line { border-color: var(--line); }
+    section {
+      padding: 58px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(420px, 1.05fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .form-panel { padding: 22px; }
+    .result-panel {
+      position: sticky;
+      top: 78px;
+      overflow: hidden;
+    }
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .result-body { padding: 22px; }
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .field {
+      min-height: 104px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    .hint {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      letter-spacing: 0;
+    }
+    input[type="text"],
+    select {
+      min-height: 44px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 90px;
+      padding: 12px;
+      resize: vertical;
+    }
+    .check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .check-grid label {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 760;
+    }
+    .check-grid input { width: auto; }
+    .score-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .score {
+      color: var(--green);
+      font-size: 74px;
+      line-height: 1;
+      font-weight: 950;
+    }
+    .meter {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e7edf6;
+      margin-bottom: 16px;
+    }
+    .meter span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--amber), var(--green));
+      transition: width .2s ease;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+    .pill {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 850;
+    }
+    .script-block {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-top: 18px;
+    }
+    .copybox {
+      min-height: 104px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .list {
+      display: grid;
+      gap: 9px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: #344054;
+    }
+    .cta-panel {
+      border: 1px solid rgba(21,94,239,.24);
+      border-radius: 8px;
+      background: var(--soft-blue);
+      padding: 16px;
+      margin-top: 18px;
+    }
+    .cta-panel p { color: #345070; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card {
+      min-height: 174px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .card p { color: var(--muted); }
+    .footer {
+      padding: 34px 0;
+      color: var(--muted);
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    @media (max-width: 920px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.96) 54%, rgba(246,248,251,.76) 100%),
+          url("codex-troubleshooting-cover.webp") bottom center / min(82vw, 360px) auto no-repeat;
+      }
+      .hero-copy { padding: 42px 0 320px; }
+      .tool-layout,
+      .field-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      .field.full { grid-column: auto; }
+      .check-grid { grid-template-columns: 1fr; }
+      .result-panel { position: static; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="codex-troubleshooting.html">Codex 包</a>
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="xianyu-listing-generator.html">闲鱼文案</a>
+        <a href="order.html?plan=2.99">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">免费 Codex 排障工具</span>
+        <h1>Codex 排障自检器</h1>
+        <p class="lead">登录不上、安装卡住、项目目录选错、第一次任务失败。先填写当前状态，生成一套可照着排查的顺序。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#tool">开始自检</a>
+          <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">闲鱼买 2.99 元排障清单</a>
+          <a class="btn btn-line" href="codex-troubleshooting.html">查看 Codex 包详情</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="tool">
+    <div class="wrap tool-layout">
+      <div class="panel form-panel">
+        <h2>填写当前卡点</h2>
+        <p class="hint">默认按“已安装但第一次任务失败”填写，改完会自动生成新的排障顺序。</p>
+        <div class="field-grid">
+          <div class="field">
+            <label for="stage">卡在哪一步</label>
+            <select id="stage">
+              <option value="task">第一次任务失败</option>
+              <option value="install">安装或启动失败</option>
+              <option value="login">登录不上</option>
+              <option value="project">项目目录或文件不对</option>
+              <option value="permission">权限或写入失败</option>
+              <option value="context">上下文太乱</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="system">使用环境</label>
+            <select id="system">
+              <option value="macOS">macOS</option>
+              <option value="Windows">Windows</option>
+              <option value="Linux">Linux</option>
+              <option value="不确定">不确定</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="projectType">任务类型</label>
+            <select id="projectType">
+              <option value="代码项目">代码项目</option>
+              <option value="文档整理">文档整理</option>
+              <option value="网页修改">网页修改</option>
+              <option value="脚本排错">脚本排错</option>
+              <option value="还没开始">还没开始</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="urgency">当前紧急程度</label>
+            <select id="urgency">
+              <option value="today">今天要跑通</option>
+              <option value="week">这周学会即可</option>
+              <option value="low">只是先了解</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label>已经确认的项目</label>
+            <div class="check-grid">
+              <label><input type="checkbox" id="hasAccount" checked> 账号状态正常</label>
+              <label><input type="checkbox" id="hasProject" checked> 已打开正确项目目录</label>
+              <label><input type="checkbox" id="hasWritable"> 文件可写且能保存</label>
+              <label><input type="checkbox" id="hasSmallTask" checked> 任务足够小</label>
+              <label><input type="checkbox" id="hasErrorText"> 已记录报错原文</label>
+              <label><input type="checkbox" id="hasBackup"> 改动前有备份或 git 状态</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label for="symptom">现象描述</label>
+            <textarea id="symptom">我能打开 Codex，但让它改项目时结果不稳定，不确定是不是目录、权限或提示词写法的问题。</textarea>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="generate" type="button">重新生成</button>
+          <a class="btn btn-line" href="codex-troubleshooting.html">查看完整排障包</a>
+          <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">闲鱼担保购买</a>
+        </div>
+      </div>
+
+      <aside class="panel result-panel">
+        <img class="cover" src="codex-troubleshooting-cover.webp" alt="Codex 排障自检器封面">
+        <div class="result-body">
+          <div class="score-row">
+            <div class="score" id="score">72</div>
+            <div>
+              <strong id="scoreLabel">先按顺序缩小问题</strong>
+              <p class="hint" id="scoreHint">当前不是重装优先，先确认目录、权限、任务边界和报错原文。</p>
+            </div>
+          </div>
+          <div class="meter"><span id="meter"></span></div>
+          <div class="pill-row" id="pillRow"></div>
+
+          <div class="script-block">
+            <h3>最可能的卡点</h3>
+            <div class="copybox" id="diagnosis"></div>
+          </div>
+          <div class="script-block">
+            <h3>排障顺序</h3>
+            <ul class="list" id="steps"></ul>
+          </div>
+          <div class="script-block">
+            <h3>给 Codex 的下一句提示词</h3>
+            <div class="copybox" id="promptOut"></div>
+          </div>
+          <div class="script-block">
+            <h3>不要先做的事</h3>
+            <ul class="list" id="avoidList"></ul>
+          </div>
+
+          <div class="cta-panel">
+            <h3>需要一份可照着做的清单</h3>
+            <p>如果你不想每次都重新问，2.99 元 Codex 入门排障清单包含安装登录自检、第一次任务流程、常见失败排查和可复制提示词。</p>
+            <div class="actions">
+              <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">闲鱼买 2.99 元 Codex 包</a>
+              <a class="btn btn-line" href="order.html?plan=2.99&scenario=我想购买 Codex 入门排障清单">邮件备用订单</a>
+              <a class="btn btn-line" href="https://www.goofish.com/item?id=1059263013337" target="_blank" rel="noopener">升级 99 元实战包</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>新手最容易卡在三件事</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>目录没确认</h3>
+          <p>让 Codex 改之前，先确认它面对的是正确项目，而不是桌面、下载目录或旧副本。</p>
+        </div>
+        <div class="card">
+          <h3>任务太大</h3>
+          <p>第一次不要让它重构整个项目，先从一个页面、一个函数、一个文档段落开始。</p>
+        </div>
+        <div class="card">
+          <h3>没有验收标准</h3>
+          <p>只说“帮我优化”容易跑偏，最好写清要改哪里、不能碰哪里、怎么检查完成。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="codex-troubleshooting.html">Codex 入门排障清单</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    const stageText = {
+      install: "安装或启动失败",
+      login: "登录不上",
+      project: "项目目录或文件不对",
+      permission: "权限或写入失败",
+      task: "第一次任务失败",
+      context: "上下文太乱"
+    };
+    const $ = (id) => document.getElementById(id);
+    const fields = [
+      "stage", "system", "projectType", "urgency", "symptom",
+      "hasAccount", "hasProject", "hasWritable", "hasSmallTask", "hasErrorText", "hasBackup"
+    ];
+
+    function readState() {
+      return {
+        stage: $("stage").value,
+        system: $("system").value,
+        projectType: $("projectType").value,
+        urgency: $("urgency").value,
+        symptom: $("symptom").value.trim() || "还没有写清楚现象。",
+        hasAccount: $("hasAccount").checked,
+        hasProject: $("hasProject").checked,
+        hasWritable: $("hasWritable").checked,
+        hasSmallTask: $("hasSmallTask").checked,
+        hasErrorText: $("hasErrorText").checked,
+        hasBackup: $("hasBackup").checked
+      };
+    }
+
+    function buildDiagnosis(state) {
+      if (state.stage === "login") {
+        return "优先确认账号状态、浏览器登录态、网络访问和终端环境。不要先改项目文件。";
+      }
+      if (state.stage === "install") {
+        return `优先确认 ${state.system} 下的安装方式、终端路径和启动命令。先跑最小启动检查，再进入项目。`;
+      }
+      if (state.stage === "project") {
+        return "优先确认当前目录是否是你真正要改的项目，并列出关键文件。目录错了，后面的提示词都会跑偏。";
+      }
+      if (state.stage === "permission") {
+        return "优先确认文件可写、目录权限、git 状态和是否被其他软件占用。不要让 Codex 在无法保存的文件上反复尝试。";
+      }
+      if (state.stage === "context") {
+        return "优先缩短上下文：只保留当前目标、相关文件和验收标准。先结束无关对话，再让 Codex 重新计划。";
+      }
+      return "优先把第一次任务缩小：只改一个文件或一个明确输出，先让 Codex 说明计划和检查方式，再动手。";
+    }
+
+    function buildSteps(state) {
+      const steps = [];
+      if (!state.hasAccount) steps.push("先确认账号能正常访问，不要把账号或网络问题误判成项目问题。");
+      if (!state.hasProject) steps.push("打开正确项目目录，确认文件列表里有你真正要改的文件。");
+      if (!state.hasWritable) steps.push("做一次小文件保存测试，确认目录可写，必要时检查权限或同步盘锁定。");
+      if (!state.hasSmallTask) steps.push("把任务缩到一个可验收目标，例如只改一个页面、一个函数或一个 README 段落。");
+      if (!state.hasErrorText) steps.push("复制完整报错原文，保留发生时间、命令和触发动作。");
+      if (!state.hasBackup) steps.push("先看 git status 或备份当前文件，避免改错后无法回退。");
+      steps.push("让 Codex 先输出计划和要改的文件，再确认是否执行。");
+      steps.push("执行后用页面、命令或 diff 验收，不只看它说完成。");
+      return steps;
+    }
+
+    function render() {
+      const state = readState();
+      let score = 36;
+      score += state.hasAccount ? 10 : -8;
+      score += state.hasProject ? 12 : -12;
+      score += state.hasWritable ? 10 : -10;
+      score += state.hasSmallTask ? 12 : -12;
+      score += state.hasErrorText ? 10 : -4;
+      score += state.hasBackup ? 8 : -4;
+      if (state.urgency === "today") score -= 2;
+      score = Math.max(18, Math.min(96, score));
+
+      $("score").textContent = score;
+      $("meter").style.width = score + "%";
+      $("scoreLabel").textContent = score >= 78 ? "可以开始小任务验证" : score >= 58 ? "先按顺序缩小问题" : "先补基础检查";
+      $("scoreHint").textContent = score >= 78
+        ? "你的基础信息比较完整，可以让 Codex 先计划再改一个小任务。"
+        : "当前还缺关键排查项，先补目录、权限、任务边界或报错原文。";
+      $("pillRow").innerHTML = [
+        stageText[state.stage],
+        state.system,
+        state.projectType,
+        state.urgency === "today" ? "今天要跑通" : state.urgency === "week" ? "这周学会" : "先了解"
+      ].map(item => `<span class="pill">${item}</span>`).join("");
+      $("diagnosis").textContent = `${buildDiagnosis(state)}\n\n你描述的现象：${state.symptom}`;
+      $("steps").innerHTML = buildSteps(state).map(item => `<li>${item}</li>`).join("");
+      $("promptOut").textContent = `我现在在 ${state.system} 环境，任务类型是${state.projectType}，卡点是：${stageText[state.stage]}。\n\n现象：${state.symptom}\n\n请你先不要直接改文件，先按顺序帮我检查：当前目录是否正确、相关文件有哪些、可能原因、最小可验证修改、执行后的验收方式。输出计划后等我确认。`;
+      $("avoidList").innerHTML = [
+        "不要一上来反复重装，先确认账号、目录、权限和任务范围。",
+        "不要把一整个项目重构当第一次任务，先跑一个小改动。",
+        "不要只看 Codex 的完成说明，要用 diff、页面或命令验证结果。"
+      ].map(item => `<li>${item}</li>`).join("");
+    }
+
+    fields.forEach(id => {
+      const el = $(id);
+      if (el) el.addEventListener("input", render);
+      if (el) el.addEventListener("change", render);
+    });
+    $("generate").addEventListener("click", render);
+    render();
+  </script>
+</body>
+</html>
