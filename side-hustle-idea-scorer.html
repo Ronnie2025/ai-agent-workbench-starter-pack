@@ -385,7 +385,7 @@
       <a class="brand" href="./">AI Workbench Store</a>
       <div class="nav">
         <a href="virtual-products.html">虚拟资料</a>
-        <a href="order.html?plan=49">49 元模板包</a>
+        <a href="https://www.goofish.com/item?id=1060176980426" target="_blank" rel="noopener">闲鱼 49 元模板包</a>
         <a href="ai-workbench-self-test-pack.html">19 元自测表</a>
         <a href="template-generator.html">模板生成器</a>
         <a href="after-order.html">交付说明</a>
@@ -515,19 +515,28 @@
           <strong>19</strong>
           <h3>方向不清楚</h3>
           <p>先用 AI 工作台自测表选第一个流程，避免一开始买错资料。</p>
-          <div class="actions"><a class="btn btn-line" href="ai-workbench-self-test-pack.html">查看自测表</a></div>
+          <div class="actions">
+            <a class="btn btn-line" href="ai-workbench-self-test-pack.html">查看自测表</a>
+            <a class="btn btn-dark" href="https://www.goofish.com/item?id=1060189932353" target="_blank" rel="noopener">闲鱼担保买自测表</a>
+          </div>
         </div>
         <div class="step">
           <strong>49</strong>
           <h3>需要找证据</h3>
           <p>用 Reddit/X 情报模板包继续找需求、竞品、关键词和可交付资料形态。</p>
-          <div class="actions"><a class="btn btn-primary" href="order.html?plan=49&scenario=我想购买 Reddit/X 副业情报检索模板包">购买模板包</a></div>
+          <div class="actions">
+            <a class="btn btn-dark" href="https://www.goofish.com/item?id=1060176980426" target="_blank" rel="noopener">闲鱼担保买模板包</a>
+            <a class="btn btn-primary" href="order.html?plan=49&scenario=我想购买 Reddit/X 副业情报检索模板包">生成邮件订单</a>
+          </div>
         </div>
         <div class="step">
           <strong>99</strong>
           <h3>准备做成资料</h3>
           <p>用 AI Agent 工作台实战包把资料整理流程、提示词、样品和交付检查固定下来。</p>
-          <div class="actions"><a class="btn btn-dark" href="order.html?plan=99&scenario=我想购买 AI Agent 工作台实战包">购买实战包</a></div>
+          <div class="actions">
+            <a class="btn btn-dark" href="https://www.goofish.com/item?id=1059263013337" target="_blank" rel="noopener">闲鱼担保买实战包</a>
+            <a class="btn btn-primary" href="order.html?plan=99&scenario=我想购买 AI Agent 工作台实战包">生成邮件订单</a>
+          </div>
         </div>
       </div>
     </div>
@@ -554,6 +563,11 @@
     const checksEl = document.getElementById("checks");
     const actionsEl = document.getElementById("actions");
     const summaryEl = document.getElementById("summary");
+    const xianyuByPlan = {
+      "19": "https://www.goofish.com/item?id=1060189932353",
+      "49": "https://www.goofish.com/item?id=1060176980426",
+      "99": "https://www.goofish.com/item?id=1059263013337"
+    };
 
     function selectedPlatforms() {
       return Array.from(document.querySelectorAll("input[name='platform']:checked")).map((input) => input.value);
@@ -569,8 +583,10 @@
           label: "可以做小样测试",
           copy: "这个选题已经有比较清楚的人群、需求和交付形态。下一步不是做大课，而是做一份能发货的小样，继续验证关键词和购买意向。",
           cta: [
+            ["闲鱼担保买 49 元模板包", "49", "btn-dark", "xianyu"],
             ["购买 49 元情报模板包", "49", "btn-primary"],
-            ["购买 99 元实战包", "99", "btn-dark"]
+            ["闲鱼担保买 99 元实战包", "99", "btn-dark", "xianyu"],
+            ["购买 99 元实战包", "99", "btn-line"]
           ]
         };
       }
@@ -579,6 +595,7 @@
           label: "先补证据再制作",
           copy: "这个选题有机会，但证据还不够厚。先补真实搜索、竞品、评论和痛点原话，再决定资料包目录和定价。",
           cta: [
+            ["闲鱼担保买 49 元模板包", "49", "btn-dark", "xianyu"],
             ["购买 49 元情报模板包", "49", "btn-primary"],
             ["查看虚拟资料货架", "virtual-products.html", "btn-line", "static"]
           ]
@@ -588,6 +605,7 @@
         label: "暂缓包装付费资料",
         copy: "这个选题现在还不适合直接做成付费资料。优先缩小人群、找明确需求证据，或者先用自测表换一个更具体的流程。",
         cta: [
+          ["闲鱼担保买自测表", "19", "btn-dark", "xianyu"],
           ["购买 19 元自测表", "19", "btn-primary"],
           ["先做免费自测", "self-test.html", "btn-line", "static"]
         ]
@@ -635,8 +653,9 @@
       checksEl.innerHTML = checks.map((item) => `<li>${item}</li>`).join("");
       summaryEl.value = summaryText;
       actionsEl.innerHTML = t.cta.map(([text, target, cls, mode]) => {
-        const href = mode === "static" ? target : `order.html?plan=${encodeURIComponent(target)}&scenario=${encodeURIComponent(summaryText)}`;
-        return `<a class="btn ${cls}" href="${href}">${text}</a>`;
+        const href = mode === "static" ? target : mode === "xianyu" ? xianyuByPlan[target] : `order.html?plan=${encodeURIComponent(target)}&scenario=${encodeURIComponent(summaryText)}`;
+        const external = mode === "xianyu" ? ' target="_blank" rel="noopener"' : "";
+        return `<a class="btn ${cls}" href="${href}"${external}>${text}</a>`;
       }).join("");
     }
 

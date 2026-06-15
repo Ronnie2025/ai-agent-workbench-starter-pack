@@ -350,6 +350,7 @@
           <a class="btn btn-line" href="side-hustle-idea-scorer.html">先评估选题</a>
           <a class="btn btn-line" href="digital-listing-checker.html">上架前自检</a>
           <a class="btn btn-line" href="virtual-products.html">查看资料货架</a>
+          <a class="btn btn-line" href="https://www.goofish.com/item?id=1060176980426" target="_blank" rel="noopener">闲鱼买 49 元模板包</a>
         </div>
       </div>
     </div>
@@ -451,8 +452,10 @@
         <a class="btn btn-primary" href="digital-listing-checker.html">先免费自检</a>
         <a class="btn btn-line" href="digital-listing-compliance.html">查看 19.90 元上架自检包</a>
         <a class="btn btn-line" href="order.html?plan=19.90&scenario=我想购买电子资料上架合规自检包">购买 19.90 元自检包</a>
-        <a class="btn btn-line" href="order.html?plan=49&scenario=我想购买 Reddit/X 副业情报检索模板包">购买 49 元情报模板</a>
-        <a class="btn btn-line" href="order.html?plan=99&scenario=我想购买 AI Agent 工作台实战包">购买 99 元实战包</a>
+        <a class="btn btn-dark" href="https://www.goofish.com/item?id=1060176980426" target="_blank" rel="noopener">闲鱼买 49 元情报模板</a>
+        <a class="btn btn-line" href="order.html?plan=49&scenario=我想购买 Reddit/X 副业情报检索模板包">生成 49 元邮件订单</a>
+        <a class="btn btn-dark" href="https://www.goofish.com/item?id=1059263013337" target="_blank" rel="noopener">闲鱼买 99 元实战包</a>
+        <a class="btn btn-line" href="order.html?plan=99&scenario=我想购买 AI Agent 工作台实战包">生成 99 元邮件订单</a>
       </div>
     </div>
   </section>
@@ -502,6 +505,11 @@
     const scenarioOut = document.getElementById("scenarioOut");
     const orderActions = document.getElementById("orderActions");
     const score = document.getElementById("score");
+    const xianyuByPlan = {
+      "19": "https://www.goofish.com/item?id=1060189932353",
+      "49": "https://www.goofish.com/item?id=1060176980426",
+      "99": "https://www.goofish.com/item?id=1059263013337"
+    };
 
     function checkedItems() {
       return Array.from(document.querySelectorAll(".check input:checked")).map((input) => input.value);
@@ -582,7 +590,11 @@
       shipOut.textContent = ship;
       scenarioOut.textContent = scenario;
       score.textContent = items.length >= 4 ? "可测试" : "先补内容";
+      const directXianyu = xianyuByPlan[primaryOffer.plan]
+        ? [`<a class="btn btn-dark mini" href="${xianyuByPlan[primaryOffer.plan]}" target="_blank" rel="noopener">闲鱼担保购买</a>`]
+        : [];
       orderActions.innerHTML = [
+        ...directXianyu,
         `<a class="btn btn-primary mini" href="order.html?plan=${encodeURIComponent(primaryOffer.plan)}&scenario=${encodeURIComponent(scenario)}">${primaryOffer.label}</a>`,
         `<a class="btn btn-line mini" href="order.html?plan=${encodeURIComponent(secondaryOffer.plan)}&scenario=${encodeURIComponent(scenario)}">${secondaryOffer.label}</a>`,
         `<a class="btn btn-line mini" href="order.html?plan=${encodeURIComponent(tertiaryOffer.plan)}&scenario=${encodeURIComponent(scenario)}">${tertiaryOffer.label}</a>`,
