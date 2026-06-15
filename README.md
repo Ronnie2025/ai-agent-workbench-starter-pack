@@ -22,6 +22,7 @@ consultants, and small-team operators.
 - Codex 第一次任务提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html
 - PPT 大纲生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generator.html
 - AI-PPT 交付自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
+- n8n 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-checker.html
 - n8n AI副业情报雷达: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar.html
 - 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
 - 付款和交付说明: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
@@ -152,6 +153,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-offic
 AI side-hustle idea scorer:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-idea-scorer.html
+
+n8n workflow fit checker:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-checker.html
 
 Xianyu listing generator:
 

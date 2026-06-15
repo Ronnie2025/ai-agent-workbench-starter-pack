@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>n8n 工作流适配评分器 | 判断副业选题雷达能不能用 n8n 跑</title>
+  <meta name="description" content="免费 n8n 工作流适配评分器：判断你的 AI 副业选题、资料包情报、公开平台监控需求是否适合用 n8n 自动化，并导向 29.90 元 n8n AI副业情报雷达。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-checker.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="n8n 工作流适配评分器">
+  <meta property="og:description" content="3 分钟判断你的公开情报收集需求是否适合用 n8n 工作流模板起步。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-checker.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "n8n 工作流适配评分器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "判断 AI 副业选题、虚拟资料情报、公开平台监控需求是否适合用 n8n 工作流模板起步。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar-cover.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "这个评分器适合评估什么需求？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "适合评估从 Hacker News、GitHub、Reddit、RSS 或公开网页里定期收集 AI 项目、自动化工具、副业选题和虚拟资料线索的需求。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "评分高是否代表买了模板就能赚钱？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不代表。评分只判断是否适合用 n8n 模板减少手动检索，不承诺成交、涨粉、收入或回本。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "完全不会 n8n 可以买吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不建议直接买。可以先用评分器确认需求，再至少准备好 n8n 基础安装、导入工作流和手动运行的能力。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6977;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --green: #0f7a55;
+      --blue: #155eef;
+      --amber: #b77900;
+      --deep: #0d1b2a;
+      --soft-green: #e9f8f3;
+      --soft-blue: #eaf1ff;
+      --soft-amber: #fff6e6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .tool {
+      padding: 34px 0 48px;
+    }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(360px, .94fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .tool-panel,
+    .result-panel,
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .tool-panel { padding: 22px; }
+    .result-panel {
+      position: sticky;
+      top: 18px;
+      overflow: hidden;
+    }
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .result-body { padding: 22px; }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,122,85,.24);
+      background: rgba(15,122,85,.08);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 860px;
+      margin: 18px 0 12px;
+      font-size: clamp(38px, 5.5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 780px;
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .field {
+      min-height: 120px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    .hint {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    input[type="text"],
+    select {
+      min-height: 44px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+      padding: 11px 12px;
+    }
+    .sources {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .sources label {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 750;
+    }
+    .score-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .score {
+      color: var(--green);
+      font-size: 76px;
+      line-height: 1;
+      font-weight: 950;
+    }
+    .score-row span {
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .meter {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e8edf5;
+      margin: 14px 0 18px;
+    }
+    .meter-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--green), var(--blue));
+      transition: width .2s ease;
+    }
+    .status {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--soft-green);
+      color: var(--green);
+      font-weight: 900;
+      font-size: 14px;
+    }
+    .result-copy {
+      margin-top: 14px;
+      color: var(--muted);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .summary {
+      width: 100%;
+      min-height: 118px;
+      margin-top: 16px;
+      border-color: var(--line);
+      background: #f8fbff;
+      color: var(--ink);
+      font-size: 14px;
+    }
+    .checks {
+      display: grid;
+      gap: 8px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .checks li {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+    }
+    .funnel {
+      padding: 46px 0 56px;
+      border-top: 1px solid var(--line);
+    }
+    .funnel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .step {
+      min-height: 250px;
+      padding: 20px;
+    }
+    .step strong {
+      color: var(--green);
+      font-size: 34px;
+      line-height: 1;
+    }
+    .step p { color: var(--muted); }
+    .footer {
+      padding: 24px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 920px) {
+      .tool-layout,
+      .field-grid,
+      .funnel-grid {
+        grid-template-columns: 1fr;
+      }
+      .result-panel { position: static; }
+      .nav { display: none; }
+      h1 { font-size: 42px; }
+      h2 { font-size: 26px; }
+      .btn { width: 100%; }
+      .sources { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="n8n-ai-side-hustle-radar.html">n8n 情报雷达</a>
+        <a href="side-hustle-idea-scorer.html">选题评分器</a>
+        <a href="xianyu-listing-generator.html">闲鱼文案</a>
+        <a href="after-order.html">交付说明</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool">
+    <div class="wrap">
+      <span class="eyebrow">免费工具：先判断能不能自动化</span>
+      <h1>n8n 工作流适配评分器</h1>
+      <p class="lead">把你的公开平台选题、资料包情报、自动化采集想法放进几个约束里评估：数据源是否公开、输出是否固定、频率是否值得自动化、你是否具备最小 n8n 操作能力。</p>
+
+      <div class="tool-layout">
+        <form class="tool-panel" id="fitForm">
+          <div class="field">
+            <label for="workflowGoal">你想自动化的任务</label>
+            <input id="workflowGoal" type="text" value="每周从 Hacker News、GitHub、Reddit 找 AI 副业和虚拟资料选题" autocomplete="off">
+            <div class="hint">写成一个可重复任务，不要只写“帮我找赚钱项目”。</div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="n8nLevel">n8n 熟悉度</label>
+              <select id="n8nLevel">
+                <option value="2">还没装过 n8n</option>
+                <option value="8">会打开 n8n，但很少导入工作流</option>
+                <option value="14" selected>能导入 JSON，并手动运行节点</option>
+              </select>
+              <div class="hint">模板包不是代部署服务，至少要能导入和手动运行。</div>
+            </div>
+
+            <div class="field">
+              <label for="repeatNeed">重复频率</label>
+              <select id="repeatNeed">
+                <option value="3">偶尔查一次</option>
+                <option value="9">每周会查 1-2 次</option>
+                <option value="14" selected>每周都会固定收集和筛选</option>
+              </select>
+              <div class="hint">频率越稳定，越值得做成工作流。</div>
+            </div>
+
+            <div class="field">
+              <label for="outputShape">输出形态</label>
+              <select id="outputShape">
+                <option value="4">只想看一堆链接</option>
+                <option value="10">想要表格字段和评分</option>
+                <option value="16" selected>想要标题、链接、热度、评分和可售方向</option>
+              </select>
+              <div class="hint">字段越固定，工作流越容易稳定运行。</div>
+            </div>
+
+            <div class="field">
+              <label for="signalClarity">信号判断</label>
+              <select id="signalClarity">
+                <option value="3">还不知道什么算好线索</option>
+                <option value="9">能看热度，但不会判断可售方向</option>
+                <option value="14" selected>能按教程、模板、清单、对标拆方向</option>
+              </select>
+              <div class="hint">n8n 只能帮你整理，最后仍要有人判断。</div>
+            </div>
+
+            <div class="field">
+              <label for="dataRisk">数据和合规风险</label>
+              <select id="dataRisk">
+                <option value="14" selected>只用公开页面、公开 API 或公开 RSS</option>
+                <option value="7">可能需要登录态或 API Token</option>
+                <option value="0">想抓私域、付费内容、账号数据或灰产线索</option>
+              </select>
+              <div class="hint">公开信号整理更适合做低风险资料包。</div>
+            </div>
+
+            <div class="field">
+              <label for="maintenance">维护预期</label>
+              <select id="maintenance">
+                <option value="4">希望永远不用改</option>
+                <option value="9" selected>能接受偶尔调整节点或禁用某个来源</option>
+                <option value="12">能自己加来源、改字段和处理限流</option>
+              </select>
+              <div class="hint">公开平台会变，模板要按说明做降级运行。</div>
+            </div>
+
+            <div class="field">
+              <label for="firstUse">首个使用目标</label>
+              <select id="firstUse">
+                <option value="4">先收藏，不一定会跑</option>
+                <option value="10">导入后跑样例，看能不能出表</option>
+                <option value="14" selected>跑出 10 条线索，再做一个资料小样</option>
+              </select>
+              <div class="hint">有首个验收目标，才不会买完放硬盘。</div>
+            </div>
+
+            <div class="field">
+              <label>计划接入来源</label>
+              <div class="sources">
+                <label><input type="checkbox" name="source" value="Hacker News" checked> Hacker News</label>
+                <label><input type="checkbox" name="source" value="GitHub" checked> GitHub</label>
+                <label><input type="checkbox" name="source" value="Reddit" checked> Reddit</label>
+                <label><input type="checkbox" name="source" value="RSS"> RSS</label>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <aside class="result-panel">
+          <img class="cover" src="n8n-ai-side-hustle-radar-cover.png" alt="n8n AI副业情报雷达封面">
+          <div class="result-body">
+            <h2>适配结果</h2>
+            <div class="score-row"><strong class="score" id="score">0</strong><span>/ 100</span></div>
+            <div class="meter"><div class="meter-fill" id="meterFill"></div></div>
+            <span class="status" id="status">待评分</span>
+            <p class="result-copy" id="resultCopy"></p>
+            <ul class="checks" id="checks"></ul>
+            <div class="actions" id="actions"></div>
+            <textarea class="summary" id="summary" readonly></textarea>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <section class="funnel">
+    <div class="wrap">
+      <h2>评分后怎么走</h2>
+      <div class="funnel-grid">
+        <div class="step">
+          <strong>0</strong>
+          <h3>还没想清楚卖什么</h3>
+          <p>先用 AI 副业选题评分器判断这个方向是否值得做资料小样。</p>
+          <div class="actions">
+            <a class="btn btn-line" href="side-hustle-idea-scorer.html">做选题评分</a>
+          </div>
+        </div>
+        <div class="step">
+          <strong>29.90</strong>
+          <h3>适合直接跑模板</h3>
+          <p>买 n8n AI副业情报雷达，把公开信号先跑成一张可筛选表。</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="n8n-ai-side-hustle-radar.html">查看资料包</a>
+            <a class="btn btn-line" href="order.html?plan=n8n-29.90&scenario=我想购买 n8n AI副业情报雷达">生成订单</a>
+          </div>
+        </div>
+        <div class="step">
+          <strong>99</strong>
+          <h3>要做成完整资料产品</h3>
+          <p>如果已经有线索和样品，用实战包把资料结构、提示词和交付检查固定下来。</p>
+          <div class="actions">
+            <a class="btn btn-dark" href="https://www.goofish.com/item?id=1059263013337" target="_blank" rel="noopener">闲鱼买实战包</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="n8n-ai-side-hustle-radar.html">n8n 情报雷达</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    const fields = ["n8nLevel", "repeatNeed", "outputShape", "signalClarity", "dataRisk", "maintenance", "firstUse"];
+    const form = document.getElementById("fitForm");
+    const goalEl = document.getElementById("workflowGoal");
+    const scoreEl = document.getElementById("score");
+    const meterFill = document.getElementById("meterFill");
+    const statusEl = document.getElementById("status");
+    const resultCopy = document.getElementById("resultCopy");
+    const checksEl = document.getElementById("checks");
+    const actionsEl = document.getElementById("actions");
+    const summaryEl = document.getElementById("summary");
+
+    function selectedSources() {
+      return Array.from(document.querySelectorAll("input[name='source']:checked")).map((input) => input.value);
+    }
+
+    function sourceScore(sources) {
+      if (sources.length >= 3) return 12;
+      if (sources.length === 2) return 8;
+      if (sources.length === 1) return 4;
+      return 0;
+    }
+
+    function tier(score) {
+      if (score >= 76) {
+        return {
+          label: "适合直接导入模板测试",
+          copy: "你的需求已经有公开来源、固定字段和重复频率。下一步可以先导入模板跑一次样例，再决定是否改成自己的版本。",
+          cta: [
+            ["查看 n8n 资料包", "n8n-ai-side-hustle-radar.html", "btn-primary"],
+            ["购买 29.90 元资料包", "order", "btn-line"],
+            ["继续看虚拟资料货架", "virtual-products.html", "btn-line"]
+          ]
+        };
+      }
+      if (score >= 55) {
+        return {
+          label: "先缩小任务再自动化",
+          copy: "这个需求有机会，但还需要先明确来源、字段或首个验收目标。建议先跑 1-2 个公开来源，不要一上来做全平台监控。",
+          cta: [
+            ["查看 n8n 资料包", "n8n-ai-side-hustle-radar.html", "btn-primary"],
+            ["先做副业选题评分", "side-hustle-idea-scorer.html", "btn-line"],
+            ["查看虚拟资料货架", "virtual-products.html", "btn-line"]
+          ]
+        };
+      }
+      return {
+        label: "暂不适合直接上 n8n",
+        copy: "现在更像一次性搜索或需求还不够清楚。先确定具体人群、资料形态和可公开获取的数据源，再考虑工作流模板。",
+        cta: [
+          ["先做副业选题评分", "side-hustle-idea-scorer.html", "btn-primary"],
+          ["生成闲鱼上架文案", "xianyu-listing-generator.html", "btn-line"],
+          ["查看虚拟资料货架", "virtual-products.html", "btn-line"]
+        ]
+      };
+    }
+
+    function buildChecks(score, sources) {
+      const checks = [];
+      const n8nLevel = Number(document.getElementById("n8nLevel").value);
+      const dataRisk = Number(document.getElementById("dataRisk").value);
+      const outputShape = Number(document.getElementById("outputShape").value);
+      const maintenance = Number(document.getElementById("maintenance").value);
+      const firstUse = Number(document.getElementById("firstUse").value);
+
+      if (n8nLevel < 8) checks.push("先准备 n8n 基础安装和导入 JSON 的能力。");
+      if (sources.length < 2) checks.push("至少选 2 个公开来源，避免结果太单薄。");
+      if (dataRisk < 7) checks.push("不要把私域、付费内容、账号数据或灰产线索放进这个流程。");
+      if (outputShape < 10) checks.push("先定义输出字段：标题、链接、热度、评分、可售方向。");
+      if (maintenance < 9) checks.push("公开平台会限流或改规则，准备好按说明禁用某个来源。");
+      if (firstUse < 10) checks.push("先定一个验收目标，例如跑出 10 条线索并做一个资料小样。");
+      if (score >= 76) checks.push("适合先用 n8n AI副业情报雷达跑一版公开信号表。");
+      if (checks.length === 0) checks.push("基础条件不错，可以进入模板导入和样例输出验证。");
+      return checks.slice(0, 6);
+    }
+
+    function orderUrl(summary) {
+      const scenario = encodeURIComponent(summary);
+      return `order.html?plan=n8n-29.90&scenario=${scenario}`;
+    }
+
+    function render() {
+      const sources = selectedSources();
+      const fieldScore = fields.reduce((sum, id) => sum + Number(document.getElementById(id).value), 0);
+      const score = Math.min(100, fieldScore + sourceScore(sources));
+      const currentTier = tier(score);
+      const goal = goalEl.value.trim() || "未填写";
+      const summary = [
+        "来源：n8n 工作流适配评分器",
+        `任务：${goal}`,
+        `评分：${score}/100`,
+        `判断：${currentTier.label}`,
+        `计划来源：${sources.join("、") || "未选择"}`,
+        `下一步：${score >= 76 ? "导入 n8n 模板跑样例" : score >= 55 ? "缩小来源和输出字段" : "先重新定义选题和资料形态"}`
+      ].join("\n");
+
+      scoreEl.textContent = score;
+      meterFill.style.width = `${score}%`;
+      statusEl.textContent = currentTier.label;
+      resultCopy.textContent = currentTier.copy;
+      checksEl.innerHTML = buildChecks(score, sources).map((item) => `<li>${item}</li>`).join("");
+      actionsEl.innerHTML = currentTier.cta.map(([label, href, klass]) => {
+        const realHref = href === "order" ? orderUrl(summary) : href;
+        return `<a class="btn ${klass}" href="${realHref}">${label}</a>`;
+      }).join("");
+      summaryEl.value = summary;
+    }
+
+    form.addEventListener("input", render);
+    render();
+  </script>
+</body>
+</html>
