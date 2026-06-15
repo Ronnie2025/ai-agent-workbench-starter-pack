@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI-PPT 交付自检器 | 结构、AI味、可编辑风险打分</title>
+  <meta name="description" content="免费 AI-PPT 交付自检器：从结构、AI味、可编辑性、事实版权、客户修改和交付风险判断一份 AI-PPT 是否适合交付。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="AI-PPT 交付自检器">
+  <meta property="og:description" content="3 分钟判断一份 AI-PPT 能不能交付、能不能改、哪里最容易翻车。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-checker-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI-PPT 交付自检器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "从结构、AI味、可编辑性、事实版权、客户修改和交付风险判断一份 AI-PPT 是否适合交付。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-checker-cover.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "这个自检器适合检查什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "适合检查 AI 生成的汇报 PPT、课程课件、客户提案、答辩材料和讲义型 PPT，重点看结构、AI 味、可编辑性和交付风险。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "评分高是否代表可以直接交付？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不代表。评分只是交付前的自查参考，重要事实、版权、品牌规范和客户要求仍需人工核查。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "评分低该怎么办？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "优先补结构、证据、可编辑文本层和修改说明，不建议只让 AI 继续美化页面。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6977;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #b86b00;
+      --deep: #0d1b2a;
+      --soft-blue: #eaf1ff;
+      --soft-green: #e9f8f3;
+      --soft-amber: #fff6e6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .tool {
+      padding: 34px 0 48px;
+    }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .tool-panel,
+    .result-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .tool-panel {
+      padding: 22px;
+    }
+    .result-panel {
+      position: sticky;
+      top: 18px;
+      overflow: hidden;
+    }
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .result-body {
+      padding: 22px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(21,94,239,.24);
+      background: rgba(21,94,239,.08);
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 820px;
+      margin: 18px 0 12px;
+      font-size: clamp(38px, 5.5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 760px;
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .field {
+      min-height: 120px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    .hint {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    input[type="text"],
+    select {
+      min-height: 46px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 96px;
+      padding: 12px;
+      resize: vertical;
+    }
+    .checks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .checks-grid label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 40px;
+      margin: 0;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+    }
+    .score-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin: 4px 0 10px;
+    }
+    .score {
+      color: var(--blue);
+      font-size: 72px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .meter {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e7edf6;
+    }
+    .meter-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--amber), var(--green));
+      transition: width .2s ease;
+    }
+    .status {
+      display: inline-flex;
+      margin-top: 14px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-weight: 850;
+    }
+    .result-copy {
+      margin-top: 14px;
+      color: var(--muted);
+    }
+    .checks {
+      display: grid;
+      gap: 8px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .checks li {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fbff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+      cursor: pointer;
+      font: inherit;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .summary {
+      width: 100%;
+      min-height: 150px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .funnel {
+      padding: 54px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .funnel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .step {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .step strong {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--blue);
+      font-size: 42px;
+      line-height: 1;
+    }
+    .step p { color: var(--muted); }
+    .footer {
+      padding: 24px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .tool-layout,
+      .field-grid,
+      .checks-grid,
+      .funnel-grid {
+        grid-template-columns: 1fr;
+      }
+      .result-panel {
+        position: static;
+      }
+      .score { font-size: 62px; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="ai-ppt-delivery-check.html">AI-PPT 包</a>
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="xianyu-listing-generator.html">闲鱼文案</a>
+        <a href="side-hustle-idea-scorer.html">选题评分器</a>
+        <a href="order.html?plan=29.90">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool">
+    <div class="wrap">
+      <span class="eyebrow">免费工具</span>
+      <h1>AI-PPT 交付自检器</h1>
+      <p class="lead">不要只看页面好不好看。交付前先检查结构、AI 味、可编辑性、事实版权和客户修改风险，再决定是继续打磨还是购买自检包。</p>
+      <div class="tool-layout">
+        <form class="tool-panel" id="checkerForm">
+          <h2>填写当前 PPT 状态</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="deckName">PPT 任务</label>
+              <input id="deckName" type="text" value="课程课件 / 客户提案 / 工作汇报">
+              <div class="hint">写清这份 PPT 的真实用途。</div>
+            </div>
+            <div class="field">
+              <label for="audience">主要观众</label>
+              <select id="audience">
+                <option value="6">泛泛观众，不太明确</option>
+                <option value="10" selected>老板、客户、学生或评委已明确</option>
+                <option value="14">已明确观众关注点和决策动作</option>
+              </select>
+              <div class="hint">观众不清楚，页面就容易变成模板。</div>
+            </div>
+            <div class="field">
+              <label for="structure">结构状态</label>
+              <select id="structure">
+                <option value="4">AI 直接生成整套，未拆故事线</option>
+                <option value="10" selected>有目录和页面分工，但主结论还一般</option>
+                <option value="15">每页都有清晰任务和递进关系</option>
+              </select>
+              <div class="hint">结构比美化更早决定能不能交付。</div>
+            </div>
+            <div class="field">
+              <label for="evidence">事实和证据</label>
+              <select id="evidence">
+                <option value="3">大多是 AI 生成表述</option>
+                <option value="9" selected>关键数字和案例有来源，但还没全查</option>
+                <option value="14">关键事实、数字、案例和引用已核查</option>
+              </select>
+              <div class="hint">对外材料不能只靠 AI 自信表达。</div>
+            </div>
+            <div class="field">
+              <label for="editable">可编辑性</label>
+              <select id="editable">
+                <option value="4">多页是整张图片，文字难改</option>
+                <option value="10" selected>标题正文可改，部分背景是图片</option>
+                <option value="15">文本、图表、图片层和数据来源边界清楚</option>
+              </select>
+              <div class="hint">客户要改字时，整图页最容易翻车。</div>
+            </div>
+            <div class="field">
+              <label for="visual">AI 味</label>
+              <select id="visual">
+                <option value="4">图标、字体、配色、留白明显不统一</option>
+                <option value="9" selected>整体可看，但还有模板感和空泛感</option>
+                <option value="13">层级、留白、字体、图表和场景基本统一</option>
+              </select>
+              <div class="hint">AI 味常来自空话、层级混乱和图文无关。</div>
+            </div>
+            <div class="field">
+              <label for="deadline">交付压力</label>
+              <select id="deadline">
+                <option value="5">今晚/明天就要交，几乎没时间检查</option>
+                <option value="9" selected>还有半天到一天可检查</option>
+                <option value="12">还有 2 天以上可打磨和复核</option>
+              </select>
+              <div class="hint">时间越紧，越要先查高风险项。</div>
+            </div>
+            <div class="field">
+              <label for="revision">修改预期</label>
+              <select id="revision">
+                <option value="4">客户/老师大概率会逐字修改</option>
+                <option value="9" selected>可能会改标题、数据和部分页面</option>
+                <option value="12">只需确认方向和少量文字</option>
+              </select>
+              <div class="hint">修改预期越高，可编辑边界越重要。</div>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top:14px;">
+            <label>已完成的交付检查</label>
+            <div class="checks-grid">
+              <label><input type="checkbox" name="done" value="故事线" checked> 故事线已确认</label>
+              <label><input type="checkbox" name="done" value="页面分工" checked> 页面分工已确认</label>
+              <label><input type="checkbox" name="done" value="事实核查"> 事实核查完成</label>
+              <label><input type="checkbox" name="done" value="版权检查"> 图片版权检查</label>
+              <label><input type="checkbox" name="done" value="可编辑"> 可编辑层检查</label>
+              <label><input type="checkbox" name="done" value="客户模板"> 客户模板/品牌检查</label>
+              <label><input type="checkbox" name="done" value="导出测试"> PDF 和源文件打开测试</label>
+              <label><input type="checkbox" name="done" value="交付说明"> 修改边界说明</label>
+            </div>
+          </div>
+        </form>
+
+        <aside class="result-panel">
+          <img class="cover" src="ai-ppt-checker-cover.png" alt="AI-PPT 交付自检器封面">
+          <div class="result-body">
+            <h2>自检结果</h2>
+            <div class="score-row"><strong class="score" id="score">0</strong><span>/ 100</span></div>
+            <div class="meter"><div class="meter-fill" id="meterFill"></div></div>
+            <span class="status" id="status">待评分</span>
+            <p class="result-copy" id="resultCopy"></p>
+            <ul class="checks" id="riskList"></ul>
+            <div class="actions" id="actions"></div>
+            <textarea class="summary" id="summary" readonly></textarea>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <section class="funnel">
+    <div class="wrap">
+      <h2>测完后怎么处理</h2>
+      <div class="funnel-grid">
+        <div class="step">
+          <strong>0</strong>
+          <h3>先免费自检</h3>
+          <p>结构、证据、可编辑和版权风险没过，不要急着美化页面。</p>
+        </div>
+        <div class="step">
+          <strong>29.90</strong>
+          <h3>买自检包</h3>
+          <p>用完整清单和提示词把这份 PPT 拆到可修改、可复核、可交付。</p>
+          <div class="actions"><a class="btn btn-primary" href="order.html?plan=29.90&scenario=我想购买 AI-PPT 交付自检包">生成 29.90 元订单</a></div>
+        </div>
+        <div class="step">
+          <strong>999</strong>
+          <h3>升级小班</h3>
+          <p>如果你不只是一份 PPT，而是想搭课程、汇报、提案的稳定工作流，可以上小班实战。</p>
+          <div class="actions"><a class="btn btn-dark" href="workshop.html">看小班实战</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="ai-ppt-delivery-check.html">AI-PPT 交付自检包</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    const fields = ["audience", "structure", "evidence", "editable", "visual", "deadline", "revision"];
+    const form = document.getElementById("checkerForm");
+    const deckName = document.getElementById("deckName");
+    const scoreEl = document.getElementById("score");
+    const meterFill = document.getElementById("meterFill");
+    const statusEl = document.getElementById("status");
+    const resultCopy = document.getElementById("resultCopy");
+    const riskList = document.getElementById("riskList");
+    const actionsEl = document.getElementById("actions");
+    const summaryEl = document.getElementById("summary");
+
+    function checkedItems() {
+      return Array.from(document.querySelectorAll("input[name='done']:checked")).map((input) => input.value);
+    }
+
+    function checklistScore(items) {
+      return Math.min(items.length * 2.5, 20);
+    }
+
+    function tier(score) {
+      if (score >= 78) {
+        return {
+          label: "可以进入交付前复核",
+          copy: "这份 PPT 的结构和交付边界已经比较清楚。下一步重点查事实、版权、客户模板和导出文件，不要再大幅改方向。",
+          cta: [
+            ["购买 29.90 元自检包", "29.90", "btn-primary"],
+            ["查看 AI-PPT 资料页", "ai-ppt-delivery-check.html", "btn-line", "static"]
+          ]
+        };
+      }
+      if (score >= 58) {
+        return {
+          label: "先补关键风险再交付",
+          copy: "这份 PPT 有可用基础，但还有明显交付风险。优先补页面任务、证据来源、可编辑层和修改边界。",
+          cta: [
+            ["购买 29.90 元自检包", "29.90", "btn-primary"],
+            ["购买 99 元实战包", "99", "btn-dark"]
+          ]
+        };
+      }
+      return {
+        label: "暂缓交付，先重拆结构",
+        copy: "现在直接交付风险偏高。不要继续让 AI 美化，先把受众、主结论、页面分工和可编辑要求重拆一遍。",
+        cta: [
+          ["购买 29.90 元自检包", "29.90", "btn-primary"],
+          ["查看 PPT 大纲工作流", "workflow-ppt-outline.html", "btn-line", "static"]
+        ]
+      };
+    }
+
+    function buildRisks(score, items) {
+      const risks = [];
+      const structure = Number(document.getElementById("structure").value);
+      const evidence = Number(document.getElementById("evidence").value);
+      const editable = Number(document.getElementById("editable").value);
+      const visual = Number(document.getElementById("visual").value);
+      const deadline = Number(document.getElementById("deadline").value);
+      const revision = Number(document.getElementById("revision").value);
+      if (structure < 10) risks.push("结构风险：不要直接生成整套，先补一句话主结论和页面分工。");
+      if (evidence < 9 || !items.includes("事实核查")) risks.push("事实风险：关键数字、案例和引用需要人工核查。");
+      if (editable < 10 || !items.includes("可编辑")) risks.push("修改风险：文字层、图片层和图表数据边界还不够清楚。");
+      if (visual < 9) risks.push("AI 味风险：先改标题、层级、留白和图文关系，不要只换风格。");
+      if (!items.includes("版权检查")) risks.push("版权风险：图片、图标、客户模板和截图来源需要确认。");
+      if (deadline < 9) risks.push("时间风险：优先查最影响交付的 3 项，不要全量重做。");
+      if (revision < 9) risks.push("返修风险：客户会改很多时，整图页要拆出可编辑文本。");
+      if (score >= 78) risks.push("当前可以做最终复核：导出 PDF、打开源文件、补交付说明。");
+      return risks.slice(0, 6);
+    }
+
+    function update() {
+      const items = checkedItems();
+      const base = fields.reduce((sum, id) => sum + Number(document.getElementById(id).value), 0);
+      const score = Math.min(100, Math.round(base + checklistScore(items)));
+      const t = tier(score);
+      const name = deckName.value.trim() || "未命名 PPT";
+      const risks = buildRisks(score, items);
+      const scenario = [
+        "来自 AI-PPT 交付自检器",
+        `PPT 任务：${name}`,
+        `自检分数：${score}/100`,
+        `状态判断：${t.label}`,
+        `已完成检查：${items.length ? items.join("、") : "未勾选"}`,
+        `主要风险：${risks.join("；")}`
+      ].join("\n");
+
+      scoreEl.textContent = score;
+      meterFill.style.width = `${score}%`;
+      statusEl.textContent = t.label;
+      resultCopy.textContent = t.copy;
+      riskList.innerHTML = risks.map((risk) => `<li>${risk}</li>`).join("");
+      summaryEl.value = scenario;
+      actionsEl.innerHTML = t.cta.map(([label, target, cls, kind]) => {
+        const href = kind === "static"
+          ? target
+          : `order.html?plan=${encodeURIComponent(target)}&scenario=${encodeURIComponent(scenario)}`;
+        return `<a class="btn ${cls}" href="${href}">${label}</a>`;
+      }).join("");
+    }
+
+    form.addEventListener("input", update);
+    form.addEventListener("change", update);
+    update();
+  </script>
+</body>
+</html>
