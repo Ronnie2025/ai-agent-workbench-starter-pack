@@ -18,6 +18,7 @@ consultants, and small-team operators.
 - AI 虚拟资料货架: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-products.html
 - Codex 入门排障清单: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting.html
 - 小红书标题自测表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-self-test.html
+- AI 工作台自测表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-workbench-self-test-pack.html
 
 ## Scenario Pages
 
@@ -66,6 +67,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooti
 Xiaohongshu title self-test:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-self-test.html
+
+AI workbench self-test pack:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-workbench-self-test-pack.html
 
 Order page:
 
