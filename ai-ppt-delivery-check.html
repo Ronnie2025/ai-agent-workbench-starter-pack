@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI-PPT 交付自检包 | 提示词、AI味排查、可编辑边界</title>
+  <meta name="description" content="29.90 元 AI-PPT 交付自检包，包含开始前检查、AI味排查、PPT提示词模板、可编辑交付边界和内容选题表。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-check.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="AI-PPT 交付自检包">
+  <meta property="og:description" content="用检查清单和提示词，把 AI-PPT 从好看样图推进到能交付、能修改、能复用。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-check.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-check-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "AI-PPT 交付自检包",
+    "description": "用于 AI-PPT 开始前检查、AI味排查、提示词模板和可编辑交付边界判断的数字资料包。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-check-cover.png",
+    "brand": {
+      "@type": "Brand",
+      "name": "AI Workbench Store"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "29.90",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=29.90"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "这份资料包解决什么问题？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "它帮助用户在用 AI 做 PPT 前先拆清结构、受众、页面任务和交付格式，并在输出后检查 AI 味、可编辑性和客户修改边界。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "里面包含现成提示词吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "包含。资料包提供故事线拆解、页面分工、单页生成、改指定页、逻辑审查和可编辑交付检查等提示词模板。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "是否代做 PPT 或保证客户通过？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不代做完整 PPT，也不承诺接单、过稿、成交或客户验收。本包是清单、模板和交付边界资料。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6977;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --deep: #0d1b2a;
+      --amber: #b86b00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,1) 0%, rgba(246,248,251,.97) 48%, rgba(246,248,251,.30) 100%),
+        url("ai-ppt-delivery-check-cover.png") right 50% / min(35vw, 410px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 650px;
+      padding: 58px 0 72px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(21,94,239,.22);
+      background: rgba(21,94,239,.08);
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      font-size: clamp(40px, 6vw, 70px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 22px;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 20px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: var(--deep); color: #fff; }
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .panel,
+    .card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fbff;
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .card {
+      min-height: 168px;
+    }
+    .card p { color: var(--muted); }
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-top: 20px;
+      color: var(--blue);
+      font-weight: 900;
+    }
+    .price strong {
+      font-size: 54px;
+      line-height: 1;
+    }
+    .warning {
+      border-color: rgba(184,107,0,.26);
+      background: rgba(184,107,0,.08);
+    }
+    .order {
+      background: var(--deep);
+      color: #fff;
+      border-bottom: 0;
+    }
+    .order p {
+      max-width: 760px;
+      color: #cbd5e1;
+    }
+    .footer {
+      padding: 24px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 880px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(246,248,251,1) 0%, rgba(246,248,251,.96) 48%, rgba(246,248,251,.72) 100%),
+          url("ai-ppt-delivery-check-cover.png") bottom center / min(78vw, 390px) auto no-repeat;
+      }
+      .hero-copy { padding: 38px 0 500px; }
+      .nav { display: none; }
+      .two-col,
+      .grid { grid-template-columns: 1fr; }
+      h1 { font-size: 42px; }
+      h2 { font-size: 28px; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="side-hustle-idea-scorer.html">选题评分器</a>
+        <a href="xianyu-listing-generator.html">闲鱼文案</a>
+        <a href="prompt-library.html">提示词库</a>
+        <a href="workshop.html">小班实战</a>
+        <a href="order.html?plan=29.90">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">AI-PPT 资料包</span>
+        <h1>AI-PPT 做完前，先过一遍交付自检</h1>
+        <p class="lead">给 PPT 接单者、课程老师和职场汇报人。用开始前检查、AI 味排查、提示词模板和可编辑边界，把 AI 生成结果变成更稳的交付物。</p>
+        <div class="price"><span>¥</span><strong>29.90</strong><span>数字资料包</span></div>
+        <div class="actions">
+          <a class="btn btn-primary" href="order.html?plan=29.90&scenario=我想购买 AI-PPT 交付自检包">购买 29.90 元资料包</a>
+          <a class="btn btn-line" href="virtual-products.html">返回虚拟资料货架</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap two-col">
+      <div class="panel">
+        <h2>适合谁</h2>
+        <ul class="list">
+          <li>用 AI 做 PPT，但结果像模板、像拼贴、像自动生成的人。</li>
+          <li>PPT 接单者，想判断哪些页面能用 AI 提效，哪些必须人工把关。</li>
+          <li>课程老师和培训师，想把课件做得更统一，又要保留可编辑性。</li>
+          <li>职场汇报人，明天要交材料，想先把结构和页面分工拆清楚。</li>
+        </ul>
+      </div>
+      <div class="panel warning">
+        <h2>不承诺什么</h2>
+        <ul class="list">
+          <li>不代做完整 PPT。</li>
+          <li>不承诺接单、过稿、成交或客户验收。</li>
+          <li>不提供账号、代充、共享账号、盗版模板或绕过平台规则的方法。</li>
+          <li>不替代事实核查、版权核查和客户保密审查。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>资料包里有什么</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>开始前检查</h3>
+          <p>15 项问题先判断受众、场景、资料、交付格式和修改人。</p>
+        </div>
+        <div class="card">
+          <h3>AI 味排查</h3>
+          <p>从内容、结构、视觉和交付四个维度排查低级感。</p>
+        </div>
+        <div class="card">
+          <h3>提示词模板</h3>
+          <p>故事线、页面分工、单页生成、指定页改稿、逻辑审查。</p>
+        </div>
+        <div class="card">
+          <h3>可编辑边界</h3>
+          <p>判断图片层、文本层、图表数据和客户后续修改范围。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div class="panel">
+        <h2>建议使用顺序</h2>
+        <ul class="list">
+          <li>先用开始前检查表判断这次 PPT 适不适合直接交给 AI。</li>
+          <li>用提示词模板拆故事线和页面分工，不直接生成整套。</li>
+          <li>输出后用 AI 味排查清单检查标题、层级、留白和证据。</li>
+          <li>交付前用可编辑边界检查客户能不能改、团队能不能接手。</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>包含文件</h2>
+        <ul class="list">
+          <li>README：使用说明和交付边界。</li>
+          <li>5 份 Markdown 清单和模板。</li>
+          <li>30 个 AI-PPT 内容选题 CSV。</li>
+          <li>PNG/WebP 封面，方便后续上架和归档。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="order">
+    <div class="wrap">
+      <h2>当前购买方式</h2>
+      <p>自动支付链接接入前，先用邮件订单承接购买意向。生成订单邮件后，我会回复付款方式；付款确认后发送 `AI-PPT-Delivery-Check-Pack-2990.zip`。</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="order.html?plan=29.90&scenario=我想购买 AI-PPT 交付自检包">生成 29.90 元订单</a>
+        <a class="btn btn-line" href="after-order.html">查看交付说明</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="./">返回主站</a>
+    </div>
+  </footer>
+</body>
+</html>

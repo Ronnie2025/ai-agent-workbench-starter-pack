@@ -506,6 +506,7 @@
       if (text.includes("codex")) return { plan: "2.99", label: "购买 2.99 元 Codex 包" };
       if (text.includes("小红书") || text.includes("标题")) return { plan: "9.90", label: "购买 9.90 元标题包" };
       if (text.includes("自测")) return { plan: "19", label: "购买 19 元自测表" };
+      if (text.includes("ppt") || text.includes("幻灯片") || text.includes("课件")) return { plan: "29.90", label: "购买 29.90 元 AI-PPT 包" };
       if (text.includes("选题") || text.includes("副业") || text.includes("资料")) return { plan: "49", label: "购买 49 元情报模板" };
       return { plan: "99", label: "购买 99 元实战包" };
     }
