@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>闲鱼虚拟资料上架文案生成器｜标题、描述、发货话术</title>
+  <meta name="description" content="免费生成闲鱼虚拟资料上架文案：标题、商品描述、发货话术、避坑边界和订单场景，适合原创模板、AI 教程、提示词包和小红书资料包。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html">
+  <meta property="og:title" content="闲鱼虚拟资料上架文案生成器">
+  <meta property="og:description" content="输入资料方向，生成可复制的标题、描述、发货话术和避坑边界。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "闲鱼虚拟资料上架文案生成器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator-cover.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "这个工具适合直接复制到闲鱼发布页吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "适合做初稿。发布前仍需要按实际交付物、平台类目和交易规则检查，不应承诺涨粉、收益、包爆款或绕过平台规则。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "虚拟资料发货话术应该写什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "写清楚文件名、使用顺序、交付方式、补发边界和不承诺事项，交易和沟通保留在平台内。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --paper: #ffffff;
+      --ink: #17202a;
+      --muted: #667085;
+      --line: #dbe3ee;
+      --yellow: #f6bf2f;
+      --yellow-soft: #fff5cf;
+      --green: #198754;
+      --green-soft: #eaf7ef;
+      --blue: #1f6feb;
+      --blue-soft: #eaf1ff;
+      --shadow: 0 18px 42px rgba(23, 32, 42, .10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, .92);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+    .brand {
+      text-decoration: none;
+      font-weight: 800;
+    }
+    .nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      min-height: 620px;
+      background:
+        linear-gradient(90deg, rgba(246, 248, 251, .98) 0%, rgba(246, 248, 251, .86) 42%, rgba(246, 248, 251, .28) 70%),
+        url("xianyu-listing-generator-cover.png") right center / min(52vw, 860px) auto no-repeat;
+    }
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+    .hero-copy {
+      max-width: 560px;
+      padding: 92px 0 70px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(246, 191, 47, .45);
+      background: var(--yellow-soft);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #7a5400;
+      font-size: 14px;
+      font-weight: 760;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      margin-top: 22px;
+      font-size: 58px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    .lead {
+      margin-top: 18px;
+      color: #4d5a68;
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      padding: 11px 18px;
+      font-weight: 760;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font: inherit;
+      white-space: normal;
+      text-align: center;
+    }
+    .btn-primary { background: var(--yellow); color: #1d1600; }
+    .btn-dark { background: var(--ink); color: #fff; }
+    .btn-line { background: #fff; color: var(--ink); border-color: var(--line); }
+    section { padding: 66px 0; }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .field { margin-top: 18px; }
+    label {
+      display: block;
+      font-weight: 760;
+      margin-bottom: 8px;
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px 12px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      letter-spacing: 0;
+    }
+    textarea {
+      min-height: 118px;
+      resize: vertical;
+    }
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px 10px;
+      background: #fff;
+      font-weight: 650;
+      color: #344054;
+    }
+    .check input { width: auto; }
+    .output-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .score {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .output-block {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-top: 18px;
+    }
+    .output-block h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+    .copybox {
+      width: 100%;
+      min-height: 92px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfe;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .small-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .mini {
+      min-height: 36px;
+      padding: 7px 10px;
+      font-size: 14px;
+    }
+    .cta-strip {
+      background: var(--ink);
+      color: #fff;
+    }
+    .cta-strip .wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+    }
+    .cta-strip p { color: #d7dee8; margin-top: 8px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+    .card strong {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      height: 28px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    .card p { color: var(--muted); margin-top: 6px; }
+    .footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 920px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(246, 248, 251, .98) 0%, rgba(246, 248, 251, .95) 56%, rgba(246, 248, 251, .72) 100%),
+          url("xianyu-listing-generator-cover.png") bottom center / min(92vw, 520px) auto no-repeat;
+      }
+      .hero-copy { padding: 44px 0 350px; }
+      h1 { font-size: 42px; }
+      .lead { font-size: 17px; }
+      .tool-grid, .cta-strip .wrap, .cards { grid-template-columns: 1fr; }
+      .nav { display: none; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="side-hustle-idea-scorer.html">选题评分器</a>
+        <a href="template-generator.html">模板生成器</a>
+        <a href="order.html?plan=49">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">免费工具</span>
+        <h1>闲鱼虚拟资料上架文案生成器</h1>
+        <p class="lead">输入资料方向，生成标题、商品描述、发货话术和避坑边界。适合原创模板、AI 教程、提示词包、小红书资料包和办公效率资料。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#tool">生成文案</a>
+          <a class="btn btn-line" href="side-hustle-idea-scorer.html">先评估选题</a>
+          <a class="btn btn-line" href="virtual-products.html">查看资料货架</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="tool">
+    <div class="wrap tool-grid">
+      <form class="panel" id="listingForm">
+        <h2>输入信息</h2>
+        <div class="field">
+          <label for="productName">资料方向</label>
+          <input id="productName" value="小红书标题自测表">
+        </div>
+        <div class="field">
+          <label for="buyer">目标买家</label>
+          <select id="buyer">
+            <option>小红书新手和内容博主</option>
+            <option>AI 工具新手</option>
+            <option>虚拟资料卖家</option>
+            <option>课程老师</option>
+            <option>办公效率用户</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="format">交付形态</label>
+          <select id="format">
+            <option>zip 资料包</option>
+            <option>Markdown 文档包</option>
+            <option>表格模板</option>
+            <option>提示词模板包</option>
+            <option>检查清单</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="price">价格</label>
+          <select id="price">
+            <option value="9.90">9.90</option>
+            <option value="19.90">19.90</option>
+            <option value="49.00">49.00</option>
+            <option value="99.00">99.00</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>包含内容</label>
+          <div class="segmented">
+            <label class="check"><input type="checkbox" value="自测表" checked> 自测表</label>
+            <label class="check"><input type="checkbox" value="模板库" checked> 模板库</label>
+            <label class="check"><input type="checkbox" value="避坑清单" checked> 避坑清单</label>
+            <label class="check"><input type="checkbox" value="发货话术" checked> 发货话术</label>
+            <label class="check"><input type="checkbox" value="案例示例"> 案例示例</label>
+            <label class="check"><input type="checkbox" value="评分表"> 评分表</label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="edge">边界说明</label>
+          <textarea id="edge">不是代运营，不承诺涨粉、爆款、成交或收益，不提供刷量、搬运、破解和绕过平台规则的方法。</textarea>
+        </div>
+      </form>
+
+      <aside class="panel">
+        <div class="output-head">
+          <div>
+            <h2>生成结果</h2>
+            <p style="color: var(--muted);">发布前按实际类目和交付物再核对。</p>
+          </div>
+          <div class="score" id="score">可测试</div>
+        </div>
+        <div class="output-block">
+          <h3>标题</h3>
+          <div class="copybox" id="titleOut"></div>
+          <div class="small-actions"><button class="btn btn-line mini" type="button" data-copy="titleOut">复制标题</button></div>
+        </div>
+        <div class="output-block">
+          <h3>商品描述</h3>
+          <div class="copybox" id="descOut"></div>
+          <div class="small-actions"><button class="btn btn-line mini" type="button" data-copy="descOut">复制描述</button></div>
+        </div>
+        <div class="output-block">
+          <h3>发货话术</h3>
+          <div class="copybox" id="shipOut"></div>
+          <div class="small-actions"><button class="btn btn-line mini" type="button" data-copy="shipOut">复制话术</button></div>
+        </div>
+        <div class="output-block">
+          <h3>订单场景</h3>
+          <div class="copybox" id="scenarioOut"></div>
+          <div class="small-actions" id="orderActions"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="wrap">
+      <div>
+        <h2>需要继续找选题证据和资料包目录</h2>
+        <p>把文案初稿写出来以后，下一步是补竞品、评论、搜索词和交付样品，避免上架后没人问。</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="order.html?plan=49&scenario=我想购买 Reddit/X 副业情报检索模板包">购买 49 元情报模板</a>
+        <a class="btn btn-line" href="order.html?plan=99&scenario=我想购买 AI Agent 工作台实战包">购买 99 元实战包</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>发布前检查</h2>
+      <div class="cards">
+        <article class="card">
+          <strong>01</strong>
+          <h3>交付物真实存在</h3>
+          <p>zip、文档、表格或模板已经做好，买家付款后能按承诺发送。</p>
+        </article>
+        <article class="card">
+          <strong>02</strong>
+          <h3>不写收益承诺</h3>
+          <p>描述里不要写包涨粉、包爆款、包成交、保收益和绕规则。</p>
+        </article>
+        <article class="card">
+          <strong>03</strong>
+          <h3>交易留在平台</h3>
+          <p>付款、沟通和售后都留在平台内，虚拟资料也写清补发边界。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="./">返回主站</a>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("listingForm");
+    const productName = document.getElementById("productName");
+    const buyer = document.getElementById("buyer");
+    const format = document.getElementById("format");
+    const price = document.getElementById("price");
+    const edge = document.getElementById("edge");
+    const titleOut = document.getElementById("titleOut");
+    const descOut = document.getElementById("descOut");
+    const shipOut = document.getElementById("shipOut");
+    const scenarioOut = document.getElementById("scenarioOut");
+    const orderActions = document.getElementById("orderActions");
+    const score = document.getElementById("score");
+
+    function checkedItems() {
+      return Array.from(document.querySelectorAll(".check input:checked")).map((input) => input.value);
+    }
+
+    function pickPrimaryOffer(name) {
+      const text = name.toLowerCase();
+      if (text.includes("codex")) return { plan: "2.99", label: "购买 2.99 元 Codex 包" };
+      if (text.includes("小红书") || text.includes("标题")) return { plan: "9.90", label: "购买 9.90 元标题包" };
+      if (text.includes("自测")) return { plan: "19", label: "购买 19 元自测表" };
+      if (text.includes("选题") || text.includes("副业") || text.includes("资料")) return { plan: "49", label: "购买 49 元情报模板" };
+      return { plan: "99", label: "购买 99 元实战包" };
+    }
+
+    function update() {
+      const name = productName.value.trim() || "虚拟资料包";
+      const buyerText = buyer.value;
+      const formatText = format.value;
+      const priceText = price.value;
+      const items = checkedItems();
+      const itemText = items.length ? items.join("、") : "清单、模板和说明文档";
+      const edgeText = edge.value.trim() || "不承诺涨粉、爆款、成交或收益。";
+      const title = `${name}｜${items.slice(0, 2).join("+") || "模板+清单"}避坑包`;
+      const desc = [
+        `${title}`,
+        "",
+        `原创${formatText}，适合${buyerText}，用于把一个具体任务整理成可检查、可复用的资料。`,
+        "",
+        "资料包含：",
+        ...items.map((item) => `- ${item}`),
+        "",
+        `适合：已经有具体场景，想用${formatText}减少重复摸索的人。`,
+        "",
+        `不适合：${edgeText}`,
+        "",
+        `交付：拍下后通过平台聊天发送${formatText}。虚拟资料发出后原则上不支持无理由退款；文件损坏、漏发或打不开可补发。`
+      ].join("\n");
+      const ship = [
+        `你好，感谢下单。这是 ${priceText} 元 ${name}：`,
+        `${name.replace(/[｜\\s]+/g, "-")}-资料包.zip`,
+        "",
+        `建议先看 README，再按 ${itemText} 的顺序使用。`,
+        edgeText,
+        "如果文件打不开或漏发，直接在平台聊天里告诉我，我会补发。"
+      ].join("\n");
+      const scenario = [
+        "来自闲鱼虚拟资料上架文案生成器",
+        `资料方向：${name}`,
+        `目标买家：${buyerText}`,
+        `交付形态：${formatText}`,
+        `建议价格：${priceText} 元`,
+        `包含内容：${itemText}`
+      ].join("\n");
+      const primaryOffer = pickPrimaryOffer(name);
+      const secondaryOffer = primaryOffer.plan === "49"
+        ? { plan: "99", label: "购买 99 元实战包" }
+        : { plan: "49", label: "购买 49 元情报模板" };
+      titleOut.textContent = title;
+      descOut.textContent = desc;
+      shipOut.textContent = ship;
+      scenarioOut.textContent = scenario;
+      score.textContent = items.length >= 4 ? "可测试" : "先补内容";
+      orderActions.innerHTML = [
+        `<a class="btn btn-primary mini" href="order.html?plan=${encodeURIComponent(primaryOffer.plan)}&scenario=${encodeURIComponent(scenario)}">${primaryOffer.label}</a>`,
+        `<a class="btn btn-line mini" href="order.html?plan=${encodeURIComponent(secondaryOffer.plan)}&scenario=${encodeURIComponent(scenario)}">${secondaryOffer.label}</a>`,
+        `<a class="btn btn-line mini" href="side-hustle-idea-scorer.html">评估选题</a>`
+      ].join("");
+    }
+
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const target = document.getElementById(button.dataset.copy);
+        const text = target.textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          button.textContent = "已复制";
+          setTimeout(() => { button.textContent = button.dataset.copy === "titleOut" ? "复制标题" : button.dataset.copy === "descOut" ? "复制描述" : "复制话术"; }, 1200);
+        } catch {
+          button.textContent = "请手动复制";
+        }
+      });
+    });
+
+    form.addEventListener("input", update);
+    form.addEventListener("change", update);
+    update();
+  </script>
+</body>
+</html>

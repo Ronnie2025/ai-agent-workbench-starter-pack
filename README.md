@@ -10,6 +10,7 @@ consultants, and small-team operators.
 - 16 条免费中文 AI 工作流提示词库: https://ronnie2025.github.io/ai-workflow-prompts-zh/
 - AI 工作台免费自测: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html
 - AI 副业选题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-idea-scorer.html
+- 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
 - 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
 - 付款和交付说明: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
 - 判断指南: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/guide.html
@@ -76,6 +77,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-workbench-self-t
 AI side-hustle idea scorer:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-idea-scorer.html
+
+Xianyu listing generator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
 
 Order page:
 
