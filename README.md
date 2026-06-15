@@ -15,6 +15,7 @@ consultants, and small-team operators.
 - AI 工作流急诊: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency.html
 - AI 工作流急诊自助判断: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency-intake.html
 - AI 工作台 2 小时小班实战: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workshop.html
+- AI 虚拟资料货架: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-products.html
 
 ## Scenario Pages
 
@@ -34,6 +35,7 @@ consultants, and small-team operators.
 ## Paid Products
 
 - 99 RMB: AI Agent 工作台实战包
+- 49 RMB: Reddit/X 副业情报检索模板包
 - 299 RMB: 资料包 + 文字诊断
 - 999 RMB: 2 小时小班实战
 - 699 RMB: AI 工作流急诊诊断版
@@ -47,6 +49,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency-intake.ht
 Workshop:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workshop.html
+
+Virtual products:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-products.html
 
 Order page:
 

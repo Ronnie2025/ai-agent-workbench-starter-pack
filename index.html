@@ -31,6 +31,14 @@
       },
       {
         "@type": "Offer",
+        "name": "Reddit/X 副业情报检索模板包",
+        "price": "49",
+        "priceCurrency": "CNY",
+        "availability": "https://schema.org/InStock",
+        "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=49"
+      },
+      {
+        "@type": "Offer",
         "name": "资料包 + 文字诊断",
         "price": "299",
         "priceCurrency": "CNY",
@@ -260,7 +268,7 @@
     }
     .offers {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
       gap: 14px;
     }
     .scenario-grid {
@@ -435,6 +443,7 @@
         <div class="actions">
           <a class="btn btn-primary" href="order.html?plan=99">立即购买 99 元</a>
           <a class="btn btn-line" href="sample.html">查看样品</a>
+          <a class="btn btn-line" href="virtual-products.html">虚拟资料货架</a>
           <a class="btn btn-line" href="prompt-library.html">免费提示词库</a>
           <a class="btn btn-line" href="self-test.html">免费自测</a>
           <a class="btn btn-line" href="template-generator.html">模板生成器</a>
@@ -545,6 +554,7 @@
       <h2>价格阶梯</h2>
       <div class="offers">
         <div class="offer"><strong>19</strong>AI 工作台自测表<span>先判断自己适合搭哪类工作流</span></div>
+        <a class="offer" href="virtual-products.html"><strong>49</strong>Reddit/X 副业情报模板包<span>找 AI 副业和虚拟资料选题</span></a>
         <div class="offer"><strong>99</strong>AI Agent 工作台实战包<span>完整资料包，首发主推</span></div>
         <div class="offer"><strong>299</strong>资料包 + 文字诊断<span>把你的场景改成第一版流程</span></div>
         <a class="offer" href="workshop.html"><strong>999</strong>2 小时小班实战<span>现场搭出一个可运行工作台</span></a>
@@ -613,12 +623,18 @@
           <p>适合还没确定从哪个流程开始的人。先做自测，再决定是否升级到 99 元资料包。</p>
           <a class="btn btn-dark" href="order.html?plan=19">发起 19 元订单</a>
         </div>
+        <div class="order-panel">
+          <h3>选题包：49 元 Reddit/X 模板</h3>
+          <p>适合想从公开内容里筛 AI 副业、虚拟资料和教程选题的人。交付关键词库、评分表和合规清单。</p>
+          <a class="btn btn-line" href="order.html?plan=49&scenario=我想购买 Reddit/X 副业情报检索模板包">发起 49 元订单</a>
+        </div>
       </div>
       <p class="micro">自动支付链接接入后，这里的邮件订单按钮会替换为平台收款按钮；付费资料包不放在公开目录里。</p>
       <div class="link-row">
         <a href="https://rentry.co/ai-agent-workbench-99-20260614">Rentry 备份页</a>
         <a href="https://telegra.ph/AI-Agent-工作台实战包-06-14">Telegra.ph 入口</a>
         <a href="order.html?plan=99">独立订单页</a>
+        <a href="virtual-products.html">AI 虚拟资料货架</a>
         <a href="workshop.html">999 小班实战</a>
         <a href="template-generator.html">免费模板生成器</a>
         <a href="prompt-library.html">免费提示词库</a>
