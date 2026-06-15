@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI 工作流模板生成器 | 免费生成第一个 AI 工作台流程</title>
-  <meta name="description" content="免费 AI 工作流模板生成器。输入角色、场景、材料和输出格式，生成第一版 AI 工作台流程、提示词和检查清单。">
+  <title>AI 工作流模板生成器 | Free AI Workflow Template Generator</title>
+  <meta name="description" content="免费 AI 工作流模板生成器。输入角色、场景、材料和输出格式，生成第一版 AI 工作台流程、提示词和检查清单。English visitors can use it to create reusable Chinese-first AI workflow prompts.">
   <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/template-generator.html">
   <meta property="og:title" content="AI 工作流模板生成器">
   <meta property="og:description" content="输入一个重复任务，生成第一版可复用 AI 工作台流程。">
@@ -16,7 +16,14 @@
     "name": "AI 工作流模板生成器",
     "applicationCategory": "ProductivityApplication",
     "operatingSystem": "Web",
-    "description": "输入角色、重复任务、输入材料和输出格式，生成第一版 AI 工作台流程、提示词和检查清单。",
+    "description": "输入角色、重复任务、输入材料和输出格式，生成第一版 AI 工作台流程、提示词和检查清单。English visitors can use it as a Chinese-first AI workflow template generator.",
+    "inLanguage": ["zh-CN", "en"],
+    "featureList": [
+      "Generate a reusable AI workflow outline",
+      "Create a copyable prompt for repeated work",
+      "Add manual quality checks and delivery boundaries",
+      "Route high-intent users to a paid workflow kit"
+    ],
     "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/template-generator.html",
     "offers": {
       "@type": "Offer",
@@ -221,6 +228,27 @@
       background: #fff;
     }
     .card p { color: var(--muted); }
+    .visitor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .english-panel {
+      border-left: 4px solid var(--blue);
+    }
+    .quick-list {
+      margin: 14px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+    .quick-list li { margin: 6px 0; }
+    .mini-label {
+      color: var(--green);
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
     .notice {
       margin-top: 18px;
       padding: 15px 16px;
@@ -259,7 +287,8 @@
       }
       .hero-copy { padding: 42px 0 48px; }
       .tool-layout,
-      .cards {
+      .cards,
+      .visitor-grid {
         grid-template-columns: 1fr;
       }
       .nav { display: none; }
@@ -287,6 +316,7 @@
         <span class="eyebrow">免费工具</span>
         <h1>AI 工作流模板生成器</h1>
         <p class="lead">输入一个你每周都会重复的任务，生成第一版 AI 工作台流程、提示词和检查清单。适合先试一次，再决定是否购买完整资料包。</p>
+        <p class="hint">English: a free Chinese-first AI workflow template generator for turning repeated tasks into reusable prompts, SOP steps, and quality checks.</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="#tool">开始生成</a>
           <a class="btn btn-line" href="prompt-library.html">复制提示词</a>
@@ -296,6 +326,35 @@
       </div>
     </div>
   </header>
+
+  <section>
+    <div class="wrap visitor-grid">
+      <div class="panel english-panel">
+        <p class="mini-label">For English Visitors</p>
+        <h2>What this tool does</h2>
+        <p>This free web tool turns a role, a repeated workflow goal, source materials, and a target deliverable into a reusable AI workflow prompt. The interface and paid kit are Chinese-first, so it is most useful for Chinese content, operations, education, consulting, and solo-creator workflows.</p>
+        <ul class="quick-list">
+          <li>Use it before buying: generate one workflow and inspect the structure.</li>
+          <li>Best fit: writing workflows, PPT outlines, meeting notes, client proposals, and content operations.</li>
+          <li>Paid upgrade: the 99 CNY kit adds a 7-day build roadmap, prompt library, SOP, and delivery checklist.</li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn-primary" id="englishBuy" href="order.html?plan=99&source=template-generator-directory&scenario=English%20visitor%20from%20AI%20tools%20directory%20wants%20a%20Chinese-first%20AI%20workflow%20template%20kit">Buy the 99 CNY kit</a>
+          <a class="btn btn-line" href="sample.html">View sample</a>
+        </div>
+      </div>
+      <div class="panel">
+        <p class="mini-label">中文用户</p>
+        <h2>先跑一遍，再决定要不要买</h2>
+        <p>这个页面不是单纯卖资料。你可以先把自己的重复任务输入进去，看 AI 工作流应该拆成哪些材料入口、处理步骤、输出格式和人工检查点。</p>
+        <ul class="quick-list">
+          <li>如果只是偶尔问 AI，一次生成就够了。</li>
+          <li>如果每周都做同类任务，99 元资料包更适合沉淀模板。</li>
+          <li>如果连第一个流程都不知道怎么选，先做自测或购买文字诊断。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <section id="tool">
     <div class="wrap tool-layout">
@@ -407,6 +466,9 @@
     const resultEl = document.getElementById("result");
     const buy99El = document.getElementById("buy99");
     const buy299El = document.getElementById("buy299");
+    const englishBuyEl = document.getElementById("englishBuy");
+    const inboundParams = new URLSearchParams(window.location.search);
+    const inboundSource = inboundParams.get("source") || inboundParams.get("ref") || "template-generator";
 
     function clean(value, fallback) {
       return value.trim() || fallback;
@@ -459,11 +521,18 @@
 
       resultEl.value = result;
       const query = new URLSearchParams({
-        source: "template-generator",
+        source: inboundSource,
         scenario
       });
       buy99El.href = `order.html?plan=99&${query.toString()}`;
       buy299El.href = `order.html?plan=299&${query.toString()}`;
+      if (englishBuyEl) {
+        const englishQuery = new URLSearchParams({
+          source: inboundSource,
+          scenario: `English visitor checked the template generator and wants the 99 CNY workflow kit for: ${scenario}`
+        });
+        englishBuyEl.href = `order.html?plan=99&${englishQuery.toString()}`;
+      }
     }
 
     async function copyResult() {
