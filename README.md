@@ -11,6 +11,7 @@ consultants, and small-team operators.
 - AI 工作台免费自测: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html
 - AI 副业选题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-idea-scorer.html
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
+- PPT 大纲生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generator.html
 - AI-PPT 交付自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
 - 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
 - 付款和交付说明: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
@@ -86,6 +87,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-che
 AI-PPT free delivery checker:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
+
+PPT outline generator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generator.html
 
 AI remote data job pack:
 
