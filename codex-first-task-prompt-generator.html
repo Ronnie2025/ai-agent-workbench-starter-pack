@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codex 第一次任务提示词生成器 | 新手项目修改 Prompt</title>
+  <meta name="description" content="免费 Codex 第一次任务提示词生成器：根据项目类型、目标、限制和验收方式，生成可复制的第一句 Codex 提示词，并导向 2.99 元 Codex 入门排障清单。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="Codex 第一次任务提示词生成器">
+  <meta property="og:description" content="第一次让 Codex 改项目，不要只写“帮我优化”。先生成一段带目录、边界和验收方式的提示词。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Codex 第一次任务提示词生成器",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web",
+    "description": "根据项目类型、目标、限制和验收方式，生成适合第一次让 Codex 修改项目的提示词。",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-cover.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "第一次用 Codex 应该怎么写提示词？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "先写清项目目录、目标文件、要达成的结果、不能改的范围和验收方式。不要一开始就让它重构整个项目。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Codex 提示词里为什么要写验收方式？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "验收方式能限制输出范围，让 Codex 说明怎么检查结果，也方便你用页面、命令或 diff 判断是否真的完成。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "这个生成器是否替代 Codex 入门排障清单？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不会。生成器解决第一句提示词，排障清单覆盖安装登录、目录权限、常见失败顺序和更多可复制模板。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #667085;
+      --bg: #f6f8fb;
+      --panel: #fff;
+      --line: #dbe4ef;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --deep: #0d1b2a;
+      --amber: #b86b00;
+      --soft-blue: #eaf1ff;
+      --soft-green: #e9f8f3;
+      --shadow: 0 18px 48px rgba(16, 24, 40, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      min-height: 620px;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.93) 48%, rgba(246,248,251,.28) 78%),
+        url("codex-troubleshooting-cover.webp") right center / min(42vw, 610px) auto no-repeat;
+    }
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero-copy {
+      max-width: 680px;
+      padding: 74px 0 86px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(21,94,239,.24);
+      background: rgba(21,94,239,.08);
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      margin: 20px 0 16px;
+      font-size: clamp(40px, 6vw, 70px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin-bottom: 16px;
+      font-size: 30px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+    .lead {
+      max-width: 620px;
+      color: #4d5a68;
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px 17px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 820;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .btn-line { border-color: var(--line); }
+    section {
+      padding: 58px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(420px, 1.08fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .form-panel { padding: 22px; }
+    .result-panel {
+      position: sticky;
+      top: 78px;
+      overflow: hidden;
+    }
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .result-body { padding: 22px; }
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .field {
+      min-height: 104px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    .hint {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      letter-spacing: 0;
+    }
+    input[type="text"],
+    select {
+      min-height: 44px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 96px;
+      padding: 12px;
+      resize: vertical;
+    }
+    .check-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .check-grid label {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 760;
+    }
+    .check-grid input { width: auto; }
+    .output-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .score {
+      min-width: 74px;
+      color: var(--green);
+      font-size: 60px;
+      line-height: 1;
+      font-weight: 950;
+      text-align: right;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 0;
+    }
+    .pill {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: var(--soft-blue);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 850;
+    }
+    .copybox {
+      min-height: 248px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .script-block {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-top: 18px;
+    }
+    .list {
+      display: grid;
+      gap: 9px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: #344054;
+    }
+    .cta-panel {
+      border: 1px solid rgba(21,94,239,.24);
+      border-radius: 8px;
+      background: var(--soft-blue);
+      padding: 16px;
+      margin-top: 18px;
+    }
+    .cta-panel p { color: #345070; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card {
+      min-height: 176px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .card p { color: var(--muted); }
+    .footer {
+      padding: 34px 0;
+      color: var(--muted);
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    @media (max-width: 920px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.96) 54%, rgba(246,248,251,.76) 100%),
+          url("codex-troubleshooting-cover.webp") bottom center / min(82vw, 360px) auto no-repeat;
+      }
+      .hero-copy { padding: 42px 0 320px; }
+      .tool-layout,
+      .field-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      .field.full { grid-column: auto; }
+      .check-grid { grid-template-columns: 1fr; }
+      .result-panel { position: static; }
+      .output-head { flex-direction: column; }
+      .score { text-align: left; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="codex-troubleshooting.html">Codex 包</a>
+        <a href="codex-troubleshooting-checker.html">排障自检</a>
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="order.html?plan=2.99">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">免费 Codex 提示词工具</span>
+        <h1>Codex 第一次任务提示词生成器</h1>
+        <p class="lead">第一次让 Codex 改项目，不要只写“帮我优化”。先把目录、目标、边界、验收方式写清楚，再让它动手。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#tool">生成提示词</a>
+          <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">闲鱼买 2.99 元排障清单</a>
+          <a class="btn btn-line" href="codex-troubleshooting-checker.html">先排障自检</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="tool">
+    <div class="wrap tool-layout">
+      <div class="panel form-panel">
+        <h2>填写第一次任务</h2>
+        <p class="hint">默认是网页小改动。改字段后会自动生成更贴合的 Codex 提示词。</p>
+        <div class="field-grid">
+          <div class="field">
+            <label for="projectType">项目类型</label>
+            <select id="projectType">
+              <option value="网页项目">网页项目</option>
+              <option value="文档项目">文档项目</option>
+              <option value="脚本工具">脚本工具</option>
+              <option value="数据表格">数据表格</option>
+              <option value="还不确定">还不确定</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="taskSize">任务大小</label>
+            <select id="taskSize">
+              <option value="one-file">只改一个文件</option>
+              <option value="one-page">只改一个页面</option>
+              <option value="one-flow">只改一个流程</option>
+              <option value="explain">先解释不改动</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="environment">当前环境</label>
+            <select id="environment">
+              <option value="本地项目目录">本地项目目录</option>
+              <option value="GitHub 仓库">GitHub 仓库</option>
+              <option value="文档文件夹">文档文件夹</option>
+              <option value="还没打开目录">还没打开目录</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="riskLevel">风险偏好</label>
+            <select id="riskLevel">
+              <option value="safe">先保守，等确认后再改</option>
+              <option value="direct">可以直接改，但要说明 diff</option>
+              <option value="audit">只做审计，不修改文件</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="goal">想完成什么</label>
+            <textarea id="goal">把首页里的购买入口改得更清楚，并确认移动端按钮不要挤在一起。</textarea>
+          </div>
+          <div class="field full">
+            <label for="scope">可以改哪里</label>
+            <input id="scope" type="text" value="只改当前页面和相关样式，不改支付逻辑">
+          </div>
+          <div class="field full">
+            <label for="acceptance">怎么验收</label>
+            <input id="acceptance" type="text" value="本地打开页面检查按钮文案、链接和 390px 移动端不横向溢出">
+          </div>
+          <div class="field full">
+            <label>提示词里要强调</label>
+            <div class="check-grid">
+              <label><input type="checkbox" id="askPlan" checked> 先输出计划</label>
+              <label><input type="checkbox" id="keepScope" checked> 不碰无关文件</label>
+              <label><input type="checkbox" id="showDiff" checked> 改完说明 diff</label>
+              <label><input type="checkbox" id="runCheck" checked> 给出验证命令</label>
+              <label><input type="checkbox" id="stopRisk"> 遇到不确定先停下</label>
+              <label><input type="checkbox" id="summarize"> 最后给交付摘要</label>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="generate" type="button">重新生成</button>
+          <button class="btn btn-line" id="copy" type="button">复制提示词</button>
+          <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">闲鱼买 2.99 元清单</a>
+        </div>
+      </div>
+
+      <aside class="panel result-panel">
+        <img class="cover" src="codex-troubleshooting-cover.webp" alt="Codex 第一次任务提示词生成器封面">
+        <div class="result-body">
+          <div class="output-head">
+            <div>
+              <h2>可复制提示词</h2>
+              <p class="hint" id="scoreHint">当前任务适合先让 Codex 输出计划，再确认修改范围。</p>
+            </div>
+            <div class="score" id="score">86</div>
+          </div>
+          <div class="pill-row" id="pillRow"></div>
+          <div class="copybox" id="promptOut"></div>
+
+          <div class="script-block">
+            <h3>发送前再检查</h3>
+            <ul class="list" id="checkList"></ul>
+          </div>
+
+          <div class="cta-panel">
+            <h3>需要一整套新手排障顺序</h3>
+            <p>2.99 元 Codex 入门排障清单包含安装登录自检、第一次任务流程、常见失败排查和更多可复制提示词模板。</p>
+            <div class="actions">
+              <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">闲鱼买 2.99 元 Codex 包</a>
+              <a class="btn btn-line" href="codex-troubleshooting-checker.html">免费排障自检</a>
+              <a class="btn btn-line" href="https://www.goofish.com/item?id=1059263013337" target="_blank" rel="noopener">升级 99 元实战包</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>第一次任务不要漏掉三件事</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>目录和文件</h3>
+          <p>先让 Codex 确认当前目录、相关文件和它准备修改的范围，避免改到旧副本。</p>
+        </div>
+        <div class="card">
+          <h3>边界</h3>
+          <p>明确哪些文件、业务逻辑、支付链路、数据不能动。边界越清楚，越不容易跑偏。</p>
+        </div>
+        <div class="card">
+          <h3>验收</h3>
+          <p>让它给出页面检查、命令检查或 diff 检查方式。只看完成说明不算完成。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="codex-troubleshooting.html">Codex 入门排障清单</a>
+      <a href="codex-troubleshooting-checker.html">Codex 排障自检器</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const fields = [
+      "projectType", "taskSize", "environment", "riskLevel", "goal", "scope", "acceptance",
+      "askPlan", "keepScope", "showDiff", "runCheck", "stopRisk", "summarize"
+    ];
+
+    const sizeText = {
+      "one-file": "只处理一个文件或一个很小的改动",
+      "one-page": "只处理一个页面或一个明确模块",
+      "one-flow": "只处理一个流程，不扩散到整站",
+      "explain": "先解释现状，不修改文件"
+    };
+
+    function readState() {
+      return {
+        projectType: $("projectType").value,
+        taskSize: $("taskSize").value,
+        environment: $("environment").value,
+        riskLevel: $("riskLevel").value,
+        goal: $("goal").value.trim() || "还没有写清楚目标。",
+        scope: $("scope").value.trim() || "只改和目标直接相关的文件。",
+        acceptance: $("acceptance").value.trim() || "说明如何验证结果是否完成。",
+        askPlan: $("askPlan").checked,
+        keepScope: $("keepScope").checked,
+        showDiff: $("showDiff").checked,
+        runCheck: $("runCheck").checked,
+        stopRisk: $("stopRisk").checked,
+        summarize: $("summarize").checked
+      };
+    }
+
+    function scoreState(state) {
+      let score = 50;
+      if (state.goal.length >= 20) score += 12;
+      if (state.scope.length >= 10) score += 10;
+      if (state.acceptance.length >= 12) score += 12;
+      if (state.askPlan) score += 4;
+      if (state.keepScope) score += 4;
+      if (state.showDiff) score += 4;
+      if (state.runCheck) score += 4;
+      if (state.stopRisk) score += 3;
+      if (state.taskSize === "explain") score += 2;
+      if (state.environment === "还没打开目录") score -= 14;
+      if (state.goal.length < 12) score -= 10;
+      return Math.max(28, Math.min(98, score));
+    }
+
+    function buildPrompt(state) {
+      const modeLine = state.riskLevel === "audit"
+        ? "请先只做审计和建议，不要修改任何文件。"
+        : state.riskLevel === "safe"
+          ? "请先输出计划和将要检查的文件，等我确认后再修改。"
+          : "可以直接修改，但请先说明你准备改哪些文件，并在改完后解释 diff。";
+      const requirements = [];
+      if (state.askPlan) requirements.push("先输出 3-5 步执行计划。");
+      if (state.keepScope) requirements.push("不要修改和目标无关的文件，不要做顺手重构。");
+      if (state.showDiff) requirements.push("改完后说明实际改了哪些文件、每个文件改动目的是什么。");
+      if (state.runCheck) requirements.push("给出我可以执行或手动检查的验收方式。");
+      if (state.stopRisk) requirements.push("如果发现目录不对、权限不够、需求不清或可能影响支付/登录/数据，请先停下并问我。");
+      if (state.summarize) requirements.push("最后用三句话总结完成情况、剩余风险和下一步。");
+
+      return [
+        `我现在在 ${state.environment} 中处理一个 ${state.projectType}。`,
+        "",
+        `目标：${state.goal}`,
+        "",
+        `任务大小：${sizeText[state.taskSize]}`,
+        `允许范围：${state.scope}`,
+        `验收方式：${state.acceptance}`,
+        "",
+        modeLine,
+        "",
+        "请按下面规则执行：",
+        ...requirements.map((item, index) => `${index + 1}. ${item}`),
+        "",
+        "如果你需要我补充上下文，请只问和这次任务直接相关的问题。"
+      ].join("\n");
+    }
+
+    function buildChecks(state) {
+      const checks = [
+        "确认当前目录就是你要让 Codex 修改的项目，不是旧副本。",
+        "确认目标能用一个页面、一个文件或一个流程描述清楚。",
+        "确认提示词里有不能改的范围。"
+      ];
+      if (state.environment === "还没打开目录") {
+        checks.unshift("先打开正确项目目录，再发送提示词。");
+      }
+      if (!state.runCheck) {
+        checks.push("最好补一句验收方式，否则完成质量很难判断。");
+      }
+      if (state.taskSize === "one-flow") {
+        checks.push("流程任务容易扩大范围，先要求 Codex 列出会碰到的文件。");
+      }
+      return checks;
+    }
+
+    function render() {
+      const state = readState();
+      const score = scoreState(state);
+      $("score").textContent = String(score);
+      $("scoreHint").textContent = score >= 82
+        ? "这段提示词边界清楚，适合直接作为第一次任务开场。"
+        : score >= 65
+          ? "可以发送，但建议再补充验收方式或可改范围。"
+          : "信息还偏少，先补目标、目录和验收方式。";
+
+      $("pillRow").innerHTML = "";
+      [state.projectType, sizeText[state.taskSize], state.environment, score >= 82 ? "边界清楚" : "需要补充"].forEach((label) => {
+        const pill = document.createElement("span");
+        pill.className = "pill";
+        pill.textContent = label;
+        $("pillRow").appendChild(pill);
+      });
+
+      $("promptOut").textContent = buildPrompt(state);
+      $("checkList").innerHTML = "";
+      buildChecks(state).forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        $("checkList").appendChild(li);
+      });
+    }
+
+    fields.forEach((id) => {
+      const el = $(id);
+      el.addEventListener("input", render);
+      el.addEventListener("change", render);
+    });
+    $("generate").addEventListener("click", render);
+    $("copy").addEventListener("click", async () => {
+      const text = $("promptOut").textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        $("copy").textContent = "已复制";
+        setTimeout(() => $("copy").textContent = "复制提示词", 1400);
+      } catch (err) {
+        $("copy").textContent = "手动复制";
+      }
+    });
+    render();
+  </script>
+</body>
+</html>
