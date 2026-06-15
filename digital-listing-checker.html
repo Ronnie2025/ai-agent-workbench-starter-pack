@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>电子资料上架自检器 | 小红书闲鱼发布前风险检查</title>
+  <meta name="description" content="免费电子资料上架自检器：发布小红书、闲鱼电子资料前，检查资料来源、标题承诺、描述边界、发货方式、退款说明和平台沟通风险。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-checker.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="电子资料上架自检器">
+  <meta property="og:description" content="发布电子资料前，先检查标题、资料来源、发货和售后边界。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-checker.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-checker-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "电子资料上架自检器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "用于在小红书、闲鱼发布电子资料前检查资料来源、标题承诺、描述边界、发货方式、退款说明和平台沟通风险。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-checker-cover.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "这个自检器能保证小红书或闲鱼审核通过吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不能。它只是发布前自查工具，用于提示常见表述、来源和交付边界问题，不承诺审核、流量、成交或收入结果。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "适合检查哪些电子资料？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "适合检查原创清单、模板、表格、提示词包、课程笔记整理、发布前自查资料等低价数字资料。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "分数低应该怎么办？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "先补资料来源、标题描述、文件格式、发货方式和退款边界；涉及账号、代开通、代审核、盗版、破解或收益承诺的方向不建议发布。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6977;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --amber: #b86b00;
+      --deep: #0d1b2a;
+      --soft-blue: #eaf1ff;
+      --soft-green: #e9f8f3;
+      --soft-amber: #fff6e6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .tool {
+      padding: 34px 0 48px;
+    }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .tool-panel,
+    .result-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .tool-panel { padding: 22px; }
+    .result-panel {
+      position: sticky;
+      top: 18px;
+      overflow: hidden;
+    }
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .result-body { padding: 22px; }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,143,111,.24);
+      background: rgba(15,143,111,.08);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 840px;
+      margin: 18px 0 12px;
+      font-size: clamp(38px, 5.5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 780px;
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .field {
+      min-height: 118px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    .hint {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    input[type="text"],
+    select {
+      min-height: 46px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 96px;
+      padding: 12px;
+      resize: vertical;
+    }
+    .checks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .checks-grid label {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 750;
+    }
+    .score-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .score {
+      color: var(--green);
+      font-size: 76px;
+      line-height: 1;
+      font-weight: 950;
+    }
+    .meter {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e8eef7;
+    }
+    .meter-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--amber), var(--green));
+      transition: width .2s ease;
+    }
+    .status {
+      display: inline-flex;
+      margin-top: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--soft-green);
+      color: var(--green);
+      font-weight: 850;
+    }
+    .result-copy {
+      margin-top: 12px;
+      color: var(--muted);
+    }
+    .risks {
+      margin: 16px 0 0;
+      padding-left: 20px;
+      color: #303846;
+    }
+    .risks li { margin: 8px 0; }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 850;
+      text-align: center;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .summary {
+      margin-top: 14px;
+      min-height: 150px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .funnel {
+      padding: 52px 0;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .funnel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .step {
+      min-height: 210px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .step strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--blue);
+      font-size: 36px;
+      line-height: 1;
+    }
+    .step p { color: var(--muted); }
+    .notice {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border: 1px solid rgba(184,107,0,.24);
+      border-radius: 8px;
+      background: var(--soft-amber);
+      color: #5c3a00;
+      font-size: 14px;
+    }
+    .footer {
+      padding: 26px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .tool-layout,
+      .field-grid,
+      .funnel-grid { grid-template-columns: 1fr; }
+      .result-panel { position: static; }
+      .checks-grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      .score { font-size: 58px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="digital-listing-compliance.html">19.90 自检包</a>
+        <a href="xianyu-listing-generator.html">闲鱼文案</a>
+        <a href="side-hustle-idea-scorer.html">选题评分器</a>
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="order.html?plan=19.90">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool">
+    <div class="wrap">
+      <span class="eyebrow">免费工具</span>
+      <h1>电子资料上架自检器</h1>
+      <p class="lead">准备在小红书、闲鱼卖清单、模板、表格、提示词包或课程笔记整理前，先检查资料来源、标题承诺、描述边界、发货方式和售后说明。</p>
+      <div class="tool-layout">
+        <form class="tool-panel" id="checkerForm">
+          <h2>输入上架信息</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="productName">资料方向</label>
+              <input id="productName" type="text" value="小红书标题自测表">
+              <div class="hint">写你准备发布的资料名称或主题。</div>
+            </div>
+            <div class="field">
+              <label for="platform">发布平台</label>
+              <select id="platform">
+                <option value="6">只发小红书内容引流</option>
+                <option value="8" selected>只发闲鱼商品</option>
+                <option value="10">小红书种草 + 闲鱼成交</option>
+              </select>
+              <div class="hint">平台越多，越要写清交易和交付边界。</div>
+            </div>
+            <div class="field">
+              <label for="source">资料来源</label>
+              <select id="source">
+                <option value="2">主要来自截图、搬运或未授权资料</option>
+                <option value="10">公开信息整理，但来源还没完全列清</option>
+                <option value="16" selected>原创整理或授权资料，来源可核对</option>
+              </select>
+              <div class="hint">来源不清时，先不要包装成付费资料。</div>
+            </div>
+            <div class="field">
+              <label for="copyright">版权和授权</label>
+              <select id="copyright">
+                <option value="0">含盗版课、破解软件、会员资源或电子书</option>
+                <option value="9">含少量截图/引用，尚未写清来源</option>
+                <option value="16" selected>不含盗版、破解、共享会员和未授权内容</option>
+              </select>
+              <div class="hint">强版权内容应先确认授权，不要用改名或截图包装成资料。</div>
+            </div>
+            <div class="field">
+              <label for="titleRisk">标题表达</label>
+              <select id="titleRisk">
+                <option value="0">含包过、必过、月入、内部、官方等词</option>
+                <option value="8">有卖点，但边界和不承诺事项不明显</option>
+                <option value="14" selected>只写自检、模板、清单、方法和适用人群</option>
+              </select>
+              <div class="hint">标题不写平台结果、收益结果和身份背书。</div>
+            </div>
+            <div class="field">
+              <label for="description">商品描述</label>
+              <select id="description">
+                <option value="4">只写卖点，没写具体文件和不适合人群</option>
+                <option value="10" selected>写了文件内容，但售后和边界还不完整</option>
+                <option value="14">写清文件、适合/不适合、边界和使用顺序</option>
+              </select>
+              <div class="hint">买家要知道自己到底会收到什么。</div>
+            </div>
+            <div class="field">
+              <label for="delivery">发货方式</label>
+              <select id="delivery">
+                <option value="2">要引导到站外付款或私下加群</option>
+                <option value="9">平台内沟通，但文件格式和补发规则不清</option>
+                <option value="14" selected>平台内沟通，写清文件格式、发送方式和补发规则</option>
+              </select>
+              <div class="hint">交易和售后尽量留在平台内。</div>
+            </div>
+            <div class="field">
+              <label for="refund">退款边界</label>
+              <select id="refund">
+                <option value="2">没写退款、补发和打不开文件怎么办</option>
+                <option value="8" selected>写了不支持无理由，但补发规则不清</option>
+                <option value="12">写清未发货、已发货、损坏补发和漏发处理</option>
+              </select>
+              <div class="hint">虚拟资料最容易因为交付边界不清产生争议。</div>
+            </div>
+            <div class="field">
+              <label for="category">类目和资质</label>
+              <select id="category">
+                <option value="0">平台提示需要资质，还想换词硬发</option>
+                <option value="6" selected>大致类目匹配，但还没看后台提示</option>
+                <option value="10">类目、平台提示和商品描述基本匹配</option>
+              </select>
+              <div class="hint">后台提示优先于你自己的标题写法。</div>
+            </div>
+            <div class="field">
+              <label for="contact">沟通边界</label>
+              <select id="contact">
+                <option value="0">承诺长期答疑、代操作、代审核或代开通</option>
+                <option value="6" selected>只说会答疑，但服务范围还没写清</option>
+                <option value="10">只承诺文件补发和有限范围内说明</option>
+              </select>
+              <div class="hint">低价资料不要写成无限服务。</div>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top:14px;">
+            <label>已经写清的内容</label>
+            <div class="checks-grid">
+              <label><input type="checkbox" name="done" value="资料来源" checked> 资料来源说明</label>
+              <label><input type="checkbox" name="done" value="文件格式" checked> 文件格式和目录</label>
+              <label><input type="checkbox" name="done" value="不承诺事项" checked> 不承诺事项</label>
+              <label><input type="checkbox" name="done" value="补发规则"> 文件损坏补发</label>
+              <label><input type="checkbox" name="done" value="退款边界"> 退款边界</label>
+              <label><input type="checkbox" name="done" value="官方规则入口"> 官方规则入口</label>
+              <label><input type="checkbox" name="done" value="不含账号服务" checked> 不含账号/代开通</label>
+              <label><input type="checkbox" name="done" value="平台内沟通"> 平台内沟通交付</label>
+            </div>
+          </div>
+        </form>
+
+        <aside class="result-panel">
+          <img class="cover" src="digital-listing-checker-cover.png" alt="电子资料上架自检器封面">
+          <div class="result-body">
+            <h2>自检结果</h2>
+            <div class="score-row"><strong class="score" id="score">0</strong><span>/ 100</span></div>
+            <div class="meter"><div class="meter-fill" id="meterFill"></div></div>
+            <span class="status" id="status">待评分</span>
+            <p class="result-copy" id="resultCopy"></p>
+            <ul class="risks" id="riskList"></ul>
+            <div class="actions" id="actions"></div>
+            <textarea class="summary" id="summary" readonly></textarea>
+            <div class="notice">自检结果只用于发布前整理，不代表平台审核、流量、成交或收入结果。</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <section class="funnel">
+    <div class="wrap">
+      <h2>测完后怎么处理</h2>
+      <div class="funnel-grid">
+        <div class="step">
+          <strong>0</strong>
+          <h3>先改明显风险</h3>
+          <p>标题、来源、发货和售后边界没写清前，先不要急着发布。</p>
+        </div>
+        <div class="step">
+          <strong>19.90</strong>
+          <h3>买完整自检包</h3>
+          <p>用 36 项清单、资料结构模板和售后话术，把资料包整理到能交付。</p>
+          <div class="actions"><a class="btn btn-primary" href="order.html?plan=19.90&scenario=我想购买电子资料上架合规自检包">生成 19.90 元订单</a></div>
+        </div>
+        <div class="step">
+          <strong>0</strong>
+          <h3>生成上架文案</h3>
+          <p>边界写清后，再用闲鱼文案生成器输出标题、描述和发货话术初稿。</p>
+          <div class="actions"><a class="btn btn-line" href="xianyu-listing-generator.html">打开文案生成器</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="digital-listing-compliance.html">电子资料上架合规自检包</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    const fields = ["platform", "source", "copyright", "titleRisk", "description", "delivery", "refund", "category", "contact"];
+    const form = document.getElementById("checkerForm");
+    const productName = document.getElementById("productName");
+    const scoreEl = document.getElementById("score");
+    const meterFill = document.getElementById("meterFill");
+    const statusEl = document.getElementById("status");
+    const resultCopy = document.getElementById("resultCopy");
+    const riskList = document.getElementById("riskList");
+    const actionsEl = document.getElementById("actions");
+    const summaryEl = document.getElementById("summary");
+
+    function checkedItems() {
+      return Array.from(document.querySelectorAll("input[name='done']:checked")).map((input) => input.value);
+    }
+
+    function checklistScore(items) {
+      return Math.min(items.length * 2, 14);
+    }
+
+    function tier(score) {
+      if (score >= 80) {
+        return {
+          label: "可以进入发布前复核",
+          copy: "当前资料来源、标题、描述和交付边界比较清楚。发布前再核对后台类目提示、官方规则入口和文件补发说明。",
+          cta: [
+            ["购买 19.90 元完整自检包", "19.90", "btn-primary"],
+            ["生成闲鱼上架文案", "xianyu-listing-generator.html", "btn-line", "static"]
+          ]
+        };
+      }
+      if (score >= 58) {
+        return {
+          label: "先补边界再发布",
+          copy: "这个资料方向可以继续整理，但标题、来源、发货或售后边界还有缺口。先把容易争议的部分写清。",
+          cta: [
+            ["购买 19.90 元完整自检包", "19.90", "btn-primary"],
+            ["查看自检包详情", "digital-listing-compliance.html", "btn-line", "static"]
+          ]
+        };
+      }
+      return {
+        label: "暂缓发布",
+        copy: "当前上架风险偏高。先排除账号、代开通、代审核、盗版、破解、收益承诺和来源不清问题，再考虑发布。",
+        cta: [
+          ["购买 19.90 元完整自检包", "19.90", "btn-primary"],
+          ["先做选题评分", "side-hustle-idea-scorer.html", "btn-line", "static"]
+        ]
+      };
+    }
+
+    function buildRisks(score, items) {
+      const risks = [];
+      const source = Number(document.getElementById("source").value);
+      const copyright = Number(document.getElementById("copyright").value);
+      const titleRisk = Number(document.getElementById("titleRisk").value);
+      const description = Number(document.getElementById("description").value);
+      const delivery = Number(document.getElementById("delivery").value);
+      const refund = Number(document.getElementById("refund").value);
+      const category = Number(document.getElementById("category").value);
+      const contact = Number(document.getElementById("contact").value);
+      if (source < 10 || !items.includes("资料来源")) risks.push("资料来源风险：补清原创、授权或公开信息来源，不要用搬运截图充当交付。");
+      if (copyright < 9) risks.push("版权风险：含盗版课、破解软件、共享会员或未授权电子书时不建议发布。");
+      if (titleRisk < 8) risks.push("标题风险：删掉包过、必过、月入、内部、官方、代开通等结果型或身份型表达。");
+      if (description < 10 || !items.includes("文件格式")) risks.push("描述风险：写清文件名、格式、页数或表格字段，让买家知道会收到什么。");
+      if (delivery < 9 || !items.includes("平台内沟通")) risks.push("发货风险：交易、沟通和售后尽量留在平台内，不要引导站外付款。");
+      if (refund < 8 || !items.includes("退款边界")) risks.push("售后风险：补清未发货、已发货、打不开文件、漏发和补发规则。");
+      if (category < 6) risks.push("类目风险：后台提示需要资质时，不要靠换词硬发。");
+      if (contact < 6 || !items.includes("不含账号服务")) risks.push("服务边界风险：不要承诺账号、代开通、代审核、代运营或长期答疑。");
+      if (!items.includes("不承诺事项")) risks.push("承诺风险：明确不承诺审核、流量、成交、收入或回本。");
+      if (score >= 80) risks.push("当前可以做最终复核：类目提示、官方规则入口、发货文件和售后话术再过一遍。");
+      return risks.slice(0, 7);
+    }
+
+    function update() {
+      const items = checkedItems();
+      const base = fields.reduce((sum, id) => sum + Number(document.getElementById(id).value), 0);
+      const score = Math.min(100, Math.round(base + checklistScore(items)));
+      const t = tier(score);
+      const name = productName.value.trim() || "未命名电子资料";
+      const risks = buildRisks(score, items);
+      const scenario = [
+        "来自电子资料上架自检器",
+        `资料方向：${name}`,
+        `自检分数：${score}/100`,
+        `状态判断：${t.label}`,
+        `已写清内容：${items.length ? items.join("、") : "未勾选"}`,
+        `主要风险：${risks.join("；")}`
+      ].join("\n");
+
+      scoreEl.textContent = score;
+      meterFill.style.width = `${score}%`;
+      statusEl.textContent = t.label;
+      resultCopy.textContent = t.copy;
+      riskList.innerHTML = risks.map((risk) => `<li>${risk}</li>`).join("");
+      summaryEl.value = scenario;
+      actionsEl.innerHTML = t.cta.map(([label, target, cls, kind]) => {
+        const href = kind === "static"
+          ? target
+          : `order.html?plan=${encodeURIComponent(target)}&scenario=${encodeURIComponent(scenario)}`;
+        return `<a class="btn ${cls}" href="${href}">${label}</a>`;
+      }).join("");
+    }
+
+    form.addEventListener("input", update);
+    form.addEventListener("change", update);
+    update();
+  </script>
+</body>
+</html>
