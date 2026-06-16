@@ -17,7 +17,12 @@
     "@type": "Product",
     "name": "剪映高级感字幕参数工作流包",
     "description": "面向口播、AI 视频、小红书和短剧内容创作者的原创字幕参数资料包，包含 36 套风格参数、提示词、剪映手动复刻 SOP、视频类型搭配和自检清单。",
-    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-cover.webp",
+    "image": [
+      "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-cover.webp",
+      "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-detail-1.webp",
+      "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-detail-2.webp",
+      "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-detail-3.webp"
+    ],
     "brand": {
       "@type": "Brand",
       "name": "AI Workbench Store"
@@ -188,6 +193,21 @@
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+    .gallery img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, .08);
+    }
     .note {
       margin-top: 18px;
       padding: 14px 16px;
@@ -218,7 +238,8 @@
       }
       .hero-copy { padding: 38px 0 490px; }
       h1 { font-size: 40px; }
-      .grid { grid-template-columns: 1fr; }
+      .grid,
+      .gallery { grid-template-columns: 1fr; }
       .btn { width: 100%; }
     }
     @media (max-width: 480px) {
@@ -253,6 +274,17 @@
       </div>
     </div>
   </header>
+
+  <section>
+    <div class="wrap">
+      <h2>先看交付细节</h2>
+      <div class="gallery">
+        <img src="jianying-caption-detail-1.webp" alt="剪映高级感字幕参数工作流包交付内容">
+        <img src="jianying-caption-detail-2.webp" alt="剪映高级感字幕参数工作流包使用流程">
+        <img src="jianying-caption-detail-3.webp" alt="剪映高级感字幕参数工作流包适合谁买">
+      </div>
+    </div>
+  </section>
 
   <section>
     <div class="wrap">
