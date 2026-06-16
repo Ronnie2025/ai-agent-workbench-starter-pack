@@ -38,6 +38,7 @@ consultants, and small-team operators.
 - 电子资料上架合规自检包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-compliance.html
 - AI-PPT 交付自检包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-check.html
 - AI 远程数据兼职申请包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-data-job-pack.html
+- 小红书 Obsidian 工作流: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow.html
 
 ## Scenario Pages
 
@@ -63,6 +64,7 @@ consultants, and small-team operators.
 - 29.90 RMB: AI-PPT 交付自检包
 - 29.90 RMB: n8n AI副业情报雷达
 - 39.90 RMB: AI 远程数据兼职申请包
+- 79.80 RMB: 小红书 Obsidian 工作流
 - 99 RMB: AI Agent 工作台实战包
 - 49 RMB: Reddit/X 副业情报检索模板包
 - 299 RMB: 资料包 + 文字诊断
@@ -146,6 +148,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generat
 AI remote data job pack:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-data-job-pack.html
+
+Xiaohongshu Obsidian workflow:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow.html
 
 AI remote data job fit checker:
 
