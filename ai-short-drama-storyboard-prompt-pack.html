@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI短剧分镜脚本提示词包 | 39.90 元故事号漫剧工作流</title>
+  <meta name="description" content="39.90 元 AI短剧分镜脚本提示词工作流包，包含 12 套故事结构模板、10 套分镜表、角色一致性检查、图生视频提示词、CSV 镜头表和制作 SOP。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-prompt-pack.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="AI短剧分镜脚本提示词包">
+  <meta property="og:description" content="把 30-90 秒故事拆成故事结构、镜头表、角色一致性和图生视频提示词。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-prompt-pack.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "AI短剧分镜脚本提示词工作流包",
+    "description": "面向 AI 短剧、AI 漫剧、故事号和口播剧情号的原创分镜脚本与提示词资料包，包含故事结构、镜头表、角色一致性、图生视频提示词、CSV 镜头表和制作 SOP。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-cover.webp",
+    "brand": {
+      "@type": "Brand",
+      "name": "AI Workbench Store"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "39.90",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=ai-short-drama-39.90"
+    }
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6b7a;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --red: #f02635;
+      --teal: #0f7d84;
+      --deep: #121820;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      min-height: 84vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,1) 0%, rgba(246,248,251,.95) 45%, rgba(246,248,251,.22) 100%),
+        url("ai-short-drama-storyboard-cover.webp") right center / min(41vw, 500px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 670px;
+      padding: 58px 0 72px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(240,38,53,.25);
+      background: rgba(240,38,53,.09);
+      color: #a51521;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      max-width: 680px;
+      font-size: 60px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 20px;
+      font-size: 30px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+    p { margin: 0; }
+    .lead {
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .price strong {
+      color: var(--red);
+      font-size: 42px;
+      line-height: 1;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--deep); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    section { padding: 52px 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .card p,
+    .list {
+      color: var(--muted);
+    }
+    .list {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .list li { margin: 9px 0; }
+    .band {
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .footer {
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      min-height: 76px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 860px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(246,248,251,1) 0%, rgba(246,248,251,.96) 50%, rgba(246,248,251,.78) 100%),
+          url("ai-short-drama-storyboard-cover.webp") bottom center / min(86vw, 410px) auto no-repeat;
+      }
+      .hero-copy { padding: 38px 0 500px; }
+      h1 { font-size: 42px; }
+      .grid,
+      .two { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .hero-copy { padding-bottom: 430px; }
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <nav class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="jianying-caption-style-generator.html">字幕生成器</a>
+        <a href="order.html?plan=ai-short-drama-39.90">订单页</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <span class="eyebrow">AI 短剧和故事号资料包</span>
+          <h1>AI短剧分镜脚本提示词工作流包</h1>
+          <p class="lead">把 30-90 秒故事拆成故事结构、镜头表、角色一致性、图像提示词、图生视频动作和剪辑节奏。适合想先把脚本和分镜流程跑顺的人。</p>
+          <div class="price"><span>¥</span><strong>39.90</strong><span>数字资料包</span></div>
+          <div class="actions">
+            <a class="btn btn-primary" href="order.html?plan=ai-short-drama-39.90&scenario=我想购买 AI短剧分镜脚本提示词工作流包">生成 39.90 元订单</a>
+            <a class="btn btn-line" href="virtual-products.html">返回虚拟资料货架</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>拍下后拿到什么</h2>
+        <div class="grid">
+          <div class="card"><h3>故事结构</h3><p>12 套短剧故事结构模板，覆盖反转、误会、成长、冲突、选择和开放结尾。</p></div>
+          <div class="card"><h3>分镜表</h3><p>10 套分镜表和镜头语言模板，包含景别、时长、镜头运动、内容台词和提示词字段。</p></div>
+          <div class="card"><h3>提示词</h3><p>角色图、场景图、图生视频动作提示词，以及负面词和画面连续性检查。</p></div>
+          <div class="card"><h3>一致性</h3><p>角色外观、服装、道具、场景、镜头运动和字幕节奏的自检清单。</p></div>
+          <div class="card"><h3>CSV 模板</h3><p>可复制到表格的镜头字段，适合把脚本拆成可追踪的制作表。</p></div>
+          <div class="card"><h3>上架资料</h3><p>闲鱼发布文案、发货消息和发布清单，方便直接整理成自己的商品。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap two">
+        <div>
+          <h2>适合谁</h2>
+          <ul class="list">
+            <li>想做 AI 短剧、AI 漫剧、故事号或口播剧情号，但不会拆镜头的人。</li>
+            <li>会用 AI 生图或图生视频，但角色和场景经常不连续的人。</li>
+            <li>想把小故事、情绪故事、反转故事做成 30-90 秒视频的人。</li>
+            <li>想先卖一套原创 AI 短剧分镜资料，而不是承接代做服务的人。</li>
+          </ul>
+        </div>
+        <div>
+          <h2>不适合谁</h2>
+          <ul class="list">
+            <li>想找现成素材、别人课程文件或受保护素材的人。</li>
+            <li>想仿制他人形象、名人形象或已有角色的人。</li>
+            <li>不愿意按自己的题材微调提示词的人。</li>
+            <li>期待买完立刻看到账号效果的人。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>交付边界</h2>
+        <p class="lead">这份资料包提供原创分镜表、提示词和制作 SOP，不包含别人课程文件、受保护素材、音乐素材、账号代运营或成片代做服务。实际视频表现取决于题材、素材、模型、剪辑节奏和发布内容。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="order.html?plan=ai-short-drama-39.90&scenario=我想购买 AI短剧分镜脚本提示词工作流包">生成订单邮件</a>
+          <a class="btn btn-line" href="ai-character-consistency-prompt-pack.html">同时看人物一致性包</a>
+          <a class="btn btn-line" href="jianying-caption-style-workflow-pack.html">同时看剪映字幕参数包</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+    </div>
+  </footer>
+</body>
+</html>

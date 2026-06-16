@@ -15,6 +15,7 @@ consultants, and small-team operators.
 - 小红书轮播提示词资料包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-pack.html
 - AI人物一致性提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-prompt-generator.html
 - AI人物一致性提示词包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-prompt-pack.html
+- AI短剧分镜脚本提示词包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-prompt-pack.html
 - 小红书 Obsidian 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
@@ -72,6 +73,7 @@ consultants, and small-team operators.
 - 19 RMB: AI 工作台自测表
 - 19.90 RMB: 小红书轮播提示词资料包
 - 19.90 RMB: AI人物一致性提示词包
+- 39.90 RMB: AI短剧分镜脚本提示词包
 - 19.90 RMB: 电子资料上架合规自检包
 - 19.90 RMB: 闲鱼虚拟资料运营话术包
 - 29.90 RMB: 剪映高级感字幕参数工作流包
@@ -138,6 +140,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-prompt
 AI character consistency prompt pack:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-prompt-pack.html
+
+AI short drama storyboard prompt pack:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-prompt-pack.html
 
 AI workbench self-test pack:
 
