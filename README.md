@@ -12,6 +12,7 @@ consultants, and small-team operators.
 - AI 副业选题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-idea-scorer.html
 - 小红书标题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-scorer.html
 - 小红书轮播提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-generator.html
+- 小红书轮播提示词资料包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-pack.html
 - 小红书 Obsidian 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
@@ -64,6 +65,7 @@ consultants, and small-team operators.
 - 2.99 RMB: Codex 入门排障清单
 - 9.90 RMB: 小红书标题自测表
 - 19 RMB: AI 工作台自测表
+- 19.90 RMB: 小红书轮播提示词资料包
 - 19.90 RMB: 电子资料上架合规自检包
 - 29.90 RMB: AI-PPT 交付自检包
 - 29.90 RMB: n8n AI副业情报雷达
@@ -116,6 +118,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-s
 Xiaohongshu carousel prompt generator:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-generator.html
+
+Xiaohongshu carousel prompt pack:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-pack.html
 
 AI workbench self-test pack:
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>小红书轮播提示词生成器 | 5 页结构和配图提示词</title>
-  <meta name="description" content="免费小红书轮播提示词生成器：输入主题、读者、卡点和风格，生成 5 页轮播结构、每页文案、配图提示词和发布检查，导向小红书 Obsidian 工作流资料包。">
+  <meta name="description" content="免费小红书轮播提示词生成器：输入主题、读者、卡点和风格，生成 5 页轮播结构、每页文案、配图提示词和发布检查，导向 19.90 元小红书轮播提示词资料包和小红书 Obsidian 工作流资料包。">
   <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-generator.html">
   <link rel="icon" href="cover.png">
   <meta property="og:title" content="小红书轮播提示词生成器">
@@ -358,6 +358,7 @@
         <p class="lead">输入一个主题，自动拆成 5 页轮播：封面、痛点、方法、案例、总结。每页给出画面文案和可复制配图提示词，适合把 Obsidian 素材变成发布包。</p>
         <div class="actions">
           <a class="btn btn-primary" href="#generator">开始生成</a>
+          <a class="btn btn-line" href="xiaohongshu-carousel-prompt-pack.html">查看 19.90 元资料包</a>
           <a class="btn btn-line" href="xhs-obsidian-workflow.html">查看 79.8 元完整工作流</a>
           <a class="btn btn-line" href="xiaohongshu-title-scorer.html">先评标题</a>
         </div>
@@ -555,7 +556,9 @@
       ].join("\n");
       summary.value = text;
       actions.innerHTML = [
-        `<a class="btn btn-primary" href="order.html?plan=xhs-obsidian-79.80&scenario=${encodeURIComponent(text)}">生成 79.8 元工作流订单</a>`,
+        `<a class="btn btn-primary" href="xiaohongshu-carousel-prompt-pack.html">查看 19.90 元资料包</a>`,
+        `<a class="btn btn-line" href="order.html?plan=xhs-carousel-19.90&scenario=${encodeURIComponent(text)}">生成 19.90 元资料包订单</a>`,
+        `<a class="btn btn-line" href="order.html?plan=xhs-obsidian-79.80&scenario=${encodeURIComponent(text)}">生成 79.8 元工作流订单</a>`,
         `<a class="btn btn-line" href="xhs-obsidian-workflow-fit-checker.html">先测 Obsidian 适配</a>`,
         `<a class="btn btn-line" href="order.html?plan=9.90&scenario=${encodeURIComponent(text)}">生成 9.90 元标题包订单</a>`
       ].join("");
