@@ -20,6 +20,7 @@
     "operatingSystem": "Web",
     "description": "输入主题、读者、卡点和视觉风格，生成小红书 5 页轮播结构、每页文案、配图提示词和发布检查。",
     "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-generator-cover.png",
+    "sameAs": "https://www.goofish.com/item?id=1059706201312",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -51,10 +52,10 @@
       },
       {
         "@type": "Question",
-        "name": "什么时候需要 79.8 元小红书 Obsidian 工作流？",
+        "name": "什么时候需要 19.90 元资料包或 79.8 元工作流？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "当你已经有素材并持续发图文，想把标题、正文、轮播页、配图提示词和发布包归档固定进 Obsidian 时，可以考虑完整资料包。"
+          "text": "只想先解决 5 页轮播结构和配图提示词时，可以买 19.90 元资料包；如果已经持续发图文，想把标题、正文、轮播页、配图提示词和发布包归档固定进 Obsidian，再考虑 79.8 元工作流。"
         }
       }
     ]
@@ -345,7 +346,7 @@
         <a href="xiaohongshu-title-scorer.html">标题评分器</a>
         <a href="xhs-obsidian-workflow.html">79.8 工作流</a>
         <a href="xhs-obsidian-workflow-fit-checker.html">适配评分</a>
-        <a href="order.html?plan=xhs-obsidian-79.80">订单页</a>
+        <a href="https://www.goofish.com/item?id=1059706201312" target="_blank" rel="noopener">闲鱼购买</a>
       </div>
     </div>
   </nav>
@@ -358,7 +359,8 @@
         <p class="lead">输入一个主题，自动拆成 5 页轮播：封面、痛点、方法、案例、总结。每页给出画面文案和可复制配图提示词，适合把 Obsidian 素材变成发布包。</p>
         <div class="actions">
           <a class="btn btn-primary" href="#generator">开始生成</a>
-          <a class="btn btn-line" href="xiaohongshu-carousel-prompt-pack.html">查看 19.90 元小红书轮播提示词资料包</a>
+          <a class="btn btn-line" href="https://www.goofish.com/item?id=1059706201312" target="_blank" rel="noopener">闲鱼买 19.90 元资料包</a>
+          <a class="btn btn-line" href="xiaohongshu-carousel-prompt-pack.html">查看资料包详情</a>
           <a class="btn btn-line" href="xhs-obsidian-workflow.html">查看 79.8 元完整工作流</a>
           <a class="btn btn-line" href="xiaohongshu-title-scorer.html">先评标题</a>
         </div>
@@ -469,14 +471,14 @@
           <div class="actions"><a class="btn btn-line" href="xiaohongshu-title-scorer.html">打开标题评分器</a></div>
         </div>
         <div class="card">
-          <h3>想固定到 Obsidian</h3>
-          <p>如果你每周都发图文，可以用 79.8 元工作流把素材、标题、正文、提示词和发布包归档固定下来。</p>
-          <div class="actions"><a class="btn btn-primary" href="xhs-obsidian-workflow.html">查看完整工作流</a></div>
+          <h3>想直接拿模板</h3>
+          <p>19.90 元资料包包含 5 页 SOP、30 条配图提示词、完整示例和发布检查清单。</p>
+          <div class="actions"><a class="btn btn-primary" href="https://www.goofish.com/item?id=1059706201312" target="_blank" rel="noopener">闲鱼担保购买</a></div>
         </div>
         <div class="card">
-          <h3>准备卖资料包</h3>
-          <p>生成轮播页后，再用闲鱼文案生成器整理商品标题、描述和发货话术。</p>
-          <div class="actions"><a class="btn btn-line" href="xianyu-listing-generator.html">生成闲鱼文案</a></div>
+          <h3>想固定到 Obsidian</h3>
+          <p>如果你每周都发图文，可以用 79.8 元工作流把素材、标题、正文、提示词和发布包归档固定下来。</p>
+          <div class="actions"><a class="btn btn-line" href="xhs-obsidian-workflow.html">查看完整工作流</a></div>
         </div>
       </div>
     </div>
@@ -556,8 +558,9 @@
       ].join("\n");
       summary.value = text;
       actions.innerHTML = [
-        `<a class="btn btn-primary" href="xiaohongshu-carousel-prompt-pack.html">查看 19.90 元小红书轮播提示词资料包</a>`,
-        `<a class="btn btn-line" href="order.html?plan=xhs-carousel-19.90&scenario=${encodeURIComponent(text)}">生成 19.90 元资料包订单</a>`,
+        `<a class="btn btn-primary" href="https://www.goofish.com/item?id=1059706201312" target="_blank" rel="noopener">闲鱼担保购买 19.90 元资料包</a>`,
+        `<a class="btn btn-line" href="xiaohongshu-carousel-prompt-pack.html">查看资料包详情</a>`,
+        `<a class="btn btn-line" href="order.html?plan=xhs-carousel-19.90&scenario=${encodeURIComponent(text)}">生成备用订单</a>`,
         `<a class="btn btn-line" href="order.html?plan=xhs-obsidian-79.80&scenario=${encodeURIComponent(text)}">生成 79.8 元工作流订单</a>`,
         `<a class="btn btn-line" href="xhs-obsidian-workflow-fit-checker.html">先测 Obsidian 适配</a>`,
         `<a class="btn btn-line" href="order.html?plan=9.90&scenario=${encodeURIComponent(text)}">生成 9.90 元标题包订单</a>`
