@@ -20,6 +20,7 @@ consultants, and small-team operators.
 - 虚拟资料买家问答生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-buyer-reply-generator.html
 - Codex 排障自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-checker.html
 - Codex 第一次任务提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html
+- AGENTS.md 生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-agents-md-generator.html
 - PPT 大纲生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generator.html
 - AI-PPT 交付自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
 - n8n 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-checker.html
@@ -93,6 +94,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooti
 Codex first task prompt generator:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html
+
+AGENTS.md generator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-agents-md-generator.html
 
 Xiaohongshu title self-test:
 

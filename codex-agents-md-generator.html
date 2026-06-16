@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Codex 第一次任务提示词生成器 | Codex CLI First Task Prompt Generator</title>
-  <meta name="description" content="免费 Codex 第一次任务提示词生成器：根据项目类型、目标、限制和验收方式，生成可复制的第一句 Codex 提示词。Free Codex CLI first-task prompt generator with constraints and acceptance checks.">
-  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html">
+  <title>AGENTS.md 生成器 | Codex CLI Project Instructions Generator</title>
+  <meta name="description" content="免费 AGENTS.md 生成器：为 Codex CLI、Claude Code、Cursor 和 Gemini CLI 生成项目规则文件，包含命令、边界、安全规则和验收方式。Free AGENTS.md generator for AI coding agents.">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-agents-md-generator.html">
   <link rel="icon" href="cover.png">
-  <meta property="og:title" content="Codex First Task Prompt Generator">
-  <meta property="og:description" content="Generate a scoped first-task prompt for Codex CLI with project context, constraints, file boundaries, and acceptance checks.">
-  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html">
+  <meta property="og:title" content="AGENTS.md Generator for Codex CLI">
+  <meta property="og:description" content="Generate a project-level AGENTS.md file with commands, file boundaries, safety rules, and acceptance checks for Codex CLI and other AI coding agents.">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-agents-md-generator.html">
   <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-cover.webp">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Codex 第一次任务提示词生成器",
+    "name": "AGENTS.md 生成器",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Web",
-    "description": "根据项目类型、目标、限制和验收方式，生成适合第一次让 Codex 修改项目的提示词。",
-    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html",
+    "description": "根据项目类型、技术栈、命令、可改范围和安全边界，生成适合 Codex CLI 等 AI coding agent 读取的 AGENTS.md。",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-agents-md-generator.html",
     "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-cover.webp",
     "offers": {
       "@type": "Offer",
@@ -36,26 +36,26 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "第一次用 Codex 应该怎么写提示词？",
+        "name": "AGENTS.md 是什么？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "先写清项目目录、目标文件、要达成的结果、不能改的范围和验收方式。不要一开始就让它重构整个项目。"
+          "text": "AGENTS.md 是放在项目根目录的 AI coding agent 规则文件，用来告诉 Codex、Claude Code、Cursor 等工具项目命令、边界、代码风格和验收方式。"
         }
       },
       {
         "@type": "Question",
-        "name": "Codex 提示词里为什么要写验收方式？",
+        "name": "Codex CLI 会读取 AGENTS.md 吗？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "验收方式能限制输出范围，让 Codex 说明怎么检查结果，也方便你用页面、命令或 diff 判断是否真的完成。"
+          "text": "Codex 会优先读取工作目录附近的项目说明文件。把 AGENTS.md 放在项目根目录，可以减少每次对话重复解释项目规则。"
         }
       },
       {
         "@type": "Question",
-        "name": "这个生成器是否替代 Codex 入门排障清单？",
+        "name": "AGENTS.md 应该写多长？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "不会。生成器解决第一句提示词，排障清单覆盖安装登录、目录权限、常见失败顺序和更多可复制模板。"
+          "text": "新手项目先写 1 到 2 页即可，重点是常用命令、不能改的文件、测试方式、安全规则和交付说明，不需要把 README 重写一遍。"
         }
       }
     ]
@@ -72,7 +72,6 @@
       --blue: #155eef;
       --green: #0f8f6f;
       --deep: #0d1b2a;
-      --amber: #b86b00;
       --soft-blue: #eaf1ff;
       --soft-green: #e9f8f3;
       --shadow: 0 18px 48px rgba(16, 24, 40, .10);
@@ -124,7 +123,7 @@
       align-items: center;
       border-bottom: 1px solid var(--line);
       background:
-        linear-gradient(90deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.93) 48%, rgba(246,248,251,.28) 78%),
+        linear-gradient(90deg, rgba(246,248,251,.99) 0%, rgba(246,248,251,.94) 48%, rgba(246,248,251,.28) 78%),
         url("codex-troubleshooting-cover.webp") right center / min(42vw, 610px) auto no-repeat;
     }
     .wrap {
@@ -132,7 +131,7 @@
       margin: 0 auto;
     }
     .hero-copy {
-      max-width: 680px;
+      max-width: 700px;
       padding: 74px 0 86px;
     }
     .eyebrow {
@@ -149,7 +148,7 @@
     h1, h2, h3, p { margin: 0; }
     h1 {
       margin: 20px 0 16px;
-      font-size: clamp(40px, 6vw, 70px);
+      font-size: clamp(38px, 6vw, 68px);
       line-height: 1.04;
       letter-spacing: 0;
     }
@@ -170,7 +169,7 @@
       font-size: 19px;
     }
     .english-note {
-      max-width: 650px;
+      max-width: 670px;
       margin-top: 18px;
       padding: 16px;
       border: 1px solid rgba(15,143,111,.24);
@@ -216,7 +215,7 @@
     }
     .tool-layout {
       display: grid;
-      grid-template-columns: minmax(0, .92fr) minmax(420px, 1.08fr);
+      grid-template-columns: minmax(0, .94fr) minmax(420px, 1.06fr);
       gap: 22px;
       align-items: start;
     }
@@ -281,7 +280,7 @@
       padding: 0 12px;
     }
     textarea {
-      min-height: 96px;
+      min-height: 92px;
       padding: 12px;
       resize: vertical;
     }
@@ -335,13 +334,18 @@
       font-weight: 850;
     }
     .copybox {
-      min-height: 248px;
+      min-height: 320px;
+      max-height: 620px;
+      overflow: auto;
       padding: 14px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: #fbfdff;
       white-space: pre-wrap;
       overflow-wrap: anywhere;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.58;
     }
     .script-block {
       border-top: 1px solid var(--line);
@@ -426,8 +430,7 @@
       <a class="brand" href="./">AI Workbench Store</a>
       <div class="nav">
         <a href="codex-troubleshooting.html">Codex 包</a>
-        <a href="codex-troubleshooting-checker.html">排障自检</a>
-        <a href="codex-agents-md-generator.html">AGENTS.md</a>
+        <a href="codex-first-task-prompt-generator.html">提示词生成</a>
         <a href="virtual-products.html">虚拟资料</a>
         <a href="order.html?plan=2.99">订单页</a>
       </div>
@@ -437,18 +440,17 @@
   <header class="hero">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">免费 Codex 提示词工具</span>
-        <h1>Codex 第一次任务提示词生成器</h1>
-        <p class="lead">第一次让 Codex 改项目，不要只写“帮我优化”。先把目录、目标、边界、验收方式写清楚，再让它动手。</p>
+        <span class="eyebrow">免费 Codex 项目规则工具</span>
+        <h1>AGENTS.md 生成器</h1>
+        <p class="lead">把项目命令、可改范围、禁止事项和验收方式写成一份 Codex 能反复读取的项目规则，减少每次对话重新解释。</p>
         <div class="english-note">
           <strong>For GitHub visitors</strong>
-          Free Codex CLI prompt generator. Turn a vague project goal into a first task with scope, file boundaries, constraints, and acceptance checks before you ask Codex to edit your repo.
+          Free AGENTS.md generator for Codex CLI, Claude Code, Cursor, and other AI coding agents. Create project instructions with commands, boundaries, safety rules, and acceptance checks.
         </div>
         <div class="actions">
-          <a class="btn btn-primary" href="#tool">生成提示词 / Generate prompt</a>
+          <a class="btn btn-primary" href="#tool">生成 AGENTS.md / Generate file</a>
           <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">2.99 元 Codex starter pack</a>
-          <a class="btn btn-line" href="codex-troubleshooting-checker.html">免费排障自检 / Troubleshooting check</a>
-          <a class="btn btn-line" href="codex-agents-md-generator.html">生成 AGENTS.md</a>
+          <a class="btn btn-line" href="codex-first-task-prompt-generator.html">第一次任务提示词</a>
         </div>
       </div>
     </div>
@@ -457,102 +459,104 @@
   <section id="tool">
     <div class="wrap tool-layout">
       <div class="panel form-panel">
-        <h2>填写第一次任务</h2>
-        <p class="hint">默认是网页小改动。改字段后会自动生成更贴合的 Codex 提示词。</p>
+        <h2>填写项目规则</h2>
+        <p class="hint">默认适合小型网页项目。改字段后会自动生成一份可复制的 AGENTS.md。</p>
         <div class="field-grid">
           <div class="field">
             <label for="projectType">项目类型</label>
             <select id="projectType">
-              <option value="网页项目">网页项目</option>
-              <option value="文档项目">文档项目</option>
-              <option value="脚本工具">脚本工具</option>
-              <option value="数据表格">数据表格</option>
-              <option value="还不确定">还不确定</option>
+              <option value="网页应用">网页应用</option>
+              <option value="静态网站">静态网站</option>
+              <option value="Node 脚本工具">Node 脚本工具</option>
+              <option value="Python 数据脚本">Python 数据脚本</option>
+              <option value="文档/课程资料">文档/课程资料</option>
             </select>
           </div>
           <div class="field">
-            <label for="taskSize">任务大小</label>
-            <select id="taskSize">
-              <option value="one-file">只改一个文件</option>
-              <option value="one-page">只改一个页面</option>
-              <option value="one-flow">只改一个流程</option>
-              <option value="explain">先解释不改动</option>
+            <label for="stack">技术栈</label>
+            <input id="stack" type="text" value="HTML, CSS, JavaScript, GitHub Pages">
+          </div>
+          <div class="field">
+            <label for="packageManager">包管理/运行方式</label>
+            <select id="packageManager">
+              <option value="无构建，直接打开 HTML">无构建，直接打开 HTML</option>
+              <option value="npm">npm</option>
+              <option value="pnpm">pnpm</option>
+              <option value="yarn">yarn</option>
+              <option value="python">python</option>
             </select>
           </div>
           <div class="field">
-            <label for="environment">当前环境</label>
-            <select id="environment">
-              <option value="本地项目目录">本地项目目录</option>
-              <option value="GitHub 仓库">GitHub 仓库</option>
-              <option value="文档文件夹">文档文件夹</option>
-              <option value="还没打开目录">还没打开目录</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="riskLevel">风险偏好</label>
-            <select id="riskLevel">
-              <option value="safe">先保守，等确认后再改</option>
-              <option value="direct">可以直接改，但要说明 diff</option>
-              <option value="audit">只做审计，不修改文件</option>
+            <label for="agentMode">默认协作模式</label>
+            <select id="agentMode">
+              <option value="先计划，再修改">先计划，再修改</option>
+              <option value="小改动可直接修改">小改动可直接修改</option>
+              <option value="只审计，不自动修改">只审计，不自动修改</option>
+              <option value="先问清楚再动手">先问清楚再动手</option>
             </select>
           </div>
           <div class="field full">
-            <label for="goal">想完成什么</label>
-            <textarea id="goal">把首页里的购买入口改得更清楚，并确认移动端按钮不要挤在一起。</textarea>
+            <label for="commands">常用命令</label>
+            <textarea id="commands">本地预览：直接打开 HTML 文件
+验证页面：检查 390px 移动端和 1366px 桌面端
+上线：git add/commit/push 后等待 GitHub Pages 刷新</textarea>
           </div>
           <div class="field full">
-            <label for="scope">可以改哪里</label>
-            <input id="scope" type="text" value="只改当前页面和相关样式，不改支付逻辑">
+            <label for="editableScope">可以修改的范围</label>
+            <textarea id="editableScope">当前任务相关的 HTML、CSS、README、sitemap；只改和目标直接相关的文件。</textarea>
           </div>
           <div class="field full">
-            <label for="acceptance">怎么验收</label>
-            <input id="acceptance" type="text" value="本地打开页面检查按钮文案、链接和 390px 移动端不横向溢出">
+            <label for="protectedScope">不能碰的范围</label>
+            <textarea id="protectedScope">不要改支付金额、商品链接、隐私条款、历史记录、无关页面；不要删除用户未提交的改动。</textarea>
           </div>
           <div class="field full">
-            <label>提示词里要强调</label>
+            <label for="acceptance">验收方式</label>
+            <textarea id="acceptance">说明改了哪些文件；检查链接可打开；移动端不横向溢出；复制/按钮/表单交互能正常工作。</textarea>
+          </div>
+          <div class="field full">
+            <label>要覆盖的 Agent</label>
             <div class="check-grid">
-              <label><input type="checkbox" id="askPlan" checked> 先输出计划</label>
-              <label><input type="checkbox" id="keepScope" checked> 不碰无关文件</label>
-              <label><input type="checkbox" id="showDiff" checked> 改完说明 diff</label>
-              <label><input type="checkbox" id="runCheck" checked> 给出验证命令</label>
-              <label><input type="checkbox" id="stopRisk"> 遇到不确定先停下</label>
-              <label><input type="checkbox" id="summarize"> 最后给交付摘要</label>
+              <label><input type="checkbox" id="toolCodex" checked> Codex CLI</label>
+              <label><input type="checkbox" id="toolClaude" checked> Claude Code</label>
+              <label><input type="checkbox" id="toolCursor" checked> Cursor</label>
+              <label><input type="checkbox" id="toolGemini"> Gemini CLI</label>
+              <label><input type="checkbox" id="security" checked> 安全/隐私规则</label>
+              <label><input type="checkbox" id="delivery" checked> 交付摘要规则</label>
             </div>
           </div>
         </div>
         <div class="actions">
           <button class="btn btn-primary" id="generate" type="button">重新生成</button>
-          <button class="btn btn-line" id="copy" type="button">复制提示词</button>
+          <button class="btn btn-line" id="copy" type="button">复制 AGENTS.md</button>
           <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">闲鱼买 2.99 元清单</a>
         </div>
       </div>
 
       <aside class="panel result-panel">
-        <img class="cover" src="codex-troubleshooting-cover.webp" alt="Codex 第一次任务提示词生成器封面">
+        <img class="cover" src="codex-troubleshooting-cover.webp" alt="AGENTS.md 生成器封面">
         <div class="result-body">
           <div class="output-head">
             <div>
-              <h2>可复制提示词</h2>
-              <p class="hint" id="scoreHint">当前任务适合先让 Codex 输出计划，再确认修改范围。</p>
+              <h2>可复制 AGENTS.md</h2>
+              <p class="hint" id="scoreHint">这份规则适合放在项目根目录，给 Codex 等工具读取。</p>
             </div>
-            <div class="score" id="score">86</div>
+            <div class="score" id="score">90</div>
           </div>
           <div class="pill-row" id="pillRow"></div>
-          <div class="copybox" id="promptOut"></div>
+          <div class="copybox" id="agentsOut"></div>
 
           <div class="script-block">
-            <h3>发送前再检查</h3>
+            <h3>放入项目前再检查</h3>
             <ul class="list" id="checkList"></ul>
           </div>
 
           <div class="cta-panel">
-            <h3>需要一整套新手排障顺序</h3>
-            <p>2.99 元 Codex 入门排障清单包含安装登录自检、第一次任务流程、常见失败排查和更多可复制提示词模板。</p>
+            <h3>需要新手任务和排障模板</h3>
+            <p>2.99 元 Codex 入门排障清单包含安装登录、第一次任务、常见失败顺序、提示词模板和 AGENTS.md 使用建议。</p>
             <p class="mini-note">English: the 2.99 CNY starter pack is delivered via Xianyu/Goofish chat after purchase. It is a checklist and prompt-template pack, not a managed coding service.</p>
             <div class="actions">
               <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">Buy 2.99 CNY starter pack</a>
               <a class="btn btn-line" href="codex-troubleshooting-checker.html">免费排障自检</a>
-              <a class="btn btn-line" href="codex-agents-md-generator.html">生成 AGENTS.md</a>
               <a class="btn btn-line" href="https://www.goofish.com/item?id=1059263013337" target="_blank" rel="noopener">99 CNY full workflow pack</a>
             </div>
           </div>
@@ -563,19 +567,19 @@
 
   <section>
     <div class="wrap">
-      <h2>第一次任务不要漏掉三件事</h2>
+      <h2>AGENTS.md 先写这三类规则</h2>
       <div class="cards">
         <div class="card">
-          <h3>目录和文件</h3>
-          <p>先让 Codex 确认当前目录、相关文件和它准备修改的范围，避免改到旧副本。</p>
+          <h3>命令</h3>
+          <p>把预览、测试、构建、部署命令写清楚，Agent 才能在改完后自己验证。</p>
         </div>
         <div class="card">
           <h3>边界</h3>
-          <p>明确哪些文件、业务逻辑、支付链路、数据不能动。边界越清楚，越不容易跑偏。</p>
+          <p>列出可以改和不能改的文件范围，避免一次小任务扩散成整站重构。</p>
         </div>
         <div class="card">
           <h3>验收</h3>
-          <p>让它给出页面检查、命令检查或 diff 检查方式。只看完成说明不算完成。</p>
+          <p>要求说明 diff、运行检查、截图或手动检查项，让完成状态能被判断。</p>
         </div>
       </div>
     </div>
@@ -585,8 +589,7 @@
     <div class="wrap">
       <span>Contact: zhongruanjie@gmail.com</span>
       <a href="codex-troubleshooting.html">Codex 入门排障清单</a>
-      <a href="codex-troubleshooting-checker.html">Codex 排障自检器</a>
-      <a href="codex-agents-md-generator.html">AGENTS.md 生成器</a>
+      <a href="codex-first-task-prompt-generator.html">Codex 提示词生成器</a>
       <a href="virtual-products.html">虚拟资料货架</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
@@ -596,98 +599,138 @@
   <script>
     const $ = (id) => document.getElementById(id);
     const fields = [
-      "projectType", "taskSize", "environment", "riskLevel", "goal", "scope", "acceptance",
-      "askPlan", "keepScope", "showDiff", "runCheck", "stopRisk", "summarize"
+      "projectType", "stack", "packageManager", "agentMode", "commands",
+      "editableScope", "protectedScope", "acceptance", "toolCodex",
+      "toolClaude", "toolCursor", "toolGemini", "security", "delivery"
     ];
 
-    const sizeText = {
-      "one-file": "只处理一个文件或一个很小的改动",
-      "one-page": "只处理一个页面或一个明确模块",
-      "one-flow": "只处理一个流程，不扩散到整站",
-      "explain": "先解释现状，不修改文件"
-    };
-
     function readState() {
+      const tools = [];
+      if ($("toolCodex").checked) tools.push("Codex CLI");
+      if ($("toolClaude").checked) tools.push("Claude Code");
+      if ($("toolCursor").checked) tools.push("Cursor");
+      if ($("toolGemini").checked) tools.push("Gemini CLI");
       return {
         projectType: $("projectType").value,
-        taskSize: $("taskSize").value,
-        environment: $("environment").value,
-        riskLevel: $("riskLevel").value,
-        goal: $("goal").value.trim() || "还没有写清楚目标。",
-        scope: $("scope").value.trim() || "只改和目标直接相关的文件。",
-        acceptance: $("acceptance").value.trim() || "说明如何验证结果是否完成。",
-        askPlan: $("askPlan").checked,
-        keepScope: $("keepScope").checked,
-        showDiff: $("showDiff").checked,
-        runCheck: $("runCheck").checked,
-        stopRisk: $("stopRisk").checked,
-        summarize: $("summarize").checked
+        stack: $("stack").value.trim() || "未填写",
+        packageManager: $("packageManager").value,
+        agentMode: $("agentMode").value,
+        commands: $("commands").value.trim() || "请先补充预览、测试或构建命令。",
+        editableScope: $("editableScope").value.trim() || "只改和当前任务直接相关的文件。",
+        protectedScope: $("protectedScope").value.trim() || "不要改无关文件，不要删除用户改动。",
+        acceptance: $("acceptance").value.trim() || "说明如何检查任务是否完成。",
+        tools,
+        security: $("security").checked,
+        delivery: $("delivery").checked
       };
     }
 
     function scoreState(state) {
-      let score = 50;
-      if (state.goal.length >= 20) score += 12;
-      if (state.scope.length >= 10) score += 10;
-      if (state.acceptance.length >= 12) score += 12;
-      if (state.askPlan) score += 4;
-      if (state.keepScope) score += 4;
-      if (state.showDiff) score += 4;
-      if (state.runCheck) score += 4;
-      if (state.stopRisk) score += 3;
-      if (state.taskSize === "explain") score += 2;
-      if (state.environment === "还没打开目录") score -= 14;
-      if (state.goal.length < 12) score -= 10;
-      return Math.max(28, Math.min(98, score));
+      let score = 46;
+      if (state.stack.length >= 8) score += 10;
+      if (state.commands.length >= 24) score += 14;
+      if (state.editableScope.length >= 16) score += 10;
+      if (state.protectedScope.length >= 16) score += 10;
+      if (state.acceptance.length >= 16) score += 12;
+      if (state.tools.length >= 2) score += 4;
+      if (state.security) score += 3;
+      if (state.delivery) score += 3;
+      return Math.max(35, Math.min(98, score));
     }
 
-    function buildPrompt(state) {
-      const modeLine = state.riskLevel === "audit"
-        ? "请先只做审计和建议，不要修改任何文件。"
-        : state.riskLevel === "safe"
-          ? "请先输出计划和将要检查的文件，等我确认后再修改。"
-          : "可以直接修改，但请先说明你准备改哪些文件，并在改完后解释 diff。";
-      const requirements = [];
-      if (state.askPlan) requirements.push("先输出 3-5 步执行计划。");
-      if (state.keepScope) requirements.push("不要修改和目标无关的文件，不要做顺手重构。");
-      if (state.showDiff) requirements.push("改完后说明实际改了哪些文件、每个文件改动目的是什么。");
-      if (state.runCheck) requirements.push("给出我可以执行或手动检查的验收方式。");
-      if (state.stopRisk) requirements.push("如果发现目录不对、权限不够、需求不清或可能影响支付/登录/数据，请先停下并问我。");
-      if (state.summarize) requirements.push("最后用三句话总结完成情况、剩余风险和下一步。");
+    function bullets(text) {
+      return text.split(/\n+/).map((line) => line.trim()).filter(Boolean).map((line) => `- ${line}`).join("\n");
+    }
 
-      return [
-        `我现在在 ${state.environment} 中处理一个 ${state.projectType}。`,
+    function buildAgents(state) {
+      const toolLine = state.tools.length ? state.tools.join(", ") : "AI coding agents";
+      const modeNote = {
+        "先计划，再修改": "For non-trivial tasks, inspect the relevant files first, propose a short plan, then implement after the plan is clear.",
+        "小改动可直接修改": "For small, clearly scoped changes, implement directly and then summarize the diff.",
+        "只审计，不自动修改": "Default to read-only review. Do not modify files unless the user explicitly asks for implementation.",
+        "先问清楚再动手": "If the task is ambiguous, ask the minimum necessary clarification before editing files."
+      }[state.agentMode];
+
+      const sections = [
+        "# AGENTS.md",
         "",
-        `目标：${state.goal}`,
+        `This file provides project instructions for ${toolLine}. Keep it focused on commands, boundaries, safety rules, and acceptance checks.`,
         "",
-        `任务大小：${sizeText[state.taskSize]}`,
-        `允许范围：${state.scope}`,
-        `验收方式：${state.acceptance}`,
+        "## Project Overview",
         "",
-        modeLine,
+        `- Project type: ${state.projectType}`,
+        `- Main stack: ${state.stack}`,
+        `- Runtime/package mode: ${state.packageManager}`,
         "",
-        "请按下面规则执行：",
-        ...requirements.map((item, index) => `${index + 1}. ${item}`),
+        "## Working Mode",
         "",
-        "如果你需要我补充上下文，请只问和这次任务直接相关的问题。"
-      ].join("\n");
+        `- ${modeNote}`,
+        "- Prefer small, reviewable changes over broad rewrites.",
+        "- Before editing, identify the files that are directly relevant to the requested task.",
+        "- Do not reformat unrelated files or move content across folders unless the task requires it.",
+        "",
+        "## Common Commands",
+        "",
+        bullets(state.commands),
+        "",
+        "## Editable Scope",
+        "",
+        bullets(state.editableScope),
+        "",
+        "## Protected Scope",
+        "",
+        bullets(state.protectedScope),
+        "",
+        "## Acceptance Checks",
+        "",
+        bullets(state.acceptance)
+      ];
+
+      if (state.security) {
+        sections.push(
+          "",
+          "## Safety And Privacy",
+          "",
+          "- Do not expose API keys, tokens, cookies, private customer data, or local secrets.",
+          "- Do not change payment links, order amounts, authentication flows, or analytics identifiers unless the task explicitly asks for it.",
+          "- If a task may transmit sensitive data to a third party, stop and ask for confirmation first.",
+          "- Preserve user changes already present in the working tree."
+        );
+      }
+
+      if (state.delivery) {
+        sections.push(
+          "",
+          "## Delivery Format",
+          "",
+          "- Summarize the files changed and the reason for each change.",
+          "- Report the exact checks run and whether they passed.",
+          "- Mention any checks that could not be run.",
+          "- If the task affects UI, verify both mobile and desktop layouts when practical."
+        );
+      }
+
+      sections.push(
+        "",
+        "## When Unsure",
+        "",
+        "- Prefer reading the current files over guessing project structure.",
+        "- Ask one focused question only when the next action would otherwise be risky or ambiguous.",
+        "- Keep the user-facing summary short and concrete."
+      );
+
+      return sections.join("\n");
     }
 
     function buildChecks(state) {
       const checks = [
-        "确认当前目录就是你要让 Codex 修改的项目，不是旧副本。",
-        "确认目标能用一个页面、一个文件或一个流程描述清楚。",
-        "确认提示词里有不能改的范围。"
+        "把生成内容保存为项目根目录的 AGENTS.md。",
+        "确认命令是真实可运行的，不要留下示例命令占位。",
+        "确认不能改的范围覆盖支付、登录、数据、用户未提交改动。"
       ];
-      if (state.environment === "还没打开目录") {
-        checks.unshift("先打开正确项目目录，再发送提示词。");
-      }
-      if (!state.runCheck) {
-        checks.push("最好补一句验收方式，否则完成质量很难判断。");
-      }
-      if (state.taskSize === "one-flow") {
-        checks.push("流程任务容易扩大范围，先要求 Codex 列出会碰到的文件。");
-      }
+      if (!state.tools.includes("Codex CLI")) checks.push("如果主要使用 Codex，建议勾选 Codex CLI。");
+      if (!state.security) checks.push("建议加入安全/隐私规则，避免误传密钥或改动支付链路。");
+      if (!state.delivery) checks.push("建议加入交付摘要规则，方便判断任务是否真的完成。");
       return checks;
     }
 
@@ -695,21 +738,21 @@
       const state = readState();
       const score = scoreState(state);
       $("score").textContent = String(score);
-      $("scoreHint").textContent = score >= 82
-        ? "这段提示词边界清楚，适合直接作为第一次任务开场。"
-        : score >= 65
-          ? "可以发送，但建议再补充验收方式或可改范围。"
-          : "信息还偏少，先补目标、目录和验收方式。";
+      $("scoreHint").textContent = score >= 84
+        ? "这份 AGENTS.md 已覆盖命令、边界和验收，可以先放进项目根目录。"
+        : score >= 68
+          ? "可以使用，但建议再补充命令、禁止范围或验收方式。"
+          : "信息偏少，先补真实命令、可改范围和不能碰的文件。";
 
       $("pillRow").innerHTML = "";
-      [state.projectType, sizeText[state.taskSize], state.environment, score >= 82 ? "边界清楚" : "需要补充"].forEach((label) => {
+      [state.projectType, state.packageManager, state.agentMode, state.tools.length ? state.tools.join(" + ") : "未选择 Agent"].forEach((label) => {
         const pill = document.createElement("span");
         pill.className = "pill";
         pill.textContent = label;
         $("pillRow").appendChild(pill);
       });
 
-      $("promptOut").textContent = buildPrompt(state);
+      $("agentsOut").textContent = buildAgents(state);
       $("checkList").innerHTML = "";
       buildChecks(state).forEach((item) => {
         const li = document.createElement("li");
@@ -724,15 +767,27 @@
       el.addEventListener("change", render);
     });
     $("generate").addEventListener("click", render);
+    function fallbackCopy(text) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+    }
+
     $("copy").addEventListener("click", async () => {
-      const text = $("promptOut").textContent;
+      const text = $("agentsOut").textContent;
       try {
         await navigator.clipboard.writeText(text);
-        $("copy").textContent = "已复制";
-        setTimeout(() => $("copy").textContent = "复制提示词", 1400);
-      } catch (err) {
-        $("copy").textContent = "手动复制";
+      } catch (error) {
+        fallbackCopy(text);
       }
+      $("copy").textContent = "已复制";
+      setTimeout(() => { $("copy").textContent = "复制 AGENTS.md"; }, 1400);
     });
     render();
   </script>
