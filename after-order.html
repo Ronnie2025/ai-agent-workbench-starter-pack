@@ -150,6 +150,10 @@
       border: 1px solid transparent;
       text-decoration: none;
       font-weight: 850;
+      line-height: 1.25;
+      text-align: center;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
     .btn-primary { background: var(--blue); color: #fff; }
     .btn-dark { background: var(--deep); color: #fff; }
@@ -159,11 +163,12 @@
     }
     .layout {
       display: grid;
-      grid-template-columns: 1fr .86fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, .86fr);
       gap: 20px;
       align-items: start;
     }
     .panel {
+      min-width: 0;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--panel);
@@ -176,6 +181,7 @@
     }
     .step {
       position: relative;
+      min-width: 0;
       padding: 18px 18px 18px 58px;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -203,6 +209,7 @@
       margin-top: 18px;
     }
     .card {
+      min-width: 0;
       min-height: 140px;
       padding: 18px;
       border: 1px solid var(--line);
@@ -211,8 +218,12 @@
     }
     .card p,
     .step p,
+    h1,
+    h2,
+    h3,
     li {
       color: #303846;
+      overflow-wrap: anywhere;
     }
     .notice {
       margin-top: 18px;
@@ -229,7 +240,7 @@
       }
       .layout,
       .grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
       .nav { display: none; }
       .btn { width: 100%; }
