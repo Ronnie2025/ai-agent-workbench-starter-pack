@@ -17,6 +17,7 @@ consultants, and small-team operators.
 - AI人物一致性提示词包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-prompt-pack.html
 - AI短剧分镜脚本提示词包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-prompt-pack.html
 - AI求职简历面试包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit.html
+- 生育津贴申领材料自查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-self-checker.html
 - 生育津贴自助申领包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-guide.html
 - 小红书 Obsidian 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
@@ -152,6 +153,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-stor
 AI resume interview kit:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit.html
+
+Maternity allowance self checker:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-self-checker.html
 
 Maternity allowance guide:
 

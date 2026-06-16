@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>生育津贴申领材料自查器 | 免费核对参保地 材料 异地就医备案</title>
+  <meta name="description" content="免费生育津贴申领材料自查器：按参保地、生产地、缴费状态、单位申报、异地就医和材料准备情况，生成自助核对清单和下一步咨询问题。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-self-checker.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="生育津贴申领材料自查器">
+  <meta property="og:description" content="先免费核对参保地、生产地、材料、异地就医备案和官方咨询问题，再决定是否购买完整资料包。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-self-checker.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-guide-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "生育津贴申领材料自查器",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-self-checker.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-guide-cover.webp",
+    "description": "根据参保地、生产地、缴费状态、单位申报、异地就医备案和材料准备情况，生成生育津贴自助核对清单和咨询问题。",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "这个工具能判断我一定能领生育津贴吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不能。生育津贴涉及参保地、缴费状态、单位申报、生产日期、材料和当地系统规则，本工具只帮你生成自助核对清单。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "异地生产需要先看什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "先核对参保地和生产地是否一致、是否需要异地就医备案、医院是否支持直接结算，以及生育津贴是否仍要回参保地办理。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "完整资料包比免费工具多什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "完整资料包包含官方来源索引、资格核对表、申领流程、异地就医备案、城市样板路径、材料命名规则、驳回原因和进度跟踪表。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #132033;
+      --muted: #617085;
+      --bg: #f4f7f9;
+      --panel: #ffffff;
+      --line: #dbe4ec;
+      --green: #158467;
+      --green-soft: #e7f6f0;
+      --blue: #2563eb;
+      --blue-soft: #eaf1ff;
+      --amber: #a86600;
+      --amber-soft: #fff5dc;
+      --red-soft: #fff0f0;
+      --red: #ad2f2f;
+      --deep: #111827;
+      --shadow: 0 18px 42px rgba(19, 32, 51, .10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand { font-weight: 900; text-decoration: none; }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 50px 0 36px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(244, 247, 249, 1) 0%, rgba(244, 247, 249, .96) 48%, rgba(244, 247, 249, .74) 100%),
+        url("maternity-allowance-guide-cover.webp") right center / min(41vw, 500px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 740px;
+      min-height: 440px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .eyebrow {
+      width: fit-content;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(21, 132, 103, .25);
+      background: var(--green-soft);
+      color: #0e6d54;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 18px 0 14px;
+      font-size: 56px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      line-height: 1.25;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 710px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font: inherit;
+      font-weight: 850;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-primary { background: var(--deep); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-green { background: var(--green); color: #fff; }
+    .tool { padding: 44px 0 62px; }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .panel,
+    .result {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .panel { padding: 22px; }
+    .field { margin-top: 16px; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      letter-spacing: 0;
+    }
+    select,
+    input {
+      min-height: 44px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 102px;
+      padding: 11px 12px;
+      resize: vertical;
+    }
+    .hint {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-weight: 750;
+      color: #334155;
+    }
+    .choice input { width: auto; }
+    .result {
+      position: sticky;
+      top: 76px;
+      overflow: hidden;
+    }
+    .result-head {
+      padding: 18px 22px;
+      background: linear-gradient(90deg, #111827, #158467);
+      color: #fff;
+    }
+    .result-head p { color: rgba(255, 255, 255, .78); }
+    .result-body { padding: 22px; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-bottom: 14px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 14px;
+    }
+    .status.need { background: var(--amber-soft); color: var(--amber); border: 1px solid rgba(168, 102, 0, .25); }
+    .status.ready { background: var(--green-soft); color: #0e6d54; border: 1px solid rgba(21, 132, 103, .25); }
+    .status.risk { background: var(--red-soft); color: var(--red); border: 1px solid rgba(173, 47, 47, .22); }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+    .chip {
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(37, 99, 235, .2);
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .list-box {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    .list-box ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+    .list-box li { margin: 5px 0; }
+    .copybox {
+      min-height: 138px;
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .notice {
+      margin-top: 16px;
+      padding: 14px 15px;
+      border-radius: 8px;
+      border: 1px solid rgba(168, 102, 0, .28);
+      background: var(--amber-soft);
+      color: #684800;
+    }
+    .section {
+      padding: 54px 0;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .card p { color: var(--muted); }
+    .sources {
+      display: grid;
+      gap: 10px;
+      color: var(--muted);
+    }
+    .sources a {
+      color: var(--green);
+      font-weight: 850;
+    }
+    .footer {
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      min-height: 76px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 900px) {
+      .hero {
+        background:
+          linear-gradient(180deg, rgba(244, 247, 249, .98), rgba(244, 247, 249, .82)),
+          url("maternity-allowance-guide-cover.webp") bottom center / min(86vw, 410px) auto no-repeat;
+      }
+      .hero-copy { min-height: 640px; justify-content: flex-start; }
+      .tool-grid,
+      .cards { grid-template-columns: 1fr; }
+      .result { position: static; }
+      h1 { font-size: 40px; }
+      .btn { width: 100%; }
+    }
+    @media (max-width: 520px) {
+      h1 { font-size: 33px; }
+      .segmented { grid-template-columns: 1fr; }
+      .hero-copy { min-height: 610px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="maternity-allowance-guide.html">完整资料包</a>
+        <a href="order.html?plan=maternity-allowance-39.90">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">免费工具 / 生育津贴 / 材料自查</span>
+        <h1>生育津贴申领材料自查器</h1>
+        <p class="lead">先把参保地、生产地、缴费状态、单位申报、异地就医备案和材料准备情况梳理清楚。工具只输出核对清单和咨询问题，不代办，不承诺领取结果。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#tool">开始自查</a>
+          <a class="btn btn-line" href="maternity-allowance-guide.html">查看 39.90 元完整包</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="tool" class="tool">
+    <div class="wrap">
+      <div class="tool-grid">
+        <section class="panel" aria-label="生育津贴自查输入">
+          <h2>填写当前情况</h2>
+          <p class="lead">不用填写身份证、银行卡、病历、发票号等敏感信息。</p>
+
+          <div class="field">
+            <label for="insuredCity">参保地</label>
+            <input id="insuredCity" value="本市" placeholder="例如：深圳、北京、广州">
+            <p class="hint">最终以参保地医保局或政务服务网答复为准。</p>
+          </div>
+
+          <div class="field">
+            <label for="birthCity">生产地</label>
+            <input id="birthCity" value="本市" placeholder="例如：同参保地、外地城市">
+          </div>
+
+          <div class="field">
+            <label for="insuranceType">参保类型</label>
+            <select id="insuranceType">
+              <option value="employee">职工医保 / 生育保险</option>
+              <option value="resident">居民医保</option>
+              <option value="flexible">灵活就业参保</option>
+              <option value="unknown">不确定</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="paymentStatus">缴费状态</label>
+            <select id="paymentStatus">
+              <option value="normal">当前正常缴费</option>
+              <option value="interrupted">中间可能断缴</option>
+              <option value="recent">最近刚入职或刚参保</option>
+              <option value="unknown">不确定</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>是否涉及异地就医</label>
+            <div class="segmented">
+              <label class="choice"><input type="radio" name="crossRegion" value="same" checked>参保地生产</label>
+              <label class="choice"><input type="radio" name="crossRegion" value="cross">异地生产</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="employerStatus">单位或申报路径</label>
+            <select id="employerStatus">
+              <option value="employer-ready">单位 HR 可协助确认</option>
+              <option value="self">准备自己在线申报</option>
+              <option value="employer-unknown">不确定单位是否申报</option>
+              <option value="no-employer">没有固定单位</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="docsStatus">材料准备情况</label>
+            <select id="docsStatus">
+              <option value="ready">身份证、银行卡、出生证明、出院材料、票据基本齐</option>
+              <option value="partial">只准备了一部分材料</option>
+              <option value="none">还没开始准备材料</option>
+              <option value="rejected">已经提交过，被退回或要求补材料</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="extraNote">补充说明</label>
+            <textarea id="extraNote" placeholder="例如：异地生产、单位说不清楚、系统查不到进度、材料被退回原因"></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-green" id="generateBtn" type="button">生成自查清单</button>
+            <button class="btn btn-line" id="copyBtn" type="button">复制清单</button>
+          </div>
+        </section>
+
+        <section class="result" aria-label="自查结果">
+          <div class="result-head">
+            <h2 id="resultTitle">需要先核对官方入口</h2>
+            <p id="resultSubtitle">根据当前信息生成下一步动作</p>
+          </div>
+          <div class="result-body">
+            <div class="status need" id="statusPill">需要核对</div>
+            <div class="chips" id="chips"></div>
+
+            <div class="list-box">
+              <h3>下一步先做什么</h3>
+              <ul id="nextSteps"></ul>
+            </div>
+
+            <div class="list-box">
+              <h3>材料清单</h3>
+              <ul id="docList"></ul>
+            </div>
+
+            <div class="list-box">
+              <h3>建议咨询的问题</h3>
+              <ul id="questions"></ul>
+            </div>
+
+            <div class="notice">这个工具不保存你的信息，也不会要求上传证件。生育津贴具体条件、材料和发放方式，以参保地医保局、政务服务网、国家医保服务平台和单位 HR 的最新答复为准。</div>
+
+            <h3 style="margin-top:18px;">可复制咨询话术</h3>
+            <div class="copybox" id="copyBox"></div>
+            <div class="actions">
+              <a class="btn btn-primary" id="orderLink" href="order.html?plan=maternity-allowance-39.90&scenario=我想购买 生育津贴自助申领包">购买 39.90 元完整包</a>
+              <a class="btn btn-line" href="maternity-allowance-guide.html">看完整交付内容</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>完整包比免费自查器多什么</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>官方来源和路径表</h3>
+          <p>把国家医保局、国家医保服务平台、地方医保局、政务服务网和热线咨询路径集中整理。</p>
+        </div>
+        <div class="card">
+          <h3>申领流程和材料命名</h3>
+          <p>从资格核对、材料照片、线上提交、进度查询到补材料复盘，减少反复找入口。</p>
+        </div>
+        <div class="card">
+          <h3>异地就医和退回原因</h3>
+          <p>区分异地备案、医疗费用结算、生育津贴申领和单位申报，避免把不同事项混在一起。</p>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="maternity-allowance-guide.html">查看 39.90 元资料包</a>
+        <a class="btn btn-line" href="order.html?plan=maternity-allowance-39.90&scenario=我自查后想购买 生育津贴自助申领包">生成订单邮件</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>官方来源</h2>
+      <div class="sources">
+        <a href="https://www.nhsa.gov.cn/art/2025/3/16/art_14_16010.html">国家医保局：跨省异地就医如何直接报销？</a>
+        <a href="https://www.nhsa.gov.cn/art/2025/8/9/art_14_17534.html">国家医保局：生育津贴怎么领、能领多少？</a>
+        <span>地方办理入口、材料和发放方式可能不同，必须回参保地官方入口核对。</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>AI Workbench Store</span>
+      <a href="./">首页</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="maternity-allowance-guide.html">生育津贴完整包</a>
+      <a href="order.html?plan=maternity-allowance-39.90">订单页</a>
+    </div>
+  </footer>
+
+  <script>
+    const insuranceTypeEl = document.getElementById("insuranceType");
+    const paymentStatusEl = document.getElementById("paymentStatus");
+    const employerStatusEl = document.getElementById("employerStatus");
+    const docsStatusEl = document.getElementById("docsStatus");
+    const insuredCityEl = document.getElementById("insuredCity");
+    const birthCityEl = document.getElementById("birthCity");
+    const extraNoteEl = document.getElementById("extraNote");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultSubtitle = document.getElementById("resultSubtitle");
+    const statusPill = document.getElementById("statusPill");
+    const chipsEl = document.getElementById("chips");
+    const nextStepsEl = document.getElementById("nextSteps");
+    const docListEl = document.getElementById("docList");
+    const questionsEl = document.getElementById("questions");
+    const copyBox = document.getElementById("copyBox");
+    const orderLink = document.getElementById("orderLink");
+
+    const labels = {
+      employee: "职工医保/生育保险",
+      resident: "居民医保",
+      flexible: "灵活就业参保",
+      unknown: "参保类型不确定",
+      normal: "正常缴费",
+      interrupted: "可能断缴",
+      recent: "近期参保",
+      "employer-ready": "单位可协助确认",
+      self: "准备自行申报",
+      "employer-unknown": "单位申报不确定",
+      "no-employer": "无固定单位",
+      ready: "材料基本齐",
+      partial: "材料部分齐",
+      none: "未准备材料",
+      rejected: "已被退回或要求补材料",
+      same: "参保地生产",
+      cross: "异地生产"
+    };
+
+    function selectedCrossRegion() {
+      return document.querySelector("input[name='crossRegion']:checked").value;
+    }
+
+    function li(items) {
+      return items.map((item) => `<li>${item}</li>`).join("");
+    }
+
+    function unique(items) {
+      return [...new Set(items)];
+    }
+
+    function buildResult() {
+      const insuredCity = insuredCityEl.value.trim() || "参保地";
+      const birthCity = birthCityEl.value.trim() || "生产地";
+      const insuranceType = insuranceTypeEl.value;
+      const paymentStatus = paymentStatusEl.value;
+      const employerStatus = employerStatusEl.value;
+      const docsStatus = docsStatusEl.value;
+      const crossRegion = selectedCrossRegion();
+      const extraNote = extraNoteEl.value.trim();
+
+      const risks = [];
+      const steps = [
+        `先在${insuredCity}医保局官网、政务服务网或国家医保服务平台核对生育津贴事项名称。`,
+        "确认生育津贴是单位申报、个人申报，还是系统免申即享。"
+      ];
+      const docs = [
+        "身份证或电子证照。",
+        "本人银行卡或当地要求的收款账户信息。",
+        "出生医学证明。",
+        "出院小结、诊断证明或当地要求的医疗文书。",
+        "医疗费用票据、费用清单或医保结算凭证。",
+        "单位证明、参保证明或当地系统要求的补充材料。"
+      ];
+      const questions = [
+        `我在${insuredCity}参保，在${birthCity}生产，生育津贴应通过哪个官方入口办理？`,
+        "生育津贴是发给单位还是发给个人？需要单位先申报吗？",
+        "当前缴费状态和缴费月份是否满足当地申领要求？",
+        "线上提交后在哪里查受理编号、审核进度和退回原因？"
+      ];
+
+      if (insuranceType !== "employee") {
+        risks.push("参保类型需要先确认");
+        steps.push("先确认当地居民医保、灵活就业或当前参保类型是否包含生育津贴待遇。");
+        questions.push("我的参保类型是否可以申领生育津贴，还是只能核对生育医疗费用待遇？");
+      }
+
+      if (paymentStatus !== "normal") {
+        risks.push("缴费连续性需要核对");
+        steps.push("核对生产前后的缴费连续性、补缴情形和单位缴费状态。");
+        questions.push("如果中间断缴、刚入职或刚参保，会影响生育津贴申领吗？");
+      }
+
+      if (crossRegion === "cross") {
+        risks.push("异地生产需要备案核对");
+        steps.push("单独核对异地就医备案、医院定点、直接结算和回参保地报销的关系。");
+        questions.push("异地生产是否需要提前备案？备案影响医疗费用结算还是也影响生育津贴申领？");
+        docs.push("异地就医备案记录或备案截图。");
+        docs.push("生产地医院的定点或结算信息截图。");
+      }
+
+      if (employerStatus === "employer-unknown" || employerStatus === "no-employer") {
+        risks.push("申报主体需要确认");
+        steps.push("优先确认单位 HR、参保地医保局或政务服务网口径，避免个人和单位重复提交。");
+        questions.push("本地要求单位申报还是个人申报？如果没有固定单位应走哪个入口？");
+      }
+
+      if (docsStatus === "partial" || docsStatus === "none") {
+        risks.push("材料未齐");
+        steps.push("先按材料清单拍照命名，不要一次性把敏感材料发给陌生人。");
+        questions.push("当前缺哪些材料会导致退回？照片命名、原件扫描或电子证照是否有要求？");
+      }
+
+      if (docsStatus === "rejected") {
+        risks.push("已有退回记录");
+        steps.push("先记录退回原因、时间、经办入口和补材料要求，再二次提交。");
+        questions.push("这次退回的具体原因是什么？补材料后是否沿原入口提交，还是需要重新发起申请？");
+      }
+
+      let statusText = "需要核对";
+      let statusClass = "need";
+      if (risks.length === 0 && docsStatus === "ready") {
+        statusText = "可进入材料复核";
+        statusClass = "ready";
+        steps.push("把材料按事项顺序命名，提交前截图保存入口、提交时间和受理编号。");
+      }
+      if (risks.length >= 3 || docsStatus === "rejected") {
+        statusText = "先处理风险点";
+        statusClass = "risk";
+      }
+
+      const chips = [
+        labels[insuranceType],
+        labels[paymentStatus],
+        labels[crossRegion],
+        labels[employerStatus],
+        labels[docsStatus]
+      ];
+
+      resultTitle.textContent = statusClass === "ready" ? "先做材料复核和提交记录" : statusClass === "risk" ? "先把风险点问清楚" : "需要先核对官方入口";
+      resultSubtitle.textContent = `${insuredCity}参保，${birthCity}生产`;
+      statusPill.textContent = statusText;
+      statusPill.className = `status ${statusClass}`;
+      chipsEl.innerHTML = chips.map((chip) => `<span class="chip">${chip}</span>`).join("");
+      nextStepsEl.innerHTML = li(unique(steps));
+      docListEl.innerHTML = li(unique(docs));
+      questionsEl.innerHTML = li(unique(questions));
+
+      const text = [
+        "您好，我想咨询生育津贴申领路径。",
+        `我的参保地：${insuredCity}`,
+        `生产地：${birthCity}`,
+        `参保类型：${labels[insuranceType]}`,
+        `缴费状态：${labels[paymentStatus]}`,
+        `是否异地生产：${labels[crossRegion]}`,
+        `申报路径情况：${labels[employerStatus]}`,
+        `材料情况：${labels[docsStatus]}`,
+        extraNote ? `补充情况：${extraNote}` : "",
+        "",
+        "想确认以下问题：",
+        ...unique(questions).map((item, index) => `${index + 1}. ${item}`)
+      ].filter(Boolean).join("\n");
+
+      copyBox.textContent = text;
+      const scenario = encodeURIComponent(`我自查后想购买生育津贴自助申领包。参保地：${insuredCity}，生产地：${birthCity}，状态：${statusText}`);
+      orderLink.href = `order.html?plan=maternity-allowance-39.90&scenario=${scenario}`;
+      return text;
+    }
+
+    document.getElementById("generateBtn").addEventListener("click", buildResult);
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      const text = buildResult();
+      await navigator.clipboard.writeText(text);
+      document.getElementById("copyBtn").textContent = "已复制";
+      setTimeout(() => { document.getElementById("copyBtn").textContent = "复制清单"; }, 1400);
+    });
+    [insuranceTypeEl, paymentStatusEl, employerStatusEl, docsStatusEl, insuredCityEl, birthCityEl, extraNoteEl].forEach((el) => {
+      el.addEventListener("input", buildResult);
+    });
+    document.querySelectorAll("input[name='crossRegion']").forEach((el) => el.addEventListener("change", buildResult));
+    buildResult();
+  </script>
+</body>
+</html>
