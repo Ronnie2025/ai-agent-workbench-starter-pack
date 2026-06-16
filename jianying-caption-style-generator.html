@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>剪映字幕风格参数生成器 | 口播 AI视频 小红书 短剧</title>
+  <meta name="description" content="免费剪映字幕风格参数生成器：选择口播、AI视频、小红书、短剧等类型，生成字幕字体、字号、描边、阴影、位置、动画建议和提示词。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-generator.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="剪映字幕风格参数生成器">
+  <meta property="og:description" content="输入视频类型和画面风格，生成可复制的剪映字幕参数和提示词。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-generator.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "剪映字幕风格参数生成器",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-generator.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-cover.webp",
+    "description": "选择视频类型、字幕气质和画面风格，生成剪映字幕字体、字号、描边、阴影、位置、动画建议和提示词。",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "这个剪映字幕参数生成器适合什么视频？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "适合口播、知识分享、AI视频、小红书视频、短剧解说、产品展示和教程录屏。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "生成的参数可以直接在剪映里用吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "可以作为剪映字幕样式参考，需要根据自己的视频素材、画面亮度和字幕长度微调。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "完整资料包比免费生成器多什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "完整资料包包含 36 套字幕风格参数、提示词、手动复刻 SOP、视频类型搭配、CSV 参数表和发布前自检清单。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #0c1728;
+      --muted: #607086;
+      --bg: #f5f8fb;
+      --panel: #ffffff;
+      --line: #dbe5ef;
+      --teal: #0f9488;
+      --teal-soft: #e7f7f5;
+      --amber: #f0a900;
+      --amber-soft: #fff5d7;
+      --blue: #1f6feb;
+      --deep: #07111f;
+      --shadow: 0 18px 44px rgba(12, 23, 40, .10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand { font-weight: 900; text-decoration: none; }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 50px 0 36px;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .98fr) minmax(340px, .82fr);
+      gap: 28px;
+      align-items: center;
+    }
+    .cover {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--teal-soft);
+      border: 1px solid rgba(15, 148, 136, .24);
+      color: #087165;
+      font-weight: 850;
+      font-size: 14px;
+    }
+    h1 {
+      max-width: 760px;
+      margin: 18px 0 14px;
+      font-size: 58px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font: inherit;
+      font-weight: 850;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-primary { background: var(--deep); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-teal { background: var(--teal); color: #fff; }
+    .tool {
+      padding: 44px 0 62px;
+    }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .panel,
+    .result {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .panel { padding: 22px; }
+    .field { margin-top: 16px; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      letter-spacing: 0;
+    }
+    select,
+    input {
+      min-height: 44px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 116px;
+      padding: 11px 12px;
+      resize: vertical;
+    }
+    .hint {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-weight: 700;
+      color: #344054;
+    }
+    .choice input { width: auto; }
+    .result {
+      position: sticky;
+      top: 76px;
+      overflow: hidden;
+    }
+    .result-head {
+      padding: 18px 22px;
+      background: linear-gradient(90deg, #07111f, #0f9488);
+      color: #fff;
+    }
+    .result-head p { color: rgba(255, 255, 255, .78); }
+    .result-body { padding: 22px; }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+    .chip {
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 148, 136, .24);
+      background: var(--teal-soft);
+      color: #087165;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .copybox {
+      min-height: 120px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .param-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .param {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .param strong { display: block; }
+    .param span { color: var(--muted); }
+    .preview {
+      min-height: 210px;
+      display: grid;
+      align-items: end;
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(7, 17, 31, .12), rgba(7, 17, 31, .72)),
+        url("jianying-caption-detail-2.webp") center / cover no-repeat;
+      color: #fff;
+    }
+    .subtitle {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: rgba(7, 17, 31, .62);
+      text-align: center;
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.35;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, .45);
+    }
+    .notice {
+      margin-top: 16px;
+      padding: 14px 15px;
+      border-radius: 8px;
+      border: 1px solid rgba(240, 169, 0, .38);
+      background: var(--amber-soft);
+      color: #725100;
+    }
+    .section {
+      padding: 54px 0;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .card p { color: var(--muted); }
+    .footer {
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      min-height: 76px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 900px) {
+      .hero-grid,
+      .tool-grid,
+      .cards { grid-template-columns: 1fr; }
+      .cover { max-width: 430px; margin: 0 auto; }
+      .result { position: static; }
+      h1 { font-size: 40px; }
+      .btn { width: 100%; }
+    }
+    @media (max-width: 520px) {
+      h1 { font-size: 34px; }
+      .param-grid,
+      .segmented { grid-template-columns: 1fr; }
+      .subtitle { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="jianying-caption-style-workflow-pack.html">完整资料包</a>
+        <a href="order.html?plan=jianying-caption-29.90">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">免费工具 / 剪映字幕 / 风格参数</span>
+          <h1>剪映字幕风格参数生成器</h1>
+          <p class="lead">选视频类型、字幕气质和画面明暗，生成一套可复制的剪映字幕参数、提示词和发布前自检。适合口播、AI 视频、小红书和短剧解说。</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#tool">开始生成</a>
+            <a class="btn btn-line" href="jianying-caption-style-workflow-pack.html">查看 29.90 元完整包</a>
+          </div>
+        </div>
+        <img class="cover" src="jianying-caption-style-cover.webp" alt="剪映高级感字幕参数工作流包封面">
+      </div>
+    </div>
+  </header>
+
+  <main id="tool" class="tool">
+    <div class="wrap">
+      <div class="tool-grid">
+        <section class="panel" aria-label="字幕参数输入">
+          <h2>输入视频场景</h2>
+          <p class="lead">填得越具体，生成的字幕参数越好用。</p>
+
+          <div class="field">
+            <label for="videoType">视频类型</label>
+            <select id="videoType">
+              <option value="knowledge">知识口播 / 教程讲解</option>
+              <option value="xhs">小红书图文转视频</option>
+              <option value="ai-video">AI 视频 / AI 短剧</option>
+              <option value="product">产品展示 / 种草</option>
+              <option value="story">情绪故事 / 观点表达</option>
+              <option value="screen">录屏教程 / 工具演示</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="captionMood">字幕气质</label>
+            <select id="captionMood">
+              <option value="clean">极简清新</option>
+              <option value="cinematic">电影质感</option>
+              <option value="business">商务稳重</option>
+              <option value="warm">治愈日系</option>
+              <option value="vivid">综艺活泼</option>
+              <option value="retro">剧情复古</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="visualTone">画面明暗</label>
+            <select id="visualTone">
+              <option value="bright">偏亮 / 白底 / 室内光</option>
+              <option value="dark">偏暗 / 夜景 / 高反差</option>
+              <option value="mixed">明暗变化大</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>字幕位置</label>
+            <div class="segmented">
+              <label class="choice"><input type="radio" name="position" value="底部居中" checked>底部居中</label>
+              <label class="choice"><input type="radio" name="position" value="中下安全区">中下安全区</label>
+              <label class="choice"><input type="radio" name="position" value="画面左下">画面左下</label>
+              <label class="choice"><input type="radio" name="position" value="标题区分层">标题区分层</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="sampleText">字幕样例</label>
+            <textarea id="sampleText">把复杂的事情，用简单的方式说清楚。</textarea>
+            <p class="hint">建议每行 8-16 个字。太长会影响可读性。</p>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-teal" id="generateBtn" type="button">生成字幕参数</button>
+            <button class="btn btn-line" id="copyBtn" type="button">复制结果</button>
+          </div>
+        </section>
+
+        <section class="result" aria-label="生成结果">
+          <div class="result-head">
+            <h2 id="resultTitle">极简清新字幕参数</h2>
+            <p id="resultSubtitle">适合知识口播 / 教程讲解</p>
+          </div>
+          <div class="result-body">
+            <div class="chips" id="chips"></div>
+            <div class="preview">
+              <div class="subtitle" id="previewText">把复杂的事情，用简单的方式说清楚。</div>
+            </div>
+            <div class="param-grid" id="params"></div>
+            <div class="notice">提示：这是免费生成的基础参数。完整包包含 36 套风格、CSV 参数表、提示词、剪映复刻 SOP 和发布前自检清单。</div>
+            <h3 style="margin-top:18px;">可复制提示词</h3>
+            <div class="copybox" id="promptBox"></div>
+            <div class="actions">
+              <a class="btn btn-primary" id="orderLink" href="order.html?plan=jianying-caption-29.90&scenario=我想购买剪映高级感字幕参数工作流包">购买 29.90 元完整包</a>
+              <a class="btn btn-line" href="jianying-caption-style-workflow-pack.html">看完整交付内容</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>完整包比免费生成器多什么</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>36 套字幕风格参数</h3>
+          <p>覆盖极简、电影、商务、治愈、综艺、复古等方向，按视频类型给推荐组合。</p>
+        </div>
+        <div class="card">
+          <h3>提示词和复刻 SOP</h3>
+          <p>从字幕文案、风格选择、剪映手动复刻到导出前自检，减少每条视频重新摸索。</p>
+        </div>
+        <div class="card">
+          <h3>闲鱼上架素材</h3>
+          <p>包含主图、详情图、上架文案、发货话术和边界说明，适合直接作为资料包交付。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>AI Workbench Store</span>
+      <a href="./">首页</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="jianying-caption-style-workflow-pack.html">剪映字幕完整包</a>
+      <a href="order.html?plan=jianying-caption-29.90">订单页</a>
+    </div>
+  </footer>
+
+  <script>
+    const styleMap = {
+      clean: {
+        name: "极简清新",
+        font: "思源黑体 / 系统黑体",
+        size: "48-56",
+        weight: "中粗",
+        color: "#FFFFFF",
+        stroke: "2-4 / 深灰",
+        shadow: "35% / 轻阴影",
+        bg: "无背景或 18% 透明白",
+        animation: "淡入 0.18s，淡出 0.12s"
+      },
+      cinematic: {
+        name: "电影质感",
+        font: "思源宋体 / 霞鹜文楷",
+        size: "42-50",
+        weight: "半粗",
+        color: "#F8F3E8",
+        stroke: "1-2 / 黑色",
+        shadow: "60% / 低位阴影",
+        bg: "黑色 32% 透明底条",
+        animation: "轻推入 0.22s，停留稳定"
+      },
+      business: {
+        name: "商务稳重",
+        font: "HarmonyOS Sans / 思源黑体",
+        size: "44-52",
+        weight: "中粗",
+        color: "#F7FAFC",
+        stroke: "2 / 深蓝灰",
+        shadow: "45% / 柔和阴影",
+        bg: "深蓝 42% 透明底条",
+        animation: "无弹跳淡入"
+      },
+      warm: {
+        name: "治愈日系",
+        font: "圆体 / 霞鹜文楷",
+        size: "44-52",
+        weight: "常规到中粗",
+        color: "#FFF8EA",
+        stroke: "2 / 暖棕",
+        shadow: "30% / 暖色阴影",
+        bg: "米白 20% 透明",
+        animation: "慢淡入 0.28s"
+      },
+      vivid: {
+        name: "综艺活泼",
+        font: "优设标题黑 / 思源黑体",
+        size: "52-64",
+        weight: "粗体",
+        color: "#FFFFFF + 关键词黄",
+        stroke: "5-7 / 深色",
+        shadow: "70% / 强阴影",
+        bg: "关键词色块",
+        animation: "弹入 0.16s，重点字放大"
+      },
+      retro: {
+        name: "剧情复古",
+        font: "宋体 / 复古黑体",
+        size: "42-50",
+        weight: "中粗",
+        color: "#F4E3C1",
+        stroke: "2 / 棕黑",
+        shadow: "55% / 胶片感阴影",
+        bg: "棕色 30% 透明底条",
+        animation: "轻微打字或慢淡入"
+      }
+    };
+
+    const typeMap = {
+      knowledge: ["知识口播 / 教程讲解", "底部居中", "每句 10-14 字，逻辑词用同色高亮"],
+      xhs: ["小红书图文转视频", "中下安全区", "标题短句更重要，保留足够留白"],
+      "ai-video": ["AI 视频 / AI 短剧", "底部居中", "弱化花哨动画，保证画面和角色优先"],
+      product: ["产品展示 / 种草", "画面左下", "避开产品主体，关键词可做色块"],
+      story: ["情绪故事 / 观点表达", "底部居中", "句子可以更慢，保留呼吸感"],
+      screen: ["录屏教程 / 工具演示", "中下安全区", "字号略小，减少遮挡操作区域"]
+    };
+
+    const toneAdjust = {
+      bright: ["亮画面", "描边加深，阴影降低，避免白字融进背景"],
+      dark: ["暗画面", "底条透明度降低，文字颜色保持偏暖白"],
+      mixed: ["明暗变化大", "使用半透明底条，保证全程可读"]
+    };
+
+    const videoTypeEl = document.getElementById("videoType");
+    const moodEl = document.getElementById("captionMood");
+    const toneEl = document.getElementById("visualTone");
+    const sampleEl = document.getElementById("sampleText");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultSubtitle = document.getElementById("resultSubtitle");
+    const previewText = document.getElementById("previewText");
+    const chipsEl = document.getElementById("chips");
+    const paramsEl = document.getElementById("params");
+    const promptBox = document.getElementById("promptBox");
+    const orderLink = document.getElementById("orderLink");
+
+    function selectedPosition() {
+      return document.querySelector("input[name='position']:checked").value;
+    }
+
+    function buildResult() {
+      const style = styleMap[moodEl.value];
+      const type = typeMap[videoTypeEl.value];
+      const tone = toneAdjust[toneEl.value];
+      const position = selectedPosition();
+      const sample = sampleEl.value.trim() || "把复杂的事情，用简单的方式说清楚。";
+      const finalPosition = position || type[1];
+      const params = [
+        ["字体", style.font],
+        ["字号", style.size],
+        ["字重", style.weight],
+        ["颜色", style.color],
+        ["描边", style.stroke],
+        ["阴影", style.shadow],
+        ["背景", style.bg],
+        ["位置", finalPosition],
+        ["动画", style.animation],
+        ["节奏", type[2]]
+      ];
+
+      resultTitle.textContent = `${style.name}字幕参数`;
+      resultSubtitle.textContent = `适合${type[0]}`;
+      previewText.textContent = sample;
+      chipsEl.innerHTML = [style.name, type[0], tone[0], finalPosition].map((chip) => `<span class="chip">${chip}</span>`).join("");
+      paramsEl.innerHTML = params.map(([key, value]) => `<div class="param"><strong>${key}</strong><span>${value}</span></div>`).join("");
+
+      const prompt = [
+        "请帮我为这条短视频设计剪映字幕样式。",
+        `视频类型：${type[0]}`,
+        `字幕气质：${style.name}`,
+        `画面明暗：${tone[0]}，${tone[1]}`,
+        `字幕位置：${finalPosition}`,
+        `字幕样例：${sample}`,
+        "",
+        "请输出：",
+        "1. 字幕文案分行建议，每行不要太长。",
+        "2. 字体、字号、字重、描边、阴影、背景条和位置参数。",
+        "3. 需要高亮的关键词。",
+        "4. 在剪映里手动复刻的步骤。",
+        "5. 发布前检查可读性、遮挡、节奏和统一感。"
+      ].join("\n");
+      promptBox.textContent = prompt;
+      const scenario = encodeURIComponent(`我想购买剪映高级感字幕参数工作流包。我的视频类型：${type[0]}，字幕气质：${style.name}，画面明暗：${tone[0]}`);
+      orderLink.href = `order.html?plan=jianying-caption-29.90&scenario=${scenario}`;
+      return { params, prompt };
+    }
+
+    document.getElementById("generateBtn").addEventListener("click", buildResult);
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      const result = buildResult();
+      const text = [
+        resultTitle.textContent,
+        resultSubtitle.textContent,
+        "",
+        result.params.map(([key, value]) => `${key}: ${value}`).join("\n"),
+        "",
+        "提示词:",
+        result.prompt
+      ].join("\n");
+      await navigator.clipboard.writeText(text);
+      document.getElementById("copyBtn").textContent = "已复制";
+      setTimeout(() => { document.getElementById("copyBtn").textContent = "复制结果"; }, 1400);
+    });
+    [videoTypeEl, moodEl, toneEl, sampleEl].forEach((el) => el.addEventListener("input", buildResult));
+    document.querySelectorAll("input[name='position']").forEach((el) => el.addEventListener("change", buildResult));
+    buildResult();
+  </script>
+</body>
+</html>
