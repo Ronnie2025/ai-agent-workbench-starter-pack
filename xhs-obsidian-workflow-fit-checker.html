@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小红书 Obsidian 工作流适配评分器 | 判断是否适合买 79.8 元资料包</title>
+  <meta name="description" content="免费小红书 Obsidian 工作流适配评分器：判断你的素材、发布频率、Obsidian 使用习惯、模型接口准备度和售后边界是否适合购买 79.8 元小红书 Obsidian 工作流资料包。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="小红书 Obsidian 工作流适配评分器">
+  <meta property="og:description" content="3 分钟判断你是否适合买 79.8 元小红书 Obsidian 工作流资料包。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "小红书 Obsidian 工作流适配评分器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "判断小红书图文生产流程是否适合用 Obsidian 工作流资料包固定下来。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-cover.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "这个评分器适合谁用？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "适合已经有小红书素材、想把标题、正文、配图提示词和发布包归档固定到 Obsidian 里的人。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "评分高是否代表买了资料包就能涨粉？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不代表。评分只判断流程适配度，不承诺流量、涨粉、成交、收入或回本。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "完全不会 Obsidian 可以直接买吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不建议直接买。资料包提供插件、SOP 和配置说明，但不提供远程安装、代搭、账号代运营或 API key。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6977;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --green: #0f8f6f;
+      --blue: #155eef;
+      --amber: #b86b00;
+      --rose: #b4235a;
+      --deep: #0d1b2a;
+      --soft-green: #e9f8f3;
+      --soft-blue: #eaf1ff;
+      --soft-amber: #fff6e6;
+      --soft-rose: #fff0f5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .tool {
+      padding: 34px 0 48px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,143,111,.24);
+      background: rgba(15,143,111,.08);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 900px;
+      margin: 18px 0 12px;
+      font-size: clamp(38px, 5.5vw, 66px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 820px;
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .tool-panel,
+    .result-panel,
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .tool-panel { padding: 22px; }
+    .result-panel {
+      position: sticky;
+      top: 18px;
+      overflow: hidden;
+    }
+    .cover {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .result-body { padding: 22px; }
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .field {
+      min-height: 122px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    .hint {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    input[type="text"],
+    select {
+      min-height: 44px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 102px;
+      resize: vertical;
+      padding: 11px 12px;
+    }
+    .checks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .checks-grid label {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 750;
+    }
+    .score-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .score {
+      color: var(--green);
+      font-size: 76px;
+      line-height: 1;
+      font-weight: 950;
+    }
+    .score-row span {
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .meter {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e8edf5;
+      margin: 14px 0 18px;
+    }
+    .meter-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--amber), var(--green), var(--blue));
+      transition: width .2s ease;
+    }
+    .status {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--soft-green);
+      color: var(--green);
+      font-weight: 900;
+      font-size: 14px;
+    }
+    .result-copy {
+      margin-top: 14px;
+      color: var(--muted);
+    }
+    .list {
+      display: grid;
+      gap: 8px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+    }
+    .advice {
+      display: grid;
+      gap: 9px;
+      margin-top: 16px;
+    }
+    .advice div {
+      padding: 12px;
+      border: 1px solid rgba(15,143,111,.18);
+      border-radius: 8px;
+      background: var(--soft-green);
+      color: var(--ink);
+      font-weight: 760;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .summary {
+      width: 100%;
+      min-height: 126px;
+      margin-top: 16px;
+      border-color: var(--line);
+      background: #f8fbff;
+      color: var(--ink);
+      font-size: 14px;
+    }
+    .funnel {
+      padding: 46px 0 56px;
+      border-top: 1px solid var(--line);
+    }
+    .funnel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .step {
+      padding: 20px;
+      background: #fff;
+    }
+    .step strong {
+      color: var(--green);
+      font-size: 34px;
+      line-height: 1;
+    }
+    .step p { color: var(--muted); }
+    .warning {
+      border-color: rgba(184,107,0,.26);
+      background: var(--soft-amber);
+    }
+    .warning strong { color: var(--amber); }
+    .footer {
+      padding: 24px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 920px) {
+      .tool-layout,
+      .field-grid,
+      .funnel-grid,
+      .checks-grid {
+        grid-template-columns: 1fr;
+      }
+      .result-panel { position: static; }
+      .nav { display: none; }
+      h1 { font-size: 42px; }
+      h2 { font-size: 26px; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="xhs-obsidian-workflow.html">79.8 工作流</a>
+        <a href="xiaohongshu-title-scorer.html">标题评分器</a>
+        <a href="digital-listing-checker.html">上架自检器</a>
+        <a href="order.html?plan=xhs-obsidian-79.80&scenario=%E6%9D%A5%E8%87%AA%E5%B0%8F%E7%BA%A2%E4%B9%A6%20Obsidian%20%E9%80%82%E9%85%8D%E8%AF%84%E5%88%86%E5%99%A8%EF%BC%8C%E6%88%91%E6%83%B3%E8%B4%AD%E4%B9%B0%2079.8%20%E5%85%83%E5%B7%A5%E4%BD%9C%E6%B5%81">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool">
+    <div class="wrap">
+      <span class="eyebrow">免费工具：购买前适配自测</span>
+      <h1>小红书 Obsidian 工作流适配评分器</h1>
+      <p class="lead">先判断你现在是不是适合买 79.8 元资料包。这个评分器会检查素材状态、发布频率、Obsidian 熟悉度、模型接口准备度和边界预期，适合再生成订单，不适合就先补基础。</p>
+
+      <div class="tool-layout">
+        <form class="tool-panel" id="fitForm">
+          <div class="field">
+            <label for="scenarioText">你现在的小红书工作流</label>
+            <textarea id="scenarioText">我有一些 AI 工具教程和笔记，平时用 Obsidian 存材料，但每次发小红书都要重新想标题、正文、配图提示词和归档方式。</textarea>
+            <div class="hint">简单写素材在哪里、发什么内容、卡在哪一步。</div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="contentType">内容方向</label>
+              <select id="contentType">
+                <option value="11" selected>AI 工具教程 / 工作流教程</option>
+                <option value="10">知识笔记 / 方法论拆解</option>
+                <option value="9">课程资料 / 读书笔记</option>
+                <option value="8">副业资料 / 模板清单</option>
+                <option value="5">日常记录 / 情绪表达</option>
+              </select>
+              <div class="hint">结构化教程和资料类内容更适合固定成发布包。</div>
+            </div>
+
+            <div class="field">
+              <label for="materialState">素材状态</label>
+              <select id="materialState">
+                <option value="5">只有零散想法，还没有可写素材</option>
+                <option value="9">有聊天记录或文档，但比较散</option>
+                <option value="13" selected>素材已在 Obsidian / Markdown / 笔记库里</option>
+                <option value="11">素材在 Notion、飞书或本地文档里</option>
+              </select>
+              <div class="hint">这个包的主战场是把素材固定到 Obsidian 里出稿。</div>
+            </div>
+
+            <div class="field">
+              <label for="publishRhythm">发布频率</label>
+              <select id="publishRhythm">
+                <option value="4">偶尔发一篇，没有固定节奏</option>
+                <option value="8">每周 1 篇左右</option>
+                <option value="12" selected>每周 2-4 篇</option>
+                <option value="13">每天或接近每天都要发</option>
+              </select>
+              <div class="hint">越重复，越值得用流程固定。</div>
+            </div>
+
+            <div class="field">
+              <label for="obsidianSkill">Obsidian 熟悉度</label>
+              <select id="obsidianSkill">
+                <option value="3">没用过 Obsidian</option>
+                <option value="8">会建库、写 Markdown、装插件</option>
+                <option value="12" selected>已用 Obsidian 管素材或写作</option>
+                <option value="11">会用别的 Markdown 工具，愿意迁移</option>
+              </select>
+              <div class="hint">完全不会 Obsidian 的人建议先补基础。</div>
+            </div>
+
+            <div class="field">
+              <label for="apiReady">模型接口准备度</label>
+              <select id="apiReady">
+                <option value="3">不知道什么是 API key</option>
+                <option value="7">知道概念，但还没准备接口</option>
+                <option value="12" selected>已有自己的模型接口或愿意按教程配置</option>
+                <option value="10">只想先看 SOP，不急着跑插件</option>
+              </select>
+              <div class="hint">资料包不包含真实 API key，需要买家使用自己的接口。</div>
+            </div>
+
+            <div class="field">
+              <label for="painPoint">最主要卡点</label>
+              <select id="painPoint">
+                <option value="10">素材到标题总是断开</option>
+                <option value="12" selected>标题、正文、配图提示词和发布包不能稳定复用</option>
+                <option value="9">AI 写完散在聊天记录里，后续找不到</option>
+                <option value="7">只是不知道该卖什么资料包</option>
+                <option value="4">只想要别人代运营小红书账号</option>
+              </select>
+              <div class="hint">流程卡点越明确，资料包越容易派上用场。</div>
+            </div>
+
+            <div class="field">
+              <label for="assetQuality">已有资产质量</label>
+              <select id="assetQuality">
+                <option value="4">还没有自己的内容资产</option>
+                <option value="8">有一些笔记，但主题很散</option>
+                <option value="12" selected>有可连续发布的主题和素材</option>
+                <option value="11">有课程、咨询、项目复盘或教程素材</option>
+              </select>
+              <div class="hint">资料包放大的是已有素材，不凭空保证爆款。</div>
+            </div>
+
+            <div class="field">
+              <label for="boundary">预期边界</label>
+              <select id="boundary">
+                <option value="13" selected>接受自己配置、自己发布、不承诺结果</option>
+                <option value="9">主要想拿 SOP 和模板，插件慢慢研究</option>
+                <option value="3">希望卖家远程安装、代配 API、代运营账号</option>
+                <option value="0">希望承诺涨粉、爆款、成交或回本</option>
+              </select>
+              <div class="hint">这项分低时，不建议购买数字资料。</div>
+            </div>
+
+            <div class="field">
+              <label>你想固定的环节</label>
+              <div class="checks-grid">
+                <label><input type="checkbox" name="need" value="素材整理" checked> 素材整理</label>
+                <label><input type="checkbox" name="need" value="标题生成" checked> 标题生成</label>
+                <label><input type="checkbox" name="need" value="正文改写" checked> 正文改写</label>
+                <label><input type="checkbox" name="need" value="配图提示词" checked> 配图提示词</label>
+                <label><input type="checkbox" name="need" value="发布顺序"> 发布顺序</label>
+                <label><input type="checkbox" name="need" value="归档复盘"> 归档复盘</label>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <aside class="result-panel">
+          <img class="cover" src="xhs-obsidian-workflow-cover.png" alt="小红书 Obsidian 工作流封面">
+          <div class="result-body">
+            <h2>适配结果</h2>
+            <div class="score-row"><strong class="score" id="score">0</strong><span>/ 100</span></div>
+            <div class="meter"><div class="meter-fill" id="meterFill"></div></div>
+            <span class="status" id="status">待评分</span>
+            <p class="result-copy" id="resultCopy"></p>
+            <ul class="list" id="checks"></ul>
+            <div class="advice" id="advice"></div>
+            <div class="actions" id="actions"></div>
+            <textarea class="summary" id="summary" readonly></textarea>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <section class="funnel">
+    <div class="wrap">
+      <h2>购买前路径</h2>
+      <div class="funnel-grid">
+        <div class="step">
+          <strong>0</strong>
+          <h3>先测适配</h3>
+          <p>确认问题是不是流程问题，而不是选题、账号定位或远程代搭需求。</p>
+        </div>
+        <div class="step">
+          <strong>79.8</strong>
+          <h3>适配后再买资料包</h3>
+          <p>拿插件安装包、SOP、提示词指南、样例发布包和排障 FAQ。</p>
+          <div class="actions"><a class="btn btn-primary" href="order.html?plan=xhs-obsidian-79.80&scenario=%E6%88%91%E5%B7%B2%E7%BB%8F%E5%81%9A%E8%BF%87%E9%80%82%E9%85%8D%E8%AF%84%E5%88%86%EF%BC%8C%E6%83%B3%E8%B4%AD%E4%B9%B0%E5%B0%8F%E7%BA%A2%E4%B9%A6%20Obsidian%20%E5%B7%A5%E4%BD%9C%E6%B5%81">生成 79.8 元订单</a></div>
+        </div>
+        <div class="step warning">
+          <strong>边界</strong>
+          <h3>不适配就先别买</h3>
+          <p>需要远程安装、代配接口、代运营、包流量或包成交时，这个数字资料包不是正确产品。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="funnel">
+    <div class="wrap">
+      <h2>常见问题</h2>
+      <div class="funnel-grid">
+        <div class="step">
+          <h3>这个评分器适合谁用？</h3>
+          <p>适合已经有小红书素材、想把标题、正文、配图提示词和发布包归档固定到 Obsidian 里的人。</p>
+        </div>
+        <div class="step">
+          <h3>评分高是否代表一定涨粉？</h3>
+          <p>不代表。评分只判断流程适配度，不承诺流量、涨粉、成交、收入或回本。</p>
+        </div>
+        <div class="step">
+          <h3>完全不会 Obsidian 可以买吗？</h3>
+          <p>不建议直接买。资料包提供插件、SOP 和说明，但不提供远程安装、代搭、账号代运营或 API key。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="xhs-obsidian-workflow.html">小红书 Obsidian 工作流</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    const fields = [
+      "contentType",
+      "materialState",
+      "publishRhythm",
+      "obsidianSkill",
+      "apiReady",
+      "painPoint",
+      "assetQuality",
+      "boundary"
+    ];
+    const form = document.getElementById("fitForm");
+    const scoreEl = document.getElementById("score");
+    const meterFill = document.getElementById("meterFill");
+    const statusEl = document.getElementById("status");
+    const resultCopy = document.getElementById("resultCopy");
+    const checksEl = document.getElementById("checks");
+    const adviceEl = document.getElementById("advice");
+    const actionsEl = document.getElementById("actions");
+    const summaryEl = document.getElementById("summary");
+    const scenarioText = document.getElementById("scenarioText");
+
+    function selectedNeeds() {
+      return Array.from(document.querySelectorAll("input[name='need']:checked")).map((input) => input.value);
+    }
+
+    function needScore(items) {
+      return Math.min(items.length * 2, 12);
+    }
+
+    function fieldLabel(id) {
+      const select = document.getElementById(id);
+      return select.options[select.selectedIndex].textContent.trim();
+    }
+
+    function escapeHtml(text) {
+      return text.replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+      }[char]));
+    }
+
+    function tier(score) {
+      if (score >= 82) {
+        return {
+          label: "适合买 79.8 元资料包",
+          copy: "你的问题已经很像流程固定问题：有素材、有重复发布需求，也能接受自己配置和自己发布。可以先看详情，再进入订单。",
+          cta: [
+            ["生成 79.8 元订单", "order", "btn-primary"],
+            ["查看工作流详情", "xhs-obsidian-workflow.html", "btn-line", "static"]
+          ],
+          tips: [
+            "先跑一组样例发布包，再替换成自己的账号素材。",
+            "把标题、正文、配图提示词和归档路径固定到同一个入口。",
+            "购买前确认自己有可用模型接口，资料包不附真实 API key。"
+          ]
+        };
+      }
+      if (score >= 64) {
+        return {
+          label: "可以考虑，但先补一个缺口",
+          copy: "你有一部分适配条件，但素材、接口、Obsidian 熟悉度或边界预期还需要补齐。建议先看详情页的适合买和不适合买。",
+          cta: [
+            ["查看工作流详情", "xhs-obsidian-workflow.html", "btn-primary", "static"],
+            ["生成 79.8 元订单", "order", "btn-line"]
+          ],
+          tips: [
+            "先准备 3 条真实素材，避免买完只看不跑。",
+            "如果还不会装插件，先确认能完成 Obsidian 基础插件安装。",
+            "如果只卡标题，先用免费标题评分器，不一定要买完整工作流。"
+          ]
+        };
+      }
+      if (score >= 45) {
+        return {
+          label: "暂时不建议直接买",
+          copy: "现在更像基础准备不足或需求还没聚焦。先用免费工具把标题、上架和素材边界理清，再决定是否升级到工作流资料包。",
+          cta: [
+            ["先做标题评分", "xiaohongshu-title-scorer.html", "btn-primary", "static"],
+            ["先做上架自检", "digital-listing-checker.html", "btn-line", "static"]
+          ],
+          tips: [
+            "先收集至少 3 篇可改写素材。",
+            "把内容方向从泛泛记录收窄到教程、清单、案例或方法论。",
+            "先不要购买需要自己配置的资料包。"
+          ]
+        };
+      }
+      return {
+        label: "不适合这款数字资料",
+        copy: "你的当前需求更偏远程安装、代运营、结果承诺或从零起步。这款 79.8 元资料包不做这些，直接购买容易不匹配。",
+        cta: [
+          ["返回虚拟资料货架", "virtual-products.html", "btn-primary", "static"],
+          ["查看边界说明", "xhs-obsidian-workflow.html", "btn-line", "static"]
+        ],
+        tips: [
+          "不要在期望代配 API、代运营或包效果时购买数字资料。",
+          "先把素材、账号方向和发布频率确定下来。",
+          "完全不会 Obsidian 时，先补 Obsidian 基础。"
+        ]
+      };
+    }
+
+    function riskChecks(score, needs) {
+      const checks = [];
+      if (Number(document.getElementById("boundary").value) <= 3) {
+        checks.push("预期里包含远程安装、代配接口、代运营或结果承诺，需要先降级预期。");
+      }
+      if (Number(document.getElementById("obsidianSkill").value) <= 3) {
+        checks.push("Obsidian 基础不足，建议先会建库、写 Markdown、安装插件。");
+      }
+      if (Number(document.getElementById("apiReady").value) <= 3) {
+        checks.push("还没理解 API key，插件运行部分会卡住。");
+      }
+      if (Number(document.getElementById("materialState").value) <= 5) {
+        checks.push("素材还没准备好，资料包不能替你凭空生成账号资产。");
+      }
+      if (Number(document.getElementById("publishRhythm").value) <= 4) {
+        checks.push("发布频率太低时，流程工具的价值感会比较弱。");
+      }
+      if (!needs.includes("配图提示词")) {
+        checks.push("如果不需要配图提示词，完整工作流价值会少一块。");
+      }
+      if (score >= 82 && checks.length === 0) {
+        checks.push("素材、频率、工具熟悉度和边界都比较匹配，可以继续看详情页。");
+      }
+      if (checks.length === 0) {
+        checks.push("没有明显硬风险，但建议先用一条真实素材试跑。");
+      }
+      return checks;
+    }
+
+    function orderHref(score, needs) {
+      const scenario = [
+        "来自小红书 Obsidian 工作流适配评分器",
+        `适配分 ${score}`,
+        `内容方向：${fieldLabel("contentType")}`,
+        `素材状态：${fieldLabel("materialState")}`,
+        `卡点：${fieldLabel("painPoint")}`,
+        `想固定：${needs.join("、") || "未选择"}`
+      ].join("；");
+      return `order.html?plan=xhs-obsidian-79.80&scenario=${encodeURIComponent(scenario)}`;
+    }
+
+    function render() {
+      const fieldScore = fields.reduce((sum, id) => sum + Number(document.getElementById(id).value), 0);
+      const needs = selectedNeeds();
+      const textBonus = Math.min(Math.floor(scenarioText.value.trim().length / 24), 6);
+      const rawScore = fieldScore + needScore(needs) + textBonus;
+      const score = Math.max(0, Math.min(rawScore, 100));
+      const pickedTier = tier(score);
+      const orderUrl = orderHref(score, needs);
+      const checks = riskChecks(score, needs);
+
+      scoreEl.textContent = String(score);
+      meterFill.style.width = `${score}%`;
+      statusEl.textContent = pickedTier.label;
+      resultCopy.textContent = pickedTier.copy;
+
+      checksEl.innerHTML = checks.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+      adviceEl.innerHTML = pickedTier.tips.map((item) => `<div>${escapeHtml(item)}</div>`).join("");
+      actionsEl.innerHTML = pickedTier.cta.map(([label, href, className, type]) => {
+        const target = type === "static" ? href : orderUrl;
+        return `<a class="btn ${className}" href="${target}">${escapeHtml(label)}</a>`;
+      }).join("");
+
+      summaryEl.value = [
+        `适配分：${score}/100`,
+        `结论：${pickedTier.label}`,
+        `内容方向：${fieldLabel("contentType")}`,
+        `素材状态：${fieldLabel("materialState")}`,
+        `Obsidian 熟悉度：${fieldLabel("obsidianSkill")}`,
+        `模型接口准备度：${fieldLabel("apiReady")}`,
+        `主要卡点：${fieldLabel("painPoint")}`,
+        `想固定的环节：${needs.join("、") || "未选择"}`,
+        `下一步：${pickedTier.tips[0]}`
+      ].join("\n");
+    }
+
+    form.addEventListener("input", render);
+    form.addEventListener("change", render);
+    render();
+  </script>
+</body>
+</html>

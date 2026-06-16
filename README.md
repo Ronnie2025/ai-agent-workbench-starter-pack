@@ -11,6 +11,7 @@ consultants, and small-team operators.
 - AI 工作台免费自测: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html
 - AI 副业选题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-idea-scorer.html
 - 小红书标题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-scorer.html
+- 小红书 Obsidian 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
@@ -39,6 +40,7 @@ consultants, and small-team operators.
 - AI-PPT 交付自检包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-check.html
 - AI 远程数据兼职申请包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-data-job-pack.html
 - 小红书 Obsidian 工作流: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow.html
+- 小红书 Obsidian 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
 
 ## Scenario Pages
 
@@ -152,6 +154,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-data-job-
 Xiaohongshu Obsidian workflow:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow.html
+
+Xiaohongshu Obsidian workflow fit checker:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
 
 AI remote data job fit checker:
 
