@@ -27,7 +27,7 @@ consultants, and small-team operators.
 - PPT 大纲生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generator.html
 - AI-PPT 交付自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
 - n8n 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-checker.html
-- n8n AI副业情报雷达: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar.html
+- n8n 自动化工作流模板包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar.html
 - XHS Obsidian Workflow Starter: https://github.com/Ronnie2025/xhs-obsidian-workflow-starter
 - 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
 - 付款和交付说明: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
@@ -68,7 +68,7 @@ consultants, and small-team operators.
 - 19.90 RMB: 小红书轮播提示词资料包
 - 19.90 RMB: 电子资料上架合规自检包
 - 29.90 RMB: AI-PPT 交付自检包
-- 29.90 RMB: n8n AI副业情报雷达
+- 19.90 RMB: n8n 自动化工作流模板包
 - 39.90 RMB: AI 远程数据兼职申请包
 - 79.80 RMB: 小红书 Obsidian 工作流
 - 99 RMB: AI Agent 工作台实战包
