@@ -20,6 +20,7 @@ consultants, and small-team operators.
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
 - 闲鱼虚拟资料运营话术包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ops-script-pack.html
+- 剪映高级感字幕参数工作流包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-workflow-pack.html
 - 电子资料上架自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-checker.html
 - 虚拟资料定价计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-pricing-calculator.html
 - 虚拟资料发货话术生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-delivery-script-generator.html
@@ -72,6 +73,7 @@ consultants, and small-team operators.
 - 19.90 RMB: AI人物一致性提示词包
 - 19.90 RMB: 电子资料上架合规自检包
 - 19.90 RMB: 闲鱼虚拟资料运营话术包
+- 29.90 RMB: 剪映高级感字幕参数工作流包
 - 29.90 RMB: AI-PPT 交付自检包
 - 19.90 RMB: n8n 自动化工作流模板包
 - 39.90 RMB: AI 远程数据兼职申请包
@@ -207,6 +209,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-ch
 Xianyu listing generator:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
+
+Jianying caption style workflow pack:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-workflow-pack.html
 
 Order page:
 
