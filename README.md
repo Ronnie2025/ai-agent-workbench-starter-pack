@@ -15,6 +15,7 @@ consultants, and small-team operators.
 - 小红书轮播提示词资料包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-pack.html
 - AI人物一致性提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-prompt-generator.html
 - AI人物一致性提示词包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-prompt-pack.html
+- AI短剧分镜脚本生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-generator.html
 - AI短剧分镜脚本提示词包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-prompt-pack.html
 - AI简历JD匹配自查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-jd-fit-checker.html
 - AI求职简历面试包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit.html
@@ -146,6 +147,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-prompt
 AI character consistency prompt pack:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-prompt-pack.html
+
+AI short drama storyboard generator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-generator.html
 
 AI short drama storyboard prompt pack:
 
