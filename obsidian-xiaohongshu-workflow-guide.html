@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Obsidian 做小红书工作流怎么搭 | 从素材到标题正文配图发布包</title>
+  <meta name="description" content="Obsidian 做小红书工作流怎么搭：把素材库、选题库、标题正文、配图提示词、发布顺序和发布包归档固定下来，并判断是否适合购买 79.8 元小红书 Obsidian 工作流资料包。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/obsidian-xiaohongshu-workflow-guide.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="Obsidian 做小红书工作流怎么搭">
+  <meta property="og:description" content="从素材到标题、正文、配图提示词和发布包，给小红书图文生产搭一套可复用 Obsidian 流程。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/obsidian-xiaohongshu-workflow-guide.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Obsidian 做小红书工作流怎么搭",
+    "description": "把素材、选题、标题、正文、配图提示词和发布包归档固定成 Obsidian 工作流。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-cover.png",
+    "author": {
+      "@type": "Organization",
+      "name": "AI Workbench Store"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AI Workbench Store"
+    },
+    "datePublished": "2026-06-16",
+    "dateModified": "2026-06-16",
+    "mainEntityOfPage": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/obsidian-xiaohongshu-workflow-guide.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Obsidian 适合做小红书工作流吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "适合已经在 Obsidian 里沉淀素材、课程稿、读书笔记或观点笔记的人。它更适合固定流程和归档，不适合完全不想整理素材的人。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "这个工作流需要 API key 吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "如果要在 Obsidian 内生成标题、正文和图片提示词，需要使用自己的模型接口。资料包不会提供真实 API key。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "买 79.8 元资料包会保证小红书涨粉吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不会。资料包解决流程固定、素材整理和发布包生成问题，不承诺涨粉、爆款、成交或收入。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6977;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --deep: #0d1b2a;
+      --amber: #b86b00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,251,1) 0%, rgba(246,248,251,.97) 50%, rgba(246,248,251,.42) 100%),
+        url("xhs-obsidian-workflow-cover.png") right 54% / min(34vw, 390px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 690px;
+      padding: 60px 0 70px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,143,111,.24);
+      background: rgba(15,143,111,.08);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 22px;
+      font-size: 32px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 20px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: var(--deep); color: #fff; }
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .intro-band {
+      background: #fff;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .card,
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .card {
+      min-height: 174px;
+      padding: 20px;
+    }
+    .panel { padding: 22px; }
+    .card p,
+    .panel p {
+      color: var(--muted);
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fbff;
+      color: var(--muted);
+    }
+    .flow {
+      display: grid;
+      gap: 14px;
+    }
+    .flow-step {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 16px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .num {
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: rgba(21,94,239,.08);
+      color: var(--blue);
+      font-weight: 900;
+    }
+    .example {
+      overflow: auto;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #0d1b2a;
+      color: #d8e3f0;
+      font: 14px/1.65 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    .warning {
+      border-color: rgba(184,107,0,.26);
+      background: rgba(184,107,0,.08);
+    }
+    .order {
+      background: var(--deep);
+      color: #fff;
+      border-bottom: 0;
+    }
+    .order h2 { color: #fff; }
+    .order p {
+      max-width: 760px;
+      color: #cbd5e1;
+    }
+    .footer {
+      padding: 24px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 880px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(246,248,251,1) 0%, rgba(246,248,251,.96) 56%, rgba(246,248,251,.72) 100%),
+          url("xhs-obsidian-workflow-cover.png") bottom center / min(78vw, 380px) auto no-repeat;
+      }
+      .hero-copy { padding: 38px 0 460px; }
+      .nav { display: none; }
+      .grid,
+      .two-col { grid-template-columns: 1fr; }
+      .flow-step { grid-template-columns: 1fr; }
+      h1 { font-size: 42px; }
+      h2 { font-size: 28px; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="xhs-obsidian-workflow.html">79.8 元资料包</a>
+        <a href="xhs-obsidian-workflow-fit-checker.html">适配评分器</a>
+        <a href="https://github.com/Ronnie2025/xhs-obsidian-workflow-starter">免费 Starter</a>
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="order.html?plan=xhs-obsidian-79.80">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">Obsidian 小红书工作流指南</span>
+        <h1>Obsidian 做小红书工作流怎么搭</h1>
+        <p class="lead">把素材库、选题库、标题正文、配图提示词、发布顺序和发布包归档固定下来。适合已经有素材，但每次发小红书都要重新组织流程的人。</p>
+        <div class="actions">
+          <a class="btn btn-line" href="https://github.com/Ronnie2025/xhs-obsidian-workflow-starter">下载免费 Starter</a>
+          <a class="btn btn-line" href="xhs-obsidian-workflow-fit-checker.html">先免费测适配</a>
+          <a class="btn btn-primary" href="order.html?plan=xhs-obsidian-79.80&scenario=我看完 Obsidian 小红书工作流指南，想购买 79.8 元完整包">购买 79.8 元完整包</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="intro-band">
+    <div class="wrap two-col">
+      <div class="panel">
+        <h2>先判断是不是你的问题</h2>
+        <p>Obsidian 小红书工作流解决的是“素材已经有，但每次生产图文都散”的问题。它把输入、处理、输出和归档都放进一个固定路径。</p>
+      </div>
+      <div class="panel warning">
+        <h2>不适合从零代运营</h2>
+        <p>如果你需要别人替你找定位、选题、拍摄、发布、运营账号，这不是正确工具。它适合把你已经有的内容资产变成可重复发布的图文包。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>一套工作流至少要有 6 个位置</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>素材收集</h3>
+          <p>把课程稿、录音稿、读书笔记、客户问答和观点片段统一放进素材入口。</p>
+        </div>
+        <div class="card">
+          <h3>选题库</h3>
+          <p>把素材改写成多个可发布选题，记录适合的人群、痛点和表达角度。</p>
+        </div>
+        <div class="card">
+          <h3>标题候选</h3>
+          <p>生成多个标题方向，再按具体度、点击欲、风险词和账号语气筛选。</p>
+        </div>
+        <div class="card">
+          <h3>正文模板</h3>
+          <p>用固定结构生成正文初稿，保留事实待确认点和需要人工判断的位置。</p>
+        </div>
+        <div class="card">
+          <h3>配图提示词</h3>
+          <p>把每页轮播卡片拆成图片意图、画面元素、文字层级和禁用元素。</p>
+        </div>
+        <div class="card">
+          <h3>发布包归档</h3>
+          <p>每篇最后输出标题、正文、话题、图片目录、发布顺序和复盘记录。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div>
+        <h2>最小可用目录结构</h2>
+        <p class="lead">先不用追求复杂系统。一个能跑起来的小红书 Obsidian 工作流，目录结构可以先这样放。</p>
+      </div>
+      <pre class="example">小红书工作流/
+  01 素材收集/
+  02 选题库/
+  03 标题库/
+  04 正文模板/
+  05 配图库/
+  06 发布包/
+    2026-06-16-某个选题/
+      01-发布稿.md
+      02-配图提示词.md
+      03-发布检查.md
+      images/
+  07 数据复盘/
+  08 常见问题/</pre>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>从一条素材到发布包的流程</h2>
+      <div class="flow">
+        <div class="flow-step">
+          <span class="num">1</span>
+          <div>
+            <h3>把原始素材放进固定入口</h3>
+            <p>不要直接让 AI 写最终稿。先标明素材来源、目标读者、账号语气、禁用表达和这条内容要解决的问题。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="num">2</span>
+          <div>
+            <h3>先拆选题，再写标题</h3>
+            <p>同一条素材通常能拆出不同选题。先选方向，再生成标题，能减少标题和正文互相打架。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="num">3</span>
+          <div>
+            <h3>正文保留人工检查点</h3>
+            <p>让输出里明确列出需要补证据、需要改口吻、可能违规或夸大的位置，避免直接复制发布。</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <span class="num">4</span>
+          <div>
+            <h3>配图提示词和发布稿一起归档</h3>
+            <p>每一页轮播图都保留对应提示词、文字和画面说明。下次复盘时才知道哪些图文结构可以继续复用。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div class="panel">
+        <h2>免费 Starter 适合谁</h2>
+        <ul class="list">
+          <li>你想先看目录结构和发布检查清单。</li>
+          <li>你愿意自己写提示词、自己配置工具。</li>
+          <li>你只需要一个 Obsidian 模板，不需要插件包。</li>
+          <li>你想先判断这个流程是否适合自己的内容习惯。</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-line" href="https://github.com/Ronnie2025/xhs-obsidian-workflow-starter">打开免费 Starter</a>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>79.8 完整包适合谁</h2>
+        <ul class="list">
+          <li>你想要插件安装包、SOP、提示词指南和样例发布包。</li>
+          <li>你已经用 Obsidian 管素材，想减少每次重新搭流程的时间。</li>
+          <li>你有自己的模型接口，接受自己配置 API。</li>
+          <li>你需要发货话术、FAQ 和售后边界一起打包。</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-primary" href="order.html?plan=xhs-obsidian-79.80&scenario=我看完 Obsidian 小红书工作流指南，想购买 79.8 元完整包">生成 79.8 元订单</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div>
+        <h2>常见搭建错误</h2>
+        <ul class="list">
+          <li>只建文件夹，不规定每篇内容最终要输出什么。</li>
+          <li>只保存 AI 对话，不把发布稿、配图提示词和图片目录归档。</li>
+          <li>标题、正文、配图分开生成，最后互相不匹配。</li>
+          <li>把流程当成爆款保证，忽略账号定位和发布后的复盘。</li>
+        </ul>
+      </div>
+      <div class="panel warning">
+        <h2>购买前自测</h2>
+        <p>如果你还不确定自己适不适合买，先用免费评分器测素材状态、发布频率、Obsidian 熟悉度、接口准备度和边界预期。</p>
+        <div class="actions">
+          <a class="btn btn-dark" href="xhs-obsidian-workflow-fit-checker.html">打开适配评分器</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="order">
+    <div class="wrap">
+      <h2>下一步</h2>
+      <p>先用免费 Starter 跑目录结构；如果你想直接拿插件安装包、SOP、提示词指南、样例发布包和发货话术，再买 79.8 元完整包。</p>
+      <div class="actions">
+        <a class="btn btn-line" href="https://github.com/Ronnie2025/xhs-obsidian-workflow-starter">免费 Starter</a>
+        <a class="btn btn-line" href="xhs-obsidian-workflow-fit-checker.html">先测适配</a>
+        <a class="btn btn-primary" href="xhs-obsidian-workflow.html">查看完整包详情</a>
+        <a class="btn btn-line" href="order.html?plan=xhs-obsidian-79.80&scenario=我看完 Obsidian 小红书工作流指南，想购买 79.8 元完整包">生成订单</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="xhs-obsidian-workflow.html">小红书 Obsidian 工作流</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="./">返回主站</a>
+    </div>
+  </footer>
+</body>
+</html>

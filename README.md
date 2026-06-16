@@ -160,6 +160,10 @@ Xiaohongshu Obsidian workflow fit checker:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
 
+Obsidian Xiaohongshu workflow guide:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/obsidian-xiaohongshu-workflow-guide.html
+
 AI remote data job fit checker:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
