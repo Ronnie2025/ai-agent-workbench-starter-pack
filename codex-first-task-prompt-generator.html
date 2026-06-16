@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Codex 第一次任务提示词生成器 | 新手项目修改 Prompt</title>
-  <meta name="description" content="免费 Codex 第一次任务提示词生成器：根据项目类型、目标、限制和验收方式，生成可复制的第一句 Codex 提示词，并导向 2.99 元 Codex 入门排障清单。">
+  <title>Codex 第一次任务提示词生成器 | Codex CLI First Task Prompt Generator</title>
+  <meta name="description" content="免费 Codex 第一次任务提示词生成器：根据项目类型、目标、限制和验收方式，生成可复制的第一句 Codex 提示词。Free Codex CLI first-task prompt generator with constraints and acceptance checks.">
   <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html">
   <link rel="icon" href="cover.png">
-  <meta property="og:title" content="Codex 第一次任务提示词生成器">
-  <meta property="og:description" content="第一次让 Codex 改项目，不要只写“帮我优化”。先生成一段带目录、边界和验收方式的提示词。">
+  <meta property="og:title" content="Codex First Task Prompt Generator">
+  <meta property="og:description" content="Generate a scoped first-task prompt for Codex CLI with project context, constraints, file boundaries, and acceptance checks.">
   <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html">
   <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-cover.webp">
   <script type="application/ld+json">
@@ -168,6 +168,22 @@
       max-width: 620px;
       color: #4d5a68;
       font-size: 19px;
+    }
+    .english-note {
+      max-width: 650px;
+      margin-top: 18px;
+      padding: 16px;
+      border: 1px solid rgba(15,143,111,.24);
+      border-radius: 8px;
+      background: rgba(233,248,243,.82);
+      color: #225446;
+      font-size: 15px;
+    }
+    .english-note strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--green);
+      font-size: 16px;
     }
     .actions {
       display: flex;
@@ -354,6 +370,11 @@
       margin-top: 18px;
     }
     .cta-panel p { color: #345070; }
+    .mini-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -418,10 +439,14 @@
         <span class="eyebrow">免费 Codex 提示词工具</span>
         <h1>Codex 第一次任务提示词生成器</h1>
         <p class="lead">第一次让 Codex 改项目，不要只写“帮我优化”。先把目录、目标、边界、验收方式写清楚，再让它动手。</p>
+        <div class="english-note">
+          <strong>For GitHub visitors</strong>
+          Free Codex CLI prompt generator. Turn a vague project goal into a first task with scope, file boundaries, constraints, and acceptance checks before you ask Codex to edit your repo.
+        </div>
         <div class="actions">
-          <a class="btn btn-primary" href="#tool">生成提示词</a>
-          <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">闲鱼买 2.99 元排障清单</a>
-          <a class="btn btn-line" href="codex-troubleshooting-checker.html">先排障自检</a>
+          <a class="btn btn-primary" href="#tool">生成提示词 / Generate prompt</a>
+          <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">2.99 元 Codex starter pack</a>
+          <a class="btn btn-line" href="codex-troubleshooting-checker.html">免费排障自检 / Troubleshooting check</a>
         </div>
       </div>
     </div>
@@ -521,10 +546,11 @@
           <div class="cta-panel">
             <h3>需要一整套新手排障顺序</h3>
             <p>2.99 元 Codex 入门排障清单包含安装登录自检、第一次任务流程、常见失败排查和更多可复制提示词模板。</p>
+            <p class="mini-note">English: the 2.99 CNY starter pack is delivered via Xianyu/Goofish chat after purchase. It is a checklist and prompt-template pack, not a managed coding service.</p>
             <div class="actions">
-              <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">闲鱼买 2.99 元 Codex 包</a>
+              <a class="btn btn-dark" href="https://www.goofish.com/item?id=1058436354978" target="_blank" rel="noopener">Buy 2.99 CNY starter pack</a>
               <a class="btn btn-line" href="codex-troubleshooting-checker.html">免费排障自检</a>
-              <a class="btn btn-line" href="https://www.goofish.com/item?id=1059263013337" target="_blank" rel="noopener">升级 99 元实战包</a>
+              <a class="btn btn-line" href="https://www.goofish.com/item?id=1059263013337" target="_blank" rel="noopener">99 CNY full workflow pack</a>
             </div>
           </div>
         </div>
