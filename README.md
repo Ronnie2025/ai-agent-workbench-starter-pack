@@ -26,6 +26,7 @@ consultants, and small-team operators.
 - AI-PPT 交付自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
 - n8n 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-checker.html
 - n8n AI副业情报雷达: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar.html
+- XHS Obsidian Workflow Starter: https://github.com/Ronnie2025/xhs-obsidian-workflow-starter
 - 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
 - 付款和交付说明: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
 - 判断指南: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/guide.html
