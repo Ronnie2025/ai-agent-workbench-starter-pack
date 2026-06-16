@@ -47,6 +47,7 @@ consultants, and small-team operators.
 - AI 工作流急诊自助判断: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/emergency-intake.html
 - AI 工作台 2 小时小班实战: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workshop.html
 - AI 虚拟资料货架: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-products.html
+- 闲鱼可拍商品合集: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-products.html
 - Codex 入门排障清单: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting.html
 - 小红书标题自测表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-self-test.html
 - AI 工作台自测表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-workbench-self-test-pack.html
