@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI人物一致性提示词生成器 | 角色卡 多场景 分镜提示词</title>
+  <meta name="description" content="免费 AI人物一致性提示词生成器：输入角色设定、风格和场景，生成角色卡、多场景生图提示词、短剧分镜提示词、负面词和自检清单。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-prompt-generator.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="AI人物一致性提示词生成器">
+  <meta property="og:description" content="输入角色设定和场景，生成同一人物多场景提示词。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-prompt-generator.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI人物一致性提示词生成器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-prompt-generator.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-cover.webp",
+    "description": "输入角色设定、风格和场景，生成角色卡、多场景生图提示词、短剧分镜提示词、负面词和自检清单。",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "AI人物一致性提示词生成器适合什么用途？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "适合同一人物多场景生图、短剧分镜、漫剧角色图、小红书封面和头像风格探索。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "生成的提示词能保证每次人物完全一致吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不能。它能帮助固定角色锚点和减少跑偏，但不同模型、参数和参考图会影响一致性。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "什么时候需要完整提示词包？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "当你需要更多角色卡、风格模板、动作表情、场景迁移、三连图和短剧分镜模板时，可以购买 19.90 元完整资料包。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6977;
+      --bg: #f7f9fc;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --green: #0b734f;
+      --blue: #155eef;
+      --amber: #b7791f;
+      --deep: #073627;
+      --soft-green: #e8f7f1;
+      --soft-blue: #eaf1ff;
+      --soft-amber: #fff6e6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero { padding: 38px 0 28px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(360px, 1.05fr);
+      gap: 24px;
+      align-items: center;
+    }
+    .cover {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(11,115,79,.24);
+      background: rgba(11,115,79,.09);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      max-width: 820px;
+      margin: 18px 0 12px;
+      font-size: clamp(38px, 5.2vw, 64px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 780px;
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+      cursor: pointer;
+      font: inherit;
+      text-align: center;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: var(--deep); color: #fff; }
+    .tool {
+      padding: 28px 0 56px;
+      border-top: 1px solid var(--line);
+    }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(380px, 1.08fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .panel,
+    .result-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .panel { padding: 22px; }
+    .result-panel {
+      position: sticky;
+      top: 18px;
+      overflow: hidden;
+    }
+    .result-body { padding: 22px; }
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .field {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    .hint {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    input[type="text"],
+    select {
+      min-height: 44px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 114px;
+      resize: vertical;
+      padding: 11px 12px;
+    }
+    .result-summary {
+      min-height: 220px;
+      margin-top: 16px;
+      background: #f8fbff;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+    .result-summary,
+    .copy-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      color: #233044;
+    }
+    .copy-box {
+      margin-top: 14px;
+      background: #fff;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 0;
+    }
+    .badge {
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: var(--soft-green);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 850;
+    }
+    .badge:nth-child(2) { background: var(--soft-blue); color: var(--blue); }
+    .badge:nth-child(3) { background: var(--soft-amber); color: var(--amber); }
+    .notice {
+      margin-top: 16px;
+      padding: 14px;
+      border: 1px solid rgba(11,115,79,.22);
+      border-radius: 8px;
+      background: var(--soft-green);
+      color: #174c39;
+      font-size: 14px;
+    }
+    .templates {
+      padding: 48px 0;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .card p { color: var(--muted); }
+    .footer {
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      min-height: 76px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 860px) {
+      .hero-grid,
+      .tool-layout,
+      .field-grid,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .result-panel { position: static; }
+      .btn { width: 100%; }
+      .cover { aspect-ratio: 3 / 4; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="ai-character-consistency-prompt-pack.html">完整资料包</a>
+        <a href="order.html?plan=ai-character-19.90">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">免费工具 / AI 生图 / 人物一致性</span>
+        <h1>AI人物一致性提示词生成器</h1>
+        <p class="lead">输入角色、视觉锚点和场景，生成一套可复制的角色卡、多场景提示词、短剧分镜提示词和负面词。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#tool">开始生成</a>
+          <a class="btn btn-line" href="ai-character-consistency-prompt-pack.html">查看 19.90 元完整包</a>
+        </div>
+      </div>
+      <img class="cover" src="ai-character-consistency-cover.webp" alt="AI人物一致性提示词包封面">
+    </div>
+  </header>
+
+  <main id="tool" class="tool">
+    <div class="wrap tool-layout">
+      <form class="panel" id="characterForm">
+        <h2>填写角色设定</h2>
+        <div class="field-grid">
+          <div class="field">
+            <label for="roleName">角色名称</label>
+            <input id="roleName" type="text" value="城市通勤女生">
+            <p class="hint">可以写职业、身份或昵称。</p>
+          </div>
+          <div class="field">
+            <label for="style">画面风格</label>
+            <select id="style">
+              <option>真人摄影感</option>
+              <option>国漫插画风</option>
+              <option>日系漫画风</option>
+              <option>电影海报感</option>
+              <option>小红书封面感</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="identity">固定锚点</label>
+            <textarea id="identity">圆脸，清透皮肤，黑色锁骨发，浅灰针织开衫，白色内搭，银色耳钉，气质温和但眼神坚定</textarea>
+            <p class="hint">写脸型、发型、服装主色、配饰和气质。</p>
+          </div>
+          <div class="field">
+            <label for="scenes">场景</label>
+            <textarea id="scenes">早高峰地铁口，咖啡馆靠窗座位，夜晚办公室电脑前</textarea>
+            <p class="hint">用逗号分隔，建议 3 个场景。</p>
+          </div>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="shot">镜头</label>
+            <select id="shot">
+              <option>半身中景</option>
+              <option>近景头像</option>
+              <option>全身站姿</option>
+              <option>三分之二侧脸</option>
+              <option>俯拍桌面环境</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="usage">用途</label>
+            <select id="usage">
+              <option>短剧分镜</option>
+              <option>小红书封面</option>
+              <option>漫剧角色图</option>
+              <option>头像组图</option>
+              <option>课程案例图</option>
+            </select>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">生成提示词</button>
+          <button class="btn btn-line" type="button" id="resetBtn">恢复示例</button>
+        </div>
+        <div class="notice">边界：不建议用于未授权真人、明星、影视角色商用；不承诺出图完全一致、涨粉、成交或收益。</div>
+      </form>
+
+      <section class="result-panel" aria-live="polite">
+        <div class="result-body">
+          <h2>生成结果</h2>
+          <div class="badge-row">
+            <span class="badge">角色卡</span>
+            <span class="badge">多场景提示词</span>
+            <span class="badge">负面词</span>
+          </div>
+          <div id="result" class="result-summary"></div>
+          <div class="copy-box" id="compactResult"></div>
+          <div class="actions">
+            <button class="btn btn-dark" type="button" id="copyBtn">复制结果</button>
+            <a class="btn btn-line" id="orderLink" href="order.html?plan=ai-character-19.90&scenario=我想购买 AI人物一致性提示词包">购买完整资料包</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="templates">
+    <div class="wrap">
+      <h2>完整包补齐这些内容</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>12 套角色卡</h3>
+          <p>覆盖真人风、国漫风、职场、短剧、儿童绘本和小红书封面人设。</p>
+        </div>
+        <div class="card">
+          <h3>100+ 条模板</h3>
+          <p>风格、动作、表情、场景迁移、一致性强化和三连图提示词。</p>
+        </div>
+        <div class="card">
+          <h3>跑偏补救</h3>
+          <p>脸变了、衣服乱了、年龄漂移、风格不稳时的修正句和检查表。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="ai-character-consistency-prompt-pack.html">AI人物一致性提示词包</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="./">返回主站</a>
+    </div>
+  </footer>
+
+  <script>
+    const defaults = {
+      roleName: '城市通勤女生',
+      identity: '圆脸，清透皮肤，黑色锁骨发，浅灰针织开衫，白色内搭，银色耳钉，气质温和但眼神坚定',
+      scenes: '早高峰地铁口，咖啡馆靠窗座位，夜晚办公室电脑前'
+    };
+
+    const form = document.getElementById('characterForm');
+    const result = document.getElementById('result');
+    const compactResult = document.getElementById('compactResult');
+    const orderLink = document.getElementById('orderLink');
+    const copyBtn = document.getElementById('copyBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function value(id) {
+      return document.getElementById(id).value.trim();
+    }
+
+    function sceneList(raw) {
+      return raw.split(/[,，、\n]/).map(item => item.trim()).filter(Boolean).slice(0, 5);
+    }
+
+    function buildOutput() {
+      const roleName = value('roleName') || defaults.roleName;
+      const style = value('style');
+      const identity = value('identity') || defaults.identity;
+      const scenes = sceneList(value('scenes') || defaults.scenes);
+      const shot = value('shot');
+      const usage = value('usage');
+      const sceneText = scenes.length ? scenes : sceneList(defaults.scenes);
+      const roleCard = `角色卡：${roleName}\n固定锚点：${identity}\n风格：${style}\n镜头：${shot}\n用途：${usage}\n一致性要求：每张图都保持同一脸型、同一发型、同一服装主色、同一配饰和同一气质。`;
+      const prompts = sceneText.map((scene, index) => {
+        return `${index + 1}. ${scene}\n${roleName}，${identity}，${style}，${shot}，场景为${scene}，自然光影，人物五官和服装保持一致，画面干净，主体清晰，适合${usage}。`;
+      }).join('\n\n');
+      const negative = '负面词：不同人物、脸型变化、发型变化、服装颜色漂移、年龄变化、过度磨皮、肢体畸形、多余手指、文字水印、低清晰度、夸张表情。';
+      const checklist = '自检：先看脸型，再看发型，再看服装主色，再看配饰，最后看气质和年龄是否一致；跑偏时只改一个变量，不要同时重写全部提示词。';
+      const full = `${roleCard}\n\n多场景提示词：\n${prompts}\n\n${negative}\n\n${checklist}`;
+      const compact = `${roleName}｜${style}｜${sceneText.join(' / ')}\n购买完整包可拿到 12 套角色卡、100+ 模板、三连图和短剧分镜模板。`;
+      const scenario = `我想购买 AI人物一致性提示词包。角色：${roleName}；用途：${usage}；场景：${sceneText.join('、')}`;
+
+      result.textContent = full;
+      compactResult.textContent = compact;
+      orderLink.href = `order.html?plan=ai-character-19.90&scenario=${encodeURIComponent(scenario)}`;
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      buildOutput();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      document.getElementById('roleName').value = defaults.roleName;
+      document.getElementById('identity').value = defaults.identity;
+      document.getElementById('scenes').value = defaults.scenes;
+      document.getElementById('style').value = '真人摄影感';
+      document.getElementById('shot').value = '半身中景';
+      document.getElementById('usage').value = '短剧分镜';
+      buildOutput();
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(result.textContent);
+        copyBtn.textContent = '已复制';
+        setTimeout(() => { copyBtn.textContent = '复制结果'; }, 1300);
+      } catch (error) {
+        copyBtn.textContent = '请手动复制';
+      }
+    });
+
+    buildOutput();
+  </script>
+</body>
+</html>

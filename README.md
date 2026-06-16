@@ -13,6 +13,7 @@ consultants, and small-team operators.
 - 小红书标题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-scorer.html
 - 小红书轮播提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-generator.html
 - 小红书轮播提示词资料包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-pack.html
+- AI人物一致性提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-prompt-generator.html
 - AI人物一致性提示词包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-prompt-pack.html
 - 小红书 Obsidian 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
@@ -124,6 +125,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carouse
 Xiaohongshu carousel prompt pack:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-pack.html
+
+AI character consistency prompt generator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-prompt-generator.html
 
 AI character consistency prompt pack:
 
