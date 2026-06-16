@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>副业小店记账表 Excel模板包 | 订单成本利润库存自动统计</title>
+  <meta name="description" content="19.90 元副业小店记账表 Excel 模板包，包含订单流水、成本库存、定价测算、周复盘和 Dashboard，看清销售额、成本、毛利和待交付订单。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-pack.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="副业小店记账表 Excel模板包">
+  <meta property="og:description" content="给副业卖家和虚拟资料卖家的可编辑 Excel 经营表，记录订单、成本、利润、库存和复盘。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-pack.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "副业小店记账表 Excel模板包",
+    "description": "面向副业卖家、虚拟资料卖家、小店订单和内容变现项目的 Excel 记账模板包，包含订单流水、成本库存、定价测算、周复盘和 Dashboard。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-cover.webp",
+    "brand": {
+      "@type": "Brand",
+      "name": "AI Workbench Store"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "19.90",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=side-hustle-ledger-19.90"
+    }
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14211d;
+      --muted: #66736e;
+      --bg: #f7f9f6;
+      --panel: #ffffff;
+      --line: #d9e4de;
+      --green: #0f4c3a;
+      --green2: #1f6f54;
+      --yellow: #f2b84b;
+      --coral: #e55845;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      min-height: 84vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.96) 46%, rgba(247,249,246,.25) 100%),
+        url("side-hustle-ledger-excel-cover.webp") right center / min(42vw, 520px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 660px;
+      padding: 58px 0 76px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(242,184,75,.22);
+      border: 1px solid rgba(242,184,75,.45);
+      color: #634200;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      max-width: 700px;
+      font-size: 58px;
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 20px;
+      font-size: 30px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+    p { margin: 0; }
+    .lead {
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .price strong {
+      color: var(--coral);
+      font-size: 42px;
+      line-height: 1;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    section { padding: 52px 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .card p,
+    .list {
+      color: var(--muted);
+    }
+    .list {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .list li { margin: 9px 0; }
+    .band {
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .footer {
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      min-height: 76px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 860px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.98) 54%, rgba(247,249,246,.82) 100%),
+          url("side-hustle-ledger-excel-cover.webp") bottom center / min(86vw, 430px) auto no-repeat;
+      }
+      .hero-copy { padding: 38px 0 500px; }
+      h1 { font-size: 42px; }
+      .grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .hero-copy { padding-bottom: 430px; }
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="xianyu-products.html">闲鱼可拍</a>
+        <a href="order.html?plan=side-hustle-ledger-19.90">订单页</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">需求反推新品 · Excel 模板</span>
+        <h1>副业小店记账表 Excel 模板包</h1>
+        <p class="lead">给卖虚拟资料、模板、课程资料和小店商品的人。订单、成本、毛利、库存、待交付和周复盘都放进一张可编辑工作簿。</p>
+        <div class="price"><span>¥</span><strong>19.90</strong><span>拍下后发 ZIP</span></div>
+        <div class="actions">
+          <a class="btn btn-primary" href="order.html?plan=side-hustle-ledger-19.90&scenario=我想购买副业小店记账表Excel模板包">生成 19.90 元订单</a>
+          <a class="btn btn-line" href="virtual-products.html">回到虚拟资料货架</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <h2>它解决的是真问题</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>订单乱</h3>
+            <p>今天卖了几单、哪些还没发、哪些已经关闭，靠聊天记录很容易漏。</p>
+          </div>
+          <div class="card">
+            <h3>成本漏</h3>
+            <p>平台手续费、素材成本、人工整理成本不记录，毛利会被高估。</p>
+          </div>
+          <div class="card">
+            <h3>复盘空</h3>
+            <p>标题、封面、咨询问题和退款原因没有记录，下周不知道改哪里。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>交付内容</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Excel 工作簿</h3>
+            <ul class="list">
+              <li>Dashboard 自动看板</li>
+              <li>订单流水表</li>
+              <li>成本库存表</li>
+              <li>定价测算表</li>
+              <li>周复盘模板</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>使用说明</h3>
+            <ul class="list">
+              <li>先改商品和成本</li>
+              <li>每单填一行订单</li>
+              <li>保留公式列</li>
+              <li>每周复盘咨询和关闭原因</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>上架与发货</h3>
+            <ul class="list">
+              <li>闲鱼标题和描述</li>
+              <li>主图顺序建议</li>
+              <li>拍下后发货话术</li>
+              <li>收益承诺边界回复</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>适合谁买</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>虚拟资料卖家</h3>
+            <p>卖资料包、提示词包、模板包、教程资料，需要记录每个 SKU 的订单和交付状态。</p>
+          </div>
+          <div class="card">
+            <h3>副业小店卖家</h3>
+            <p>不想上复杂进销存系统，但希望知道每周到底赚了多少。</p>
+          </div>
+          <div class="card">
+            <h3>内容变现新手</h3>
+            <p>刚开始卖低价资料，先用一张表把销售和复盘习惯建立起来。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>购买前说明</h2>
+        <ul class="list">
+          <li>这是可编辑 Excel 模板和使用说明，不是自动赚钱软件。</li>
+          <li>不承诺成交、利润、涨粉或任何经营结果。</li>
+          <li>不包含宏、插件、账号、支付接口或第三方平台自动化脚本。</li>
+          <li>拍下后交付 ZIP，里面包含工作簿、说明、上架文案和发货话术。</li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn-primary" href="order.html?plan=side-hustle-ledger-19.90&scenario=我想购买副业小店记账表Excel模板包">生成 19.90 元订单</a>
+          <a class="btn btn-line" href="xianyu-virtual-product-ops-script-pack.html">顺手看闲鱼话术包</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>AI Workbench Store</span>
+      <a href="./">首页</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="order.html?plan=side-hustle-ledger-19.90">订单页</a>
+    </div>
+  </footer>
+</body>
+</html>
