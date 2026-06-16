@@ -194,6 +194,7 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
 ## Discovery Pages
 
 - GitHub Pages main site: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/
+- Awesome Vibe Coding Resources listing: https://github.com/acvnace/awesome-vibe-coding-resources#documentation-for-ai-coding
 - Free prompt library repo: https://github.com/Ronnie2025/ai-workflow-prompts-zh
 - Free prompt library site: https://ronnie2025.github.io/ai-workflow-prompts-zh/
 - Rentry backup: https://rentry.co/ai-agent-workbench-99-20260614
