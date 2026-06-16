@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI人物一致性提示词包 | 角色卡 场景模板 短剧分镜</title>
+  <meta name="description" content="19.90 元 AI人物一致性提示词包，包含角色卡、场景模板、短剧分镜、风格模板、动作表情模板、负面词和出图自检清单。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-prompt-pack.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="AI人物一致性提示词包">
+  <meta property="og:description" content="角色卡 + 场景模板 + 短剧分镜，解决同一人物多场景生图跑偏。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-prompt-pack.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "AI人物一致性提示词包",
+    "description": "用于 AI 生图、短剧分镜和漫剧角色图的原创提示词资料包，包含角色卡、场景模板、分镜模板和一致性自检清单。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-cover.webp",
+    "brand": {
+      "@type": "Brand",
+      "name": "AI Workbench Store"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "19.90",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=ai-character-19.90"
+    }
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #606b79;
+      --bg: #f7f9fc;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --green: #0b734f;
+      --dark: #073627;
+      --amber: #d9a100;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--dark);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      min-height: 84vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(247,249,252,1) 0%, rgba(247,249,252,.95) 47%, rgba(247,249,252,.24) 100%),
+        url("ai-character-consistency-cover.webp") right center / min(42vw, 520px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 660px;
+      padding: 58px 0 72px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(11,115,79,.22);
+      background: rgba(11,115,79,.09);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      max-width: 660px;
+      font-size: clamp(38px, 5.5vw, 66px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 20px;
+      font-size: 30px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+      line-height: 1.24;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 20px;
+    }
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-top: 20px;
+      color: var(--green);
+      font-weight: 900;
+    }
+    .price strong {
+      font-size: 54px;
+      line-height: 1;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .card {
+      min-height: 168px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .card p { color: var(--muted); }
+    .list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--muted);
+    }
+    .order {
+      background: var(--dark);
+      color: #fff;
+    }
+    .order p { max-width: 760px; color: rgba(255,255,255,.78); }
+    .order .btn-line {
+      background: transparent;
+      color: #fff;
+      border-color: rgba(255,255,255,.28);
+    }
+    .order .btn-primary { background: #fff; color: var(--dark); }
+    .footer {
+      padding: 24px 0;
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    @media (max-width: 760px) {
+      .nav { display: none; }
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(247,249,252,1) 0%, rgba(247,249,252,.96) 48%, rgba(247,249,252,.72) 100%),
+          url("ai-character-consistency-cover.webp") bottom center / min(86vw, 430px) auto no-repeat;
+      }
+      .hero-copy { padding: 38px 0 500px; }
+      .grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="order.html?plan=ai-character-19.90">订单页</a>
+        <a href="n8n-ai-side-hustle-radar.html">n8n模板包</a>
+        <a href="xiaohongshu-carousel-prompt-pack.html">小红书轮播包</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">AI 生图 / 人物一致性 / 短剧分镜</span>
+        <h1>AI人物一致性提示词包</h1>
+        <p class="lead">同一角色，多场景不跑偏。原创角色卡、场景模板、短剧分镜和负面词清单，适合真人风、插画、国漫、短剧封面和小红书配图。</p>
+        <div class="price"><span>¥</span><strong>19.90</strong><span>数字资料包</span></div>
+        <div class="actions">
+          <a class="btn btn-primary" href="order.html?plan=ai-character-19.90&scenario=我想购买 AI人物一致性提示词包">购买 19.90 元资料包</a>
+          <a class="btn btn-line" href="virtual-products.html">返回虚拟资料货架</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2>资料包里有什么</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>角色卡系统</h3>
+          <p>脸型、五官、发型、服装主色、气质和禁止变化，先把同一角色固定住。</p>
+        </div>
+        <div class="card">
+          <h3>100+ 条模板</h3>
+          <p>角色卡、风格、动作表情、一致性强化、场景迁移和短剧分镜模板。</p>
+        </div>
+        <div class="card">
+          <h3>补救和自检</h3>
+          <p>负面词、跑脸补救句、真人风和国漫风修正方法、24 项出图检查。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>适合这些用途</h2>
+      <ul class="list">
+        <li>同一角色在咖啡馆、公园、办公室、夜晚窗边等多场景保持一致。</li>
+        <li>AI 短剧和漫剧先做主角设定，再扩展三连图、分镜表和封面图。</li>
+        <li>小红书封面、口播封面、头像和公众号配图需要稳定人物风格。</li>
+        <li>想做原创提示词资料包，但不想搬运别人几千条合集。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>不包含什么</h2>
+      <ul class="list">
+        <li>不包含模型账号、API、会员、破解工具或代生成服务。</li>
+        <li>不承诺任何平台收益、涨粉、成交或爆款。</li>
+        <li>不建议用于未授权真人、明星、影视角色商用。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="order">
+    <div class="wrap">
+      <h2>当前购买方式</h2>
+      <p>自动支付链接接入前，先用邮件订单承接购买意向。生成订单邮件后，我会回复付款方式；付款确认后发送 `AI-Character-Consistency-Prompt-Pack-1990.zip`。</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="order.html?plan=ai-character-19.90&scenario=我想购买 AI人物一致性提示词包">生成 19.90 元订单</a>
+        <a class="btn btn-line" href="after-order.html">查看交付说明</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="./">返回主站</a>
+    </div>
+  </footer>
+</body>
+</html>

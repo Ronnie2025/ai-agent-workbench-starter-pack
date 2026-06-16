@@ -13,6 +13,7 @@ consultants, and small-team operators.
 - 小红书标题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-scorer.html
 - 小红书轮播提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-generator.html
 - 小红书轮播提示词资料包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-pack.html
+- AI人物一致性提示词包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-prompt-pack.html
 - 小红书 Obsidian 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
@@ -66,6 +67,7 @@ consultants, and small-team operators.
 - 9.90 RMB: 小红书标题自测表
 - 19 RMB: AI 工作台自测表
 - 19.90 RMB: 小红书轮播提示词资料包
+- 19.90 RMB: AI人物一致性提示词包
 - 19.90 RMB: 电子资料上架合规自检包
 - 29.90 RMB: AI-PPT 交付自检包
 - 19.90 RMB: n8n 自动化工作流模板包
@@ -122,6 +124,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carouse
 Xiaohongshu carousel prompt pack:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-pack.html
+
+AI character consistency prompt pack:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-prompt-pack.html
 
 AI workbench self-test pack:
 
