@@ -461,6 +461,8 @@
         <a class="btn btn-line" href="virtual-product-buyer-reply-generator.html">免费生成买家问答</a>
         <a class="btn btn-line" href="digital-listing-compliance.html">查看 19.90 元上架自检包</a>
         <a class="btn btn-line" href="order.html?plan=19.90&scenario=我想购买电子资料上架合规自检包">购买 19.90 元自检包</a>
+        <a class="btn btn-primary" href="xianyu-virtual-product-ops-script-pack.html">查看 19.90 元运营话术包</a>
+        <a class="btn btn-line" href="order.html?plan=xianyu-ops-19.90&scenario=我想购买闲鱼虚拟资料运营话术包">购买 19.90 元话术包</a>
         <a class="btn btn-dark" href="https://www.goofish.com/item?id=1060176980426" target="_blank" rel="noopener">闲鱼买 49 元情报模板</a>
         <a class="btn btn-line" href="order.html?plan=49&scenario=我想购买 Reddit/X 副业情报检索模板包">生成 49 元邮件订单</a>
         <a class="btn btn-dark" href="https://www.goofish.com/item?id=1059263013337" target="_blank" rel="noopener">闲鱼买 99 元实战包</a>
@@ -529,6 +531,7 @@
       const text = name.toLowerCase();
       if (text.includes("codex")) return { plan: "2.99", label: "购买 2.99 元 Codex 包" };
       if (text.includes("标题")) return { plan: "9.90", label: "购买 9.90 元标题包" };
+      if (text.includes("回复") || text.includes("话术") || text.includes("运营") || text.includes("成交") || text.includes("发货")) return { plan: "xianyu-ops-19.90", label: "购买 19.90 元运营话术包" };
       if (text.includes("上架") || text.includes("合规") || text.includes("闲鱼") || text.includes("电子资料") || text.includes("售卖")) return { plan: "19.90", label: "购买 19.90 元上架自检包" };
       if (text.includes("小红书")) return { plan: "9.90", label: "购买 9.90 元标题包" };
       if (text.includes("自测")) return { plan: "19", label: "购买 19 元自测表" };
@@ -579,6 +582,11 @@
       const primaryOffer = pickPrimaryOffer(name);
       const upsellMap = {
         "19.90": [
+          { plan: "xianyu-ops-19.90", label: "购买 19.90 元运营话术包" },
+          { plan: "49", label: "购买 49 元情报模板" }
+        ],
+        "xianyu-ops-19.90": [
+          { plan: "19.90", label: "购买 19.90 元上架自检包" },
           { plan: "49", label: "购买 49 元情报模板" },
           { plan: "99", label: "购买 99 元实战包" }
         ],

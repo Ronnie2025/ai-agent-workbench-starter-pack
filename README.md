@@ -19,6 +19,7 @@ consultants, and small-team operators.
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
+- 闲鱼虚拟资料运营话术包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ops-script-pack.html
 - 电子资料上架自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-checker.html
 - 虚拟资料定价计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-pricing-calculator.html
 - 虚拟资料发货话术生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-delivery-script-generator.html
@@ -70,6 +71,7 @@ consultants, and small-team operators.
 - 19.90 RMB: 小红书轮播提示词资料包
 - 19.90 RMB: AI人物一致性提示词包
 - 19.90 RMB: 电子资料上架合规自检包
+- 19.90 RMB: 闲鱼虚拟资料运营话术包
 - 29.90 RMB: AI-PPT 交付自检包
 - 19.90 RMB: n8n 自动化工作流模板包
 - 39.90 RMB: AI 远程数据兼职申请包
