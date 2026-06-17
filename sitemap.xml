@@ -56,9 +56,21 @@
   </url>
   <url>
     <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/obsidian-xiaohongshu-workflow-guide.html</loc>
-    <lastmod>2026-06-16</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-material-card-template.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-material-card-template.md</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting.html</loc>
