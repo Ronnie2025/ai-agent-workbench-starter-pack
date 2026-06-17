@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小红书收藏整理到 Obsidian 分类器 | 素材库归档工具</title>
+  <meta name="description" content="免费小红书收藏整理到 Obsidian 分类器：输入收藏主题、素材数量和样例标题，生成 Obsidian 文件夹、标签、筛选规则、素材卡片模板和 79.8 元完整工作流购买入口。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-collection-organizer.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="小红书收藏整理到 Obsidian 分类器">
+  <meta property="og:description" content="把乱收藏的小红书笔记先分成素材卡、选题库、发布包和复盘池，再决定是否升级完整工作流。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-collection-organizer.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-cover.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "小红书收藏整理到 Obsidian 分类器",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Web",
+    "description": "根据小红书收藏主题、数量、目标和样例标题，生成 Obsidian 素材库分类方案、标签和素材卡片模板。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-cover.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "小红书 Obsidian 工作流",
+    "description": "把小红书收藏、素材、选题、标题、正文、配图提示词和发布包归档固定到 Obsidian 的数字资料包。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-cover.png",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "CNY",
+      "price": "79.80",
+      "availability": "https://schema.org/InStock",
+      "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=xhs-obsidian-79.80"
+    }
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6977;
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --line: #dbe4ef;
+      --blue: #155eef;
+      --green: #0f8f6f;
+      --red: #b42318;
+      --amber: #a45f00;
+      --deep: #0d1b2a;
+      --soft-blue: #eaf1ff;
+      --soft-green: #e9f8f3;
+      --soft-amber: #fff6e6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar { border-bottom: 1px solid var(--line); background: #fff; }
+    .topbar-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand { color: var(--deep); font-weight: 900; text-decoration: none; }
+    .nav { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font-size: 14px; }
+    .nav a { text-decoration: none; }
+    .wrap { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+    .hero {
+      min-height: 520px;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(245,247,251,1) 0%, rgba(245,247,251,.95) 54%, rgba(245,247,251,.42) 100%),
+        url("xhs-obsidian-workflow-cover.png") right 52% / min(34vw, 390px) auto no-repeat;
+    }
+    .hero-copy { max-width: 780px; padding: 58px 0 72px; }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,143,111,.24);
+      background: rgba(15,143,111,.08);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 { margin: 22px 0 14px; font-size: clamp(38px, 5.8vw, 66px); line-height: 1.05; letter-spacing: 0; }
+    h2 { margin: 0 0 16px; font-size: 30px; line-height: 1.2; letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: 20px; line-height: 1.24; letter-spacing: 0; }
+    p { margin: 0; }
+    .lead { max-width: 690px; color: var(--muted); font-size: 19px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: #fff;
+      color: var(--ink);
+      text-decoration: none;
+      font: inherit;
+      font-weight: 850;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-line { border-color: var(--line); }
+    section { padding: 54px 0; border-bottom: 1px solid var(--line); }
+    .section-white { background: #fff; }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .panel, .card, .result {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .panel { padding: 22px; }
+    .result {
+      position: sticky;
+      top: 18px;
+      overflow: hidden;
+    }
+    .result-head {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+      background: var(--deep);
+      color: #fff;
+    }
+    .result-body { padding: 22px; }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field {
+      min-height: 120px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    label { display: block; margin-bottom: 8px; font-weight: 850; }
+    .hint { margin-bottom: 10px; color: var(--muted); font-size: 13px; }
+    input[type="text"], select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    input[type="text"], select { min-height: 44px; padding: 0 12px; }
+    textarea { min-height: 132px; padding: 12px; resize: vertical; }
+    .full { grid-column: 1 / -1; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .metric {
+      min-height: 92px;
+      padding: 14px;
+      border-radius: 8px;
+      background: var(--soft-blue);
+    }
+    .metric strong { display: block; font-size: 24px; line-height: 1.1; }
+    .metric span { display: block; margin-top: 6px; color: var(--muted); font-size: 13px; }
+    .block {
+      margin-top: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    .block p, .card p { color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { min-height: 172px; padding: 20px; }
+    pre {
+      margin: 0;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #e5edf8;
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 13px;
+      line-height: 1.6;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--soft-green);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 850;
+    }
+    .warning { color: var(--amber); font-weight: 850; }
+    .cta { background: var(--deep); color: #fff; }
+    .cta p { max-width: 780px; color: rgba(255,255,255,.76); }
+    .footer { padding: 28px 0; background: #fff; color: var(--muted); font-size: 14px; }
+    .footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; }
+    .footer a { text-decoration: none; }
+    @media (max-width: 880px) {
+      .topbar-inner { flex-direction: column; align-items: flex-start; padding: 14px 0; }
+      .hero {
+        min-height: 760px;
+        align-items: start;
+        background:
+          linear-gradient(180deg, rgba(245,247,251,1) 0%, rgba(245,247,251,.96) 58%, rgba(245,247,251,.72) 100%),
+          url("xhs-obsidian-workflow-cover.png") bottom center / min(78vw, 380px) auto no-repeat;
+      }
+      .hero-copy { padding: 42px 0 300px; }
+      .tool-grid, .grid, .field-grid, .summary { grid-template-columns: 1fr; }
+      .result { position: static; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="xhs-obsidian-workflow.html">79.8 完整包</a>
+        <a href="xhs-obsidian-material-card-template.html">素材卡片模板</a>
+        <a href="xhs-obsidian-workflow-fit-checker.html">适配评分器</a>
+        <a href="obsidian-xiaohongshu-workflow-guide.html">搭建指南</a>
+        <a href="virtual-products.html">虚拟资料</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">免费收藏整理工具</span>
+        <h1>小红书收藏整理到 Obsidian 分类器</h1>
+        <p class="lead">把乱收藏的小红书笔记先分成素材卡、选题库、发布包和复盘池。你不需要先搭完整系统，先用这个工具生成第一版 Obsidian 目录、标签和筛选规则。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#tool">开始整理收藏</a>
+          <a class="btn btn-line" href="xhs-obsidian-material-card-template.html">下载素材卡片模板</a>
+          <a class="btn btn-line" href="xhs-obsidian-workflow.html">看 79.8 元完整包</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section-white">
+    <div class="wrap grid">
+      <article class="card">
+        <h3>先处理收藏夹混乱</h3>
+        <p>很多人不是没有素材，而是收藏之后没有下一步。这个工具先给收藏做分层，不碰账号、不抓取内容。</p>
+      </article>
+      <article class="card">
+        <h3>再进入 Obsidian</h3>
+        <p>输出文件夹、标签、命名规则和素材卡片结构，直接复制到你的知识库里执行。</p>
+      </article>
+      <article class="card">
+        <h3>最后才升级流程</h3>
+        <p>如果你每周都有素材和发布需求，再看 79.8 元完整包，把标题、正文和发布包固定下来。</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="tool">
+    <div class="wrap tool-grid">
+      <div class="panel">
+        <h2>输入你的收藏现状</h2>
+        <div class="field-grid">
+          <div class="field">
+            <label for="theme">收藏主题</label>
+            <p class="hint">例如 AI 工具、副业资料、职场表达、家居改造、课程笔记。</p>
+            <input id="theme" type="text" value="AI 工具和小红书内容素材">
+          </div>
+          <div class="field">
+            <label for="count">收藏规模</label>
+            <p class="hint">数量决定先分粗类还是直接做发布包。</p>
+            <select id="count">
+              <option value="small">20 条以内</option>
+              <option value="medium" selected>20-100 条</option>
+              <option value="large">100 条以上</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="state">当前素材状态</label>
+            <p class="hint">只收藏、截图、手记，处理方式不一样。</p>
+            <select id="state">
+              <option value="saved" selected>只在小红书收藏夹里</option>
+              <option value="screenshots">已经截图但没整理</option>
+              <option value="notes">已经摘了部分文字</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="goal">整理目标</label>
+            <p class="hint">决定目录要服务选题、发布还是长期知识库。</p>
+            <select id="goal">
+              <option value="publish" selected>整理成小红书发布选题</option>
+              <option value="course">沉淀成课程/资料包素材</option>
+              <option value="library">长期个人知识库</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="samples">贴 3-8 条收藏标题或主题</label>
+            <p class="hint">一行一个。没有标题就写大概内容，工具会生成第一版卡片。</p>
+            <textarea id="samples">AI 写作工作台怎么搭
+小红书爆款选题怎么拆
+Obsidian 模板怎么管理素材
+把课程笔记改成图文发布
+虚拟资料怎么定价和交付</textarea>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" type="button" id="generateBtn">生成整理方案</button>
+          <button class="btn btn-line" type="button" id="copyBtn">复制方案</button>
+          <a class="btn btn-line" id="orderLink" href="order.html?plan=xhs-obsidian-79.80&scenario=我用收藏整理分类器生成了方案，想购买完整工作流">生成 79.8 元订单</a>
+        </div>
+        <p class="warning">边界：这个工具不抓取小红书、不绕过平台登录、不承诺涨粉或收入，只帮你把已经合法保存的素材整理成可执行流程。</p>
+      </div>
+
+      <aside class="result" aria-live="polite">
+        <div class="result-head">
+          <h2>你的 Obsidian 整理方案</h2>
+          <p>下面内容可以直接复制进一篇 Markdown 笔记。</p>
+        </div>
+        <div class="result-body">
+          <div class="summary">
+            <div class="metric"><strong id="score">82</strong><span>整理优先级</span></div>
+            <div class="metric"><strong id="folderCount">6</strong><span>建议目录数</span></div>
+            <div class="metric"><strong id="firstBatch">12</strong><span>首批处理量</span></div>
+          </div>
+          <div id="resultBlocks"></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-white">
+    <div class="wrap grid">
+      <article class="card">
+        <h3>适合继续免费用</h3>
+        <p>收藏数量少、只是偶尔发笔记，先用本页加素材卡片模板就够，不急着买完整包。</p>
+      </article>
+      <article class="card">
+        <h3>适合买完整包</h3>
+        <p>每周都要发内容，且已经在 Obsidian 里沉淀素材，需要固定标题、正文、配图提示词和发布包。</p>
+      </article>
+      <article class="card">
+        <h3>不适合买</h3>
+        <p>想要代运营、自动抓取平台内容、账号增长承诺、现成 API Key 或保证成交的人，不适合这个资料包。</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>如果你的收藏已经能稳定变成素材卡，就该把后半段流程固定下来</h2>
+      <p>79.8 元完整包提供 Obsidian 插件安装包、素材到发布包 SOP、提示词改写指南、样例发布包和 FAQ。它解决的是反复整理、反复改标题、反复找发布稿的问题。</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="xhs-obsidian-workflow.html">查看完整包详情</a>
+        <a class="btn btn-line" href="order.html?plan=xhs-obsidian-79.80&scenario=我用收藏整理分类器生成了方案，想购买完整工作流">生成 79.8 元订单</a>
+        <a class="btn btn-line" href="xhs-obsidian-material-card-template.html">先拿免费素材卡片</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>© AI Workbench Store</span>
+      <span>
+        <a href="xhs-obsidian-workflow.html">小红书 Obsidian 工作流</a> ·
+        <a href="virtual-products.html">虚拟资料货架</a> ·
+        <a href="privacy.html">Privacy</a> ·
+        <a href="terms.html">Terms</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const toneMap = {
+      publish: {
+        action: "优先转成 7 天选题池",
+        outcome: "每条收藏都要判断能否形成标题、正文和配图提示词。",
+        folder: "30_发布包"
+      },
+      course: {
+        action: "优先沉淀成资料包模块",
+        outcome: "每条收藏都要归到章节、案例或检查清单里。",
+        folder: "40_课程资料"
+      },
+      library: {
+        action: "优先做长期标签和来源记录",
+        outcome: "每条收藏都要保留来源、关键词和可复用观点。",
+        folder: "50_长期知识库"
+      }
+    };
+
+    function sampleLines() {
+      return $("samples").value.split(/\n+/).map((line) => line.trim()).filter(Boolean).slice(0, 8);
+    }
+
+    function buildPlan() {
+      const theme = $("theme").value.trim() || "小红书收藏素材";
+      const count = $("count").value;
+      const state = $("state").value;
+      const goal = $("goal").value;
+      const lines = sampleLines();
+      const tone = toneMap[goal];
+      const baseScore = count === "large" ? 91 : count === "medium" ? 84 : 72;
+      const stateBoost = state === "notes" ? 6 : state === "screenshots" ? 3 : 0;
+      const score = Math.min(98, baseScore + stateBoost + Math.min(lines.length, 6));
+      const batch = count === "large" ? 20 : count === "medium" ? 12 : 6;
+      const tags = [
+        "#xhs/" + theme.replace(/\s+/g, "-").slice(0, 16),
+        "#素材状态/待筛选",
+        "#素材状态/可发布",
+        "#发布阶段/标题中",
+        "#发布阶段/已归档"
+      ];
+      const folders = [
+        "00_inbox_临时收集",
+        "10_素材卡片",
+        "20_选题池",
+        tone.folder,
+        "80_复盘记录",
+        "90_废弃和暂缓"
+      ];
+      const sampleCards = lines.length ? lines.map((line, index) => {
+        const num = String(index + 1).padStart(2, "0");
+        return `- ${num}_${line}\n  - 分类：${index % 2 === 0 ? "可转发布" : "先做素材"}\n  - 下一步：补充读者痛点、可复制方法、标题候选`;
+      }).join("\n") : "- 01_未命名收藏\n  - 分类：待筛选\n  - 下一步：补标题和来源";
+      const markdown = `# ${theme}｜小红书收藏整理方案
+
+## 1. 今日目标
+- ${tone.action}
+- 首批只处理 ${batch} 条，先筛出 3 条可发布素材
+- ${tone.outcome}
+
+## 2. Obsidian 目录
+${folders.map((folder) => `- 小红书素材库/${folder}`).join("\n")}
+
+## 3. 标签
+${tags.join(" ")}
+
+## 4. 三层筛选
+- 立即转发布：有明确人群、痛点和可执行方法
+- 只收藏备用：有信息价值，但暂时没有发布角度
+- 丢弃或暂缓：只有情绪、截图、空泛观点，无法变成自己的内容
+
+## 5. 首批卡片
+${sampleCards}
+
+## 6. 单条素材卡片模板
+---
+来源平台：小红书
+原始标题：
+读者痛点：
+可复用方法：
+我的补充观点：
+标题候选：
+图文结构：
+配图提示词：
+发布状态：待写/待审/已发/暂缓
+---`;
+      $("score").textContent = score;
+      $("folderCount").textContent = folders.length;
+      $("firstBatch").textContent = batch;
+      $("resultBlocks").innerHTML = `
+        <div class="block">
+          <h3>建议先做什么</h3>
+          <p>${tone.action}。先不要追求全量归档，先把第一批 ${batch} 条收藏跑成素材卡。</p>
+        </div>
+        <div class="block">
+          <h3>推荐标签</h3>
+          <div class="tag-list">${tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
+        </div>
+        <div class="block">
+          <h3>复制到 Obsidian</h3>
+          <pre id="planText">${markdown.replace(/[&<>]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[char]))}</pre>
+        </div>
+      `;
+      const scenario = encodeURIComponent(`我用小红书收藏整理分类器生成了方案，主题是：${theme}，整理优先级 ${score}，想购买完整工作流`);
+      $("orderLink").href = `order.html?plan=xhs-obsidian-79.80&scenario=${scenario}`;
+    }
+
+    async function copyPlan() {
+      const text = $("planText") ? $("planText").innerText : "";
+      if (!text) return;
+      await navigator.clipboard.writeText(text);
+      const btn = $("copyBtn");
+      const old = btn.textContent;
+      btn.textContent = "已复制";
+      setTimeout(() => { btn.textContent = old; }, 1400);
+    }
+
+    ["theme", "count", "state", "goal", "samples"].forEach((id) => {
+      $(id).addEventListener("input", buildPlan);
+      $(id).addEventListener("change", buildPlan);
+    });
+    $("generateBtn").addEventListener("click", buildPlan);
+    $("copyBtn").addEventListener("click", copyPlan);
+    buildPlan();
+  </script>
+</body>
+</html>

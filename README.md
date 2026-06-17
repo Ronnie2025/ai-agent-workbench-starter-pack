@@ -23,6 +23,7 @@ consultants, and small-team operators.
 - 生育津贴自助申领包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-guide.html
 - 小红书 Obsidian 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
 - 小红书素材卡片 Markdown 模板: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-material-card-template.html
+- 小红书收藏整理到 Obsidian 分类器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-collection-organizer.html
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
@@ -65,6 +66,7 @@ consultants, and small-team operators.
 - 小红书 Obsidian 工作流: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow.html
 - 小红书 Obsidian 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
 - 小红书素材卡片 Markdown 模板: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-material-card-template.html
+- 小红书收藏整理到 Obsidian 分类器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-collection-organizer.html
 
 ## Scenario Pages
 
@@ -234,6 +236,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workfl
 Xiaohongshu Obsidian workflow fit checker:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-fit-checker.html
+
+Xiaohongshu collection to Obsidian organizer:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-collection-organizer.html
 
 Obsidian Xiaohongshu workflow guide:
 
