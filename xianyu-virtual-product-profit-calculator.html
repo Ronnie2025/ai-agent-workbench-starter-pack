@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>闲鱼虚拟资料利润怎么算 | 成本毛利退款复盘计算器</title>
+  <meta name="description" content="免费计算闲鱼虚拟资料、模板、教程资料的单笔利润：输入成交价、平台费、资料成本、售后时间和退款预留，得到到手收入、预估毛利、毛利率和该记进 Excel 的字段。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-profit-calculator.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="闲鱼虚拟资料利润怎么算">
+  <meta property="og:description" content="把成交价、平台费、资料成本、售后时间和退款预留算清楚，再决定是否用 Excel 长期记账。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-profit-calculator.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ledger-xlsx-dashboard-preview.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "闲鱼虚拟资料利润计算器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "计算闲鱼虚拟资料、模板和教程资料订单的到手收入、预估毛利、毛利率和复盘字段。",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-profit-calculator.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ledger-xlsx-dashboard-preview.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "闲鱼虚拟资料利润怎么算？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "先用成交价扣除平台费、资料制作成本、工具素材成本、售后时间成本和退款预留，剩下的是预估毛利；毛利除以成交价就是预估毛利率。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "虚拟资料没有库存也要记成本吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "要记。虚拟资料的成本通常是制作时间、工具会员、素材来源、重复答疑、补发和退款风险。如果不记录，很容易把低价资料包的利润看高。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "这个计算器会承诺成交或收益吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不会。它只做订单测算和字段提醒，不承诺曝光、成交、利润、回本或任何经营结果。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #15211d;
+      --muted: #65736e;
+      --bg: #f7f9f6;
+      --panel: #ffffff;
+      --line: #d9e4de;
+      --green: #0f4c3a;
+      --yellow: #f2b84b;
+      --red: #d84b3a;
+      --blue: #155eef;
+      --soft: #eef5f1;
+      --shadow: 0 18px 48px rgba(20, 33, 29, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner,
+    .wrap {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--green);
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      padding: 38px 0 26px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.97) 48%, rgba(247,249,246,.28) 100%),
+        url("xianyu-ledger-xlsx-dashboard-preview.png") right center / min(44vw, 560px) auto no-repeat;
+    }
+    .hero-copy { max-width: 720px; padding: 38px 0 54px; }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border: 1px solid rgba(242,184,75,.5);
+      border-radius: 999px;
+      background: rgba(242,184,75,.24);
+      color: #634200;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      max-width: 720px;
+      margin: 16px 0 12px;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin-bottom: 16px;
+      font-size: 30px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 { margin-bottom: 8px; font-size: 20px; }
+    .lead {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    section { padding: 54px 0; }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, .85fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .form-panel,
+    .result-panel,
+    .card { padding: 22px; }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .field {
+      min-height: 102px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfb;
+    }
+    label {
+      display: block;
+      color: var(--green);
+      font-weight: 900;
+    }
+    .hint {
+      margin: 3px 0 9px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input {
+      width: 100%;
+      min-height: 42px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 800;
+    }
+    .result-panel {
+      position: sticky;
+      top: 76px;
+      overflow: hidden;
+    }
+    .score {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+    .metric strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .card p,
+    .list { color: var(--muted); }
+    .list { margin: 0; padding-left: 20px; }
+    .list li { margin: 8px 0; }
+    .band {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .cta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 270px;
+      gap: 20px;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .cta img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .footer {
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      min-height: 76px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 880px) {
+      .hero {
+        padding-bottom: 310px;
+        background:
+          linear-gradient(180deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.97) 55%, rgba(247,249,246,.7) 100%),
+          url("xianyu-ledger-xlsx-dashboard-preview.png") bottom center / min(92vw, 560px) auto no-repeat;
+      }
+      .tool-layout,
+      .grid,
+      .cta { grid-template-columns: 1fr; }
+      .result-panel { position: static; }
+      .cta img { max-width: 320px; }
+    }
+    @media (max-width: 520px) {
+      .field-grid,
+      .score { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="xianyu-ledger-sample.html">Excel样张</a>
+        <a href="side-hustle-ledger-excel-pack.html">完整模板</a>
+        <a href="https://www.goofish.com/item?id=1057975295736">闲鱼购买</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">免费计算器 / 闲鱼虚拟资料卖家</span>
+        <h1>闲鱼虚拟资料利润怎么算</h1>
+        <p class="lead">不要只看成交价。把平台费、资料成本、工具素材、售后时间和退款预留放进同一张表，才能知道 9.90、19.90、49.90 这些价格到底还剩多少毛利。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#calculator">立即算一单</a>
+          <a class="btn btn-line" href="xianyu-ledger-free-sample.xlsx" download>下载免费 Excel 样张</a>
+          <a class="btn btn-line" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼担保购买 19.90 元</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="calculator">
+      <div class="wrap tool-layout">
+        <div class="panel form-panel">
+          <h2>单笔利润计算</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="price">成交价</label>
+              <p class="hint">买家实际拍下金额。</p>
+              <input id="price" type="number" min="0" step="0.01" value="19.90">
+            </div>
+            <div class="field">
+              <label for="platformFeeRate">平台费率</label>
+              <p class="hint">不知道就先按 1% 预留。</p>
+              <input id="platformFeeRate" type="number" min="0" step="0.1" value="1">
+            </div>
+            <div class="field">
+              <label for="productCost">资料成本</label>
+              <p class="hint">素材、工具、整理和外包成本。</p>
+              <input id="productCost" type="number" min="0" step="0.01" value="1.20">
+            </div>
+            <div class="field">
+              <label for="timeMinutes">售后时间</label>
+              <p class="hint">解释、补发、引导使用的分钟数。</p>
+              <input id="timeMinutes" type="number" min="0" step="1" value="8">
+            </div>
+            <div class="field">
+              <label for="hourlyCost">时间成本/小时</label>
+              <p class="hint">给自己的时间标价。</p>
+              <input id="hourlyCost" type="number" min="0" step="1" value="60">
+            </div>
+            <div class="field">
+              <label for="refundReserve">退款预留</label>
+              <p class="hint">按订单预留的退款或关闭损失。</p>
+              <input id="refundReserve" type="number" min="0" step="0.01" value="0.80">
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel result-panel">
+          <h2>结果</h2>
+          <div class="score">
+            <div class="metric"><span>到手收入</span><strong id="netRevenue">--</strong></div>
+            <div class="metric"><span>预估毛利</span><strong id="grossProfit">--</strong></div>
+            <div class="metric"><span>毛利率</span><strong id="marginRate">--</strong></div>
+            <div class="metric"><span>售后时间成本</span><strong id="timeCost">--</strong></div>
+          </div>
+          <p id="diagnosis" class="note"></p>
+          <div class="actions">
+            <a class="btn btn-primary" href="xianyu-ledger-free-sample.xlsx" download>下载免费 Excel 样张</a>
+            <a class="btn btn-line" href="xianyu-ledger-sample.html">看字段样张</a>
+            <a class="btn btn-line" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">买完整记账表</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>公式</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>到手收入</h3>
+            <p>成交价 - 平台费。先把平台扣费和可能的技术服务费从成交价里拿掉。</p>
+          </div>
+          <div class="card">
+            <h3>真实成本</h3>
+            <p>资料成本 + 时间成本 + 退款预留。虚拟资料没有实物库存，但售后和退款会吃掉利润。</p>
+          </div>
+          <div class="card">
+            <h3>预估毛利</h3>
+            <p>到手收入 - 真实成本。连续记录每一单，才能判断标题、封面、价格和发货话术要改哪里。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>要记进 Excel 的字段</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>订单字段</h3>
+            <ul class="list">
+              <li>成交价、数量、平台、商品名</li>
+              <li>订单状态和交付状态</li>
+              <li>到手收入和平台费</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>成本字段</h3>
+            <ul class="list">
+              <li>资料成本、工具成本、素材成本</li>
+              <li>售后时间和时间成本</li>
+              <li>退款预留和补发成本</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>复盘字段</h3>
+            <ul class="list">
+              <li>买家问题和退款关闭原因</li>
+              <li>本周要改的标题、封面或详情页</li>
+              <li>下周保留、提价或下架判断</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <div class="cta">
+          <div>
+            <span class="eyebrow">已上架闲鱼 / 19.90 元</span>
+            <h2>用完整 Excel 表持续复盘每一单</h2>
+            <p class="lead">免费样张适合先看字段。完整包包含 Dashboard、订单流水、成本库存、定价测算、周复盘、上架文案和发货话术，适合已经开始卖资料、模板或教程的人。</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼担保购买 19.90 元</a>
+              <a class="btn btn-line" href="xianyu-ledger-free-sample.xlsx" download>先下载免费 Excel 样张</a>
+              <a class="btn btn-line" href="side-hustle-ledger-excel-pack.html">查看完整交付</a>
+            </div>
+          </div>
+          <img src="xianyu-ledger-xlsx-dashboard-preview.png" alt="闲鱼虚拟资料记账表 Excel 看板预览">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>AI Workbench Store</span>
+      <a href="./">首页</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="side-hustle-profit-calculator.html">副业利润速算器</a>
+      <a href="xianyu-ledger-sample.html">Excel 样张</a>
+      <a href="https://www.goofish.com/item?id=1057975295736">闲鱼担保购买</a>
+    </div>
+  </footer>
+
+  <script>
+    const ids = ["price", "platformFeeRate", "productCost", "timeMinutes", "hourlyCost", "refundReserve"];
+    const money = (value) => `¥${Number(value || 0).toFixed(2)}`;
+    const numberValue = (id) => Number(document.getElementById(id).value || 0);
+
+    function render() {
+      const price = numberValue("price");
+      const platformFee = price * numberValue("platformFeeRate") / 100;
+      const productCost = numberValue("productCost");
+      const timeCost = numberValue("timeMinutes") / 60 * numberValue("hourlyCost");
+      const refundReserve = numberValue("refundReserve");
+      const netRevenue = Math.max(price - platformFee, 0);
+      const grossProfit = netRevenue - productCost - timeCost - refundReserve;
+      const marginRate = price > 0 ? grossProfit / price * 100 : 0;
+
+      document.getElementById("netRevenue").textContent = money(netRevenue);
+      document.getElementById("grossProfit").textContent = money(grossProfit);
+      document.getElementById("marginRate").textContent = `${marginRate.toFixed(1)}%`;
+      document.getElementById("timeCost").textContent = money(timeCost);
+
+      let diagnosis = "这单可以继续观察，把咨询问题和售后动作记进周复盘。";
+      if (grossProfit < 0) {
+        diagnosis = "这单按当前成本是亏的，优先减少售后时间、提高价格或下架低效 SKU。";
+      } else if (marginRate < 35) {
+        diagnosis = "毛利偏薄，低价资料包容易被售后时间吃掉利润，需要记录退款原因和提价测试。";
+      } else if (marginRate > 70) {
+        diagnosis = "毛利空间不错，但仍要记录咨询转化和退款关闭原因，避免只看成交价。";
+      }
+      document.getElementById("diagnosis").textContent = diagnosis;
+    }
+
+    ids.forEach((id) => document.getElementById(id).addEventListener("input", render));
+    render();
+  </script>
+</body>
+</html>
