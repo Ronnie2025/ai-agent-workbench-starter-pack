@@ -40,6 +40,7 @@ consultants, and small-team operators.
 - 闲鱼记账表 GitHub 样张仓库: https://github.com/Ronnie2025/xianyu-virtual-product-ledger-sample
 - 副业小店记账表 Excel模板包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-pack.html
 - 副业小店记账表 Excel模板包闲鱼: https://www.goofish.com/item?id=1057975295736
+- 副业小店记账表闲鱼封面图: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-xianyu-cover-v2.png
 - 剪映字幕风格参数生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-generator.html
 - 剪映高级感字幕参数工作流包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-workflow-pack.html
 - 电子资料上架自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-checker.html
