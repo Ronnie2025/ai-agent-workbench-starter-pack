@@ -60,6 +60,7 @@ consultants, and small-team operators.
 - Codex 第一次任务提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html
 - AGENTS.md 生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-agents-md-generator.html
 - PPT 大纲生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generator.html
+- PPT模板生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-template-generator.html
 - AI-PPT 交付自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
 - n8n 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-checker.html
 - n8n 自动化工作流模板包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar.html
@@ -253,6 +254,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-che
 PPT outline generator:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generator.html
+
+PPT template generator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-template-generator.html
 
 AI remote data job pack:
 
