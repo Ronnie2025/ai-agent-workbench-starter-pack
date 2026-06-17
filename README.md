@@ -272,6 +272,7 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-ch
 Xianyu listing generator:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
+Generates titles, descriptions, delivery copy, and order ledger fields before linking sellers to the ledger sample and Goofish ledger pack.
 
 Jianying caption style generator:
 

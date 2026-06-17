@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>闲鱼虚拟资料上架文案生成器｜标题、描述、发货话术</title>
-  <meta name="description" content="免费生成闲鱼虚拟资料上架文案：标题、商品描述、发货话术、避坑边界和订单场景，适合原创模板、AI 教程、提示词包和小红书资料包。">
+  <title>闲鱼虚拟资料上架文案生成器｜标题、描述、发货话术、记账字段</title>
+  <meta name="description" content="免费生成闲鱼虚拟资料上架文案：标题、商品描述、发货话术、避坑边界、订单场景和上架后记账字段，适合原创模板、AI 教程、提示词包和小红书资料包。">
   <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html">
+  <link rel="icon" href="data:,">
   <meta property="og:title" content="闲鱼虚拟资料上架文案生成器">
-  <meta property="og:description" content="输入资料方向，生成可复制的标题、描述、发货话术和避坑边界。">
+  <meta property="og:description" content="输入资料方向，生成可复制的标题、描述、发货话术、避坑边界和订单记账字段。">
   <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html">
   <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator-cover.png">
   <script type="application/ld+json">
@@ -45,6 +46,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "写清楚文件名、使用顺序、交付方式、补发边界和不承诺事项，交易和沟通保留在平台内。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "生成上架文案后还要记录什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "至少记录闲鱼订单号、商品名、成交价、平台费、资料成本、发货时间、售后问题、退款原因和每周复盘动作，避免只看成交金额。"
         }
       }
     ]
@@ -355,6 +364,8 @@
           <a class="btn btn-line" href="virtual-product-delivery-script-generator.html">生成发货话术</a>
           <a class="btn btn-line" href="virtual-product-buyer-reply-generator.html">生成买家问答</a>
           <a class="btn btn-line" href="digital-listing-checker.html">上架前自检</a>
+          <a class="btn btn-line" href="xianyu-ledger-free-sample.xlsx" download>下载 Excel 记账样张</a>
+          <a class="btn btn-primary" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼买 19.90 元记账表</a>
           <a class="btn btn-line" href="virtual-products.html">查看资料货架</a>
           <a class="btn btn-line" href="https://www.goofish.com/item?id=1060176980426" target="_blank" rel="noopener">闲鱼买 49 元模板包</a>
         </div>
@@ -444,6 +455,15 @@
           <div class="copybox" id="scenarioOut"></div>
           <div class="small-actions" id="orderActions"></div>
         </div>
+        <div class="output-block">
+          <h3>上架后记账字段</h3>
+          <div class="copybox" id="ledgerOut"></div>
+          <div class="small-actions">
+            <button class="btn btn-line mini" type="button" data-copy="ledgerOut" data-label="复制记账字段">复制记账字段</button>
+            <a class="btn btn-primary mini" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼买完整记账表</a>
+            <a class="btn btn-line mini" href="xianyu-ledger-free-sample.xlsx" download>下载 Excel 样张</a>
+          </div>
+        </div>
       </aside>
     </div>
   </section>
@@ -459,6 +479,8 @@
         <a class="btn btn-line" href="virtual-product-pricing-calculator.html">免费计算定价</a>
         <a class="btn btn-line" href="virtual-product-delivery-script-generator.html">免费生成发货话术</a>
         <a class="btn btn-line" href="virtual-product-buyer-reply-generator.html">免费生成买家问答</a>
+        <a class="btn btn-primary" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼买 19.90 元记账表</a>
+        <a class="btn btn-line" href="xianyu-ledger-free-sample.xlsx" download>下载 Excel 样张</a>
         <a class="btn btn-line" href="digital-listing-compliance.html">查看 19.90 元上架自检包</a>
         <a class="btn btn-line" href="order.html?plan=19.90&scenario=我想购买电子资料上架合规自检包">购买 19.90 元自检包</a>
         <a class="btn btn-primary" href="xianyu-virtual-product-ops-script-pack.html">查看 19.90 元运营话术包</a>
@@ -490,6 +512,11 @@
           <h3>交易留在平台</h3>
           <p>付款、沟通和售后都留在平台内，虚拟资料也写清补发边界。</p>
         </article>
+        <article class="card">
+          <strong>04</strong>
+          <h3>上架当天记账</h3>
+          <p>把测试价、成交价、平台费、资料成本和售后问题写进表里，后面才知道该改标题还是改交付。</p>
+        </article>
       </div>
     </div>
   </section>
@@ -514,10 +541,12 @@
     const descOut = document.getElementById("descOut");
     const shipOut = document.getElementById("shipOut");
     const scenarioOut = document.getElementById("scenarioOut");
+    const ledgerOut = document.getElementById("ledgerOut");
     const orderActions = document.getElementById("orderActions");
     const score = document.getElementById("score");
     const xianyuByPlan = {
       "2.99": "https://www.goofish.com/item?id=1058436354978",
+      "side-hustle-ledger-19.90": "https://www.goofish.com/item?id=1057975295736",
       "19": "https://www.goofish.com/item?id=1060189932353",
       "49": "https://www.goofish.com/item?id=1060176980426",
       "99": "https://www.goofish.com/item?id=1059263013337"
@@ -530,6 +559,7 @@
     function pickPrimaryOffer(name) {
       const text = name.toLowerCase();
       if (text.includes("codex")) return { plan: "2.99", label: "购买 2.99 元 Codex 包" };
+      if (text.includes("记账") || text.includes("订单") || text.includes("成本") || text.includes("利润") || text.includes("毛利") || text.includes("库存") || text.includes("复盘") || text.includes("表格") || text.includes("excel")) return { plan: "side-hustle-ledger-19.90", label: "购买 19.90 元记账表" };
       if (text.includes("标题")) return { plan: "9.90", label: "购买 9.90 元标题包" };
       if (text.includes("回复") || text.includes("话术") || text.includes("运营") || text.includes("成交") || text.includes("发货")) return { plan: "xianyu-ops-19.90", label: "购买 19.90 元运营话术包" };
       if (text.includes("上架") || text.includes("合规") || text.includes("闲鱼") || text.includes("电子资料") || text.includes("售卖")) return { plan: "19.90", label: "购买 19.90 元上架自检包" };
@@ -579,34 +609,43 @@
         `建议价格：${priceText} 元`,
         `包含内容：${itemText}`
       ].join("\n");
+      const ledgerLine = [
+        `订单登记：日期｜闲鱼订单号｜商品：${name}｜建议价：${priceText} 元｜实际成交价｜平台费｜资料成本｜交付形态：${formatText}`,
+        `售前问题：买家是否问样品、适不适合、能否退款、有没有效果保证。`,
+        `售后问题：是否打不开、漏发、不会用、要求退款；本周复盘动作：改标题、改详情、补说明还是调整交付包。`
+      ].join("\n");
       const primaryOffer = pickPrimaryOffer(name);
       const upsellMap = {
-        "19.90": [
+        "side-hustle-ledger-19.90": [
           { plan: "xianyu-ops-19.90", label: "购买 19.90 元运营话术包" },
-          { plan: "49", label: "购买 49 元情报模板" }
+          { plan: "19.90", label: "购买 19.90 元上架自检包" }
+        ],
+        "19.90": [
+          { plan: "side-hustle-ledger-19.90", label: "购买 19.90 元记账表" },
+          { plan: "xianyu-ops-19.90", label: "购买 19.90 元运营话术包" },
         ],
         "xianyu-ops-19.90": [
+          { plan: "side-hustle-ledger-19.90", label: "购买 19.90 元记账表" },
           { plan: "19.90", label: "购买 19.90 元上架自检包" },
-          { plan: "49", label: "购买 49 元情报模板" },
-          { plan: "99", label: "购买 99 元实战包" }
         ],
         "49": [
+          { plan: "side-hustle-ledger-19.90", label: "购买 19.90 元记账表" },
           { plan: "19.90", label: "购买 19.90 元上架自检包" },
-          { plan: "99", label: "购买 99 元实战包" }
         ],
         "99": [
+          { plan: "side-hustle-ledger-19.90", label: "购买 19.90 元记账表" },
           { plan: "19.90", label: "购买 19.90 元上架自检包" },
-          { plan: "49", label: "购买 49 元情报模板" }
         ]
       };
       const [secondaryOffer, tertiaryOffer] = upsellMap[primaryOffer.plan] || [
+        { plan: "side-hustle-ledger-19.90", label: "购买 19.90 元记账表" },
         { plan: "19.90", label: "购买 19.90 元上架自检包" },
-        { plan: "49", label: "购买 49 元情报模板" }
       ];
       titleOut.textContent = title;
       descOut.textContent = desc;
       shipOut.textContent = ship;
       scenarioOut.textContent = scenario;
+      ledgerOut.textContent = ledgerLine;
       score.textContent = items.length >= 4 ? "可测试" : "先补内容";
       const directXianyu = xianyuByPlan[primaryOffer.plan]
         ? [`<a class="btn btn-dark mini" href="${xianyuByPlan[primaryOffer.plan]}" target="_blank" rel="noopener">闲鱼担保购买</a>`]
@@ -627,7 +666,7 @@
         try {
           await navigator.clipboard.writeText(text);
           button.textContent = "已复制";
-          setTimeout(() => { button.textContent = button.dataset.copy === "titleOut" ? "复制标题" : button.dataset.copy === "descOut" ? "复制描述" : "复制话术"; }, 1200);
+          setTimeout(() => { button.textContent = button.dataset.label || (button.dataset.copy === "titleOut" ? "复制标题" : button.dataset.copy === "descOut" ? "复制描述" : "复制话术"); }, 1200);
         } catch {
           button.textContent = "请手动复制";
         }
