@@ -34,6 +34,7 @@ consultants, and small-team operators.
 - 闲鱼虚拟资料记账指南: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ledger-template.html
 - 闲鱼记账表 Excel/CSV 样张: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ledger-sample.html
 - 闲鱼虚拟商品退款复盘表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-refund-review.html
+- 闲鱼虚拟资料发货话术生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-delivery-script-generator.html
 - 闲鱼记账表 GitHub 样张仓库: https://github.com/Ronnie2025/xianyu-virtual-product-ledger-sample
 - 副业小店记账表 Excel模板包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-pack.html
 - 副业小店记账表 Excel模板包闲鱼: https://www.goofish.com/item?id=1057975295736
@@ -43,6 +44,7 @@ consultants, and small-team operators.
 - 虚拟资料定价计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-pricing-calculator.html
 - 闲鱼虚拟资料定价计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-pricing-calculator.html
 - 虚拟资料发货话术生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-delivery-script-generator.html
+- 闲鱼虚拟资料发货话术生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-delivery-script-generator.html
 - 虚拟资料买家问答生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-buyer-reply-generator.html
 - Codex 排障自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-checker.html
 - Codex 第一次任务提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html

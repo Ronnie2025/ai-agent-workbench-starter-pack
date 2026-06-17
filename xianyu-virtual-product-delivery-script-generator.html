@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>闲鱼虚拟资料怎么发货 | 发货话术售后边界生成器</title>
+  <meta name="description" content="免费闲鱼虚拟资料发货话术生成器：生成拍下后发货说明、无需邮寄说明、打不开补发话术、退款边界和订单记录字段，适合虚拟资料、模板、Excel 表格和教程资料卖家。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-delivery-script-generator.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="闲鱼虚拟资料怎么发货">
+  <meta property="og:description" content="生成平台内发货话术、补发说明和退款边界，顺手把订单记录到记账表。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-delivery-script-generator.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ops-script-pack-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "闲鱼虚拟资料发货话术生成器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "为闲鱼虚拟资料、模板、Excel 表格和教程资料生成拍下后发货说明、无需邮寄说明、打不开补发话术、退款边界和订单记录字段。",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-delivery-script-generator.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ops-script-pack-cover.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "闲鱼虚拟资料拍下后怎么发货？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "建议在闲鱼平台聊天内发送文件、网盘提取说明或下载方式，并写清文件名、格式、使用顺序、补发规则和不承诺事项。付款、沟通和售后都尽量留在平台内。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "闲鱼虚拟资料无需邮寄怎么写？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "可以写明本商品为电子资料，无实物邮寄，拍下后在平台聊天内发送资料文件或下载说明；买家拍下前请确认设备可打开对应格式。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "闲鱼虚拟资料发出后退款边界怎么说？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "常见写法是未发货前可协商取消，资料已发送后不支持无理由退款；如果文件损坏、漏发、链接失效或无法下载，可以在平台内补发。具体处理仍以平台规则和订单状态为准。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14211d;
+      --muted: #65746e;
+      --bg: #f7f9f6;
+      --panel: #ffffff;
+      --line: #d9e4de;
+      --green: #0f4c3a;
+      --blue: #155eef;
+      --yellow: #f2b84b;
+      --red: #d84b3a;
+      --soft: #eef5f1;
+      --shadow: 0 18px 48px rgba(20, 33, 29, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner,
+    .wrap {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--green);
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      min-height: 640px;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.94) 48%, rgba(247,249,246,.30) 100%),
+        url("xianyu-ops-script-pack-cover.webp") right center / min(44vw, 540px) auto no-repeat;
+    }
+    .hero-copy { max-width: 720px; padding: 64px 0 78px; }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border: 1px solid rgba(242,184,75,.48);
+      border-radius: 999px;
+      background: rgba(242,184,75,.24);
+      color: #634200;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      margin: 16px 0 12px;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin-bottom: 16px;
+      font-size: 30px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 { margin-bottom: 8px; font-size: 20px; }
+    .lead {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: #fff;
+      text-decoration: none;
+      font-weight: 850;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-line { border-color: var(--line); color: var(--ink); }
+    section {
+      padding: 54px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(360px, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+    .panel,
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .form-panel,
+    .result-panel,
+    .card { padding: 22px; }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .field {
+      min-height: 104px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfb;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      display: block;
+      color: var(--green);
+      font-weight: 900;
+    }
+    .hint {
+      margin: 3px 0 9px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 9px 11px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+    .checks {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .check {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .check input {
+      width: 18px;
+      min-height: 18px;
+      margin-top: 3px;
+      accent-color: var(--green);
+    }
+    .score-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .score {
+      height: 108px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--green);
+      color: #fff;
+      font-size: 38px;
+      font-weight: 950;
+    }
+    .meter {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--soft);
+    }
+    .meter span {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--yellow), var(--green));
+      transition: width .2s ease;
+    }
+    .note { color: var(--muted); }
+    .script-block {
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfb;
+    }
+    .copybox {
+      margin-top: 8px;
+      white-space: pre-wrap;
+      color: #30433c;
+      font-size: 15px;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15,76,58,.09);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .list li + li { margin-top: 6px; }
+    .cta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .72fr);
+      gap: 22px;
+      align-items: center;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .cta img {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: block;
+    }
+    .footer {
+      padding: 30px 0 38px;
+      color: var(--muted);
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      align-items: center;
+    }
+    .footer a { text-decoration: none; }
+    @media (max-width: 860px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .hero {
+        min-height: 0;
+        background:
+          linear-gradient(180deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.98) 64%, rgba(247,249,246,.80) 100%),
+          url("xianyu-ops-script-pack-cover.webp") bottom center / min(90vw, 430px) auto no-repeat;
+      }
+      .hero-copy { padding: 44px 0 260px; }
+      .tool-layout,
+      .grid,
+      .cta { grid-template-columns: 1fr; }
+      .field-grid { grid-template-columns: 1fr; }
+      .score-row { grid-template-columns: 1fr; }
+      h1 { font-size: 40px; }
+      h2 { font-size: 26px; }
+    }
+    @media (max-width: 430px) {
+      .wrap,
+      .topbar-inner { width: min(100% - 24px, 1160px); }
+      .btn { width: 100%; }
+      .hero-copy { padding-bottom: 230px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="xianyu-virtual-product-pricing-calculator.html">定价</a>
+        <a href="xianyu-virtual-product-profit-calculator.html">利润</a>
+        <a href="side-hustle-ledger-excel-pack.html">记账表</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">免费工具 / 闲鱼虚拟资料卖家</span>
+        <h1>闲鱼虚拟资料怎么发货</h1>
+        <p class="lead">拍下后不要只发一句“已发”。先写清电子资料无需邮寄、文件格式、发货位置、补发规则、退款边界和不承诺事项，再把订单记录到表里。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#generator">生成发货话术</a>
+          <a class="btn btn-line" href="xianyu-ledger-free-sample.xlsx" download>下载免费 Excel 样张</a>
+          <a class="btn btn-line" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">买记账表</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="generator">
+      <div class="wrap tool-layout">
+        <div class="panel form-panel">
+          <h2>输入发货条件</h2>
+          <div class="field-grid">
+            <div class="field full">
+              <label for="productName">商品名称</label>
+              <p class="hint">填买家拍下的虚拟资料标题。</p>
+              <input id="productName" value="副业小店记账表 Excel模板包">
+            </div>
+            <div class="field">
+              <label for="price">成交价</label>
+              <p class="hint">用于生成订单记录字段。</p>
+              <input id="price" type="number" min="0" step="0.01" value="19.90">
+            </div>
+            <div class="field">
+              <label for="fileFormat">交付格式</label>
+              <p class="hint">买家需要知道用什么软件打开。</p>
+              <select id="fileFormat">
+                <option value="Excel 工作簿和 ZIP 压缩包">Excel 工作簿和 ZIP 压缩包</option>
+                <option value="PDF 文档和 Markdown 模板">PDF 文档和 Markdown 模板</option>
+                <option value="ZIP 压缩包">ZIP 压缩包</option>
+                <option value="网盘下载说明">网盘下载说明</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="deliveryWindow">发货时间</label>
+              <p class="hint">不要写自己做不到的时效。</p>
+              <select id="deliveryWindow">
+                <option value="拍下后 1 小时内">拍下后 1 小时内</option>
+                <option value="当天 24 点前">当天 24 点前</option>
+                <option value="24 小时内">24 小时内</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="deliveryPlace">发货位置</label>
+              <p class="hint">优先留在平台内沟通。</p>
+              <select id="deliveryPlace">
+                <option value="闲鱼平台聊天内">闲鱼平台聊天内</option>
+                <option value="订单聊天内发送下载说明">订单聊天内发送下载说明</option>
+                <option value="按平台允许方式发送资料">按平台允许方式发送资料</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="includedFiles">包含内容</label>
+              <p class="hint">写清买家实际收到什么，减少“以为还有服务”的纠纷。</p>
+              <textarea id="includedFiles">Dashboard 看板、订单流水、成本库存、定价测算、周复盘、使用说明、闲鱼上架文案和发货话术</textarea>
+            </div>
+          </div>
+
+          <div class="checks">
+            <label class="check">
+              <input id="noPost" type="checkbox" checked>
+              <span>已写清电子资料无需邮寄，没有实物快递。</span>
+            </label>
+            <label class="check">
+              <input id="platformOnly" type="checkbox" checked>
+              <span>付款、沟通、补发和售后尽量保留在闲鱼平台内。</span>
+            </label>
+            <label class="check">
+              <input id="repairRule" type="checkbox" checked>
+              <span>文件损坏、漏发、下载失败时可以补发。</span>
+            </label>
+            <label class="check">
+              <input id="noPromise" type="checkbox" checked>
+              <span>不承诺涨粉、成交、审核通过、收入或经营结果。</span>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" id="generate" type="button">刷新话术</button>
+            <a class="btn btn-line" href="xianyu-virtual-product-profit-calculator.html">先算单笔利润</a>
+          </div>
+        </div>
+
+        <aside class="panel result-panel">
+          <div class="score-row">
+            <div class="score" id="score">--</div>
+            <div>
+              <h2 id="scoreLabel">发货边界检查</h2>
+              <p class="note" id="scoreHint"></p>
+              <div class="meter"><span id="meter"></span></div>
+              <div class="pill-row" id="pillRow"></div>
+            </div>
+          </div>
+
+          <div class="script-block">
+            <h3>拍下后发货话术</h3>
+            <div class="copybox" id="deliveryScript"></div>
+          </div>
+          <div class="script-block">
+            <h3>打不开 / 漏发补发话术</h3>
+            <div class="copybox" id="repairScript"></div>
+          </div>
+          <div class="script-block">
+            <h3>退款边界说明</h3>
+            <div class="copybox" id="refundScript"></div>
+          </div>
+          <div class="script-block">
+            <h3>订单记录字段</h3>
+            <div class="copybox" id="ledgerScript"></div>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼买记账表</a>
+            <a class="btn btn-line" href="xianyu-ledger-free-sample.xlsx" download>下载 Excel 样张</a>
+            <a class="btn btn-line" href="xianyu-virtual-product-ops-script-pack.html">看运营话术包</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>发货前先确认三件事</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>先讲清交付</h3>
+            <p>商品是电子资料就写电子资料，无实物邮寄。文件格式、打开方式和发货时效要放在详情页和发货话术里。</p>
+          </div>
+          <div class="card">
+            <h3>再讲清售后</h3>
+            <p>能补发什么、不能提供什么、是否包含长期答疑，都要在平台聊天里留记录。</p>
+          </div>
+          <div class="card">
+            <h3>最后记账复盘</h3>
+            <p>每单记录成交价、平台费、资料成本、售后问题和退款原因，否则不知道是标题问题、定价问题还是交付问题。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="cta">
+          <div>
+            <span class="eyebrow">已上架 / 19.90 元</span>
+            <h2>发货之后，把这一单记下来</h2>
+            <p class="lead">虚拟资料真正要复盘的是订单、平台费、售后时间和退款原因。免费样张可以先看字段，完整包用来长期记录和周复盘。</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼担保购买记账表</a>
+              <a class="btn btn-line" href="xianyu-ledger-free-sample.xlsx" download>下载免费 Excel 样张</a>
+              <a class="btn btn-line" href="xianyu-virtual-product-pricing-calculator.html">算上架定价</a>
+            </div>
+          </div>
+          <img src="xianyu-ledger-xlsx-dashboard-preview.png" alt="闲鱼虚拟资料记账表 Excel 预览">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>AI Workbench Store</span>
+      <a href="./">首页</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="xianyu-virtual-product-pricing-calculator.html">闲鱼定价计算器</a>
+      <a href="xianyu-virtual-product-profit-calculator.html">利润计算器</a>
+      <a href="xianyu-ledger-sample.html">Excel 样张</a>
+    </div>
+  </footer>
+
+  <script>
+    const fields = [
+      "productName", "price", "fileFormat", "deliveryWindow", "deliveryPlace",
+      "includedFiles", "noPost", "platformOnly", "repairRule", "noPromise"
+    ];
+
+    const $ = (id) => document.getElementById(id);
+
+    function money(value) {
+      return "¥" + Number(value || 0).toFixed(2);
+    }
+
+    function state() {
+      return {
+        productName: $("productName").value.trim() || "虚拟资料包",
+        price: Number($("price").value || 0),
+        fileFormat: $("fileFormat").value,
+        deliveryWindow: $("deliveryWindow").value,
+        deliveryPlace: $("deliveryPlace").value,
+        includedFiles: $("includedFiles").value.trim() || "资料文件和使用说明",
+        noPost: $("noPost").checked,
+        platformOnly: $("platformOnly").checked,
+        repairRule: $("repairRule").checked,
+        noPromise: $("noPromise").checked
+      };
+    }
+
+    function render() {
+      const s = state();
+      let score = 42;
+      score += s.noPost ? 14 : -18;
+      score += s.platformOnly ? 16 : -20;
+      score += s.repairRule ? 14 : -12;
+      score += s.noPromise ? 16 : -18;
+      if (s.includedFiles.length > 24) score += 8;
+      if (s.deliveryPlace.includes("闲鱼") || s.deliveryPlace.includes("订单")) score += 6;
+      score = Math.max(18, Math.min(96, score));
+
+      $("score").textContent = score;
+      $("meter").style.width = score + "%";
+      $("scoreLabel").textContent = score >= 82 ? "可以发货" : score >= 62 ? "先补边界" : "先别发货";
+      $("scoreHint").textContent = score >= 82
+        ? "交付、补发和不承诺事项已经比较清楚，发货后记得登记订单。"
+        : "先把无需邮寄、平台内沟通、补发规则和不承诺结果写清楚，再给买家发资料。";
+      $("pillRow").innerHTML = [
+        s.fileFormat,
+        s.deliveryWindow,
+        s.noPost ? "无需邮寄" : "需补无实物说明",
+        s.platformOnly ? "平台内留痕" : "需补平台记录"
+      ].map((item) => `<span class="pill">${item}</span>`).join("");
+
+      $("deliveryScript").textContent = `你好，已收到你拍下的《${s.productName}》。\n\n本商品为电子资料，无实物邮寄。资料会在${s.deliveryWindow}通过${s.deliveryPlace}发送。\n\n交付格式：${s.fileFormat}\n包含内容：${s.includedFiles}\n\n建议收到后先看使用说明，再打开模板或文件。如果你这边无法下载、文件损坏或发现漏发，请直接在闲鱼聊天里回复具体文件名和截图，我会按订单记录核对补发。`;
+
+      $("repairScript").textContent = s.repairRule
+        ? `如果你打不开《${s.productName}》，请在闲鱼聊天里发：设备类型、打不开的文件名、截图或报错信息。\n\n我会先核对是否漏发、文件损坏或链接失效；属于交付文件问题的，会补发同一份资料。若是本地软件版本或设备环境问题，我会给基础打开建议，但不包含长期远程调试或一对一代做。`
+        : `建议补充补发规则：文件损坏、漏发、链接失效或无法下载时如何处理。没有这条，买家拍下后容易把设备问题、使用问题和交付问题混在一起。`;
+
+      $("refundScript").textContent = `退款边界：未发货前可以在平台内协商取消；电子资料已发送后，不支持无理由退款。文件损坏、漏发、链接失效或无法正常下载，可以在闲鱼聊天内核对后补发。\n\n《${s.productName}》交付的是资料、模板和说明，不承诺涨粉、成交、审核通过、收入、回本或任何经营结果；具体售后处理以平台规则和订单状态为准。`;
+
+      $("ledgerScript").textContent = `订单登记：日期｜闲鱼订单号｜商品：${s.productName}｜成交价：${money(s.price)}｜平台费｜资料成本｜发货时间：${s.deliveryWindow}｜交付格式：${s.fileFormat}｜售后问题｜退款原因｜本周复盘动作。`;
+    }
+
+    fields.forEach((id) => {
+      const el = $(id);
+      if (!el) return;
+      el.addEventListener("input", render);
+      el.addEventListener("change", render);
+    });
+    $("generate").addEventListener("click", render);
+    render();
+  </script>
+</body>
+</html>
