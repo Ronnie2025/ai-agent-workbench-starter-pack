@@ -11,6 +11,7 @@ consultants, and small-team operators.
 - AI 工作台免费自测: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/self-test.html
 - AI 副业选题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-idea-scorer.html
 - 小红书标题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-scorer.html
+- 小红书标题生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-generator.html
 - 小红书轮播提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-generator.html
 - 小红书轮播提示词资料包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-pack.html
 - AI人物一致性提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-prompt-generator.html
@@ -161,6 +162,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-s
 Xiaohongshu title scorer:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-scorer.html
+
+Xiaohongshu title generator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-generator.html
 
 Xiaohongshu carousel prompt generator:
 
