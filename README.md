@@ -30,6 +30,7 @@ consultants, and small-team operators.
 - 闲鱼虚拟资料运营话术包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ops-script-pack.html
 - 副业订单利润速算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-profit-calculator.html
 - 闲鱼虚拟资料利润计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-profit-calculator.html
+- 闲鱼虚拟资料定价计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-pricing-calculator.html
 - 闲鱼虚拟资料记账指南: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ledger-template.html
 - 闲鱼记账表 Excel/CSV 样张: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ledger-sample.html
 - 闲鱼虚拟商品退款复盘表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-refund-review.html
@@ -40,6 +41,7 @@ consultants, and small-team operators.
 - 剪映高级感字幕参数工作流包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-workflow-pack.html
 - 电子资料上架自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-checker.html
 - 虚拟资料定价计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-pricing-calculator.html
+- 闲鱼虚拟资料定价计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-pricing-calculator.html
 - 虚拟资料发货话术生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-delivery-script-generator.html
 - 虚拟资料买家问答生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-buyer-reply-generator.html
 - Codex 排障自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-checker.html
