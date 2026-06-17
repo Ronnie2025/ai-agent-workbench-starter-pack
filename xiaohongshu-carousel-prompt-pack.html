@@ -237,6 +237,29 @@
       border-color: rgba(184,107,0,.26);
       background: rgba(184,107,0,.08);
     }
+    .copy-note {
+      display: grid;
+      gap: 14px;
+    }
+    .copy-note textarea {
+      width: 100%;
+      min-height: 170px;
+      resize: vertical;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fbff;
+      color: #233142;
+      font: inherit;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .copy-status {
+      min-height: 20px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
     .order {
       background: var(--deep);
       color: #fff;
@@ -344,6 +367,26 @@
     </div>
   </section>
 
+  <section>
+    <div class="wrap">
+      <div class="panel copy-note">
+        <h2>闲鱼咨询备注</h2>
+        <p>如果已经确定要拍，可以直接复制这段发给卖家，说明你要的交付内容和边界。</p>
+        <textarea id="buyNote" readonly>你好，我想拍这个 19.90 元小红书轮播提示词资料包。
+我需要：5 页轮播结构、每页文案、配图提示词、发布前检查清单。
+我的使用场景：把已有主题或 Obsidian 笔记改成小红书图文。
+我知道这个资料包不包含账号、代运营、API Key，也不承诺流量、涨粉或成交。
+如果后续要把素材、标题、正文和发布包固定到 Obsidian，我再咨询 79.8 元工作流升级。</textarea>
+        <div class="actions">
+          <button class="btn btn-dark" id="copyBuyNote" type="button">复制闲鱼咨询备注</button>
+          <a class="btn btn-primary" href="https://www.goofish.com/item?id=1059706201312" target="_blank" rel="noopener">打开闲鱼商品</a>
+          <a class="btn btn-line" href="xhs-obsidian-workflow.html">查看 79.8 升级工作流</a>
+        </div>
+        <div class="copy-status" id="copyStatus"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="order">
     <div class="wrap">
       <h2>购买方式</h2>
@@ -368,5 +411,20 @@
       <a href="terms.html">Terms of Service</a>
     </div>
   </footer>
+  <script>
+    const buyNote = document.getElementById("buyNote");
+    const copyBuyNote = document.getElementById("copyBuyNote");
+    const copyStatus = document.getElementById("copyStatus");
+    copyBuyNote.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(buyNote.value);
+        copyStatus.textContent = "已复制，可粘贴到闲鱼聊天。";
+      } catch (error) {
+        buyNote.select();
+        document.execCommand("copy");
+        copyStatus.textContent = "已选中备注，可手动复制。";
+      }
+    });
+  </script>
 </body>
 </html>
