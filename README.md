@@ -26,6 +26,7 @@ consultants, and small-team operators.
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
 - 闲鱼虚拟资料运营话术包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ops-script-pack.html
+- 副业订单利润速算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-profit-calculator.html
 - 副业小店记账表 Excel模板包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-pack.html
 - 副业小店记账表 Excel模板包闲鱼: https://www.goofish.com/item?id=1057975295736
 - 剪映字幕风格参数生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-style-generator.html
@@ -258,6 +259,7 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-st
 
 Side hustle ledger Excel pack:
 
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-profit-calculator.html
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-pack.html
 https://www.goofish.com/item?id=1057975295736
 
