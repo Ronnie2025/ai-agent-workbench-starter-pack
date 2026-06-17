@@ -277,6 +277,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ledger-sample.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ledger-sample.csv</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-profit-calculator.html</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
