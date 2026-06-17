@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>闲鱼虚拟资料封面文案生成器｜主图卖点、详情图结构、imagegen 提示词</title>
+  <meta name="description" content="免费生成闲鱼虚拟资料封面文案：主图标题、价格角标、卖点条、详情图结构、合规避坑和 imagegen 提示词，适合 Excel 模板、AI 教程、提示词包和小红书资料。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-cover-copy-generator.html">
+  <link rel="icon" href="data:,">
+  <meta property="og:title" content="闲鱼虚拟资料封面文案生成器">
+  <meta property="og:description" content="输入资料方向，生成可复制的主图文案、详情图结构、imagegen 提示词和订单记账字段。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-cover-copy-generator.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-xianyu-cover-v2.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "闲鱼虚拟资料封面文案生成器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-cover-copy-generator.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-xianyu-cover-v2.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "闲鱼虚拟资料封面应该放什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "优先放商品名、交付格式、价格、3 到 5 个可验证卖点和适用人群，不放二维码、外部引流、夸大收益和平台禁用词。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "封面图可以写包赚钱、包涨粉吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不建议。虚拟资料封面应该描述资料内容和适用场景，不承诺涨粉、爆款、收益、成交或绕过平台规则。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "做完封面后还要记录什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "至少记录商品名、封面版本、测试价、曝光、想要、咨询、成交价、平台费、资料成本、退款原因和下一次改图动作。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #f6f8f7;
+      --paper: #ffffff;
+      --ink: #12201b;
+      --muted: #62716b;
+      --line: #d8e3de;
+      --green: #0f5f45;
+      --green-2: #147a58;
+      --mint: #eaf7f1;
+      --yellow: #f2b84b;
+      --red: #e6533f;
+      --blue: #2456d9;
+      --shadow: 0 18px 42px rgba(18, 32, 27, .10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    h1, h2, h3, p { margin: 0; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      text-decoration: none;
+      font-weight: 900;
+    }
+    .nav {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+    .hero {
+      min-height: 650px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(246,248,247,1) 0%, rgba(246,248,247,.94) 44%, rgba(246,248,247,.24) 76%),
+        url("side-hustle-ledger-xianyu-cover-v2.png") right center / min(42vw, 540px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 610px;
+      padding: 92px 0 74px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(15,95,69,.24);
+      background: var(--mint);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin-top: 22px;
+      font-size: 56px;
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    .lead {
+      margin-top: 18px;
+      color: #4f5f59;
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      padding: 11px 18px;
+      border: 1px solid transparent;
+      font: inherit;
+      font-weight: 780;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      white-space: normal;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-yellow { background: var(--yellow); color: #221600; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-dark { background: #101820; color: #fff; }
+    section { padding: 66px 0; }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .field { margin-top: 18px; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 780;
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px 12px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      letter-spacing: 0;
+    }
+    textarea {
+      min-height: 106px;
+      resize: vertical;
+    }
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .check {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: #34433d;
+      background: #fff;
+      font-weight: 650;
+    }
+    .check input { width: auto; }
+    .output-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+    .score {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--mint);
+      color: var(--green);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+    .output-block {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-top: 18px;
+    }
+    .output-block h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+    .copybox {
+      width: 100%;
+      min-height: 86px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfdfc;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .cover-preview {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f3f7f4;
+      padding: 18px;
+    }
+    .cover-frame {
+      max-width: 430px;
+      aspect-ratio: 1 / 1;
+      border: 1px solid #d7e3dd;
+      border-radius: 8px;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 14px;
+      padding: 26px;
+      box-shadow: 0 12px 28px rgba(18, 32, 27, .10);
+    }
+    .cover-tag {
+      display: inline-flex;
+      width: max-content;
+      max-width: 100%;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: var(--mint);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .cover-main {
+      align-self: center;
+    }
+    .cover-title {
+      font-size: 38px;
+      line-height: 1.12;
+      font-weight: 930;
+      overflow-wrap: anywhere;
+    }
+    .cover-subtitle {
+      margin-top: 10px;
+      color: #54655f;
+      font-weight: 760;
+      overflow-wrap: anywhere;
+    }
+    .cover-price {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 5px;
+      color: var(--red);
+      font-weight: 930;
+      font-size: 34px;
+    }
+    .cover-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .cover-chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: #35433e;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 760;
+    }
+    .cover-foot {
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: var(--green);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 760;
+      overflow-wrap: anywhere;
+    }
+    .small-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .mini {
+      min-height: 36px;
+      padding: 7px 10px;
+      font-size: 14px;
+    }
+    .cta-strip {
+      background: #101820;
+      color: #fff;
+    }
+    .cta-strip .wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+    }
+    .cta-strip p { color: #d7dee8; margin-top: 8px; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+    .card strong {
+      display: inline-flex;
+      min-width: 42px;
+      height: 28px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #eaf0ff;
+      color: var(--blue);
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    .card p { margin-top: 6px; color: var(--muted); }
+    .footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 920px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(246,248,247,1) 0%, rgba(246,248,247,.96) 58%, rgba(246,248,247,.76) 100%),
+          url("side-hustle-ledger-xianyu-cover-v2.png") bottom center / min(88vw, 420px) auto no-repeat;
+      }
+      .hero-copy { padding: 44px 0 390px; }
+      h1 { font-size: 40px; }
+      .lead { font-size: 17px; }
+      .tool-grid, .cta-strip .wrap, .cards { grid-template-columns: 1fr; }
+      .nav { display: none; }
+      .btn { width: 100%; }
+      .cover-title { font-size: 30px; }
+    }
+    @media (max-width: 430px) {
+      .hero-copy { padding-bottom: 350px; }
+      .cover-frame { padding: 20px; }
+      .cover-title { font-size: 27px; }
+      .cover-price { font-size: 30px; }
+      .segmented { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="xianyu-listing-generator.html">上架文案</a>
+        <a href="xianyu-ledger-sample.html">Excel 样张</a>
+        <a href="side-hustle-ledger-excel-pack.html">记账表</a>
+        <a href="xianyu-products.html">闲鱼可拍</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">免费工具 · 闲鱼主图</span>
+        <h1>闲鱼虚拟资料封面文案生成器</h1>
+        <p class="lead">输入资料方向，生成主图标题、价格角标、卖点条、详情图结构和 imagegen 提示词。适合 Excel 模板、AI 教程、提示词包、小红书资料和网盘交付商品。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#tool">生成封面文案</a>
+          <a class="btn btn-line" href="xianyu-listing-generator.html">生成上架描述</a>
+          <a class="btn btn-line" href="xianyu-ledger-sample.html">下载 Excel 样张</a>
+          <a class="btn btn-yellow" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼买 19.90 元记账表</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="tool">
+    <div class="wrap tool-grid">
+      <form class="panel" id="coverForm">
+        <h2>输入信息</h2>
+        <div class="field">
+          <label for="productName">资料名称</label>
+          <input id="productName" value="副业小店记账表">
+        </div>
+        <div class="field">
+          <label for="format">交付形式</label>
+          <select id="format">
+            <option>Excel模板包</option>
+            <option>PDF教程</option>
+            <option>提示词资料包</option>
+            <option>Markdown模板</option>
+            <option>网盘资料包</option>
+            <option>检查清单</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="buyer">目标买家</label>
+          <select id="buyer">
+            <option>副业卖家</option>
+            <option>闲鱼虚拟资料卖家</option>
+            <option>小红书新手</option>
+            <option>AI 工具新手</option>
+            <option>课程老师</option>
+            <option>办公效率用户</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="price">封面价格</label>
+          <select id="price">
+            <option value="19.90">19.90</option>
+            <option value="9.90">9.90</option>
+            <option value="29.90">29.90</option>
+            <option value="49.00">49.00</option>
+            <option value="79.80">79.80</option>
+            <option value="99.00">99.00</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="pain">首屏痛点</label>
+          <input id="pain" value="订单、成本、毛利、退款复盘容易漏">
+        </div>
+        <div class="field">
+          <label>封面卖点</label>
+          <div class="segmented">
+            <label class="check"><input type="checkbox" value="订单流水" checked> 订单流水</label>
+            <label class="check"><input type="checkbox" value="成本核算" checked> 成本核算</label>
+            <label class="check"><input type="checkbox" value="毛利看板" checked> 毛利看板</label>
+            <label class="check"><input type="checkbox" value="退款复盘" checked> 退款复盘</label>
+            <label class="check"><input type="checkbox" value="发货话术"> 发货话术</label>
+            <label class="check"><input type="checkbox" value="可编辑模板"> 可编辑模板</label>
+          </div>
+        </div>
+        <div class="field">
+          <label for="proof">可验证证据</label>
+          <textarea id="proof">包含可编辑工作簿、示例数据、字段说明和周复盘页，买到后可以替换成自己的商品和订单。</textarea>
+        </div>
+      </form>
+
+      <aside class="panel">
+        <div class="output-head">
+          <div>
+            <h2>生成结果</h2>
+            <p style="color: var(--muted);">先复制主图文字，再把 imagegen 提示词拿去出图。</p>
+          </div>
+          <div class="score" id="score">可上图</div>
+        </div>
+
+        <div class="cover-preview">
+          <div class="cover-frame" aria-label="封面文案预览">
+            <div class="cover-tag" id="previewTag"></div>
+            <div class="cover-main">
+              <div class="cover-title" id="previewTitle"></div>
+              <div class="cover-subtitle" id="previewSubtitle"></div>
+              <div class="cover-price"><span>¥</span><span id="previewPrice"></span></div>
+            </div>
+            <div>
+              <div class="cover-chips" id="previewChips"></div>
+              <div class="cover-foot" id="previewFoot"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="output-block">
+          <h3>主图文字</h3>
+          <div class="copybox" id="coverCopyOut"></div>
+          <div class="small-actions"><button class="btn btn-line mini" type="button" data-copy="coverCopyOut">复制主图文字</button></div>
+        </div>
+        <div class="output-block">
+          <h3>详情图结构</h3>
+          <div class="copybox" id="detailOut"></div>
+          <div class="small-actions"><button class="btn btn-line mini" type="button" data-copy="detailOut">复制详情图结构</button></div>
+        </div>
+        <div class="output-block">
+          <h3>imagegen 提示词</h3>
+          <div class="copybox" id="promptOut"></div>
+          <div class="small-actions"><button class="btn btn-line mini" type="button" data-copy="promptOut">复制提示词</button></div>
+        </div>
+        <div class="output-block">
+          <h3>上架后记账字段</h3>
+          <div class="copybox" id="ledgerOut"></div>
+          <div class="small-actions">
+            <button class="btn btn-line mini" type="button" data-copy="ledgerOut">复制记账字段</button>
+            <a class="btn btn-primary mini" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼买完整记账表</a>
+            <a class="btn btn-line mini" href="xianyu-ledger-free-sample.xlsx" download>下载 Excel 样张</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="wrap">
+      <div>
+        <h2>封面只是第一步，上架后要看数据</h2>
+        <p>一张图能不能卖，不靠感觉判断。至少记录曝光、想要、咨询、成交、退款和每次改图版本。</p>
+      </div>
+      <div class="actions">
+        <a class="btn btn-yellow" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼买 19.90 元记账表</a>
+        <a class="btn btn-line" href="xianyu-ledger-sample.html">先看免费样张</a>
+        <a class="btn btn-line" href="side-hustle-profit-calculator.html">先算一单利润</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>封面发布前检查</h2>
+      <div class="cards">
+        <article class="card">
+          <strong>01</strong>
+          <h3>不放二维码</h3>
+          <p>封面不要放二维码、外部联系方式、诱导跳转和平台 logo。</p>
+        </article>
+        <article class="card">
+          <strong>02</strong>
+          <h3>不承诺结果</h3>
+          <p>不要写包收益、包涨粉、包爆款、包成交或绕平台规则。</p>
+        </article>
+        <article class="card">
+          <strong>03</strong>
+          <h3>卖点可验证</h3>
+          <p>写交付物、字段、模板页数、示例数据和适用场景。</p>
+        </article>
+        <article class="card">
+          <strong>04</strong>
+          <h3>保留版本记录</h3>
+          <p>每次改主图都记录日期、版本、曝光、想要和咨询变化。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>AI Workbench Store</span>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="xianyu-listing-generator.html">上架文案生成器</a>
+      <a href="side-hustle-ledger-excel-pack.html">副业小店记账表</a>
+      <a href="xianyu-products.html">闲鱼可拍商品</a>
+    </div>
+  </footer>
+
+  <script>
+    const els = {
+      productName: document.getElementById('productName'),
+      format: document.getElementById('format'),
+      buyer: document.getElementById('buyer'),
+      price: document.getElementById('price'),
+      pain: document.getElementById('pain'),
+      proof: document.getElementById('proof'),
+      previewTag: document.getElementById('previewTag'),
+      previewTitle: document.getElementById('previewTitle'),
+      previewSubtitle: document.getElementById('previewSubtitle'),
+      previewPrice: document.getElementById('previewPrice'),
+      previewChips: document.getElementById('previewChips'),
+      previewFoot: document.getElementById('previewFoot'),
+      coverCopyOut: document.getElementById('coverCopyOut'),
+      detailOut: document.getElementById('detailOut'),
+      promptOut: document.getElementById('promptOut'),
+      ledgerOut: document.getElementById('ledgerOut'),
+      score: document.getElementById('score')
+    };
+
+    function checkedValues() {
+      return Array.from(document.querySelectorAll('.segmented input:checked')).map(item => item.value);
+    }
+
+    function compactTitle(text) {
+      return text.trim().replace(/\s+/g, '').slice(0, 14) || '虚拟资料包';
+    }
+
+    function render() {
+      const name = compactTitle(els.productName.value);
+      const format = els.format.value || 'Excel模板包';
+      const buyer = els.buyer.value || '副业卖家';
+      const price = els.price.value || '19.90';
+      const pain = els.pain.value.trim() || '不知道主图该写什么';
+      const proof = els.proof.value.trim();
+      const chips = checkedValues();
+      const chipText = chips.length ? chips : ['可编辑模板', '示例数据', '使用说明'];
+      const tag = buyer === '闲鱼虚拟资料卖家' ? '闲鱼可用' : '拍下即用';
+      const subtitle = `${format} · ${buyer}`;
+      const foot = '不承诺收益 · 先看内容结构再下单';
+
+      els.previewTag.textContent = tag;
+      els.previewTitle.textContent = name;
+      els.previewSubtitle.textContent = subtitle;
+      els.previewPrice.textContent = price.replace(/\.00$/, '');
+      els.previewFoot.textContent = foot;
+      els.previewChips.innerHTML = chipText.slice(0, 5).map(item => `<span class="cover-chip">${item}</span>`).join('');
+
+      const coverCopy = [
+        `顶部标签：${tag}`,
+        `主标题：${name}`,
+        `副标题：${subtitle}`,
+        `价格角标：¥${price.replace(/\.00$/, '')}`,
+        `卖点条：${chipText.slice(0, 5).join(' / ')}`,
+        `底部说明：${foot}`
+      ].join('\n');
+
+      const detail = [
+        `第1张主图：${name}，${format}，价格 ¥${price.replace(/\.00$/, '')}，主卖点 ${chipText.slice(0, 3).join('、')}。`,
+        `第2张详情图：解决的问题：${pain}。`,
+        `第3张详情图：你会收到：${chipText.join('、')}，${proof}`,
+        `第4张详情图：适合 ${buyer}，不适合想要包收益、包成交、代运营或绕规则的人。`,
+        '第5张详情图：拍下后在平台内发送资料包，保留补发和售后记录。'
+      ].join('\n');
+
+      const prompt = [
+        `Create a square 1:1 marketplace cover image for a Chinese digital product sold on Xianyu.`,
+        `Product name: ${name}. Format: ${format}. Audience: ${buyer}. Price: ¥${price.replace(/\.00$/, '')}.`,
+        `Visual layout: clean white and fresh green spreadsheet/productivity style, large readable Chinese title, price tag, small dashboard/table mockup, 4-5 rounded feature chips.`,
+        `Use these Chinese texts exactly where possible: "${name}", "${format}", "¥${price.replace(/\.00$/, '')}", "${chipText.slice(0, 5).join(' / ')}", "${foot}".`,
+        `Avoid QR codes, barcodes, platform logos, external contact info, income promises, exaggerated before-after claims, and clutter.`
+      ].join('\n');
+
+      const ledger = [
+        `封面版本：${name} 主图 v1`,
+        `商品名：${name}`,
+        `测试价：${price}`,
+        '发布平台：闲鱼',
+        '记录字段：曝光、想要、咨询、成交、成交价、平台费、资料成本、退款原因、下次改图动作',
+        '复盘节奏：发布后 24 小时看曝光，72 小时看想要和咨询，7 天决定改封面、改标题还是改价格'
+      ].join('\n');
+
+      els.coverCopyOut.textContent = coverCopy;
+      els.detailOut.textContent = detail;
+      els.promptOut.textContent = prompt;
+      els.ledgerOut.textContent = ledger;
+      els.score.textContent = chipText.length >= 4 ? '可上图' : '需补卖点';
+    }
+
+    document.getElementById('coverForm').addEventListener('input', render);
+    document.querySelectorAll('[data-copy]').forEach(button => {
+      button.addEventListener('click', async () => {
+        const target = document.getElementById(button.dataset.copy);
+        await navigator.clipboard.writeText(target.textContent.trim());
+        const old = button.textContent;
+        button.textContent = '已复制';
+        setTimeout(() => { button.textContent = old; }, 1200);
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>

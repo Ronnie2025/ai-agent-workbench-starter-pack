@@ -27,6 +27,7 @@ consultants, and small-team operators.
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
+- 闲鱼虚拟资料封面文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-cover-copy-generator.html
 - 闲鱼虚拟资料运营话术包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ops-script-pack.html
 - 副业订单利润速算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-profit-calculator.html
 - 闲鱼虚拟资料利润计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-profit-calculator.html
@@ -274,6 +275,11 @@ Xianyu listing generator:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
 Generates titles, descriptions, delivery copy, and order ledger fields before linking sellers to the ledger sample and Goofish ledger pack.
+
+Xianyu cover copy generator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-cover-copy-generator.html
+Generates cover copy, detail-image structure, imagegen prompts, and ledger fields before linking sellers to the ledger sample and Goofish ledger pack.
 
 Jianying caption style generator:
 
