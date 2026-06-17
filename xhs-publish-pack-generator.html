@@ -375,6 +375,7 @@
             <button class="btn btn-primary" type="button" id="generateBtn">生成发布包</button>
             <button class="btn btn-line" type="button" id="copyBtn">复制 Markdown</button>
             <button class="btn btn-line" type="button" id="copyPromptBtn">复制配图提示词</button>
+            <button class="btn btn-line" type="button" id="copyNoteBtn">复制闲鱼咨询备注</button>
             <a class="btn btn-red" id="buyLink" href="https://www.goofish.com/item?id=1057847823017" target="_blank" rel="noopener">闲鱼担保购买 79.8 元</a>
           </div>
         </form>
@@ -399,6 +400,11 @@
           <div class="block">
             <h3>复制到 Obsidian</h3>
             <pre id="packText"></pre>
+          </div>
+          <div class="block">
+            <h3>发给闲鱼卖家的备注</h3>
+            <p>拍下前可以复制这段，方便确认你要的是完整 Obsidian 工作流资料包。</p>
+            <pre id="purchaseNoteText"></pre>
           </div>
         </div>
       </aside>
@@ -446,6 +452,7 @@
     const $ = (id) => document.getElementById(id);
     const goofishUrl = "https://www.goofish.com/item?id=1057847823017";
     let currentImagePrompts = "";
+    let currentPurchaseNote = "";
 
     function linesFromSource() {
       return $("source").value
@@ -570,6 +577,16 @@
       const upgrade = asset === "连续发布" || score >= 82 ? "适合升级" : "先免费试跑";
       const imagePromptLines = slides.map(([page, title, copy]) => `- ${page}：干净的小红书知识卡片，主题「${title}」，画面重点「${copy}」，留白充足，文字层级清楚，适合 3:4 竖版封面或轮播页。`);
       currentImagePrompts = imagePromptLines.join("\n");
+      currentPurchaseNote = [
+        "你好，我想拍 79.8 元小红书 Obsidian 工作流资料包。",
+        `我当前的主题是：${topic}`,
+        `目标读者是：${reader}`,
+        `素材状态：${asset}`,
+        `发布目标：${goal}`,
+        "我需要的是：插件安装包、从素材到发布包 SOP、提示词改写指南、样例发布包和 FAQ。",
+        "我理解这是电子资料包，不是代运营、不含 API Key，也不承诺流量、涨粉、成交或收入。",
+        `闲鱼商品链接：${goofishUrl}`
+      ].join("\n");
 
       $("readyScore").textContent = String(score);
       $("slideCount").textContent = String(slides.length);
@@ -578,6 +595,7 @@
         ? "你已经有持续发布需求，免费生成器适合试跑结构，完整流程建议固定到 Obsidian。"
         : "先复制这份发布包试跑一条素材；如果每周都重复这个动作，再购买完整工作流。";
       $("tags").innerHTML = [format, goal, asset, "Obsidian归档"].map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
+      $("purchaseNoteText").innerHTML = escapeHtml(currentPurchaseNote);
 
       const markdown = [
         `# ${topic}｜小红书发布包`,
@@ -654,9 +672,26 @@
       setTimeout(() => { $("copyPromptBtn").textContent = "复制配图提示词"; }, 1400);
     }
 
+    async function copyPurchaseNote() {
+      if (!currentPurchaseNote) buildMarkdown();
+      try {
+        await navigator.clipboard.writeText(currentPurchaseNote);
+        $("copyNoteBtn").textContent = "已复制咨询备注";
+      } catch (error) {
+        const range = document.createRange();
+        range.selectNodeContents($("purchaseNoteText"));
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        $("copyNoteBtn").textContent = "已选中咨询备注";
+      }
+      setTimeout(() => { $("copyNoteBtn").textContent = "复制闲鱼咨询备注"; }, 1400);
+    }
+
     $("generateBtn").addEventListener("click", buildMarkdown);
     $("copyBtn").addEventListener("click", copyMarkdown);
     $("copyPromptBtn").addEventListener("click", copyImagePrompts);
+    $("copyNoteBtn").addEventListener("click", copyPurchaseNote);
     $("packForm").addEventListener("input", buildMarkdown);
     $("packForm").addEventListener("change", buildMarkdown);
     const initialScenario = new URLSearchParams(window.location.search).get("scenario");
