@@ -13,6 +13,7 @@ consultants, and small-team operators.
 - 小红书标题评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-scorer.html
 - 小红书标题生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-generator.html
 - 小红书文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-copy-generator.html
+- 小红书笔记生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-note-generator.html
 - 小红书轮播提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-generator.html
 - 小红书轮播提示词资料包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-carousel-prompt-pack.html
 - AI人物一致性提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-prompt-generator.html
@@ -27,6 +28,7 @@ consultants, and small-team operators.
 - 小红书素材卡片 Markdown 模板: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-material-card-template.html
 - 小红书收藏整理到 Obsidian 分类器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-collection-organizer.html
 - 小红书发布包生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-publish-pack-generator.html
+- 小红书笔记生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-note-generator.html
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
@@ -171,6 +173,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-title-g
 Xiaohongshu copy generator:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-copy-generator.html
+
+Xiaohongshu note generator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-note-generator.html
 
 Xiaohongshu carousel prompt generator:
 
