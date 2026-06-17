@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI API 网关部署包 | Cloudflare Worker 源码和部署教程</title>
+  <meta name="description" content="49.90 元 AI API 网关部署包，交付 Cloudflare Worker 源码、部署教程、安全边界、自检清单和 curl 测试脚本。买家使用自己的账号和自己的 Key，不卖账号、不含密钥。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-deploy-pack.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="AI API 网关部署包">
+  <meta property="og:description" content="Cloudflare Worker 源码、部署教程、安全边界和测试清单。自己的账号，自己的 Key，不卖账号。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-deploy-pack.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-deploy-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "AI API 网关部署包",
+    "description": "面向想自部署 AI API 网关的独立开发者和 AI 工具用户，交付 Cloudflare Worker 源码、部署教程、安全边界、自检清单和 curl 测试脚本。买家使用自己的账号和自己的 API Key。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-deploy-cover.webp",
+    "brand": {
+      "@type": "Brand",
+      "name": "AI Workbench Store"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "49.90",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order.html?plan=ai-api-gateway-49.90"
+    }
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17201c;
+      --muted: #5e6d66;
+      --bg: #f5f8f3;
+      --panel: #ffffff;
+      --line: #d9e4dc;
+      --green: #104c38;
+      --mint: #dff1e7;
+      --amber: #f2b84b;
+      --coral: #de5a42;
+      --coal: #202522;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner {
+      width: min(1120px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      min-height: 84vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(245,248,243,1) 0%, rgba(245,248,243,.96) 45%, rgba(245,248,243,.34) 100%),
+        url("ai-api-gateway-deploy-cover.webp") right center / min(42vw, 520px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 680px;
+      padding: 58px 0 76px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--mint);
+      border: 1px solid #b9decc;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      max-width: 740px;
+      font-size: 58px;
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 20px;
+      font-size: 30px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+    p { margin: 0; }
+    .lead {
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .price strong {
+      color: var(--coral);
+      font-size: 42px;
+      line-height: 1;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    section { padding: 52px 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .card p,
+    .list {
+      color: var(--muted);
+    }
+    .list {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .list li { margin: 9px 0; }
+    .band {
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .note {
+      border-left: 4px solid var(--amber);
+      padding: 14px 16px;
+      background: #fff8e8;
+      color: #5d470f;
+    }
+    .footer {
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      min-height: 76px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 860px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(245,248,243,1) 0%, rgba(245,248,243,.98) 54%, rgba(245,248,243,.82) 100%),
+          url("ai-api-gateway-deploy-cover.webp") bottom center / min(86vw, 430px) auto no-repeat;
+      }
+      .hero-copy { padding: 38px 0 500px; }
+      h1 { font-size: 42px; }
+      .grid { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .hero-copy { padding-bottom: 430px; }
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">AI Workbench Store</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="order.html?plan=ai-api-gateway-49.90">订单页</a>
+        <a href="index.html">首页</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <span class="eyebrow">49.90 元源码部署包</span>
+          <h1>AI API 网关部署包</h1>
+          <p class="lead">交付 Cloudflare Worker 源码、部署教程、安全边界和测试脚本。买家用自己的 Cloudflare 账号和自己的 API Key，不卖账号、不含密钥、不做共享池。</p>
+          <div class="price"><span>¥</span><strong>49.90</strong><span>数字资料包</span></div>
+          <div class="actions">
+            <a class="btn btn-primary" href="order.html?plan=ai-api-gateway-49.90&scenario=我想购买AI API网关部署包">生成 49.90 元订单</a>
+            <a class="btn btn-line" href="virtual-products.html">返回资料货架</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>交付内容</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Worker 源码</h3>
+            <p>包含健康检查、模型列表、OpenAI 兼容聊天接口、Bearer 鉴权和浏览器跨域开关。</p>
+          </article>
+          <article class="card">
+            <h3>部署教程</h3>
+            <p>从依赖安装、配置变量、设置密钥、dry-run 到正式部署，按步骤检查。</p>
+          </article>
+          <article class="card">
+            <h3>安全边界</h3>
+            <p>明确不提供账号、余额、密钥、代付、共享账号或第三方平台访问权限。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>适合谁买</h2>
+        <ul class="list">
+          <li>想把自己的 AI 调用入口统一成一个简单网关的人。</li>
+          <li>会按教程配置 Cloudflare Worker、密钥和环境变量的人。</li>
+          <li>需要一个可二改的最小源码包，而不是账号池或低价代调用的人。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>购买前边界</h2>
+        <p class="note">本资料包只卖源码、教程和检查清单。调用成本、平台额度、模型可用性、账号规则和部署结果取决于买家自己的账号、网络和平台协议。</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>官方来源</h2>
+        <ul class="list">
+          <li><a href="https://openai.com/policies/services-agreement/" target="_blank" rel="noopener">OpenAI Services Agreement</a></li>
+          <li><a href="https://developers.cloudflare.com/ai-gateway/usage/chat-completion/" target="_blank" rel="noopener">Cloudflare AI Gateway OpenAI-compatible usage</a></li>
+          <li><a href="https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/" target="_blank" rel="noopener">Cloudflare Workers AI OpenAI-compatible endpoints</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>AI Workbench Store</span>
+      <a href="order.html?plan=ai-api-gateway-49.90">生成订单</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+    </div>
+  </footer>
+</body>
+</html>

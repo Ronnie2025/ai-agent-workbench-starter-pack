@@ -88,6 +88,7 @@ consultants, and small-team operators.
 - 29.90 RMB: 剪映高级感字幕参数工作流包
 - 29.90 RMB: AI-PPT 交付自检包
 - 19.90 RMB: n8n 自动化工作流模板包
+- 49.90 RMB: AI API 网关部署包
 - 39.90 RMB: AI 远程数据兼职申请包
 - 79.80 RMB: 小红书 Obsidian 工作流
 - 99 RMB: AI Agent 工作台实战包
@@ -109,6 +110,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/workshop.html
 Virtual products:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-products.html
+
+AI API gateway deploy pack:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-deploy-pack.html
 
 Codex troubleshooting:
 
