@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>闲鱼虚拟商品退款复盘表 | 交易关闭原因记录</title>
+  <meta name="description" content="免费闲鱼虚拟商品退款复盘表：记录订单状态、交付状态、售后问题、退款关闭原因和下一步修改动作，导向 19.90 元副业小店记账表 Excel 模板包。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-refund-review.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="闲鱼虚拟商品退款复盘表">
+  <meta property="og:description" content="把退款、交易关闭和售后问题记清楚，再决定改标题、详情页、发货话术还是退款边界。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-refund-review.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "闲鱼虚拟商品退款复盘表",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "记录闲鱼虚拟资料订单的售后问题、退款关闭原因、交付状态和下一步复盘动作。",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-refund-review.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-cover.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "闲鱼虚拟商品遇到退款应该先记录什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "先记录商品名、订单状态、交付状态、买家问题、退款或交易关闭原因、平台费和预计损失，再决定下一步是改详情页、补发货话术、补样例说明还是调整售后边界。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "这个复盘表能保证退款申诉成功吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不能。它只帮助卖家做经营记录和售后复盘，不提供法律意见，不承诺平台处理结果、成交、曝光、利润或回本。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "为什么虚拟资料也要记售后成本？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "虚拟资料没有实物库存，但仍然有解释、补发、退款、交易关闭和重复沟通成本。把这些记录下来，才能判断哪个商品页或发货流程需要先改。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14211d;
+      --muted: #64736d;
+      --bg: #f7f9f6;
+      --panel: #ffffff;
+      --line: #d9e4de;
+      --green: #0f4c3a;
+      --green2: #1f6f54;
+      --yellow: #f2b84b;
+      --coral: #e55845;
+      --soft: #eef5f1;
+      --warn: #fff5dc;
+      --shadow: 0 18px 48px rgba(20, 33, 29, .10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      width: min(1160px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--green);
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .wrap {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .hero {
+      padding: 46px 0 26px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.96) 48%, rgba(247,249,246,.34) 100%),
+        url("side-hustle-ledger-excel-cover.webp") right center / min(40vw, 500px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 720px;
+      padding: 26px 0 42px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(242,184,75,.24);
+      border: 1px solid rgba(242,184,75,.46);
+      color: #634200;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      max-width: 760px;
+      margin: 16px 0 12px;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin-bottom: 16px;
+      font-size: 28px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+    .lead {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+      cursor: pointer;
+      font: inherit;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .tool { padding: 34px 0 54px; }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, .86fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .form-panel { padding: 22px; }
+    .result-panel {
+      position: sticky;
+      top: 78px;
+      overflow: hidden;
+    }
+    .result-head {
+      padding: 22px;
+      background: linear-gradient(135deg, rgba(15,76,58,.98), rgba(31,111,84,.92));
+      color: #fff;
+    }
+    .result-head p { color: rgba(255,255,255,.82); }
+    .result-body { padding: 22px; }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .field {
+      min-height: 114px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfb;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    .hint {
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      padding: 10px 12px;
+    }
+    textarea {
+      min-height: 88px;
+      resize: vertical;
+    }
+    .result-line {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr);
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .result-line:last-child { border-bottom: 0; }
+    .result-line span {
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .record {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      color: var(--ink);
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 14px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    section.band {
+      padding: 52px 0;
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .card p,
+    .list {
+      color: var(--muted);
+    }
+    .list {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .list li { margin: 9px 0; }
+    .note {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(242,184,75,.48);
+      background: var(--warn);
+      color: #5a4108;
+      font-size: 14px;
+    }
+    .cta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+      gap: 22px;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .cta img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .footer {
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      min-height: 76px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 900px) {
+      .hero {
+        background:
+          linear-gradient(180deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.98) 56%, rgba(247,249,246,.8) 100%),
+          url("side-hustle-ledger-excel-cover.webp") bottom center / min(86vw, 430px) auto no-repeat;
+      }
+      .hero-copy { padding: 10px 0 420px; }
+      .tool-layout,
+      .grid,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+      .result-panel { position: static; }
+    }
+    @media (max-width: 560px) {
+      .topbar-inner { align-items: flex-start; padding: 12px 0; }
+      .nav { gap: 10px; }
+      .field-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .btn { width: 100%; }
+      .hero-copy { padding-bottom: 330px; }
+      .result-line { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="xianyu-products.html">闲鱼可拍</a>
+        <a href="side-hustle-profit-calculator.html">利润速算</a>
+        <a href="xianyu-ledger-sample.html">CSV 样张</a>
+        <a href="https://www.goofish.com/item?id=1057975295736">闲鱼购买</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">免费工具 / 虚拟资料售后复盘</span>
+        <h1>闲鱼虚拟商品退款复盘表</h1>
+        <p class="lead">别只记“被退款了”。把订单状态、交付状态、买家问题、退款关闭原因和下一步修改动作固定下来，下一次优先改详情页、发货话术或售后边界。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#tool">开始记录一条售后</a>
+          <a class="btn btn-line" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼买完整 Excel 表</a>
+          <a class="btn btn-line" href="xianyu-ledger-sample.csv" download>下载免费 CSV 样张</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="tool" class="tool">
+      <div class="wrap tool-layout">
+        <div class="panel form-panel">
+          <h2>生成一条复盘记录</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="product">商品名</label>
+              <p class="hint">写买家拍下或咨询的资料包名称。</p>
+              <input id="product" value="副业小店记账表Excel模板">
+            </div>
+            <div class="field">
+              <label for="price">成交价</label>
+              <p class="hint">没有成交就填报价或测试价。</p>
+              <input id="price" type="number" min="0" step="0.01" value="19.90">
+            </div>
+            <div class="field">
+              <label for="orderStatus">订单状态</label>
+              <p class="hint">先区分已成交、咨询未拍、交易关闭。</p>
+              <select id="orderStatus">
+                <option>交易关闭</option>
+                <option>申请退款</option>
+                <option>已成交</option>
+                <option>咨询未拍</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="deliveryStatus">交付状态</label>
+              <p class="hint">这会影响你复盘发货链路。</p>
+              <select id="deliveryStatus">
+                <option>已发货</option>
+                <option>未发货</option>
+                <option>已补发</option>
+                <option>买家未查看</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="buyerQuestion">买家问题</label>
+              <p class="hint">只写事实，不写情绪。</p>
+              <textarea id="buyerQuestion">买家说看不懂怎么用，问能不能退款</textarea>
+            </div>
+            <div class="field full">
+              <label for="refundReason">退款或关闭原因</label>
+              <p class="hint">写能反推出商品页或发货话术的问题。</p>
+              <textarea id="refundReason">详情页没有放使用步骤，发货消息也没有先告诉买家从哪一张表开始填</textarea>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel result-panel">
+          <div class="result-head">
+            <h2>复盘建议</h2>
+            <p>这条记录可以直接复制到 Excel 表的售后列和复盘动作列。</p>
+          </div>
+          <div class="result-body">
+            <div class="result-line">
+              <span>优先动作</span>
+              <strong id="action">补使用步骤和发货说明</strong>
+            </div>
+            <div class="result-line">
+              <span>记录字段</span>
+              <strong id="fieldHint">售后问题 / 退款关闭原因 / 复盘动作</strong>
+            </div>
+            <div class="result-line">
+              <span>风险提醒</span>
+              <strong>只做经营复盘，不承诺平台处理结果</strong>
+            </div>
+            <div id="record" class="record"></div>
+            <div class="actions">
+              <button id="copyBtn" class="btn btn-primary" type="button">复制复盘记录</button>
+              <a class="btn btn-line" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">买完整 Excel 表</a>
+            </div>
+            <p class="note">边界：本工具不是法律意见，不保证退款申诉、仲裁或平台处理结果；不承诺成交、曝光、利润、回本或任何经营结果。</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>退款和交易关闭最该记的 6 件事</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>订单状态</h3>
+            <p>区分咨询未拍、申请退款、交易关闭、已成交，别把所有问题都混成“没赚到”。</p>
+          </article>
+          <article class="card">
+            <h3>交付状态</h3>
+            <p>记录未发、已发、已补发、买家未查看，判断问题出在下单前还是发货后。</p>
+          </article>
+          <article class="card">
+            <h3>买家原话</h3>
+            <p>保留买家真实问题，下一版标题、详情页和发货消息才知道该补哪一句。</p>
+          </article>
+          <article class="card">
+            <h3>退款关闭原因</h3>
+            <p>把“描述不清”“价格异议”“不会使用”“误拍”等原因拆开，后面才有复盘价值。</p>
+          </article>
+          <article class="card">
+            <h3>预计损失</h3>
+            <p>把平台费、资料成本、解释时间和退款影响放进成本里，不要只看成交价。</p>
+          </article>
+          <article class="card">
+            <h3>下一步动作</h3>
+            <p>每次只改一件事：标题、主图、详情页、样例图、发货话术或售后边界。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap cta">
+        <div>
+          <span class="eyebrow">已上架闲鱼 / 19.90 元</span>
+          <h2>需要长期记录，就用完整 Excel 模板包</h2>
+          <p class="lead">完整包已经包含订单流水、成本库存、定价测算、周复盘、发货话术和闲鱼上架文案。适合已经开始卖资料、模板、小店商品的人。</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼担保购买 19.90 元</a>
+            <a class="btn btn-line" href="side-hustle-ledger-excel-pack.html">查看完整交付</a>
+            <a class="btn btn-line" href="xianyu-ledger-sample.html">先看 CSV 样张</a>
+          </div>
+        </div>
+        <img src="side-hustle-ledger-excel-cover.webp" alt="副业小店记账表 Excel模板包封面">
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>AI Workbench Store</span>
+      <a href="./">首页</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="side-hustle-profit-calculator.html">利润速算器</a>
+      <a href="xianyu-ledger-sample.html">CSV 样张</a>
+      <a href="xianyu-virtual-product-ledger-template.html">记账指南</a>
+      <a href="https://www.goofish.com/item?id=1057975295736">闲鱼担保购买</a>
+    </div>
+  </footer>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const fields = ["product", "price", "orderStatus", "deliveryStatus", "buyerQuestion", "refundReason"];
+
+    function inferAction(reason, question, status) {
+      const text = `${reason} ${question} ${status}`;
+      if (/不会|不懂|步骤|使用|教程|怎么用/.test(text)) return "补使用步骤和发货说明";
+      if (/价格|太贵|不值|贵/.test(text)) return "补样例图和交付清单";
+      if (/没收到|链接|打不开|失效|文件/.test(text)) return "补发货核对和补发话术";
+      if (/包效果|保证|收益|回本|赚钱/.test(text)) return "补不承诺收益边界";
+      if (/误拍|拍错|不想要/.test(text)) return "补购买前适合人群说明";
+      return "先补详情页说明，再观察下一周咨询词";
+    }
+
+    function render() {
+      const product = $("product").value.trim() || "未命名商品";
+      const price = Number($("price").value || 0).toFixed(2);
+      const orderStatus = $("orderStatus").value;
+      const deliveryStatus = $("deliveryStatus").value;
+      const question = $("buyerQuestion").value.trim() || "未记录";
+      const reason = $("refundReason").value.trim() || "未记录";
+      const action = inferAction(reason, question, orderStatus);
+      $("action").textContent = action;
+      $("record").textContent = [
+        `商品名：${product}`,
+        `成交价/报价：${price}`,
+        `订单状态：${orderStatus}`,
+        `交付状态：${deliveryStatus}`,
+        `售后问题：${question}`,
+        `退款关闭原因：${reason}`,
+        `复盘动作：${action}`
+      ].join("\n");
+    }
+
+    fields.forEach((id) => $(id).addEventListener("input", render));
+    fields.forEach((id) => $(id).addEventListener("change", render));
+    $("copyBtn").addEventListener("click", async () => {
+      await navigator.clipboard.writeText($("record").textContent);
+      $("copyBtn").textContent = "已复制";
+      setTimeout(() => { $("copyBtn").textContent = "复制复盘记录"; }, 1400);
+    });
+    render();
+  </script>
+</body>
+</html>
