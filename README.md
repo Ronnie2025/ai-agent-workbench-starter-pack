@@ -30,7 +30,7 @@ consultants, and small-team operators.
 - 闲鱼虚拟资料运营话术包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ops-script-pack.html
 - 副业订单利润速算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-profit-calculator.html
 - 闲鱼虚拟资料记账指南: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ledger-template.html
-- 闲鱼记账表 CSV 样张: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ledger-sample.html
+- 闲鱼记账表 Excel/CSV 样张: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ledger-sample.html
 - 闲鱼虚拟商品退款复盘表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-refund-review.html
 - 闲鱼记账表 GitHub 样张仓库: https://github.com/Ronnie2025/xianyu-virtual-product-ledger-sample
 - 副业小店记账表 Excel模板包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-pack.html
