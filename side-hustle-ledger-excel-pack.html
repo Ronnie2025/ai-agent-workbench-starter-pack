@@ -53,7 +53,15 @@
         "name": "拍下后交付什么？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "交付 ZIP 文件，包含可编辑 Excel 工作簿、使用说明、上架文案、发货话术和售后边界回复。"
+          "text": "交付 ZIP 文件，包含可编辑 Excel 工作簿、Dashboard 预览、使用说明、闲鱼上架文案、发货话术和售后边界回复。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "完整包里具体有哪些文件？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "完整包包含 Side-Hustle-Shop-Ledger-Excel-Pack-1990.xlsx、README、使用说明、闲鱼上架文案、发货话术、Dashboard 预览图和封面图。"
         }
       },
       {
@@ -229,6 +237,9 @@
     .list {
       color: var(--muted);
     }
+    .card-follow {
+      margin-top: 14px;
+    }
     .copybox {
       margin-top: 14px;
       padding: 16px;
@@ -381,6 +392,49 @@
               <li>收益承诺边界回复</li>
             </ul>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>拍下后收到什么</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>核心 Excel</h3>
+            <ul class="list">
+              <li>可编辑 `.xlsx` 工作簿</li>
+              <li>Dashboard 看板</li>
+              <li>订单流水</li>
+              <li>成本库存</li>
+              <li>定价测算</li>
+              <li>周复盘</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>买家说明</h3>
+            <ul class="list">
+              <li>`README.md`</li>
+              <li>`01-使用说明.md`</li>
+              <li>先改成本库存</li>
+              <li>每单填一行订单</li>
+              <li>不要删除表头和公式列</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>卖家配套</h3>
+            <ul class="list">
+              <li>`02-闲鱼上架文案.md`</li>
+              <li>`03-发货话术.md`</li>
+              <li>Dashboard 预览图</li>
+              <li>封面 PNG / WebP</li>
+              <li>售后边界回复</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card card-follow">
+          <h3>验收方式</h3>
+          <p>拍下后收到 ZIP，先打开 `01-使用说明.md`，再打开 Excel。确认能看到 Dashboard、订单流水、成本库存、定价测算和周复盘 5 个工作区，就说明交付文件完整。</p>
         </div>
       </div>
     </section>
