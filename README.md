@@ -42,6 +42,7 @@ consultants, and small-team operators.
 - 订单流水表 Excel 模板: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order-sales-ledger-excel-template.html
 - 小店进销存台账 Excel 模板: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/small-shop-inventory-ledger-template.html
 - 库存预警表 Excel 模板: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/inventory-warning-excel-template.html
+- 副业周复盘表 Excel 模板: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/weekly-review-excel-template.html
 - 闲鱼虚拟商品退款复盘表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-refund-review.html
 - 闲鱼虚拟资料发货话术生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-delivery-script-generator.html
 - 闲鱼虚拟资料网盘发货检查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-netdisk-delivery-checker.html

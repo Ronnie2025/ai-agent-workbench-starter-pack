@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>副业周复盘表 Excel模板 | 小店经营复盘表</title>
+  <meta name="description" content="副业周复盘表 Excel 模板入口：输入本周销售额、毛利、咨询数、成交数、退款关闭数和主要问题，生成下周动作，并导向 19.90 元副业小店记账表 Excel 完整包。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/weekly-review-excel-template.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="副业周复盘表 Excel模板">
+  <meta property="og:description" content="给闲鱼、小红书和副业小店卖家的每周销售、毛利、咨询问题、退款关闭原因和下周动作复盘表。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/weekly-review-excel-template.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-xianyu-cover-v2.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "副业周复盘表 Excel模板",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Excel, WPS, Spreadsheet",
+    "description": "用于记录周次、本周销售额、本周毛利、最高毛利商品、主要咨询问题、退款/关闭原因、下周动作和是否复盘的 Excel 模板入口。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-xianyu-cover-v2.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "19.90",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.goofish.com/item?id=1057975295736"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "副业小店每周复盘应该看什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "至少看本周销售额、本周毛利、最高毛利商品、主要咨询问题、退款或交易关闭原因，以及下周要改标题、封面、价格还是发货话术。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "完整 Excel 包里有周复盘模板吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "有。完整包的周复盘 sheet 包含周次、本周销售额、本周毛利、最高毛利商品、主要咨询问题、退款/关闭原因、下周动作和是否复盘。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "这个复盘表能保证提高销量吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不能。它是经营记录和复盘模板，不是自动赚钱软件，也不承诺成交、销量、利润、回本、涨粉或曝光。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14211d;
+      --muted: #66736e;
+      --bg: #f7f9f6;
+      --panel: #ffffff;
+      --line: #d9e4de;
+      --green: #0f4c3a;
+      --yellow: #f2b84b;
+      --red: #e55845;
+      --blue: #245b83;
+      --teal: #17706a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner,
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand { font-weight: 900; text-decoration: none; }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.96) 48%, rgba(247,249,246,.34) 100%),
+        url("side-hustle-ledger-xianyu-cover-v2.png") right center / min(40vw, 520px) auto no-repeat;
+    }
+    .hero-copy { max-width: 700px; padding: 58px 0 76px; }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(242,184,75,.22);
+      border: 1px solid rgba(242,184,75,.45);
+      color: #634200;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      max-width: 760px;
+      font-size: clamp(42px, 6vw, 66px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 { margin: 0 0 18px; font-size: 30px; line-height: 1.22; letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: 20px; letter-spacing: 0; }
+    p { margin: 0; }
+    .lead { color: var(--muted); font-size: 19px; }
+    .price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .price strong { color: var(--red); font-size: 42px; line-height: 1; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+      font: inherit;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    section { padding: 54px 0; }
+    .band { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(360px, 1.08fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card,
+    .panel {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, .06);
+    }
+    .card p,
+    .panel p { color: var(--muted); }
+    .field { display: grid; gap: 8px; margin-top: 14px; }
+    label { font-weight: 850; }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    input,
+    select { min-height: 46px; padding: 0 12px; }
+    textarea {
+      min-height: 210px;
+      resize: vertical;
+      padding: 12px;
+      background: #f8fbff;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .metric strong { display: block; color: var(--green); font-size: 26px; line-height: 1.1; }
+    .metric span { color: var(--muted); font-size: 13px; }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(23,112,106,.12);
+      color: var(--teal);
+      font-weight: 850;
+      font-size: 14px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 14px;
+    }
+    th,
+    td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #eef6f2; font-weight: 900; }
+    tr:last-child td { border-bottom: 0; }
+    .copy-status {
+      min-height: 24px;
+      margin-top: 10px;
+      color: var(--blue);
+      font-weight: 850;
+    }
+    .fineprint {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .footer a { margin-right: 14px; text-decoration: none; }
+    @media (max-width: 860px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(247,249,246,.98) 0%, rgba(247,249,246,.9) 68%, rgba(247,249,246,.72) 100%),
+          url("side-hustle-ledger-xianyu-cover-v2.png") bottom center / min(86vw, 430px) auto no-repeat;
+      }
+      .hero-copy { padding: 42px 0 240px; }
+      h1 { font-size: 43px; }
+      .two-col,
+      .grid,
+      .field-grid,
+      .metric-row { grid-template-columns: 1fr; }
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="xianyu-products.html">闲鱼可拍</a>
+        <a href="order-sales-ledger-excel-template.html">订单流水</a>
+        <a href="side-hustle-ledger-excel-pack.html">完整交付</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">副业复盘 / 小店经营 / 闲鱼可拍</span>
+        <h1>副业周复盘表 Excel 模板</h1>
+        <p class="lead">每周只看成交额不够。把本周销售额、毛利、最高毛利商品、主要咨询问题、退款关闭原因和下周动作固定下来，才知道下周该改标题、封面、价格还是发货话术。</p>
+        <div class="price"><span>闲鱼担保价</span><strong>19.90</strong><span>元</span></div>
+        <div class="actions">
+          <a class="btn btn-red" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼拍 19.90 元完整包</a>
+          <a class="btn btn-primary" href="#reviewer">先做本周复盘</a>
+          <a class="btn btn-line" href="order-sales-ledger-excel-template.html">算订单流水</a>
+          <a class="btn btn-line" href="xianyu-ledger-free-sample.xlsx" download>下载免费 Excel 样张</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="reviewer" class="band">
+    <div class="wrap two-col">
+      <div class="panel">
+        <h2>本周经营复盘</h2>
+        <p>按完整包里“周复盘”sheet 的字段生成结论。结果只在浏览器里计算。</p>
+        <div class="field-grid">
+          <div class="field">
+            <label for="weekId">周次</label>
+            <input id="weekId" value="2026-W25">
+          </div>
+          <div class="field">
+            <label for="topProduct">最高毛利商品</label>
+            <input id="topProduct" value="Excel副业记账表">
+          </div>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="weeklySales">本周销售额</label>
+            <input id="weeklySales" type="number" min="0" step="0.01" value="298.50">
+          </div>
+          <div class="field">
+            <label for="weeklyProfit">本周毛利</label>
+            <input id="weeklyProfit" type="number" step="0.01" value="236.80">
+          </div>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="inquiries">本周咨询数</label>
+            <input id="inquiries" type="number" min="0" step="1" value="18">
+          </div>
+          <div class="field">
+            <label for="orders">本周成交数</label>
+            <input id="orders" type="number" min="0" step="1" value="7">
+          </div>
+        </div>
+        <div class="field">
+          <label for="refundClosed">退款或交易关闭数</label>
+          <input id="refundClosed" type="number" min="0" step="1" value="2">
+        </div>
+        <div class="field">
+          <label for="mainQuestion">主要咨询问题</label>
+          <input id="mainQuestion" value="买家想知道表格会不会自动算利润">
+        </div>
+        <div class="field">
+          <label for="refundReason">退款 / 关闭原因</label>
+          <input id="refundReason" value="买家未付款关闭，另有一单担心不会使用 Excel">
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="runReview" type="button">生成周复盘建议</button>
+        </div>
+      </div>
+      <div class="panel result">
+        <span class="status-pill" id="statusPill">下周优先改详情页说明</span>
+        <h2 id="resultTitle">本周毛利率 79.3%</h2>
+        <p id="resultText">毛利空间还可以，但咨询问题和交易关闭原因要进入下周动作。</p>
+        <div class="metric-row">
+          <div class="metric"><strong id="margin">79.3%</strong><span>毛利率</span></div>
+          <div class="metric"><strong id="conversion">38.9%</strong><span>咨询成交率</span></div>
+          <div class="metric"><strong id="closedRate">22.2%</strong><span>关闭占比</span></div>
+          <div class="metric"><strong id="nextStep">改说明</strong><span>下周动作</span></div>
+        </div>
+        <textarea id="buyNote" readonly></textarea>
+        <div class="actions">
+          <button class="btn btn-blue" id="copyNote" type="button">复制闲鱼咨询备注</button>
+          <a class="btn btn-red" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">打开闲鱼商品</a>
+        </div>
+        <div class="copy-status" id="copyStatus"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>完整包里的周复盘字段</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>字段</th>
+              <th>每周要回答的问题</th>
+              <th>完整 Excel 包里的处理</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>周次、本周销售额、本周毛利</td>
+              <td>这周到底卖了多少，毛利是不是被成本和售后吃掉了。</td>
+              <td>周复盘 sheet 单独记录，Dashboard 看销售额、成本和毛利。</td>
+            </tr>
+            <tr>
+              <td>最高毛利商品、主要咨询问题</td>
+              <td>下周该继续推哪个商品，商品页哪里没讲清楚。</td>
+              <td>每周把高毛利 SKU 和咨询问题写成一行，避免只凭感觉改图改标题。</td>
+            </tr>
+            <tr>
+              <td>退款/关闭原因、下周动作、是否复盘</td>
+              <td>退款关闭到底是价格、交付、文件说明还是售后边界导致的。</td>
+              <td>把下一步写成固定动作：改封面、改详情、补说明、调价格或改发货话术。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fineprint">这份资料是电子资料包和 Excel 模板，不是自动赚钱、自动运营或平台流量工具；不承诺成交、销量、利润、回本、涨粉或曝光。</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>复盘之后继续补这几张表</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>订单流水表</h3>
+          <p>每一单的成交价、手续费、成本、毛利和交付状态先记清楚。</p>
+          <div class="actions"><a class="btn btn-line" href="order-sales-ledger-excel-template.html">算订单毛利</a></div>
+        </div>
+        <div class="card">
+          <h3>退款复盘表</h3>
+          <p>单独看退款、交易关闭和售后问题，决定下次改哪里。</p>
+          <div class="actions"><a class="btn btn-line" href="xianyu-virtual-product-refund-review.html">记录退款原因</a></div>
+        </div>
+        <div class="card">
+          <h3>完整交付包</h3>
+          <p>完整包含 Dashboard、订单流水、成本库存、定价测算和周复盘。</p>
+          <div class="actions"><a class="btn btn-red" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼拍完整包</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div>
+        <h2>适合谁用</h2>
+        <p class="lead">适合已经有咨询、成交、交易关闭或退款记录的人。每周把问题写下来，比继续盲目上新更有用。不适合还没有商品、只想找自动赚钱项目的人。</p>
+      </div>
+      <div class="panel">
+        <span class="eyebrow">购买前可直接发这段</span>
+        <p>我想买 19.90 元副业小店记账表 Excel 完整包，主要想记录每周销售额、毛利、最高毛利商品、咨询问题、退款/关闭原因和下周动作。请发可编辑 Excel 和完整 ZIP，我理解这是电子资料包，不是自动赚钱软件，也不承诺销量、利润或回本。</p>
+        <div class="actions">
+          <a class="btn btn-red" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">去闲鱼担保购买</a>
+          <a class="btn btn-line" href="xianyu-products.html">看其他闲鱼资料</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a href="./">首页</a>
+      <a href="xianyu-products.html">闲鱼可拍</a>
+      <a href="order-sales-ledger-excel-template.html">订单流水</a>
+      <a href="side-hustle-ledger-excel-pack.html">完整交付</a>
+    </div>
+  </footer>
+
+  <script>
+    const fields = {
+      weekId: document.getElementById("weekId"),
+      topProduct: document.getElementById("topProduct"),
+      weeklySales: document.getElementById("weeklySales"),
+      weeklyProfit: document.getElementById("weeklyProfit"),
+      inquiries: document.getElementById("inquiries"),
+      orders: document.getElementById("orders"),
+      refundClosed: document.getElementById("refundClosed"),
+      mainQuestion: document.getElementById("mainQuestion"),
+      refundReason: document.getElementById("refundReason")
+    };
+
+    const money = value => `¥${value.toFixed(2)}`;
+    const percent = value => `${value.toFixed(1)}%`;
+    const numeric = input => Number.parseFloat(input.value || "0") || 0;
+
+    function decideAction(data) {
+      if (data.margin < 45) return { label: "调价格", text: "毛利率偏低，下周先复盘成本、平台费和价格档位。", pill: "下周优先改价格和成本" };
+      if (data.closedRate >= 20 || data.refundClosed >= 3) return { label: "改说明", text: "退款或关闭偏多，下周先改详情页说明、发货边界和常见问题。", pill: "下周优先改详情页说明" };
+      if (data.inquiries >= 10 && data.conversion < 25) return { label: "改转化", text: "咨询不少但成交偏低，下周先改标题、封面首句和咨询回复。", pill: "下周优先改转化话术" };
+      return { label: "继续推", text: "数据相对健康，下周继续推高毛利商品，同时把咨询问题写进商品页。", pill: "下周继续推高毛利商品" };
+    }
+
+    function buildNote(data, action) {
+      return [
+        "你好，我想拍 19.90 元副业小店记账表 Excel 完整包。",
+        `我的用途：做 ${data.weekId} 副业小店周复盘。`,
+        `本周试算：销售额 ${money(data.sales)}，毛利 ${money(data.profit)}，毛利率 ${percent(data.margin)}，咨询 ${data.inquiries} 次，成交 ${data.orders} 单，退款/关闭 ${data.refundClosed} 单。`,
+        `最高毛利商品：${data.topProduct}。主要咨询问题：${data.mainQuestion}。退款/关闭原因：${data.refundReason}。`,
+        `我希望记录的字段：周次、本周销售额、本周毛利、最高毛利商品、主要咨询问题、退款/关闭原因、下周动作、是否复盘。下周动作先按“${action.label}”处理。`,
+        "请发可编辑 Excel 和完整 ZIP。我理解这是电子资料包和表格模板，不是自动赚钱软件，也不承诺成交、销量、利润、回本、涨粉或曝光。"
+      ].join("\n");
+    }
+
+    function updateReview() {
+      const sales = numeric(fields.weeklySales);
+      const profit = numeric(fields.weeklyProfit);
+      const inquiries = Math.max(0, Math.round(numeric(fields.inquiries)));
+      const orders = Math.max(0, Math.round(numeric(fields.orders)));
+      const refundClosed = Math.max(0, Math.round(numeric(fields.refundClosed)));
+      const margin = sales > 0 ? profit / sales * 100 : 0;
+      const conversion = inquiries > 0 ? orders / inquiries * 100 : 0;
+      const closedRate = orders + refundClosed > 0 ? refundClosed / (orders + refundClosed) * 100 : 0;
+      const data = {
+        weekId: fields.weekId.value.trim() || "本周",
+        topProduct: fields.topProduct.value.trim() || "未填写",
+        mainQuestion: fields.mainQuestion.value.trim() || "未填写",
+        refundReason: fields.refundReason.value.trim() || "未填写",
+        sales,
+        profit,
+        inquiries,
+        orders,
+        refundClosed,
+        margin,
+        conversion,
+        closedRate
+      };
+      const action = decideAction(data);
+
+      document.getElementById("statusPill").textContent = action.pill;
+      document.getElementById("resultTitle").textContent = `本周毛利率 ${percent(margin)}`;
+      document.getElementById("resultText").textContent = action.text;
+      document.getElementById("margin").textContent = percent(margin);
+      document.getElementById("conversion").textContent = percent(conversion);
+      document.getElementById("closedRate").textContent = percent(closedRate);
+      document.getElementById("nextStep").textContent = action.label;
+      document.getElementById("buyNote").value = buildNote(data, action);
+    }
+
+    async function copyNote() {
+      const note = document.getElementById("buyNote");
+      note.select();
+      try {
+        await navigator.clipboard.writeText(note.value);
+        document.getElementById("copyStatus").textContent = "已复制，可以去闲鱼聊天里粘贴。";
+      } catch (error) {
+        document.execCommand("copy");
+        document.getElementById("copyStatus").textContent = "已选中文案，可以复制后去闲鱼发送。";
+      }
+    }
+
+    document.getElementById("runReview").addEventListener("click", updateReview);
+    document.getElementById("copyNote").addEventListener("click", copyNote);
+    Object.values(fields).forEach(input => input.addEventListener("input", updateReview));
+    updateReview();
+  </script>
+</body>
+</html>
