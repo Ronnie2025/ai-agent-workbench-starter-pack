@@ -259,6 +259,17 @@
       color: var(--muted);
       font-size: 14px;
     }
+    .buy-note {
+      margin-top: 14px;
+      min-height: 132px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fbfdfb;
+      color: #34433d;
+      white-space: pre-wrap;
+      font-size: 14px;
+    }
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -407,7 +418,9 @@
             <div class="metric"><span>售后时间成本</span><strong id="timeCost">--</strong></div>
           </div>
           <p id="diagnosis" class="note"></p>
+          <div class="buy-note" id="buyNote"></div>
           <div class="actions">
+            <button class="btn btn-primary" type="button" id="copyBuyNote">复制闲鱼咨询备注</button>
             <a class="btn btn-primary" href="xianyu-ledger-free-sample.xlsx" download>下载免费 Excel 样张</a>
             <a class="btn btn-line" href="xianyu-ledger-sample.html">看字段样张</a>
             <a class="btn btn-line" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">买完整记账表</a>
@@ -502,12 +515,43 @@
     const ids = ["price", "platformFeeRate", "productCost", "timeMinutes", "hourlyCost", "refundReserve"];
     const money = (value) => `¥${Number(value || 0).toFixed(2)}`;
     const numberValue = (id) => Number(document.getElementById(id).value || 0);
+    const buyNoteEl = document.getElementById("buyNote");
+    const copyBuyNoteBtn = document.getElementById("copyBuyNote");
+    let currentBuyNote = "";
+
+    async function copyText(text, button, fallbackLabel) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.left = "-9999px";
+          document.body.appendChild(textarea);
+          textarea.select();
+          const copied = document.execCommand("copy");
+          document.body.removeChild(textarea);
+          if (!copied) throw new Error("copy command failed");
+        }
+        button.textContent = "已复制";
+        setTimeout(() => {
+          button.textContent = fallbackLabel;
+        }, 1600);
+      } catch (error) {
+        button.textContent = "复制失败，请手动选中";
+      }
+    }
 
     function render() {
       const price = numberValue("price");
-      const platformFee = price * numberValue("platformFeeRate") / 100;
+      const platformFeeRate = numberValue("platformFeeRate");
+      const platformFee = price * platformFeeRate / 100;
       const productCost = numberValue("productCost");
-      const timeCost = numberValue("timeMinutes") / 60 * numberValue("hourlyCost");
+      const timeMinutes = numberValue("timeMinutes");
+      const hourlyCost = numberValue("hourlyCost");
+      const timeCost = timeMinutes / 60 * hourlyCost;
       const refundReserve = numberValue("refundReserve");
       const netRevenue = Math.max(price - platformFee, 0);
       const grossProfit = netRevenue - productCost - timeCost - refundReserve;
@@ -527,9 +571,21 @@
         diagnosis = "毛利空间不错，但仍要记录咨询转化和退款关闭原因，避免只看成交价。";
       }
       document.getElementById("diagnosis").textContent = diagnosis;
+      currentBuyNote = [
+        "我想拍副业小店记账表 Excel 模板包。",
+        `我刚算了一单虚拟资料：成交价 ${money(price)}，平台费率 ${platformFeeRate.toFixed(1)}%，资料成本 ${money(productCost)}，售后时间 ${timeMinutes} 分钟，退款预留 ${money(refundReserve)}。`,
+        `测算结果：到手收入 ${money(netRevenue)}，预估毛利 ${money(grossProfit)}，毛利率 ${marginRate.toFixed(1)}%。`,
+        "我主要想用它记录：订单流水、成本库存、退款/关闭原因、周复盘。",
+        "我知道这是 Excel 模板和使用说明，不是自动赚钱软件，也不需要承诺收益。拍下后请发 ZIP。"
+      ].join("\n");
+      buyNoteEl.textContent = currentBuyNote;
     }
 
     ids.forEach((id) => document.getElementById(id).addEventListener("input", render));
+    copyBuyNoteBtn.addEventListener("click", () => {
+      render();
+      copyText(currentBuyNote, copyBuyNoteBtn, "复制闲鱼咨询备注");
+    });
     render();
   </script>
 </body>

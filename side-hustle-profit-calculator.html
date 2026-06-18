@@ -308,6 +308,11 @@
       color: #34433d;
       white-space: pre-wrap;
     }
+    .summary.buy-note {
+      min-height: 132px;
+      margin-top: 12px;
+      background: #fffdf6;
+    }
     .actions {
       display: flex;
       flex-wrap: wrap;
@@ -511,8 +516,10 @@
             </div>
             <p class="status" id="statusText">等待输入订单数据。</p>
             <div class="summary" id="summaryText"></div>
+            <div class="summary buy-note" id="buyNoteText"></div>
             <div class="actions">
               <button class="btn btn-blue" type="button" id="copyBtn">复制测算结果</button>
+              <button class="btn btn-line" type="button" id="copyBuyNote">复制闲鱼咨询备注</button>
               <a class="btn btn-primary" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼担保购买记账表 19.90 元</a>
               <a class="btn btn-line" href="side-hustle-ledger-excel-pack.html">查看 Excel 模板详情</a>
             </div>
@@ -579,8 +586,11 @@
       targetPrice: document.getElementById("targetPrice"),
       statusText: document.getElementById("statusText"),
       summaryText: document.getElementById("summaryText"),
-      copyBtn: document.getElementById("copyBtn")
+      buyNoteText: document.getElementById("buyNoteText"),
+      copyBtn: document.getElementById("copyBtn"),
+      copyBuyNote: document.getElementById("copyBuyNote")
     };
+    let currentBuyNote = "";
 
     const presets = {
       virtual: {
@@ -694,6 +704,14 @@
         `建议：${status}`
       ].join("\n");
       outputs.summaryText.textContent = summary;
+      currentBuyNote = [
+        "我想拍副业小店记账表 Excel 模板包。",
+        `我刚用利润速算器测了一单：成交 ${money(dealPrice)} x ${quantity} 件，扣费后销售额 ${money(netRevenue)}，总成本 ${money(totalCost)}。`,
+        `预估毛利 ${money(profit)}，毛利率 ${pct(margin)}，保本单价 ${money(breakEvenPrice)}。`,
+        "我主要想用它记录：订单流水、成本库存、定价测算、退款/关闭原因、周复盘。",
+        "我知道这是 Excel 模板和使用说明，不是自动赚钱软件，也不需要承诺收益。拍下后请发 ZIP。"
+      ].join("\n");
+      outputs.buyNoteText.textContent = currentBuyNote;
       return summary;
     }
 
@@ -735,6 +753,32 @@
         }, 1600);
       } catch (error) {
         outputs.copyBtn.textContent = "复制失败，请手动选中结果";
+      }
+    });
+
+    outputs.copyBuyNote.addEventListener("click", async () => {
+      calculate();
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(currentBuyNote);
+        } else {
+          const textarea = document.createElement("textarea");
+          textarea.value = currentBuyNote;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.left = "-9999px";
+          document.body.appendChild(textarea);
+          textarea.select();
+          const copied = document.execCommand("copy");
+          document.body.removeChild(textarea);
+          if (!copied) throw new Error("copy command failed");
+        }
+        outputs.copyBuyNote.textContent = "已复制";
+        setTimeout(() => {
+          outputs.copyBuyNote.textContent = "复制闲鱼咨询备注";
+        }, 1600);
+      } catch (error) {
+        outputs.copyBuyNote.textContent = "复制失败，请手动选中";
       }
     });
 
