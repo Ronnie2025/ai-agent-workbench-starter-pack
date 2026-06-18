@@ -58,6 +58,14 @@
       },
       {
         "@type": "Question",
+        "name": "拍下前备注怎么写？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "可以直接说明自己卖的商品类型、是否要记录订单成本毛利退款和库存，并确认理解这是电子资料包，不承诺成交、利润或回本。"
+        }
+      },
+      {
+        "@type": "Question",
         "name": "这个模板会自动赚钱吗？",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -220,6 +228,24 @@
     .card p,
     .list {
       color: var(--muted);
+    }
+    .copybox {
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f7fbf8;
+      color: var(--ink);
+      font-size: 15px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .copy-status {
+      margin-top: 10px;
+      color: var(--green2);
+      font-size: 14px;
+      font-weight: 800;
+      min-height: 22px;
     }
     .list {
       margin: 0;
@@ -401,6 +427,26 @@
 
     <section>
       <div class="wrap">
+        <h2>拍下前直接发这段备注</h2>
+        <div class="card">
+          <h3>适合从样张页、GitHub 或利润计算器过来的买家</h3>
+          <p>复制后发到闲鱼聊天，卖家就知道你要的是 19.90 元 Excel 记账表完整包，不是免费样张，也不是代运营服务。</p>
+          <div class="copybox" id="xianyuNote">我想拍 19.90 元副业小店记账表 Excel 模板包。
+我的用途：记录闲鱼/小店虚拟资料订单、平台费、资料成本、库存、退款原因和每周复盘。
+我需要完整 ZIP，不是免费样张；拍下后请发可编辑 Excel 工作簿、使用说明、上架文案、发货话术和售后边界回复。
+我理解这是电子资料包，不是自动赚钱软件，不承诺成交、利润、涨粉或回本。</div>
+          <div class="actions">
+            <button class="btn btn-primary" type="button" id="copyXianyuNote">复制闲鱼拍下备注</button>
+            <a class="btn btn-line" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">打开闲鱼商品</a>
+            <a class="btn btn-line" href="xianyu-ledger-sample.html">先看免费样张</a>
+          </div>
+          <div class="copy-status" id="copyStatus" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
         <h2>购买前说明</h2>
         <ul class="list">
           <li>这是可编辑 Excel 模板和使用说明，不是自动赚钱软件。</li>
@@ -436,5 +482,37 @@
       <a href="order.html?plan=side-hustle-ledger-19.90">备用订单页</a>
     </div>
   </footer>
+  <script>
+    const noteEl = document.getElementById("xianyuNote");
+    const copyBtn = document.getElementById("copyXianyuNote");
+    const copyStatus = document.getElementById("copyStatus");
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+      const area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(area);
+      return ok;
+    }
+
+    copyBtn.addEventListener("click", async () => {
+      const text = noteEl.textContent.trim();
+      try {
+        const ok = await copyText(text);
+        copyStatus.textContent = ok ? "已复制，可以去闲鱼聊天里粘贴。" : "复制失败，请手动选中文本复制。";
+      } catch (error) {
+        copyStatus.textContent = "复制失败，请手动选中文本复制。";
+      }
+    });
+  </script>
 </body>
 </html>
