@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>库存预警表 Excel模板 | 小店安全库存成本台账</title>
+  <meta name="description" content="库存预警表 Excel 模板入口：输入当前库存、安全库存、单件成本和近 7 天销量，判断是否需要补货或更新资料包版本，并导向 19.90 元小店进销存台账 Excel 完整包。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/inventory-warning-excel-template.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="库存预警表 Excel模板">
+  <meta property="og:description" content="适合小店、闲鱼和虚拟资料卖家，用 Excel 记录 SKU、当前库存、安全库存、成本和库存状态。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/inventory-warning-excel-template.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-xianyu-cover-v2.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "库存预警表 Excel模板",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Excel, WPS, Spreadsheet",
+    "description": "用于记录 SKU、当前库存、安全库存、单件成本、近 7 天销量和库存状态的 Excel 模板入口。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-xianyu-cover-v2.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "19.90",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.goofish.com/item?id=1057975295736"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "虚拟资料也需要库存预警吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "需要。虚拟资料可以把库存理解成当前可交付版本、封面素材、发货链接、兑换码或资料包余量，低于安全线时要更新或补发准备。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "完整 Excel 包里有库存预警公式吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "有。完整包的成本库存 sheet 包含当前库存、安全库存、单件成本和库存状态，Dashboard 会汇总库存预警 SKU 数。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14211d;
+      --muted: #66736e;
+      --bg: #f7f9f6;
+      --panel: #ffffff;
+      --line: #d9e4de;
+      --green: #0f4c3a;
+      --yellow: #f2b84b;
+      --red: #e55845;
+      --blue: #245b83;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner,
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand { font-weight: 900; text-decoration: none; }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.96) 48%, rgba(247,249,246,.3) 100%),
+        url("side-hustle-ledger-xianyu-cover-v2.png") right center / min(40vw, 520px) auto no-repeat;
+    }
+    .hero-copy { max-width: 700px; padding: 58px 0 76px; }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(242,184,75,.22);
+      border: 1px solid rgba(242,184,75,.45);
+      color: #634200;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      max-width: 760px;
+      font-size: clamp(42px, 6vw, 66px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 { margin: 0 0 18px; font-size: 30px; line-height: 1.22; letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: 20px; }
+    p { margin: 0; }
+    .lead { color: var(--muted); font-size: 19px; }
+    .price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .price strong { color: var(--red); font-size: 42px; line-height: 1; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+      font: inherit;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    section { padding: 54px 0; }
+    .band { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, .94fr) minmax(360px, 1.06fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card,
+    .panel {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, .06);
+    }
+    .card p,
+    .panel p { color: var(--muted); }
+    .field { display: grid; gap: 8px; margin-top: 14px; }
+    label { font-weight: 850; }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    input,
+    select { min-height: 46px; padding: 0 12px; }
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+      padding: 12px;
+      background: #f8fbff;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .metric strong { display: block; color: var(--green); font-size: 26px; line-height: 1.1; }
+    .metric span { color: var(--muted); font-size: 13px; }
+    .warning {
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(229,88,69,.25);
+      background: rgba(229,88,69,.08);
+      color: #783226;
+      font-weight: 850;
+    }
+    .ok {
+      border-color: rgba(15,76,58,.22);
+      background: rgba(15,76,58,.08);
+      color: var(--green);
+    }
+    .mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+    }
+    .mini-table th,
+    .mini-table td {
+      padding: 11px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    .mini-table th { background: #eef6f1; font-weight: 850; }
+    .copy-status { min-height: 20px; color: var(--green); font-size: 14px; font-weight: 850; }
+    .footer { border-top: 1px solid var(--line); background: #fff; color: var(--muted); font-size: 14px; }
+    .footer .wrap { min-height: 76px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .footer a { color: var(--muted); }
+    @media (max-width: 980px) {
+      .two-col,
+      .grid,
+      .metric-row { grid-template-columns: 1fr; }
+      .hero {
+        padding-bottom: 300px;
+        background:
+          linear-gradient(180deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.97) 55%, rgba(247,249,246,.78) 100%),
+          url("side-hustle-ledger-xianyu-cover-v2.png") bottom center / min(86vw, 430px) auto no-repeat;
+      }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="small-shop-inventory-ledger-template.html">进销存台账</a>
+        <a href="xianyu-ledger-sample.html">免费样张</a>
+        <a href="side-hustle-ledger-excel-pack.html">完整交付</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">库存预警 / 安全库存 / Excel 模板</span>
+        <h1>库存预警表 Excel 模板</h1>
+        <p class="lead">卖小商品、资料包、模板包或手作产品时，最容易漏掉的是库存和版本余量。用一张 Excel 记录当前库存、安全库存、单件成本和库存状态，低于安全线就预警。</p>
+        <div class="price"><span>完整 Excel 包</span><strong>19.90</strong><span>元</span></div>
+        <div class="actions">
+          <a class="btn btn-red" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼拍完整 Excel 包</a>
+          <a class="btn btn-primary" href="#checker">先算库存预警</a>
+          <a class="btn btn-line" href="xianyu-ledger-free-sample.xlsx" download>下载免费样张</a>
+          <a class="btn btn-line" href="small-shop-inventory-ledger-template.html">看进销存台账</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="checker" class="band">
+    <div class="wrap two-col">
+      <div class="panel">
+        <h2>库存预警速算</h2>
+        <p>填一个 SKU，看当前库存是否低于安全线，以及大概还能卖几天。</p>
+        <div class="field">
+          <label for="skuName">SKU 名称</label>
+          <input id="skuName" value="Excel副业记账表">
+        </div>
+        <div class="field">
+          <label for="currentStock">当前库存</label>
+          <input id="currentStock" type="number" min="0" value="6">
+        </div>
+        <div class="field">
+          <label for="safeStock">安全库存</label>
+          <input id="safeStock" type="number" min="0" value="8">
+        </div>
+        <div class="field">
+          <label for="unitCost">单件成本</label>
+          <input id="unitCost" type="number" min="0" step="0.1" value="3">
+        </div>
+        <div class="field">
+          <label for="weeklySales">近 7 天销量</label>
+          <input id="weeklySales" type="number" min="0" value="12">
+        </div>
+        <div class="field">
+          <label for="stockType">库存含义</label>
+          <select id="stockType">
+            <option value="可交付文件">虚拟资料：可交付文件/版本余量</option>
+            <option value="实物库存">实物小店：实物库存</option>
+            <option value="素材额度">内容资料：素材/封面/链接额度</option>
+          </select>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="runCheck" type="button">生成预警</button>
+        </div>
+      </div>
+      <div class="panel">
+        <span class="eyebrow">生成结果</span>
+        <h2 id="resultTitle">需要处理库存</h2>
+        <p id="resultText">当前库存已经低于安全库存，建议补货、更新资料包版本或检查发货链接。</p>
+        <div class="metric-row">
+          <div class="metric"><strong id="status">预警</strong><span>库存状态</span></div>
+          <div class="metric"><strong id="daysLeft">4</strong><span>预计可卖天数</span></div>
+          <div class="metric"><strong id="stockGap">2</strong><span>距离安全库存</span></div>
+          <div class="metric"><strong id="costValue">18</strong><span>当前成本占用</span></div>
+        </div>
+        <div class="warning" id="warningBox">建议今天更新库存台账，避免继续上架后无法及时交付。</div>
+        <textarea id="buyNote" readonly></textarea>
+        <div class="actions">
+          <button class="btn btn-blue" id="copyNote" type="button">复制闲鱼咨询备注</button>
+          <a class="btn btn-red" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">打开闲鱼商品</a>
+        </div>
+        <div class="copy-status" id="copyStatus"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>完整 Excel 包里怎么做预警</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>安全库存</h3>
+          <p>每个 SKU 都有当前库存和安全库存。当前库存低于或等于安全库存时，库存状态自动显示预警。</p>
+        </div>
+        <div class="card">
+          <h3>成本库存</h3>
+          <p>记录单件成本和素材成本，避免只看销售额，不知道库存和资料版本带来的真实成本。</p>
+        </div>
+        <div class="card">
+          <h3>Dashboard 汇总</h3>
+          <p>Dashboard 会把库存预警 SKU 数汇总到看板，不用逐行翻表找低库存商品。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap two-col">
+      <div>
+        <h2>示例字段</h2>
+        <table class="mini-table">
+          <thead>
+            <tr><th>字段</th><th>用途</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>SKU</td><td>商品、资料包、模板包或可交付版本编号。</td></tr>
+            <tr><td>当前库存</td><td>实物余量、可交付版本数、发货链接余量或资料包准备数。</td></tr>
+            <tr><td>安全库存</td><td>低于这个数就要补货、更新链接或检查资料版本。</td></tr>
+            <tr><td>库存状态</td><td>自动显示正常或预警。</td></tr>
+          </tbody>
+        </table>
+        <div class="actions">
+          <a class="btn btn-primary" href="side-hustle-ledger-excel-pack.html">查看完整交付清单</a>
+          <a class="btn btn-line" href="small-shop-inventory-ledger-template.html">看小店进销存台账</a>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>边界</h2>
+        <p>这是 Excel 模板和使用说明，不是 ERP、仓储系统、自动发货系统，也不承诺销量、利润、平台审核或回本。适合先把低价小店、虚拟资料和模板商品的库存与成本记清楚。</p>
+        <div class="actions">
+          <a class="btn btn-red" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼担保购买 19.90 元</a>
+          <a class="btn btn-line" href="xianyu-ledger-free-sample.xlsx" download>下载 Excel 样张</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>AI Workbench Store</span>
+      <a href="small-shop-inventory-ledger-template.html">小店进销存台账</a>
+      <a href="side-hustle-ledger-excel-pack.html">完整 Excel 包</a>
+      <a href="https://www.goofish.com/item?id=1057975295736">闲鱼担保购买</a>
+    </div>
+  </footer>
+
+  <script>
+    const skuName = document.getElementById("skuName");
+    const currentStock = document.getElementById("currentStock");
+    const safeStock = document.getElementById("safeStock");
+    const unitCost = document.getElementById("unitCost");
+    const weeklySales = document.getElementById("weeklySales");
+    const stockType = document.getElementById("stockType");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultText = document.getElementById("resultText");
+    const status = document.getElementById("status");
+    const daysLeft = document.getElementById("daysLeft");
+    const stockGap = document.getElementById("stockGap");
+    const costValue = document.getElementById("costValue");
+    const warningBox = document.getElementById("warningBox");
+    const buyNote = document.getElementById("buyNote");
+    const copyNote = document.getElementById("copyNote");
+    const copyStatus = document.getElementById("copyStatus");
+
+    function formatNumber(value) {
+      return Number.isFinite(value) ? Math.max(0, Math.round(value * 10) / 10).toString() : "0";
+    }
+
+    function renderCheck() {
+      const name = skuName.value.trim() || "未命名 SKU";
+      const current = Number(currentStock.value || 0);
+      const safe = Number(safeStock.value || 0);
+      const cost = Number(unitCost.value || 0);
+      const sales = Number(weeklySales.value || 0);
+      const type = stockType.value;
+      const dailySales = sales > 0 ? sales / 7 : 0;
+      const days = dailySales > 0 ? current / dailySales : 99;
+      const gap = safe - current;
+      const isWarning = current <= safe || days <= 7;
+      const costUsed = current * cost;
+
+      status.textContent = isWarning ? "预警" : "正常";
+      daysLeft.textContent = days >= 99 ? "充足" : formatNumber(days);
+      stockGap.textContent = gap > 0 ? formatNumber(gap) : "0";
+      costValue.textContent = formatNumber(costUsed);
+      resultTitle.textContent = isWarning ? "需要处理库存" : "库存暂时正常";
+      resultText.textContent = isWarning
+        ? "当前库存已经接近或低于安全线，建议补货、更新资料包版本、检查发货链接或暂停继续加量。"
+        : "库存暂时高于安全线，但仍建议把销量、成本和库存状态放进台账，避免后面漏算。";
+      warningBox.textContent = isWarning
+        ? "建议今天更新库存台账，避免继续上架后无法及时交付。"
+        : "建议保留每周检查节奏，销量变化后及时调整安全库存。";
+      warningBox.className = isWarning ? "warning" : "warning ok";
+      buyNote.value = [
+        "你好，我想拍 19.90 元库存预警表 Excel 模板。",
+        `我的 SKU：${name}，库存含义：${type}。`,
+        `当前库存：${current}，安全库存：${safe}，单件成本：${cost}，近 7 天销量：${sales}。`,
+        `页面判断：库存状态 ${isWarning ? "预警" : "正常"}，预计可卖 ${days >= 99 ? "较久" : formatNumber(days) + " 天"}，距离安全库存差 ${gap > 0 ? formatNumber(gap) : "0"}。`,
+        "我需要记录：SKU、当前库存、安全库存、单件成本、库存状态、订单流水和周复盘。",
+        "我知道这是 Excel 模板和使用说明，不是自动赚钱软件，也不承诺销量、利润或回本。拍下后请发完整 ZIP。"
+      ].join("\n");
+      copyStatus.textContent = "";
+    }
+
+    async function copyCurrentNote() {
+      try {
+        await navigator.clipboard.writeText(buyNote.value);
+        copyStatus.textContent = "已复制，可粘贴到闲鱼聊天。";
+      } catch (error) {
+        buyNote.select();
+        document.execCommand("copy");
+        copyStatus.textContent = "已选中备注，可手动复制。";
+      }
+    }
+
+    [skuName, currentStock, safeStock, unitCost, weeklySales, stockType].forEach((element) => {
+      element.addEventListener("input", renderCheck);
+      element.addEventListener("change", renderCheck);
+    });
+    document.getElementById("runCheck").addEventListener("click", renderCheck);
+    copyNote.addEventListener("click", copyCurrentNote);
+    renderCheck();
+  </script>
+</body>
+</html>
