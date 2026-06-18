@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>订单流水表 Excel模板 | 销售成本毛利台账</title>
+  <meta name="description" content="订单流水表 Excel 模板入口：输入平台、SKU、数量、成交单价、手续费、运费、单件成本和其他费用，计算销售额、总成本、毛利和毛利率，并导向 19.90 元副业小店记账表 Excel 完整包。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order-sales-ledger-excel-template.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="订单流水表 Excel模板">
+  <meta property="og:description" content="给闲鱼、小红书和副业小店卖家的订单流水、销售成本、毛利和售后状态 Excel 台账。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/order-sales-ledger-excel-template.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-xianyu-cover-v2.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "订单流水表 Excel模板",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Excel, WPS, Spreadsheet",
+    "description": "用于记录平台、SKU、买家备注、数量、成交单价、平台手续费、运费、单件成本、其他费用、销售额、总成本、毛利、状态和售后备注的 Excel 模板入口。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-xianyu-cover-v2.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "19.90",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.goofish.com/item?id=1057975295736"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "订单流水表里记录哪些字段？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "完整包的订单流水 sheet 包含日期、平台、商品/SKU、买家备注、数量、成交单价、平台手续费、运费、单件成本、其他费用、销售额、总成本、毛利、状态和交付/售后备注。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "这是不是自动赚钱软件？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不是。它是可编辑 Excel 模板，用来把订单、成本、毛利、库存和售后状态记清楚，不承诺销量、利润、回本或任何平台流量。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "拍下后收到什么？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "拍下后交付 ZIP，包含可编辑 Excel 工作簿、Dashboard 预览、使用说明、闲鱼上架文案、发货话术和售后边界回复。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14211d;
+      --muted: #66736e;
+      --bg: #f7f9f6;
+      --panel: #ffffff;
+      --line: #d9e4de;
+      --green: #0f4c3a;
+      --yellow: #f2b84b;
+      --red: #e55845;
+      --blue: #245b83;
+      --teal: #17706a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner,
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand { font-weight: 900; text-decoration: none; }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(247,249,246,1) 0%, rgba(247,249,246,.96) 48%, rgba(247,249,246,.34) 100%),
+        url("side-hustle-ledger-xianyu-cover-v2.png") right center / min(40vw, 520px) auto no-repeat;
+    }
+    .hero-copy { max-width: 700px; padding: 58px 0 76px; }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(242,184,75,.22);
+      border: 1px solid rgba(242,184,75,.45);
+      color: #634200;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      max-width: 760px;
+      font-size: clamp(42px, 6vw, 66px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 { margin: 0 0 18px; font-size: 30px; line-height: 1.22; letter-spacing: 0; }
+    h3 { margin: 0 0 8px; font-size: 20px; letter-spacing: 0; }
+    p { margin: 0; }
+    .lead { color: var(--muted); font-size: 19px; }
+    .price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 22px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .price strong { color: var(--red); font-size: 42px; line-height: 1; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+      font: inherit;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    section { padding: 54px 0; }
+    .band { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(360px, 1.08fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card,
+    .panel {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, .06);
+    }
+    .card p,
+    .panel p { color: var(--muted); }
+    .field { display: grid; gap: 8px; margin-top: 14px; }
+    label { font-weight: 850; }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    input,
+    select { min-height: 46px; padding: 0 12px; }
+    textarea {
+      min-height: 210px;
+      resize: vertical;
+      padding: 12px;
+      background: #f8fbff;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .metric strong { display: block; color: var(--green); font-size: 26px; line-height: 1.1; }
+    .metric span { color: var(--muted); font-size: 13px; }
+    .result h2 { margin-top: 10px; }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(23,112,106,.12);
+      color: var(--teal);
+      font-weight: 850;
+      font-size: 14px;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 14px;
+    }
+    th,
+    td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #eef6f2; font-weight: 900; }
+    tr:last-child td { border-bottom: 0; }
+    .copy-status {
+      min-height: 24px;
+      margin-top: 10px;
+      color: var(--blue);
+      font-weight: 850;
+    }
+    .fineprint {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .footer a { margin-right: 14px; text-decoration: none; }
+    @media (max-width: 860px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(247,249,246,.98) 0%, rgba(247,249,246,.9) 68%, rgba(247,249,246,.72) 100%),
+          url("side-hustle-ledger-xianyu-cover-v2.png") bottom center / min(86vw, 430px) auto no-repeat;
+      }
+      .hero-copy { padding: 42px 0 240px; }
+      h1 { font-size: 43px; }
+      .two-col,
+      .grid,
+      .field-grid,
+      .metric-row { grid-template-columns: 1fr; }
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <div class="nav">
+        <a href="xianyu-products.html">闲鱼可拍</a>
+        <a href="small-shop-inventory-ledger-template.html">进销存台账</a>
+        <a href="side-hustle-ledger-excel-pack.html">完整交付</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">订单流水 / 销售台账 / 闲鱼可拍</span>
+        <h1>订单流水表 Excel 模板</h1>
+        <p class="lead">已经开始卖资料、模板、小商品或副业订单，就先把每一单的成交价、手续费、运费、成本、毛利和售后状态记清楚。完整包里已有订单流水、成本库存、Dashboard 和周复盘。</p>
+        <div class="price"><span>闲鱼担保价</span><strong>19.90</strong><span>元</span></div>
+        <div class="actions">
+          <a class="btn btn-red" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼拍 19.90 元完整包</a>
+          <a class="btn btn-primary" href="#calculator">先算一单毛利</a>
+          <a class="btn btn-line" href="xianyu-ledger-free-sample.xlsx" download>下载免费 Excel 样张</a>
+          <a class="btn btn-line" href="side-hustle-ledger-excel-pack.html">看完整交付清单</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="calculator" class="band">
+    <div class="wrap two-col">
+      <div class="panel">
+        <h2>订单毛利速算</h2>
+        <p>按完整包里“订单流水”sheet 的字段计算：销售额 = 数量 x 成交单价；总成本 = 平台手续费 + 运费 + 数量 x 单件成本 + 其他费用；毛利 = 销售额 - 总成本。</p>
+        <div class="field">
+          <label for="skuName">商品 / SKU</label>
+          <input id="skuName" value="Excel副业记账表">
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="platform">平台</label>
+            <select id="platform">
+              <option>闲鱼</option>
+              <option>小红书</option>
+              <option>微信</option>
+              <option>淘宝</option>
+              <option>其他</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="status">订单状态</label>
+            <select id="status">
+              <option>已交付</option>
+              <option>待交付</option>
+              <option>退款中</option>
+              <option>已关闭</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="qty">数量</label>
+            <input id="qty" type="number" min="1" step="1" value="1">
+          </div>
+          <div class="field">
+            <label for="unitPrice">成交单价</label>
+            <input id="unitPrice" type="number" min="0" step="0.01" value="19.90">
+          </div>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="platformFee">平台手续费</label>
+            <input id="platformFee" type="number" min="0" step="0.01" value="0.20">
+          </div>
+          <div class="field">
+            <label for="shippingFee">运费</label>
+            <input id="shippingFee" type="number" min="0" step="0.01" value="0">
+          </div>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="unitCost">单件成本</label>
+            <input id="unitCost" type="number" min="0" step="0.01" value="1.50">
+          </div>
+          <div class="field">
+            <label for="otherCost">其他费用</label>
+            <input id="otherCost" type="number" min="0" step="0.01" value="0">
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-primary" id="runCalc" type="button">生成订单流水建议</button>
+        </div>
+      </div>
+      <div class="panel result">
+        <span class="status-pill" id="statusPill">值得记录进订单流水</span>
+        <h2 id="resultTitle">单笔毛利 ¥18.20</h2>
+        <p id="resultText">这类订单已经适合用 Excel 固定记录成交价、成本、毛利和交付状态。</p>
+        <div class="metric-row">
+          <div class="metric"><strong id="sales">¥19.90</strong><span>销售额</span></div>
+          <div class="metric"><strong id="cost">¥1.70</strong><span>总成本</span></div>
+          <div class="metric"><strong id="profit">¥18.20</strong><span>毛利</span></div>
+          <div class="metric"><strong id="margin">91.5%</strong><span>毛利率</span></div>
+        </div>
+        <textarea id="buyNote" readonly></textarea>
+        <div class="actions">
+          <button class="btn btn-blue" id="copyNote" type="button">复制闲鱼咨询备注</button>
+          <a class="btn btn-red" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">打开闲鱼商品</a>
+        </div>
+        <div class="copy-status" id="copyStatus"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>完整包里的订单流水字段</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>字段</th>
+              <th>用来解决的问题</th>
+              <th>完整 Excel 包里的处理</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>日期、平台、商品/SKU、买家备注</td>
+              <td>以后复盘时能看出哪类平台、商品和买家问题最常出现。</td>
+              <td>订单流水 sheet 逐单记录，便于筛选和复制。</td>
+            </tr>
+            <tr>
+              <td>数量、成交单价、平台手续费、运费、单件成本、其他费用</td>
+              <td>避免只看成交价，不知道一单实际赚多少。</td>
+              <td>销售额、总成本和毛利由公式自动计算。</td>
+            </tr>
+            <tr>
+              <td>状态、交付/售后备注</td>
+              <td>区分已交付、待交付、退款中和已关闭订单。</td>
+              <td>Dashboard 汇总待交付和退款关闭，周复盘可以追原因。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fineprint">这份资料是电子资料包和 Excel 模板，不是自动接单、自动赚钱或平台流量工具；不承诺成交、利润、回本、涨粉或曝光。</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>从订单流水继续往下补</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>小店进销存台账</h3>
+          <p>订单、成本、库存、毛利和退款一起看，适合已经不只卖一两个商品的人。</p>
+          <div class="actions"><a class="btn btn-line" href="small-shop-inventory-ledger-template.html">看进销存台账</a></div>
+        </div>
+        <div class="card">
+          <h3>库存预警表</h3>
+          <p>把当前库存、安全库存和单件成本记下来，低于安全线时自动提醒。</p>
+          <div class="actions"><a class="btn btn-line" href="inventory-warning-excel-template.html">算库存预警</a></div>
+        </div>
+        <div class="card">
+          <h3>完整交付清单</h3>
+          <p>拍下后收到可编辑 xlsx、使用说明、上架文案、发货话术和售后边界。</p>
+          <div class="actions"><a class="btn btn-red" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼拍完整包</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two-col">
+      <div>
+        <h2>适合谁买</h2>
+        <p class="lead">适合已经有真实订单、准备上架电子资料、或者想把副业小店从聊天记录搬到表格里的人。不适合还没有任何商品、只想找自动赚钱项目的人。</p>
+      </div>
+      <div class="panel">
+        <span class="eyebrow">购买前可直接发这段</span>
+        <p>我想买 19.90 元副业小店记账表 Excel 完整包，主要想记录订单流水、平台手续费、单件成本、毛利、交付状态和售后备注。请发可编辑 Excel 和完整 ZIP，我理解这是电子资料包，不是自动赚钱软件，也不承诺销量、利润或回本。</p>
+        <div class="actions">
+          <a class="btn btn-red" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">去闲鱼担保购买</a>
+          <a class="btn btn-line" href="xianyu-products.html">看其他闲鱼资料</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a href="./">首页</a>
+      <a href="xianyu-products.html">闲鱼可拍</a>
+      <a href="xianyu-ledger-sample.html">免费样张</a>
+      <a href="side-hustle-ledger-excel-pack.html">完整交付</a>
+    </div>
+  </footer>
+
+  <script>
+    const goofishUrl = "https://www.goofish.com/item?id=1057975295736";
+    const fields = {
+      skuName: document.getElementById("skuName"),
+      platform: document.getElementById("platform"),
+      status: document.getElementById("status"),
+      qty: document.getElementById("qty"),
+      unitPrice: document.getElementById("unitPrice"),
+      platformFee: document.getElementById("platformFee"),
+      shippingFee: document.getElementById("shippingFee"),
+      unitCost: document.getElementById("unitCost"),
+      otherCost: document.getElementById("otherCost")
+    };
+
+    const money = value => `¥${value.toFixed(2)}`;
+    const numeric = input => Number.parseFloat(input.value || "0") || 0;
+
+    function buildNote(data) {
+      return [
+        "你好，我想拍 19.90 元副业小店记账表 Excel 完整包。",
+        `我的用途：记录 ${data.platform} 平台的 ${data.skuName} 订单流水。`,
+        `这一单试算：数量 ${data.qty}，成交单价 ${money(data.unitPrice)}，销售额 ${money(data.sales)}，总成本 ${money(data.totalCost)}，毛利 ${money(data.profit)}，毛利率 ${data.marginText}，订单状态 ${data.status}。`,
+        "我需要的字段：日期、平台、商品/SKU、买家备注、数量、成交单价、平台手续费、运费、单件成本、其他费用、销售额、总成本、毛利、状态、交付/售后备注。",
+        "请发可编辑 Excel 和完整 ZIP。我理解这是电子资料包和表格模板，不是自动赚钱软件，也不承诺销量、利润、回本、涨粉或曝光。"
+      ].join("\n");
+    }
+
+    function updateCalc() {
+      const qty = Math.max(0, numeric(fields.qty));
+      const unitPrice = numeric(fields.unitPrice);
+      const platformFee = numeric(fields.platformFee);
+      const shippingFee = numeric(fields.shippingFee);
+      const unitCost = numeric(fields.unitCost);
+      const otherCost = numeric(fields.otherCost);
+      const sales = qty * unitPrice;
+      const totalCost = platformFee + shippingFee + qty * unitCost + otherCost;
+      const profit = sales - totalCost;
+      const margin = sales > 0 ? profit / sales * 100 : 0;
+      const marginText = `${margin.toFixed(1)}%`;
+      const status = fields.status.value;
+      const skuName = fields.skuName.value.trim() || "未命名商品";
+      const platform = fields.platform.value;
+      const worthRecord = sales >= 9.9 || totalCost > 0 || status !== "已交付";
+      const negative = profit < 0;
+
+      document.getElementById("sales").textContent = money(sales);
+      document.getElementById("cost").textContent = money(totalCost);
+      document.getElementById("profit").textContent = money(profit);
+      document.getElementById("margin").textContent = marginText;
+      document.getElementById("resultTitle").textContent = `单笔毛利 ${money(profit)}`;
+      document.getElementById("resultText").textContent = negative
+        ? "这单已经亏损，应该马上记录成本结构和售后原因。"
+        : worthRecord
+          ? "这类订单已经适合用 Excel 固定记录成交价、成本、毛利和交付状态。"
+          : "金额不大也可以先用样张记录，等 SKU 和订单变多后再买完整包。";
+      document.getElementById("statusPill").textContent = negative ? "优先复盘亏损订单" : "值得记录进订单流水";
+      document.getElementById("buyNote").value = buildNote({
+        skuName,
+        platform,
+        status,
+        qty,
+        unitPrice,
+        sales,
+        totalCost,
+        profit,
+        marginText
+      });
+    }
+
+    async function copyNote() {
+      const note = document.getElementById("buyNote");
+      note.select();
+      try {
+        await navigator.clipboard.writeText(note.value);
+        document.getElementById("copyStatus").textContent = "已复制，可以去闲鱼聊天里粘贴。";
+      } catch (error) {
+        document.execCommand("copy");
+        document.getElementById("copyStatus").textContent = "已选中文案，可以复制后去闲鱼发送。";
+      }
+    }
+
+    document.getElementById("runCalc").addEventListener("click", updateCalc);
+    document.getElementById("copyNote").addEventListener("click", copyNote);
+    Object.values(fields).forEach(input => input.addEventListener("input", updateCalc));
+    updateCalc();
+  </script>
+</body>
+</html>
