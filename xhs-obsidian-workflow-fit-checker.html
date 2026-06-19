@@ -344,6 +344,29 @@
       color: var(--ink);
       font-size: 14px;
     }
+    .purchase-note {
+      margin-top: 16px;
+      padding: 14px;
+      border: 1px solid rgba(15,143,111,.22);
+      border-radius: 8px;
+      background: #f4fbf8;
+    }
+    .purchase-note h3 {
+      margin: 0 0 6px;
+      font-size: 17px;
+    }
+    .purchase-note p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .copy-status {
+      min-height: 20px;
+      margin-top: 8px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+    }
     .funnel {
       padding: 46px 0 56px;
       border-top: 1px solid var(--line);
@@ -541,6 +564,16 @@
             <div class="advice" id="advice"></div>
             <div class="actions" id="actions"></div>
             <textarea class="summary" id="summary" readonly></textarea>
+            <div class="purchase-note" id="purchaseNoteBox">
+              <h3>闲鱼咨询备注</h3>
+              <p>复制后粘到闲鱼聊天里，卖家能直接按你的场景交付，避免来回解释。</p>
+              <textarea class="summary" id="purchaseNote" readonly></textarea>
+              <div class="actions">
+                <button class="btn btn-dark" type="button" id="copyNoteBtn">复制闲鱼备注</button>
+                <a class="btn btn-line" href="https://www.goofish.com/item?id=1057847823017" target="_blank" rel="noopener">打开闲鱼商品</a>
+              </div>
+              <div class="copy-status" id="copyStatus" aria-live="polite"></div>
+            </div>
           </div>
         </aside>
       </div>
@@ -622,6 +655,9 @@
     const adviceEl = document.getElementById("advice");
     const actionsEl = document.getElementById("actions");
     const summaryEl = document.getElementById("summary");
+    const purchaseNoteEl = document.getElementById("purchaseNote");
+    const copyNoteBtn = document.getElementById("copyNoteBtn");
+    const copyStatus = document.getElementById("copyStatus");
     const scenarioText = document.getElementById("scenarioText");
 
     function selectedNeeds() {
@@ -751,6 +787,30 @@
       return `order.html?plan=xhs-obsidian-79.80&scenario=${encodeURIComponent(scenario)}`;
     }
 
+    function purchaseNote(score, tierResult, needs, checks) {
+      const scenario = scenarioText.value.trim().replace(/\s+/g, " ").slice(0, 120) || "我想把小红书素材固定到 Obsidian 工作流里";
+      return [
+        "你好，我想拍 79.8 元小红书 Obsidian 工作流资料包。",
+        `我的适配分：${score}/100，结论：${tierResult.label}。`,
+        `当前场景：${scenario}`,
+        `内容方向：${fieldLabel("contentType")}；素材状态：${fieldLabel("materialState")}；发布频率：${fieldLabel("publishRhythm")}。`,
+        `主要卡点：${fieldLabel("painPoint")}；想固定的环节：${needs.join("、") || "素材整理、标题正文、配图提示词、发布包归档"}。`,
+        `购买前风险提示：${checks[0] || "没有明显硬风险，但会先用一条真实素材试跑。"}`,
+        "我确认：自己使用 Obsidian 和自己的模型接口，不需要远程安装、代运营、API key、涨粉、爆款、成交或回本承诺。",
+        "拍下后请通过闲鱼消息交付完整 ZIP，并附第一次运行顺序。"
+      ].join("\n");
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (error) {
+        purchaseNoteEl.focus();
+        purchaseNoteEl.select();
+        document.execCommand("copy");
+      }
+    }
+
     function render() {
       const fieldScore = fields.reduce((sum, id) => sum + Number(document.getElementById(id).value), 0);
       const needs = selectedNeeds();
@@ -786,10 +846,16 @@
         `想固定的环节：${needs.join("、") || "未选择"}`,
         `下一步：${pickedTier.tips[0]}`
       ].join("\n");
+      purchaseNoteEl.value = purchaseNote(score, pickedTier, needs, checks);
+      copyStatus.textContent = "";
     }
 
     form.addEventListener("input", render);
     form.addEventListener("change", render);
+    copyNoteBtn.addEventListener("click", async () => {
+      await copyText(purchaseNoteEl.value);
+      copyStatus.textContent = "已复制，可以去闲鱼聊天里粘贴。";
+    });
     render();
   </script>
 </body>
