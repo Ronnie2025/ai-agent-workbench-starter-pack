@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI API 中转风险自查器 | 账号池共享Key购买前检查</title>
+  <meta name="description" content="免费 AI API 中转风险自查器：购买低价 API、中转服务或自部署网关前，检查账号池、共享 Key、不限量承诺、密钥暴露和 Cloudflare Worker 自部署边界。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-risk-checker.html">
+  <link rel="icon" href="ai-api-gateway-deploy-cover.webp">
+  <meta property="og:title" content="AI API 中转风险自查器">
+  <meta property="og:description" content="买低价 API 或部署网关前，先判断是不是账号池、共享 Key、代持密钥或不限量承诺。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-risk-checker.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-deploy-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI API 中转风险自查器",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web",
+    "description": "购买低价 API、中转服务或自部署 AI API 网关前，检查账号池、共享 Key、不限量承诺、密钥暴露和 Cloudflare Worker 自部署边界。",
+    "url": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-risk-checker.html",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-deploy-cover.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    },
+    "sameAs": [
+      "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-deploy-pack.html",
+      "https://ronnie2025.github.io/ai-api-gateway-safety-checklist/"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "低价 AI API 中转可以买吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "要先确认是否涉及共享账号、转售余额、代持 API Key、不限量承诺或绕过平台限制。更稳妥的方式是自己账号、自己 Key、自己部署网关。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "这个自查器会提供低价 API 吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不会。它只帮助识别购买风险，并引导到自部署源码、教程和安全清单，不提供账号、余额、API Key 或共享账号池。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "什么情况下适合买 AI API 网关部署包？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "当你愿意使用自己的 Cloudflare 账号和自己的 API Key，并且想学习部署 Worker 网关、配置密钥、测试接口和明确安全边界时，可以考虑购买部署包。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #16231f;
+      --muted: #5f6b66;
+      --bg: #f5f8f3;
+      --panel: #ffffff;
+      --line: #d8e3dc;
+      --green: #104c38;
+      --green-2: #1b7656;
+      --mint: #dff1e7;
+      --amber: #b86b00;
+      --soft-amber: #fff6e6;
+      --coral: #d95b43;
+      --soft-red: #fff0ed;
+      --blue: #165d7d;
+      --soft-blue: #e8f3fa;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner,
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      min-height: 72vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(245,248,243,1) 0%, rgba(245,248,243,.97) 48%, rgba(245,248,243,.34) 100%),
+        url("ai-api-gateway-deploy-cover.webp") right center / min(42vw, 520px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 720px;
+      padding: 58px 0 76px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border: 1px solid #b9decc;
+      border-radius: 999px;
+      background: var(--mint);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      max-width: 820px;
+      margin: 22px 0 16px;
+      font-size: clamp(38px, 5.7vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin-bottom: 16px;
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.24;
+    }
+    .lead {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px 16px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 850;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--green); color: #fff; }
+    .btn-line { border-color: var(--line); }
+    .btn-danger { background: var(--coral); color: #fff; }
+    section { padding: 52px 0; }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .form-panel { padding: 22px; }
+    .result-panel {
+      position: sticky;
+      top: 18px;
+      overflow: hidden;
+    }
+    .result-head {
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .risk-score {
+      margin-top: 12px;
+      font-size: 54px;
+      font-weight: 950;
+      line-height: 1;
+      color: var(--muted);
+    }
+    .result-body { padding: 22px; }
+    .is-hidden { display: none; }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .field {
+      min-height: 118px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfb;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
+    select,
+    input[type="text"],
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    select,
+    input[type="text"] {
+      min-height: 44px;
+      padding: 0 12px;
+    }
+    textarea {
+      min-height: 98px;
+      padding: 12px;
+      resize: vertical;
+    }
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .check-grid label {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-weight: 760;
+    }
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .pill {
+      display: inline-flex;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(16, 76, 56, .2);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 850;
+    }
+    .list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+    .list li { margin: 8px 0; }
+    .copybox {
+      margin-top: 12px;
+      padding: 14px;
+      border: 1px dashed #b9c9c0;
+      border-radius: 8px;
+      background: #fbfdfb;
+      white-space: pre-wrap;
+      color: #26362f;
+      font-size: 14px;
+    }
+    .band {
+      background: #fff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      min-height: 176px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .card p { color: var(--muted); }
+    .notice {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--amber);
+      background: var(--soft-amber);
+      color: #5d470f;
+    }
+    .footer {
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      min-height: 76px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(245,248,243,1) 0%, rgba(245,248,243,.98) 58%, rgba(245,248,243,.82) 100%),
+          url("ai-api-gateway-deploy-cover.webp") bottom center / min(86vw, 430px) auto no-repeat;
+      }
+      .hero-copy { padding: 38px 0 470px; }
+      .tool-layout { grid-template-columns: 1fr; }
+      .result-panel { position: static; }
+      .field-grid,
+      .check-grid,
+      .grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .btn { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .hero-copy { padding-bottom: 400px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">AI Workbench Store</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="ai-api-gateway-deploy-pack.html">部署包</a>
+        <a href="https://ronnie2025.github.io/ai-api-gateway-safety-checklist/">安全清单</a>
+        <a href="virtual-products.html">虚拟资料</a>
+        <a href="order.html?plan=ai-api-gateway-49.90">订单页</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <span class="eyebrow">免费 API 中转购买前检查</span>
+          <h1>AI API 中转风险自查器</h1>
+          <p class="lead">看到低价 API、账号池、不限量调用、共享 Key 或代部署服务时，先用这个工具判断风险。稳妥路径是自己的账号、自己的 Key、自己部署网关。</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#tool">开始自查</a>
+            <a class="btn btn-line" href="ai-api-gateway-deploy-pack.html">查看 49.90 元部署包</a>
+            <a class="btn btn-line" href="https://ronnie2025.github.io/ai-api-gateway-safety-checklist/">免费安全清单</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tool">
+      <div class="wrap tool-layout">
+        <div class="panel form-panel">
+          <h2>输入你看到的 API 商品</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="offerType">商品说法</label>
+              <select id="offerType">
+                <option value="self">自部署源码/教程</option>
+                <option value="proxy">API 中转服务</option>
+                <option value="pool">共享账号池/低价账号</option>
+                <option value="unknown">看不清楚</option>
+              </select>
+              <p class="hint">如果卖的是访问权限而不是源码教程，风险通常更高。</p>
+            </div>
+            <div class="field">
+              <label for="keyOwner">API Key 归属</label>
+              <select id="keyOwner">
+                <option value="buyer">买家自己的 Key</option>
+                <option value="seller">卖家提供 Key 或余额</option>
+                <option value="shared">多人共用同一个 Key</option>
+                <option value="unclear">没有写清楚</option>
+              </select>
+              <p class="hint">Key 代表费用和责任归属，不应该随便交给陌生卖家。</p>
+            </div>
+            <div class="field">
+              <label for="deployment">部署方式</label>
+              <select id="deployment">
+                <option value="buyer">买家自己部署到 Cloudflare Worker</option>
+                <option value="seller">卖家代持服务地址</option>
+                <option value="shared">多人共用一个中转地址</option>
+                <option value="none">没有部署说明</option>
+              </select>
+              <p class="hint">自部署更容易检查日志、密钥和停用方式。</p>
+            </div>
+            <div class="field">
+              <label for="buyerSkill">你的执行能力</label>
+              <select id="buyerSkill">
+                <option value="can">能按教程注册 Cloudflare 并复制命令</option>
+                <option value="some">能跟步骤做，但需要清单</option>
+                <option value="none">完全不想自己配置</option>
+              </select>
+              <p class="hint">完全不愿意自部署时，不适合买源码教程包。</p>
+            </div>
+            <div class="field full">
+              <label>看到这些承诺就要谨慎</label>
+              <div class="check-grid">
+                <label><input id="promiseUnlimited" type="checkbox"> 不限量/无限调用</label>
+                <label><input id="promiseCheap" type="checkbox"> 明显低于官方成本</label>
+                <label><input id="promiseStable" type="checkbox"> 永久稳定/永不封</label>
+                <label><input id="promiseBypass" type="checkbox"> 绕过限制/风控</label>
+                <label><input id="sellerAsksKey" type="checkbox"> 要你把 Key 发给卖家</label>
+                <label><input id="noBoundary" type="checkbox"> 没有退款和责任边界</label>
+              </div>
+            </div>
+            <div class="field full">
+              <label for="note">补充说明</label>
+              <textarea id="note">我看到一个低价 AI API 中转/网关商品，想判断能不能买。</textarea>
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary" id="render" type="button">重新评估</button>
+            <button class="btn btn-line" id="copyQuestions" type="button">复制购买前提问</button>
+            <a class="btn btn-line" href="ai-api-gateway-deploy-pack.html">查看部署包</a>
+          </div>
+        </div>
+
+        <aside class="panel result-panel">
+          <div class="result-head" id="resultHead">
+            <span class="eyebrow" id="riskLabel">待评估</span>
+            <div class="risk-score" id="riskScore">-</div>
+            <p id="riskSummary">选择你看到的商品说法、Key 归属、部署方式和风险承诺后，点击重新评估生成购买前判断。</p>
+            <div class="pill-row" id="pillRow"></div>
+          </div>
+          <div class="result-body is-hidden" id="resultBody">
+            <h3>下一步</h3>
+            <ul class="list" id="nextSteps"></ul>
+            <div class="notice" id="boundaryNote">本工具不提供任何账号、余额、API Key 或共享账号池，只做购买前风险检查。</div>
+            <h3 style="margin-top:18px;">可复制给卖家的问题</h3>
+            <div class="copybox" id="questions"></div>
+            <div class="actions">
+              <a class="btn btn-primary" href="order.html?plan=ai-api-gateway-49.90&scenario=我想购买AI API网关部署包">生成 49.90 元订单</a>
+              <a class="btn btn-line" href="https://ronnie2025.github.io/ai-api-gateway-safety-checklist/docs/ai-api-gateway-deployment-checklist.md">下载部署清单</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>三种结论</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>可继续自部署</h3>
+            <p>你用自己的账号和 Key，源码能下载，部署步骤清楚，能自己停用 Worker 和密钥。</p>
+          </article>
+          <article class="card">
+            <h3>谨慎核对</h3>
+            <p>商品没有明确账号、Key、日志、限流、退款和责任边界。先问清楚，不急着付款。</p>
+          </article>
+          <article class="card">
+            <h3>建议放弃</h3>
+            <p>涉及共享账号池、卖家代持 Key、不限量调用、绕过限制或永不封号承诺时，不建议购买。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>边界更清楚的购买路径</h2>
+        <p class="lead">如果你要的是学习和自建网关，购买源码、教程、测试脚本和边界清单是更可控的路径。部署结果仍取决于你自己的账号、网络、平台规则和配置；本工具不构成法律意见或平台合规判断。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="ai-api-gateway-deploy-pack.html">查看 AI API 网关部署包</a>
+          <a class="btn btn-line" href="https://ronnie2025.github.io/ai-api-gateway-safety-checklist/">免费安全清单</a>
+          <a class="btn btn-line" href="virtual-products.html">返回虚拟资料货架</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>AI Workbench Store</span>
+      <a href="ai-api-gateway-deploy-pack.html">AI API 网关部署包</a>
+      <a href="https://ronnie2025.github.io/ai-api-gateway-safety-checklist/">免费安全清单</a>
+      <a href="order.html?plan=ai-api-gateway-49.90">生成订单</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    function readState() {
+      return {
+        offerType: $("offerType").value,
+        keyOwner: $("keyOwner").value,
+        deployment: $("deployment").value,
+        buyerSkill: $("buyerSkill").value,
+        promiseUnlimited: $("promiseUnlimited").checked,
+        promiseCheap: $("promiseCheap").checked,
+        promiseStable: $("promiseStable").checked,
+        promiseBypass: $("promiseBypass").checked,
+        sellerAsksKey: $("sellerAsksKey").checked,
+        noBoundary: $("noBoundary").checked,
+        note: $("note").value.trim()
+      };
+    }
+
+    function scoreState(state) {
+      let score = 86;
+      if (state.offerType === "self") score += 8;
+      if (state.offerType === "proxy") score -= 18;
+      if (state.offerType === "pool") score -= 36;
+      if (state.offerType === "unknown") score -= 14;
+      if (state.keyOwner === "buyer") score += 8;
+      if (state.keyOwner === "seller") score -= 30;
+      if (state.keyOwner === "shared") score -= 40;
+      if (state.keyOwner === "unclear") score -= 18;
+      if (state.deployment === "buyer") score += 8;
+      if (state.deployment === "seller") score -= 18;
+      if (state.deployment === "shared") score -= 30;
+      if (state.deployment === "none") score -= 20;
+      if (state.buyerSkill === "some") score -= 4;
+      if (state.buyerSkill === "none") score -= 18;
+      ["promiseUnlimited", "promiseCheap", "promiseStable", "promiseBypass", "sellerAsksKey", "noBoundary"].forEach((key) => {
+        if (state[key]) score -= key === "sellerAsksKey" || key === "promiseBypass" ? 18 : 12;
+      });
+      return Math.max(0, Math.min(100, score));
+    }
+
+    function riskInfo(score) {
+      if (score >= 80) {
+        return {
+          label: "可继续自部署",
+          color: "green",
+          summary: "当前更像源码教程和自部署路径，继续核对官方账号、密钥和部署步骤。",
+          steps: [
+            "确认使用你自己的 Cloudflare 账号和自己的 API Key。",
+            "确认交付物是源码、部署教程、测试脚本和安全清单。",
+            "部署前先用免费安全清单核对密钥、日志、限流和停用方式。"
+          ]
+        };
+      }
+      if (score >= 55) {
+        return {
+          label: "谨慎核对",
+          color: "amber",
+          summary: "当前有一些不清楚的风险点，先问清账号、Key、部署和售后边界。",
+          steps: [
+            "先不要付款，复制下面的问题发给卖家。",
+            "要求明确是否包含账号、余额、共享 Key 或代持服务。",
+            "如果不能说明源码、部署步骤和责任边界，换成自部署资料路径。"
+          ]
+        };
+      }
+      return {
+        label: "建议放弃",
+        color: "red",
+        summary: "当前更像账号池、共享 Key 或高风险中转服务，不建议购买。",
+        steps: [
+          "不要购买共享账号池、卖家代持 Key 或不限量调用承诺。",
+          "不要把自己的 API Key 发给陌生卖家。",
+          "需要学习部署时，改走自己的账号、自己的 Key、自部署 Worker 网关。"
+        ]
+      };
+    }
+
+    function buildQuestions(state, score) {
+      const info = riskInfo(score);
+      return [
+        "我想先确认这个 AI API 网关/中转商品的边界：",
+        "1. 这个商品是否只交付源码、部署教程、测试脚本和安全清单？",
+        "2. 是否需要我使用自己的 Cloudflare 账号和自己的 API Key？",
+        "3. 是否包含任何第三方账号、账号池、共享 Key、余额转售或代充值？",
+        "4. 是否承诺不限量、永久免费、永不封号或绕过平台限制？",
+        "5. 部署后我能否自己停用 Worker、删除密钥、查看日志和控制调用量？",
+        "6. 如果部署失败或平台规则变化，售后边界怎么处理？",
+        "",
+        `我的当前自查结论：${info.label}，分数 ${score}/100。`,
+        "我理解这类资料包不应包含账号、余额、API Key 或共享账号池。"
+      ].join("\n");
+    }
+
+    function render() {
+      const state = readState();
+      const score = scoreState(state);
+      const info = riskInfo(score);
+      $("resultBody").classList.remove("is-hidden");
+      $("riskScore").textContent = String(score);
+      $("riskLabel").textContent = info.label;
+      $("riskSummary").textContent = info.summary;
+      $("resultHead").style.background = info.color === "green"
+        ? "var(--mint)"
+        : info.color === "amber"
+          ? "var(--soft-amber)"
+          : "var(--soft-red)";
+      $("riskScore").style.color = info.color === "red" ? "var(--coral)" : info.color === "amber" ? "var(--amber)" : "var(--green)";
+      $("nextSteps").innerHTML = "";
+      info.steps.forEach((step) => {
+        const li = document.createElement("li");
+        li.textContent = step;
+        $("nextSteps").appendChild(li);
+      });
+      $("pillRow").innerHTML = "";
+      const labels = {
+        self: "源码教程", proxy: "中转服务", pool: "账号池", unknown: "边界不清",
+        buyer: "自己的 Key", seller: "卖家 Key", shared: "共享 Key", unclear: "Key 不清",
+        can: "可自部署", some: "需要清单", none: "不想配置"
+      };
+      [state.offerType, state.keyOwner, state.deployment, state.buyerSkill].forEach((value) => {
+        const pill = document.createElement("span");
+        pill.className = "pill";
+        pill.textContent = labels[value] || value;
+        $("pillRow").appendChild(pill);
+      });
+      $("questions").textContent = buildQuestions(state, score);
+    }
+
+    function fallbackCopy(text) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+    }
+
+    $("render").addEventListener("click", render);
+    $("copyQuestions").addEventListener("click", async () => {
+      if ($("resultBody").classList.contains("is-hidden")) render();
+      const text = $("questions").textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (error) {
+        fallbackCopy(text);
+      }
+      $("copyQuestions").textContent = "已复制";
+      setTimeout(() => { $("copyQuestions").textContent = "复制购买前提问"; }, 1400);
+    });
+  </script>
+</body>
+</html>

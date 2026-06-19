@@ -80,6 +80,7 @@ consultants, and small-team operators.
 - AI-PPT 交付自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
 - n8n 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-checker.html
 - n8n 自动化工作流模板包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar.html
+- AI API 中转风险自查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-risk-checker.html
 - XHS Obsidian Workflow Starter: https://github.com/Ronnie2025/xhs-obsidian-workflow-starter
 - X / Twitter to XHS Obsidian brief template: https://ronnie2025.github.io/xhs-obsidian-workflow-starter/templates/x-twitter-to-xhs-brief.md
 - 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
@@ -135,6 +136,7 @@ consultants, and small-team operators.
 - 29.90 RMB: 剪映高级感字幕参数工作流包
 - 29.90 RMB: AI-PPT 交付自检包
 - 19.90 RMB: n8n 自动化工作流模板包
+- 0 RMB: AI API 中转风险自查器
 - 49.90 RMB: AI API 网关部署包
 - 39.90 RMB: AI 远程数据兼职申请包
 - 79.80 RMB: 小红书 Obsidian 工作流
@@ -161,6 +163,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-products.ht
 AI API gateway deploy pack:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-deploy-pack.html
+
+AI API gateway risk checker:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-api-gateway-risk-checker.html
 
 Codex troubleshooting:
 
