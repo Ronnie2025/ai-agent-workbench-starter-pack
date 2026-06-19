@@ -25,6 +25,7 @@ consultants, and small-team operators.
 - AI简历关键词表生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-table-generator.html
 - AI简历JD匹配自查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-jd-fit-checker.html
 - AI简历ATS匹配度评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-ats-score-checker.html
+- AI面试STAR回答生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-interview-star-answer-generator.html
 - AI简历JD匹配自查器独立工具站: https://github.com/Ronnie2025/ai-resume-jd-fit-checker
 - AI求职简历面试包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit.html
 - 生育津贴申领材料自查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-self-checker.html
@@ -220,6 +221,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-jd-fit-ch
 AI resume ATS score checker:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-ats-score-checker.html
+
+AI interview STAR answer generator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-interview-star-answer-generator.html
 
 AI resume keyword table generator:
 
