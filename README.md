@@ -80,6 +80,7 @@ consultants, and small-team operators.
 - n8n 工作流适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-workflow-fit-checker.html
 - n8n 自动化工作流模板包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/n8n-ai-side-hustle-radar.html
 - XHS Obsidian Workflow Starter: https://github.com/Ronnie2025/xhs-obsidian-workflow-starter
+- X / Twitter to XHS Obsidian brief template: https://ronnie2025.github.io/xhs-obsidian-workflow-starter/templates/x-twitter-to-xhs-brief.md
 - 资料包公开样品: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/sample.html
 - 付款和交付说明: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/after-order.html
 - 判断指南: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/guide.html
