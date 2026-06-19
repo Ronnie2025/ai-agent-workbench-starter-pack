@@ -278,13 +278,31 @@
   </url>
   <url>
     <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-jd-fit-checker.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-map-sample.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-map-sample.csv</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-star-question-sample.csv</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

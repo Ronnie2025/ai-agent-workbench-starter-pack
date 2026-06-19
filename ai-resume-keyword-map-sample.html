@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI简历关键词表 CSV 样张 | JD匹配和STAR面试准备</title>
+  <meta name="description" content="免费下载 AI简历关键词表 CSV 样张和 STAR 面试题样张，适合求职者按 JD 检查关键词、经历证据和面试素材，再决定是否购买 29.90 元 AI求职简历面试包。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-map-sample.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="AI简历关键词表 CSV 样张">
+  <meta property="og:description" content="免费样张：岗位关键词、简历表达建议、证据清单和 STAR 面试题。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-map-sample.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "AI简历关键词表 CSV 样张",
+    "description": "中文求职简历关键词映射和 STAR 面试题样张，帮助求职者按 JD 检查关键词、经历证据和面试准备。",
+    "license": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/terms.html",
+    "creator": {
+      "@type": "Organization",
+      "name": "AI Workbench Store"
+    },
+    "distribution": [
+      {
+        "@type": "DataDownload",
+        "encodingFormat": "text/csv",
+        "contentUrl": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-map-sample.csv"
+      },
+      {
+        "@type": "DataDownload",
+        "encodingFormat": "text/csv",
+        "contentUrl": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-star-question-sample.csv"
+      }
+    ],
+    "isBasedOn": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit.html"
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6b7a;
+      --bg: #f7faf8;
+      --panel: #ffffff;
+      --line: #dce7df;
+      --green: #0a8a43;
+      --yellow: #ffd84d;
+      --deep: #111a16;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner, .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(247,250,248,1) 0%, rgba(247,250,248,.96) 46%, rgba(247,250,248,.18) 100%),
+        url("ai-resume-interview-kit-cover.webp") right center / min(42vw, 500px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 700px;
+      padding: 58px 0 72px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(10,138,67,.24);
+      background: rgba(10,138,67,.09);
+      color: #076634;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 22px 0 16px;
+      max-width: 760px;
+      font-size: 56px;
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 20px;
+      font-size: 30px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+    p { margin: 0; }
+    .lead {
+      color: var(--muted);
+      font-size: 19px;
+    }
+    section { padding: 58px 0; }
+    .band {
+      background: #fff;
+      border-block: 1px solid var(--line);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 11px 15px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      font-weight: 850;
+      background: #fff;
+    }
+    .btn-primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      min-width: 0;
+      padding: 22px;
+      border-radius: 8px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(16,24,40,.05);
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 820px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #0a8a43;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background: #fff;
+    }
+    .footer .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @media (max-width: 860px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(247,250,248,.96), rgba(247,250,248,.96)),
+          url("ai-resume-interview-kit-cover.webp") bottom center / min(92vw, 420px) auto no-repeat;
+      }
+      .hero-copy { padding-bottom: 350px; }
+      h1 { font-size: 38px; }
+      .grid { grid-template-columns: 1fr; }
+      .actions .btn { width: 100%; }
+      .nav { justify-content: flex-end; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <nav class="nav">
+        <a href="ai-resume-jd-fit-checker.html">JD自查器</a>
+        <a href="ai-resume-interview-kit.html">29.90资料包</a>
+        <a href="virtual-products.html">虚拟资料</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <span class="eyebrow">免费样张：简历关键词 / STAR 面试</span>
+          <h1>AI简历关键词表 CSV 样张</h1>
+          <p class="lead">先用 6 个岗位方向的关键词和 6 个 STAR 面试题样张，检查你的简历是否对齐 JD。完整 29.90 元包里有简历诊断 SOP、30 条 AI 改写提示词、50 题面试题库、ATS 检查表和投递跟踪表。</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="ai-resume-keyword-map-sample.csv" download>下载关键词 CSV</a>
+            <a class="btn" href="ai-resume-star-question-sample.csv" download>下载 STAR 样张</a>
+            <a class="btn" href="ai-resume-jd-fit-checker.html">先做 JD 自查</a>
+            <a class="btn" href="ai-resume-interview-kit.html">看完整包</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>这份免费样张怎么用</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>先对关键词</h3>
+            <p>把目标 JD 里的词和样张里的岗位词对照，找出简历里完全没出现的能力词。</p>
+          </article>
+          <article class="card">
+            <h3>再补证据</h3>
+            <p>不要只把关键词塞进简历。每个关键词后面都要有项目、数字、产出或工具证据。</p>
+          </article>
+          <article class="card">
+            <h3>最后准备面试</h3>
+            <p>用 STAR 样张把项目、冲突、失败、转行、空窗和 AI 工具使用提前整理出来。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+        <h2>关键词样张预览</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>岗位方向</th>
+                <th>JD关键词</th>
+                <th>简历表达建议</th>
+                <th>需要补的证据</th>
+                <th>面试准备题</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>新媒体运营</td>
+                <td>选题策划</td>
+                <td>把日常发文改成选题目标、执行频率和数据结果。</td>
+                <td>账号周期、发布篇数、阅读收藏互动数据。</td>
+                <td>说一次你如何从数据里调整选题。</td>
+              </tr>
+              <tr>
+                <td>数据分析</td>
+                <td>指标体系</td>
+                <td>把做报表改成指标定义、数据清洗和业务结论。</td>
+                <td>SQL、Excel、Python、报表样例或复盘文档。</td>
+                <td>讲一次你发现异常并推动业务修正。</td>
+              </tr>
+              <tr>
+                <td>AI训练师</td>
+                <td>标注质检</td>
+                <td>把标注经历改成规则理解、一致性检查和问题样例沉淀。</td>
+                <td>标注量、质检通过率、规范案例和错误类型。</td>
+                <td>讲一次你如何处理模糊标准。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">完整包不提供代写、代投、内推或结果保证。它只提供模板、提示词、检查清单和表格，要求基于真实经历使用。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="ai-resume-interview-kit.html">查看 29.90 元完整包</a>
+          <a class="btn" href="order.html?plan=ai-resume-29.90&scenario=我看了AI简历关键词表样张，想购买AI求职简历面试包">生成订单邮件</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="ai-resume-jd-fit-checker.html">AI简历JD匹配自查器</a>
+      <a href="ai-resume-interview-kit.html">AI求职简历面试包</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+</body>
+</html>

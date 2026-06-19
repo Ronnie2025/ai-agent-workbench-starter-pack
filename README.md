@@ -20,6 +20,7 @@ consultants, and small-team operators.
 - AI人物一致性提示词包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-character-consistency-prompt-pack.html
 - AI短剧分镜脚本生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-generator.html
 - AI短剧分镜脚本提示词包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-prompt-pack.html
+- AI简历关键词表 CSV 样张: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-map-sample.html
 - AI简历JD匹配自查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-jd-fit-checker.html
 - AI求职简历面试包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit.html
 - 生育津贴申领材料自查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-self-checker.html
