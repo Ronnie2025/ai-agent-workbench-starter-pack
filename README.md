@@ -51,6 +51,7 @@ consultants, and small-team operators.
 - 小店进销存台账 Excel 模板: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/small-shop-inventory-ledger-template.html
 - 库存预警表 Excel 模板: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/inventory-warning-excel-template.html
 - 副业周复盘表 Excel 模板: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/weekly-review-excel-template.html
+- 副业月报生成器: https://ronnie2025.github.io/side-hustle-monthly-report-generator/
 - 闲鱼虚拟商品退款复盘表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-refund-review.html
 - 闲鱼虚拟资料发货话术生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-delivery-script-generator.html
 - 闲鱼虚拟资料网盘发货检查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-netdisk-delivery-checker.html
@@ -356,6 +357,7 @@ Side hustle ledger Excel pack:
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-profit-calculator.html
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-pack.html
 https://www.goofish.com/item?id=1057975295736
+https://ronnie2025.github.io/side-hustle-monthly-report-generator/
 
 Jianying caption style workflow pack:
 
