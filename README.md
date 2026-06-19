@@ -40,6 +40,7 @@ consultants, and small-team operators.
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
 - 闲鱼虚拟资料上架文案生成器独立工具站: https://ronnie2025.github.io/xianyu-virtual-product-listing-generator/
+- 闲鱼虚拟资料买家咨询记录生成器独立工具站: https://ronnie2025.github.io/xianyu-buyer-inquiry-log-generator/
 - 闲鱼虚拟资料封面文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-cover-copy-generator.html
 - 闲鱼虚拟资料运营话术包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ops-script-pack.html
 - 副业订单利润速算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-profit-calculator.html
@@ -69,6 +70,7 @@ consultants, and small-team operators.
 - 闲鱼虚拟资料发货话术生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-delivery-script-generator.html
 - 闲鱼虚拟资料网盘发货检查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-netdisk-delivery-checker.html
 - 虚拟资料买家问答生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/virtual-product-buyer-reply-generator.html
+- 闲鱼虚拟资料买家咨询记录生成器独立工具站: https://ronnie2025.github.io/xianyu-buyer-inquiry-log-generator/
 - Codex 排障自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-checker.html
 - Codex 第一次任务提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html
 - AGENTS.md 生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-agents-md-generator.html
