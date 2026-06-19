@@ -74,6 +74,7 @@ consultants, and small-team operators.
 - Codex 排障自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-troubleshooting-checker.html
 - Codex 第一次任务提示词生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-prompt-generator.html
 - AGENTS.md 生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-agents-md-generator.html
+- AGENTS.md 生成器独立工具站: https://ronnie2025.github.io/codex-agents-md-generator/
 - PPT 大纲生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-outline-generator.html
 - PPT模板生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-template-generator.html
 - AI-PPT 交付自检器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-checker.html
@@ -176,6 +177,7 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-first-task-pr
 AGENTS.md generator:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/codex-agents-md-generator.html
+https://ronnie2025.github.io/codex-agents-md-generator/
 
 Xiaohongshu title self-test:
 
