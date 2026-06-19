@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>闲鱼虚拟资料记账表怎么做 | 订单成本利润复盘模板</title>
-  <meta name="description" content="闲鱼虚拟资料卖家记账表搭建指南：记录订单、平台费、资料成本、售后状态、退款原因、SKU 毛利和周复盘，并可直接购买 19.90 元 Excel 模板包。">
+  <meta name="description" content="闲鱼虚拟资料卖家记账表搭建指南和免费订单速记器：记录订单、平台费、资料成本、售后状态、退款原因、SKU 毛利和周复盘，并可购买 19.90 元 Excel 模板包。">
   <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ledger-template.html">
   <link rel="icon" href="cover.png">
   <meta property="og:title" content="闲鱼虚拟资料记账表怎么做">
@@ -16,7 +16,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "闲鱼虚拟资料记账表怎么做",
-    "description": "闲鱼虚拟资料卖家记账表搭建指南，覆盖订单、平台费、资料成本、售后状态、退款原因、SKU 毛利和周复盘。",
+    "description": "闲鱼虚拟资料卖家记账表搭建指南和免费订单速记器，覆盖订单、平台费、资料成本、售后状态、退款原因、SKU 毛利和周复盘。",
     "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-xianyu-cover-v2.png",
     "author": {
       "@type": "Organization",
@@ -202,6 +202,8 @@
       border: 1px solid transparent;
       text-decoration: none;
       font-weight: 850;
+      cursor: pointer;
+      font: inherit;
     }
     .btn-primary { background: var(--green); color: #fff; }
     .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
@@ -275,6 +277,101 @@
       border-radius: 8px;
       background: var(--soft);
     }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, .82fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .tool-panel {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 850;
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    textarea {
+      min-height: 98px;
+      resize: vertical;
+    }
+    .result-panel {
+      position: sticky;
+      top: 76px;
+    }
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 16px 0;
+    }
+    .metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .metric strong {
+      display: block;
+      margin-top: 2px;
+      color: var(--green);
+      font-size: 24px;
+      line-height: 1.1;
+    }
+    .output {
+      min-height: 142px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfb;
+      color: var(--ink);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .copy-note {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid rgba(229,88,69,.24);
+      border-radius: 8px;
+      background: #fff6f3;
+      color: #7a2c20;
+      font-weight: 750;
+    }
+    .status {
+      min-height: 24px;
+      margin-top: 10px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 750;
+    }
     .cta {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 260px;
@@ -316,7 +413,9 @@
       }
       .hero-copy { padding: 38px 0 500px; }
       .grid,
+      .tool-layout,
       .cta { grid-template-columns: 1fr; }
+      .result-panel { position: static; }
       .table { grid-template-columns: 1fr; }
       .cell,
       .cell:nth-child(3n),
@@ -326,6 +425,10 @@
       }
       .cell:last-child { border-bottom: 0; }
       .btn { width: 100%; }
+    }
+    @media (max-width: 620px) {
+      .tool-grid,
+      .result-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .hero-copy { padding-bottom: 430px; }
@@ -366,6 +469,98 @@
   </header>
 
   <main>
+    <section class="band" id="order-note-tool">
+      <div class="wrap">
+        <h2>先把今天一单记下来</h2>
+        <p class="lead">输入成交价、平台费、资料成本和售后时间，马上得到一条可复制的订单记录。算完如果你发现自己每单都在手动算，完整 Excel 包会更省时间。</p>
+        <div class="tool-layout" style="margin-top: 22px;">
+          <form class="tool-panel" id="ledgerForm">
+            <div class="tool-grid">
+              <div class="field">
+                <label for="productName">商品名</label>
+                <input id="productName" value="副业小店记账表 Excel模板包">
+              </div>
+              <div class="field">
+                <label for="orderStatus">订单状态</label>
+                <select id="orderStatus">
+                  <option>已拍下待发货</option>
+                  <option>已发货待确认</option>
+                  <option>已完成</option>
+                  <option>退款中</option>
+                  <option>交易关闭</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="price">成交价</label>
+                <input id="price" type="number" inputmode="decimal" min="0" step="0.01" value="19.90">
+              </div>
+              <div class="field">
+                <label for="quantity">数量</label>
+                <input id="quantity" type="number" inputmode="numeric" min="1" step="1" value="1">
+              </div>
+              <div class="field">
+                <label for="feeRate">平台费率</label>
+                <input id="feeRate" type="number" inputmode="decimal" min="0" step="0.01" value="0.6">
+              </div>
+              <div class="field">
+                <label for="materialCost">资料成本</label>
+                <input id="materialCost" type="number" inputmode="decimal" min="0" step="0.01" value="1.00">
+              </div>
+              <div class="field">
+                <label for="serviceMinutes">售后分钟</label>
+                <input id="serviceMinutes" type="number" inputmode="numeric" min="0" step="1" value="6">
+              </div>
+              <div class="field">
+                <label for="hourCost">每小时人工成本</label>
+                <input id="hourCost" type="number" inputmode="decimal" min="0" step="0.01" value="30">
+              </div>
+              <div class="field">
+                <label for="refundReserve">退款预留</label>
+                <input id="refundReserve" type="number" inputmode="decimal" min="0" step="0.01" value="0.00">
+              </div>
+              <div class="field">
+                <label for="leadSource">来源</label>
+                <select id="leadSource">
+                  <option>闲鱼搜索</option>
+                  <option>GitHub 免费样张</option>
+                  <option>公网销售页</option>
+                  <option>站内工具页</option>
+                  <option>其他</option>
+                </select>
+              </div>
+            </div>
+            <div class="field" style="margin-top: 14px;">
+              <label for="buyerQuestion">买家问题 / 售后备注</label>
+              <textarea id="buyerQuestion">是否拍下后发 ZIP？需要能记录订单、成本、毛利和退款。</textarea>
+            </div>
+            <div class="actions">
+              <button class="btn btn-primary" type="submit">生成记账行</button>
+              <button class="btn btn-line" type="button" id="copyLedgerRow">复制记账行</button>
+              <button class="btn btn-line" type="button" id="copyBuyNote">复制拍下备注</button>
+            </div>
+            <div class="status" id="copyStatus" aria-live="polite"></div>
+          </form>
+
+          <aside class="tool-panel result-panel">
+            <h3>本单到手情况</h3>
+            <p>这不是收益承诺，只是把一单该记录的数字摊开，避免只看成交价。</p>
+            <div class="result-grid">
+              <div class="metric"><span>成交额</span><strong id="grossOut">¥19.90</strong></div>
+              <div class="metric"><span>平台费</span><strong id="feeOut">¥0.12</strong></div>
+              <div class="metric"><span>总成本</span><strong id="costOut">¥4.00</strong></div>
+              <div class="metric"><span>预估毛利</span><strong id="profitOut">¥15.78</strong></div>
+            </div>
+            <div class="output" id="ledgerOutput"></div>
+            <div class="copy-note">拍下备注：我要副业小店记账表Excel模板，拍下后请发送ZIP压缩包。</div>
+            <div class="actions">
+              <a class="btn btn-primary" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼担保购买 19.90 元</a>
+              <a class="btn btn-line" href="side-hustle-ledger-excel-pack.html">看完整 Excel 包</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="wrap">
         <h2>别只记成交金额</h2>
@@ -481,5 +676,89 @@
       <a href="https://www.goofish.com/item?id=1057975295736">闲鱼担保购买</a>
     </div>
   </footer>
+  <script>
+    (function () {
+      const buyNote = "我要副业小店记账表Excel模板，拍下后请发送ZIP压缩包。";
+      const form = document.getElementById("ledgerForm");
+      const output = document.getElementById("ledgerOutput");
+      const status = document.getElementById("copyStatus");
+      const fields = {
+        productName: document.getElementById("productName"),
+        orderStatus: document.getElementById("orderStatus"),
+        price: document.getElementById("price"),
+        quantity: document.getElementById("quantity"),
+        feeRate: document.getElementById("feeRate"),
+        materialCost: document.getElementById("materialCost"),
+        serviceMinutes: document.getElementById("serviceMinutes"),
+        hourCost: document.getElementById("hourCost"),
+        refundReserve: document.getElementById("refundReserve"),
+        leadSource: document.getElementById("leadSource"),
+        buyerQuestion: document.getElementById("buyerQuestion")
+      };
+      const money = new Intl.NumberFormat("zh-CN", { style: "currency", currency: "CNY" });
+      const readNumber = (node) => {
+        const value = Number.parseFloat(node.value);
+        return Number.isFinite(value) ? value : 0;
+      };
+      const writeClipboard = async (text, message) => {
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (error) {
+          const helper = document.createElement("textarea");
+          helper.value = text;
+          helper.setAttribute("readonly", "");
+          helper.style.position = "fixed";
+          helper.style.left = "-9999px";
+          document.body.appendChild(helper);
+          helper.select();
+          document.execCommand("copy");
+          helper.remove();
+        }
+        status.textContent = message;
+      };
+      const calculate = () => {
+        const gross = readNumber(fields.price) * Math.max(1, readNumber(fields.quantity));
+        const fee = gross * readNumber(fields.feeRate) / 100;
+        const serviceCost = readNumber(fields.serviceMinutes) / 60 * readNumber(fields.hourCost);
+        const totalCost = fee + readNumber(fields.materialCost) + serviceCost + readNumber(fields.refundReserve);
+        const profit = gross - totalCost;
+        const margin = gross > 0 ? profit / gross * 100 : 0;
+        const row = [
+          new Date().toLocaleDateString("zh-CN"),
+          fields.leadSource.value,
+          fields.productName.value.trim() || "未命名商品",
+          fields.orderStatus.value,
+          money.format(gross),
+          money.format(fee),
+          money.format(totalCost),
+          money.format(profit),
+          margin.toFixed(1) + "%",
+          (fields.buyerQuestion.value || "无").trim()
+        ].join(" | ");
+        document.getElementById("grossOut").textContent = money.format(gross);
+        document.getElementById("feeOut").textContent = money.format(fee);
+        document.getElementById("costOut").textContent = money.format(totalCost);
+        document.getElementById("profitOut").textContent = money.format(profit);
+        output.textContent = "日期 | 来源 | 商品 | 状态 | 成交额 | 平台费 | 总成本 | 毛利 | 毛利率 | 备注\n" + row;
+        return output.textContent;
+      };
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        calculate();
+        status.textContent = "已生成，可以复制到表格或完整 Excel 包。";
+      });
+      Object.values(fields).forEach((node) => {
+        node.addEventListener("input", calculate);
+        node.addEventListener("change", calculate);
+      });
+      document.getElementById("copyLedgerRow").addEventListener("click", () => {
+        writeClipboard(calculate(), "已复制记账行。");
+      });
+      document.getElementById("copyBuyNote").addEventListener("click", () => {
+        writeClipboard(buyNote, "已复制拍下备注，去闲鱼拍下时直接粘贴。");
+      });
+      calculate();
+    })();
+  </script>
 </body>
 </html>
