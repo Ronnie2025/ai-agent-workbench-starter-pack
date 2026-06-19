@@ -23,6 +23,7 @@ consultants, and small-team operators.
 - AI简历关键词表 CSV 样张: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-map-sample.html
 - AI简历关键词表 GitHub 样张仓库: https://github.com/Ronnie2025/ai-resume-keyword-map-sample
 - AI简历JD匹配自查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-jd-fit-checker.html
+- AI简历JD匹配自查器独立工具站: https://github.com/Ronnie2025/ai-resume-jd-fit-checker
 - AI求职简历面试包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit.html
 - 生育津贴申领材料自查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-self-checker.html
 - 生育津贴自助申领包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/maternity-allowance-guide.html
