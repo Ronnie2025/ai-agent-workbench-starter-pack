@@ -240,6 +240,62 @@
     .card-follow {
       margin-top: 14px;
     }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+    .field label {
+      font-size: 14px;
+      font-weight: 850;
+    }
+    .field input {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 12px;
+      color: var(--ink);
+      background: #fff;
+      font: inherit;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .metric {
+      min-height: 94px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f7fbf8;
+    }
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--green);
+      font-size: 24px;
+      line-height: 1.16;
+      overflow-wrap: anywhere;
+    }
     .copybox {
       margin-top: 14px;
       padding: 16px;
@@ -292,6 +348,9 @@
       .hero-copy { padding: 38px 0 500px; }
       h1 { font-size: 42px; }
       .grid { grid-template-columns: 1fr; }
+      .tool-layout,
+      .field-grid,
+      .metrics { grid-template-columns: 1fr; }
       .btn { width: 100%; }
     }
     @media (max-width: 480px) {
@@ -329,6 +388,7 @@
           <a class="btn btn-line" href="xianyu-ledger-sample.html">下载免费 Excel 样张</a>
           <a class="btn btn-line" href="xianyu-virtual-product-refund-review.html">先记一条退款复盘</a>
           <a class="btn btn-line" href="weekly-review-excel-template.html">先做一周复盘</a>
+          <a class="btn btn-line" href="#buy-check">买前算是否需要完整表</a>
           <a class="btn btn-line" href="https://github.com/Ronnie2025/xianyu-virtual-product-ledger-sample" target="_blank" rel="noopener">GitHub 免费样张</a>
           <a class="btn btn-line" href="xianyu-virtual-product-ledger-template.html">看虚拟资料记账指南</a>
           <a class="btn btn-primary" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼担保购买 19.90 元</a>
@@ -355,6 +415,74 @@
           <div class="card">
             <h3>复盘空</h3>
             <p>标题、封面、咨询问题和退款原因没有记录，下周不知道改哪里。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="buy-check">
+      <div class="wrap">
+        <h2>买前先算一笔</h2>
+        <div class="tool-layout">
+          <div class="card">
+            <h3>你的订单量是否已经值得用完整表</h3>
+            <p>把每周真实订单和容易漏掉的成本填进去。只要开始稳定卖资料，漏记平台费、售后时间和退款关闭原因，复盘就会失真。</p>
+            <div class="field-grid">
+              <div class="field">
+                <label for="weeklyOrders">每周订单数</label>
+                <input id="weeklyOrders" type="number" min="0" step="1" value="8">
+              </div>
+              <div class="field">
+                <label for="avgPrice">平均客单价</label>
+                <input id="avgPrice" type="number" min="0" step="0.1" value="19.9">
+              </div>
+              <div class="field">
+                <label for="feeRate">平台费率 %</label>
+                <input id="feeRate" type="number" min="0" step="0.1" value="1">
+              </div>
+              <div class="field">
+                <label for="hiddenCost">每单漏记成本</label>
+                <input id="hiddenCost" type="number" min="0" step="0.1" value="2.5">
+              </div>
+              <div class="field">
+                <label for="refundCount">每月退款/关闭单</label>
+                <input id="refundCount" type="number" min="0" step="1" value="3">
+              </div>
+              <div class="field">
+                <label for="supportMinutes">每单售后解释分钟</label>
+                <input id="supportMinutes" type="number" min="0" step="1" value="6">
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>自查结果</h3>
+            <div class="metrics">
+              <div class="metric">
+                <span>每月订单额</span>
+                <strong id="monthlyRevenue">¥684.56</strong>
+              </div>
+              <div class="metric">
+                <span>每月容易漏算</span>
+                <strong id="monthlyLeak">¥96.85</strong>
+              </div>
+              <div class="metric">
+                <span>售后解释时间</span>
+                <strong id="supportHours">3.4 小时</strong>
+              </div>
+              <div class="metric">
+                <span>建议</span>
+                <strong id="buySignal">建议用完整表</strong>
+              </div>
+            </div>
+            <div class="copybox" id="checkNote">我想拍 19.90 元副业小店记账表 Excel 模板包。
+我的情况：每周约 8 单，客单价约 19.90 元，每单可能漏记 2.50 元成本，每月约 3 单退款或关闭。
+我需要完整 ZIP 来记录订单、平台费、成本、退款关闭原因、库存和周复盘。
+我理解这是电子资料包，不承诺成交、利润、涨粉或回本。</div>
+            <div class="actions">
+              <button class="btn btn-primary" type="button" id="copyCheckNote">复制这段闲鱼备注</button>
+              <a class="btn btn-line" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">打开闲鱼商品</a>
+            </div>
+            <div class="copy-status" id="checkCopyStatus" aria-live="polite"></div>
           </div>
         </div>
       </div>
@@ -559,6 +687,59 @@
       document.body.removeChild(area);
       return ok;
     }
+
+    const buyCheckInputs = ["weeklyOrders", "avgPrice", "feeRate", "hiddenCost", "refundCount", "supportMinutes"];
+    const money = new Intl.NumberFormat("zh-CN", { style: "currency", currency: "CNY", maximumFractionDigits: 2 });
+    const numberValue = (id) => Math.max(0, Number(document.getElementById(id).value || 0));
+    const setText = (id, text) => { document.getElementById(id).textContent = text; };
+
+    function renderBuyCheck() {
+      const weeklyOrders = numberValue("weeklyOrders");
+      const avgPrice = numberValue("avgPrice");
+      const feeRate = numberValue("feeRate") / 100;
+      const hiddenCost = numberValue("hiddenCost");
+      const refundCount = numberValue("refundCount");
+      const supportMinutes = numberValue("supportMinutes");
+
+      const monthlyOrders = weeklyOrders * 4.3;
+      const monthlyRevenue = monthlyOrders * avgPrice;
+      const feeLeak = monthlyRevenue * feeRate;
+      const hiddenLeak = monthlyOrders * hiddenCost;
+      const refundLeak = refundCount * avgPrice;
+      const monthlyLeak = feeLeak + hiddenLeak + refundLeak;
+      const supportHours = monthlyOrders * supportMinutes / 60;
+      const buySignal = monthlyOrders >= 12 || monthlyLeak >= 49 || refundCount >= 2
+        ? "建议用完整表"
+        : "先用免费样张";
+
+      setText("monthlyRevenue", money.format(monthlyRevenue));
+      setText("monthlyLeak", money.format(monthlyLeak));
+      setText("supportHours", `${supportHours.toFixed(1)} 小时`);
+      setText("buySignal", buySignal);
+
+      document.getElementById("checkNote").textContent = [
+        "我想拍 19.90 元副业小店记账表 Excel 模板包。",
+        `我的情况：每周约 ${weeklyOrders} 单，客单价约 ${avgPrice.toFixed(2)} 元，每单可能漏记 ${hiddenCost.toFixed(2)} 元成本，每月约 ${refundCount} 单退款或关闭。`,
+        `自查结果：每月订单额约 ${money.format(monthlyRevenue)}，容易漏算约 ${money.format(monthlyLeak)}，售后解释约 ${supportHours.toFixed(1)} 小时。`,
+        "我需要完整 ZIP 来记录订单、平台费、成本、退款关闭原因、库存和周复盘。",
+        "我理解这是电子资料包，不承诺成交、利润、涨粉或回本。"
+      ].join("\n");
+    }
+
+    buyCheckInputs.forEach((id) => {
+      document.getElementById(id).addEventListener("input", renderBuyCheck);
+    });
+    renderBuyCheck();
+
+    document.getElementById("copyCheckNote").addEventListener("click", async () => {
+      const status = document.getElementById("checkCopyStatus");
+      try {
+        const ok = await copyText(document.getElementById("checkNote").textContent.trim());
+        status.textContent = ok ? "已复制，可以去闲鱼聊天里粘贴。" : "复制失败，请手动选中文本复制。";
+      } catch (error) {
+        status.textContent = "复制失败，请手动选中文本复制。";
+      }
+    });
 
     copyBtn.addEventListener("click", async () => {
       const text = noteEl.textContent.trim();
