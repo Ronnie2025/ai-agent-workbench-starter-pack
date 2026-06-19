@@ -345,6 +345,13 @@
       white-space: pre-wrap;
       overflow-wrap: anywhere;
     }
+    .copy-status {
+      min-height: 22px;
+      margin-top: 10px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 850;
+    }
     .list {
       display: grid;
       gap: 9px;
@@ -426,6 +433,7 @@
         <a href="digital-listing-checker.html">上架自检</a>
         <a href="virtual-product-pricing-calculator.html">定价计算</a>
         <a href="virtual-product-delivery-script-generator.html">发货话术</a>
+        <a href="side-hustle-ledger-excel-pack.html">记账表</a>
         <a href="order.html?plan=19.90">订单页</a>
       </div>
     </div>
@@ -440,6 +448,7 @@
         <div class="actions">
           <a class="btn btn-primary" href="#tool">生成回复</a>
           <a class="btn btn-line" href="xianyu-listing-generator.html">生成上架文案</a>
+          <a class="btn btn-line" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼买 19.90 元记账表</a>
           <a class="btn btn-line" href="https://www.goofish.com/item?id=1060176980426" target="_blank" rel="noopener">闲鱼买 49 元选题包</a>
         </div>
       </div>
@@ -559,9 +568,22 @@
             <p id="ctaText">如果买家还没确定买什么，先用 49 元 Reddit/X 副业情报模板包，从公开信息里筛选 AI 副业和虚拟资料选题。</p>
             <div class="actions">
               <a class="btn btn-dark" id="primaryXianyu" href="https://www.goofish.com/item?id=1060176980426" target="_blank" rel="noopener">闲鱼买 49 元选题包</a>
+              <a class="btn btn-line" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼买 19.90 元记账表</a>
               <a class="btn btn-line" href="https://www.goofish.com/item?id=1060189932353" target="_blank" rel="noopener">闲鱼买 19.90 元自测表</a>
               <a class="btn btn-line" href="https://www.goofish.com/item?id=1059263013337" target="_blank" rel="noopener">闲鱼买 99 元实战包</a>
             </div>
+          </div>
+
+          <div class="cta-panel">
+            <h3>回复完以后，把这次咨询记进表</h3>
+            <p>买家问太贵、退款、样品或包效果，都不是一次性聊天。记录下来，下一周才知道该改标题、详情页、定价还是发货说明。</p>
+            <div class="copybox" id="ledgerFollowUp"></div>
+            <div class="actions">
+              <button class="btn btn-dark" type="button" id="copyLedgerFollowUp">复制咨询记录字段</button>
+              <a class="btn btn-line" href="side-hustle-ledger-excel-pack.html">查看完整记账表</a>
+              <a class="btn btn-line" href="https://www.goofish.com/item?id=1057975295736" target="_blank" rel="noopener">闲鱼拍 19.90 元</a>
+            </div>
+            <div class="copy-status" id="ledgerCopyStatus" aria-live="polite"></div>
           </div>
         </div>
       </aside>
@@ -597,6 +619,7 @@
       <a href="virtual-products.html">虚拟资料货架</a>
       <a href="xianyu-listing-generator.html">闲鱼文案生成器</a>
       <a href="virtual-product-delivery-script-generator.html">发货话术生成器</a>
+      <a href="side-hustle-ledger-excel-pack.html">副业小店记账表</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
     </div>
@@ -606,6 +629,7 @@
     const goofish49 = "https://www.goofish.com/item?id=1060176980426";
     const goofish99 = "https://www.goofish.com/item?id=1059263013337";
     const goofish19 = "https://www.goofish.com/item?id=1060189932353";
+    const goofishLedger = "https://www.goofish.com/item?id=1057975295736";
     const typeText = {
       side: "副业情报 / 选题模板",
       prompt: "提示词包 / AI 教程",
@@ -726,6 +750,29 @@
       $("primaryXianyu").href = offer.href;
       $("primaryXianyu").textContent = offer.label;
       $("ctaText").textContent = offer.text;
+      $("ledgerFollowUp").textContent = [
+        `咨询记录：${state.platform}｜${state.name}｜买家问题：${concernText[state.concern]}`,
+        `已回复重点：${state.hasSample ? "可看样品" : "需补样品"}｜${state.hasRefund ? "已说明退款边界" : "需补退款边界"}｜${state.hasNoPromise ? "已说明不承诺结果" : "需补不承诺结果"}｜${state.hasNoService ? "已说明不含代做" : "需补服务范围"}`,
+        `推荐记录到 Excel：日期、商品、咨询问题、是否拍下、成交价、售后风险、退款关闭原因、本周复盘动作。`,
+        `如果这类咨询每周出现 3 次以上，建议用 19.90 元副业小店记账表完整包，把咨询、订单、成本、退款和周复盘放在同一张表。`
+      ].join("\n");
+    }
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+      const area = document.createElement("textarea");
+      area.value = text;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.left = "-9999px";
+      document.body.appendChild(area);
+      area.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(area);
+      return ok;
     }
 
     fieldIds.forEach(id => {
@@ -734,6 +781,14 @@
       if (el) el.addEventListener("change", render);
     });
     $("generate").addEventListener("click", render);
+    $("copyLedgerFollowUp").addEventListener("click", async () => {
+      try {
+        const ok = await copyText($("ledgerFollowUp").textContent.trim());
+        $("ledgerCopyStatus").textContent = ok ? "已复制，可以贴到订单流水或周复盘里。" : "复制失败，请手动选中文本复制。";
+      } catch (error) {
+        $("ledgerCopyStatus").textContent = "复制失败，请手动选中文本复制。";
+      }
+    });
     render();
   </script>
 </body>
