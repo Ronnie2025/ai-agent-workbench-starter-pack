@@ -45,6 +45,7 @@ consultants, and small-team operators.
 - 闲鱼虚拟资料运营话术包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ops-script-pack.html
 - 副业订单利润速算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-profit-calculator.html
 - 闲鱼虚拟资料利润计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-profit-calculator.html
+- 闲鱼虚拟资料手续费利润计算器独立工具站: https://ronnie2025.github.io/xianyu-virtual-product-profit-calculator/
 - 闲鱼虚拟资料定价计算器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-pricing-calculator.html
 - 闲鱼虚拟资料记账指南: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-virtual-product-ledger-template.html
 - 闲鱼记账表 Excel/CSV 样张: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ledger-sample.html
@@ -366,6 +367,7 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/jianying-caption-st
 Side hustle ledger Excel pack:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-profit-calculator.html
+https://ronnie2025.github.io/xianyu-virtual-product-profit-calculator/
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/side-hustle-ledger-excel-pack.html
 https://www.goofish.com/item?id=1057975295736
 https://ronnie2025.github.io/side-hustle-monthly-report-generator/
