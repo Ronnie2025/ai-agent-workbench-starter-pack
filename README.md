@@ -38,6 +38,7 @@ consultants, and small-team operators.
 - 小红书笔记生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-note-generator.html
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
+- AI 远程数据兼职申请材料生成器独立工具站: https://ronnie2025.github.io/ai-remote-data-job-application-kit/
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
 - 闲鱼虚拟资料上架文案生成器独立工具站: https://ronnie2025.github.io/xianyu-virtual-product-listing-generator/
 - 闲鱼虚拟资料买家咨询记录生成器独立工具站: https://ronnie2025.github.io/xianyu-buyer-inquiry-log-generator/
@@ -98,6 +99,7 @@ consultants, and small-team operators.
 - 电子资料上架合规自检包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/digital-listing-compliance.html
 - AI-PPT 交付自检包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-ppt-delivery-check.html
 - AI 远程数据兼职申请包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-data-job-pack.html
+- AI 远程数据兼职申请材料生成器独立工具站: https://ronnie2025.github.io/ai-remote-data-job-application-kit/
 - 小红书 Obsidian 工作流: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow.html
 - 小红书 Obsidian 工作流闲鱼购买入口: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xhs-obsidian-workflow-xianyu.html
 - 小红书 Obsidian 工作流闲鱼: https://www.goofish.com/item?id=1057847823017
@@ -305,6 +307,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ppt-template-genera
 AI remote data job pack:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-data-job-pack.html
+
+AI remote data job application kit:
+
+https://ronnie2025.github.io/ai-remote-data-job-application-kit/
 
 Xiaohongshu Obsidian workflow:
 
