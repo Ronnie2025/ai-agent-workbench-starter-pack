@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI简历关键词表生成器 | JD关键词、ATS检查和面试问题</title>
+  <meta name="description" content="免费 AI简历关键词表生成器：粘贴目标岗位JD和简历摘要，生成岗位关键词表、简历改写建议、STAR面试准备题和29.90元AI求职简历面试包订单入口。">
+  <link rel="canonical" href="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-table-generator.html">
+  <link rel="icon" href="cover.png">
+  <meta property="og:title" content="AI简历关键词表生成器">
+  <meta property="og:description" content="把JD关键词、简历表达和面试准备题整理成一张可复制表。">
+  <meta property="og:url" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-table-generator.html">
+  <meta property="og:image" content="https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit-cover.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI简历关键词表生成器",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "输入目标岗位、JD和简历摘要，生成关键词表、改写建议、STAR面试题和AI求职简历面试包订单入口。",
+    "image": "https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit-cover.webp",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "这个工具会上传我的简历吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不会。关键词表只在当前浏览器页面生成，不需要登录，不上传简历内容。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "关键词表能保证通过ATS或拿到面试吗？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不能。它只帮助你整理JD关键词、经历证据和面试准备方向，不承诺面试、录用、薪资或入职结果。"
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101828;
+      --muted: #5f6b7a;
+      --bg: #f7faf8;
+      --panel: #ffffff;
+      --line: #dce7df;
+      --green: #0a8a43;
+      --deep: #111a16;
+      --orange: #f26b2f;
+      --yellow: #ffd84d;
+      --soft: #eef8f2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.62;
+    }
+    a { color: inherit; }
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .topbar-inner,
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      color: var(--deep);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav a { text-decoration: none; }
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, rgba(247,250,248,1) 0%, rgba(247,250,248,.95) 48%, rgba(247,250,248,.18) 100%),
+        url("ai-resume-interview-kit-cover.webp") right center / min(39vw, 480px) auto no-repeat;
+    }
+    .hero-copy {
+      max-width: 700px;
+      padding: 54px 0 68px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(10,138,67,.24);
+      background: rgba(10,138,67,.09);
+      color: #076634;
+      font-size: 14px;
+      font-weight: 850;
+    }
+    h1 {
+      margin: 20px 0 14px;
+      max-width: 780px;
+      font-size: 58px;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 18px;
+      font-size: 30px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }
+    p { margin: 0; }
+    .lead {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .btn {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 850;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--deep); color: #fff; }
+    .btn-line { background: #fff; border-color: var(--line); color: var(--ink); }
+    .btn-green { background: var(--green); color: #fff; }
+    .tool {
+      padding: 34px 0 54px;
+    }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(390px, 520px);
+      gap: 18px;
+      align-items: start;
+    }
+    .panel,
+    .result-panel,
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .panel,
+    .result-panel { padding: 22px; }
+    .result-panel {
+      position: sticky;
+      top: 16px;
+    }
+    .field { margin-top: 15px; }
+    .field:first-of-type { margin-top: 0; }
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 850;
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+    input,
+    select { min-height: 46px; padding: 0 12px; }
+    textarea {
+      min-height: 118px;
+      padding: 12px;
+      resize: vertical;
+    }
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .hint {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: 124px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .summary-number {
+      min-height: 124px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--soft);
+      border: 1px solid rgba(10,138,67,.2);
+      color: var(--green);
+      font-size: 42px;
+      font-weight: 950;
+      line-height: 1;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 9px;
+      border-radius: 999px;
+      background: #fff7d6;
+      color: #7a4a00;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .result-block {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .keyword-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .keyword-table th,
+    .keyword-table td {
+      padding: 9px;
+      border: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+    .keyword-table th {
+      background: #f1f7f4;
+      font-weight: 900;
+    }
+    .output {
+      min-height: 190px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    .section {
+      padding: 48px 0;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      padding: 20px;
+    }
+    .card p { color: var(--muted); }
+    .footer {
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer .wrap {
+      min-height: 76px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .footer a { color: var(--muted); }
+    @media (max-width: 920px) {
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(247,250,248,1) 0%, rgba(247,250,248,.97) 48%, rgba(247,250,248,.86) 100%),
+          url("ai-resume-interview-kit-cover.webp") bottom center / min(86vw, 390px) auto no-repeat;
+      }
+      .hero-copy { padding-bottom: 410px; }
+      .nav { display: none; }
+      h1 { font-size: 42px; }
+      h2 { font-size: 26px; }
+      .tool-layout,
+      .field-grid,
+      .grid,
+      .summary {
+        grid-template-columns: 1fr;
+      }
+      .result-panel { position: static; }
+      .btn { width: 100%; }
+      .keyword-table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-copy { padding-bottom: 350px; }
+      h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./">AI Workbench Store</a>
+      <nav class="nav">
+        <a href="ai-resume-jd-fit-checker.html">JD匹配自查</a>
+        <a href="ai-resume-keyword-map-sample.html">CSV样张</a>
+        <a href="ai-resume-interview-kit.html">29.90资料包</a>
+        <a href="order.html?plan=ai-resume-29.90">订单页</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <span class="eyebrow">免费工具：JD关键词整理到简历表</span>
+          <h1>AI简历关键词表生成器</h1>
+          <p class="lead">粘贴目标岗位 JD 和当前简历摘要，生成一张可复制的关键词表：JD关键词、简历现状、改写建议和面试准备题。结果只在本页生成，不上传简历。</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#generator">开始生成关键词表</a>
+            <a class="btn btn-line" href="ai-resume-jd-fit-checker.html">先做JD匹配自查</a>
+            <a class="btn btn-line" href="ai-resume-interview-kit.html">查看29.90元资料包</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool" id="generator">
+      <div class="wrap tool-layout">
+        <form class="panel" id="keywordForm">
+          <h2>输入岗位和简历摘要</h2>
+          <div class="field-grid">
+            <div class="field">
+              <label for="role">目标岗位</label>
+              <select id="role">
+                <option value="产品运营">产品运营</option>
+                <option value="新媒体运营" selected>新媒体运营</option>
+                <option value="数据分析">数据分析</option>
+                <option value="前端开发">前端开发</option>
+                <option value="AI训练师">AI训练师</option>
+                <option value="行政助理">行政助理</option>
+                <option value="转行通用">转行通用</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="experienceLevel">经历成熟度</label>
+              <select id="experienceLevel">
+                <option value="entry">应届或1年以内</option>
+                <option value="junior" selected>1-3年经验</option>
+                <option value="mid">3-5年经验</option>
+                <option value="switcher">转行求职</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="jdText">岗位JD或关键词</label>
+            <textarea id="jdText">内容运营、用户增长、数据复盘、选题策划、社群运营、AIGC工具、活动策划、跨部门协作</textarea>
+            <div class="hint">可以粘贴JD正文，也可以用逗号分隔关键词。</div>
+          </div>
+
+          <div class="field">
+            <label for="resumeText">当前简历摘要</label>
+            <textarea id="resumeText">负责账号内容发布、社群维护、活动执行，使用AI工具辅助写文案和整理选题，参与过课程资料整理和用户反馈收集。</textarea>
+            <div class="hint">写核心经历即可，避免输入身份证、手机号、住址等敏感信息。</div>
+          </div>
+
+          <div class="field">
+            <label for="targetCompany">投递方向</label>
+            <input id="targetCompany" value="内容运营 / 新媒体运营 / AI工具运营">
+          </div>
+        </form>
+
+        <aside class="result-panel">
+          <div class="summary">
+            <div class="summary-number" id="matchScore">0</div>
+            <div>
+              <h2 id="resultTitle">正在生成</h2>
+              <p class="lead" id="resultText"></p>
+              <div class="badge-row" id="badges"></div>
+            </div>
+          </div>
+
+          <div class="result-block">
+            <h3>关键词表</h3>
+            <table class="keyword-table">
+              <thead>
+                <tr>
+                  <th>JD关键词</th>
+                  <th>简历现状</th>
+                  <th>改写建议</th>
+                  <th>面试准备题</th>
+                </tr>
+              </thead>
+              <tbody id="keywordRows"></tbody>
+            </table>
+          </div>
+
+          <div class="result-block">
+            <h3>可复制给AI的改写提示词</h3>
+            <textarea class="output" id="promptOutput" readonly></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-line" type="button" id="copyBtn">复制关键词表</button>
+            <a class="btn btn-green" id="orderLink" href="order.html?plan=ai-resume-29.90&scenario=我想购买 AI求职简历面试包">购买29.90元资料包</a>
+            <a class="btn btn-line" href="ai-resume-keyword-map-sample.html">下载CSV样张</a>
+            <a class="btn btn-line" href="ai-resume-interview-kit.html">查看完整包</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>生成后先检查这三件事</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>关键词不能只堆</h3>
+            <p>每个关键词都要落到真实经历、动作、对象和结果上，否则看起来像模板。</p>
+          </div>
+          <div class="card">
+            <h3>结果句要补证据</h3>
+            <p>优先补数量、比例、周期、人数、转化、效率或复盘结论，不编造经历。</p>
+          </div>
+          <div class="card">
+            <h3>面试题同步准备</h3>
+            <p>每个关键词都要能讲一个 STAR 案例，避免简历写上了但面试说不清。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>Contact: zhongruanjie@gmail.com</span>
+      <a href="ai-resume-jd-fit-checker.html">AI简历JD匹配自查器</a>
+      <a href="ai-resume-interview-kit.html">AI求职简历面试包</a>
+      <a href="virtual-products.html">虚拟资料货架</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+
+  <script>
+    const roleKeywords = {
+      "产品运营": ["用户增长", "数据复盘", "需求分析", "活动策划", "转化率", "留存", "跨部门协作", "A/B测试"],
+      "新媒体运营": ["选题策划", "内容运营", "账号增长", "数据复盘", "社群运营", "爆款拆解", "AIGC工具", "转化路径"],
+      "数据分析": ["SQL", "Excel", "指标体系", "数据清洗", "可视化", "归因分析", "业务洞察", "复盘报告"],
+      "前端开发": ["JavaScript", "TypeScript", "React", "组件化", "性能优化", "接口联调", "工程化", "用户体验"],
+      "AI训练师": ["标注规范", "质检", "提示词", "评测", "中文语料", "一致性", "安全边界", "模型输出"],
+      "行政助理": ["流程管理", "会议纪要", "日程协调", "费用报销", "文档整理", "跨部门沟通", "数据台账", "执行跟进"],
+      "转行通用": ["可迁移能力", "项目复盘", "工具使用", "学习能力", "协作沟通", "业务理解", "交付意识", "结果导向"]
+    };
+
+    const levelNotes = {
+      entry: "适合把校园、实习、社团或个人项目写成可验证任务。",
+      junior: "适合把日常职责改成结果句，并补齐岗位关键词。",
+      mid: "适合突出方法、复盘、协作和可复用经验。",
+      switcher: "适合先找可迁移能力，再解释转行动机和证据。"
+    };
+
+    const roleEl = document.getElementById("role");
+    const levelEl = document.getElementById("experienceLevel");
+    const jdEl = document.getElementById("jdText");
+    const resumeEl = document.getElementById("resumeText");
+    const targetEl = document.getElementById("targetCompany");
+    const rowsEl = document.getElementById("keywordRows");
+    const scoreEl = document.getElementById("matchScore");
+    const titleEl = document.getElementById("resultTitle");
+    const textEl = document.getElementById("resultText");
+    const badgesEl = document.getElementById("badges");
+    const promptEl = document.getElementById("promptOutput");
+    const orderLink = document.getElementById("orderLink");
+    const copyBtn = document.getElementById("copyBtn");
+
+    function normalize(text) {
+      return (text || "")
+        .toLowerCase()
+        .replace(/[，。；、\n]/g, ",")
+        .split(",")
+        .map(item => item.trim())
+        .filter(Boolean);
+    }
+
+    function unique(items) {
+      return [...new Set(items.filter(Boolean))].slice(0, 10);
+    }
+
+    function includesKeyword(text, keyword) {
+      const lower = (text || "").toLowerCase();
+      return lower.includes(keyword.toLowerCase());
+    }
+
+    function statusFor(keyword, resumeText) {
+      if (includesKeyword(resumeText, keyword)) return "已出现";
+      const hints = {
+        "用户增长": ["增长", "拉新", "转化", "用户"],
+        "数据复盘": ["复盘", "数据", "指标"],
+        "选题策划": ["选题", "策划", "主题"],
+        "社群运营": ["社群", "群", "用户维护"],
+        "AIGC工具": ["AI", "AIGC", "工具"],
+        "跨部门协作": ["协作", "对接", "沟通"],
+        "Excel": ["表格", "excel", "数据"],
+        "STAR": ["案例", "项目", "结果"]
+      };
+      const related = hints[keyword] || [];
+      return related.some(word => includesKeyword(resumeText, word)) ? "有相关经历" : "待补证据";
+    }
+
+    function rewriteFor(keyword, role) {
+      return `把“做过${keyword}”改成：在${role}相关任务中，针对什么对象，采取什么动作，用什么工具或方法，带来什么可验证结果。`;
+    }
+
+    function questionFor(keyword, role) {
+      return `请用STAR结构讲一个你在${role}中处理“${keyword}”的具体案例。`;
+    }
+
+    function build() {
+      const role = roleEl.value;
+      const level = levelEl.value;
+      const jdKeywords = normalize(jdEl.value);
+      const baseKeywords = roleKeywords[role] || [];
+      const keywords = unique([...jdKeywords, ...baseKeywords]);
+      const resumeText = resumeEl.value;
+      const rows = keywords.slice(0, 8).map(keyword => {
+        const status = statusFor(keyword, resumeText);
+        return {
+          keyword,
+          status,
+          rewrite: rewriteFor(keyword, role),
+          question: questionFor(keyword, role)
+        };
+      });
+      const covered = rows.filter(row => row.status === "已出现").length;
+      const related = rows.filter(row => row.status === "有相关经历").length;
+      const score = Math.min(100, Math.round(((covered * 12) + (related * 7) + 18) / Math.max(1, rows.length * 12) * 100));
+      const levelText = score >= 72 ? "关键词基础可用" : score >= 48 ? "需要补关键词证据" : "先重写经历表达";
+      const diagnosis = score >= 72
+        ? "当前简历已经覆盖部分关键词，下一步要把结果句和面试案例补完整。"
+        : score >= 48
+          ? "你有相关经历，但简历表达和JD关键词还没有完全对齐。"
+          : "当前摘要更像职责描述，建议先按关键词逐条补动作和结果。";
+
+      rowsEl.innerHTML = rows.map(row => `
+        <tr>
+          <td>${row.keyword}</td>
+          <td>${row.status}</td>
+          <td>${row.rewrite}</td>
+          <td>${row.question}</td>
+        </tr>
+      `).join("");
+
+      scoreEl.textContent = score;
+      titleEl.textContent = levelText;
+      textEl.textContent = diagnosis;
+      badgesEl.innerHTML = [
+        role,
+        levelNotes[level],
+        `${rows.length}个关键词`
+      ].map(item => `<span class="badge">${item}</span>`).join("");
+
+      const tableText = rows.map(row => `- ${row.keyword}：${row.status}｜${row.rewrite}｜${row.question}`).join("\n");
+      const prompt = [
+        `目标岗位：${role}`,
+        `投递方向：${targetEl.value}`,
+        `经历阶段：${levelNotes[level]}`,
+        "",
+        "请基于我的真实经历改写简历，不要编造公司、项目、数字或结果。",
+        "请按下面关键词表逐项检查：",
+        tableText,
+        "",
+        "输出格式：",
+        "1. 简历中最需要补的5个关键词",
+        "2. 每个关键词对应的一句话经历改写",
+        "3. 需要我补充的事实证据",
+        "4. 对应的STAR面试问题"
+      ].join("\n");
+      promptEl.value = prompt;
+
+      const scenario = `我用AI简历关键词表生成器测了${role}，得分${score}，想购买AI求职简历面试包`;
+      orderLink.href = `order.html?plan=ai-resume-29.90&scenario=${encodeURIComponent(scenario)}`;
+    }
+
+    [roleEl, levelEl, jdEl, resumeEl, targetEl].forEach(el => {
+      el.addEventListener("input", build);
+      el.addEventListener("change", build);
+    });
+
+    copyBtn.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(promptEl.value);
+      copyBtn.textContent = "已复制";
+      setTimeout(() => { copyBtn.textContent = "复制关键词表"; }, 1400);
+    });
+
+    build();
+  </script>
+</body>
+</html>

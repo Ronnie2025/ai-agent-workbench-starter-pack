@@ -22,6 +22,7 @@ consultants, and small-team operators.
 - AI短剧分镜脚本提示词包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-storyboard-prompt-pack.html
 - AI简历关键词表 CSV 样张: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-map-sample.html
 - AI简历关键词表 GitHub 样张仓库: https://github.com/Ronnie2025/ai-resume-keyword-map-sample
+- AI简历关键词表生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-table-generator.html
 - AI简历JD匹配自查器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-jd-fit-checker.html
 - AI简历JD匹配自查器独立工具站: https://github.com/Ronnie2025/ai-resume-jd-fit-checker
 - AI求职简历面试包: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-interview-kit.html
@@ -116,6 +117,7 @@ consultants, and small-team operators.
 - 19.90 RMB: 小红书轮播提示词资料包
 - 19.90 RMB: AI人物一致性提示词包
 - 39.90 RMB: AI短剧分镜脚本提示词包
+- 0 RMB: AI简历关键词表生成器
 - 29.90 RMB: AI求职简历面试包
 - 39.90 RMB: 生育津贴自助申领包
 - 19.90 RMB: 电子资料上架合规自检包
@@ -213,6 +215,10 @@ https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-short-drama-stor
 AI resume JD fit checker:
 
 https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-jd-fit-checker.html
+
+AI resume keyword table generator:
+
+https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-resume-keyword-table-generator.html
 
 AI resume interview kit:
 
