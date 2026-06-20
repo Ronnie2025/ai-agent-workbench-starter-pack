@@ -38,6 +38,7 @@ consultants, and small-team operators.
 - 小红书笔记生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xiaohongshu-note-generator.html
 - AI 远程数据兼职适配评分器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-fit-checker.html
 - AI 远程数据兼职官方入口核对表: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/ai-remote-job-official-list.html
+- AI 远程数据兼职申请包闲鱼上传图: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-ai-remote-upload-assets.html
 - AI 远程数据兼职申请材料生成器独立工具站: https://ronnie2025.github.io/ai-remote-data-job-application-kit/
 - 闲鱼虚拟资料上架文案生成器: https://ronnie2025.github.io/ai-agent-workbench-starter-pack/xianyu-listing-generator.html
 - 闲鱼虚拟资料上架文案生成器独立工具站: https://ronnie2025.github.io/xianyu-virtual-product-listing-generator/
